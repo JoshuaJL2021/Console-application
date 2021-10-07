@@ -18,8 +18,8 @@ namespace Models
             get { return _price; }
             set { _price = value; }
         }
-
         
+
         
     }
 }

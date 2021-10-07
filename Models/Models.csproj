@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+<GenerateDocumenta>true</GenerateDocumentationFile>
+<DocumentationFile>bin\YourApi.XML</DocumentationFile>
+    
+    
   </PropertyGroup>
 
 </Project>
