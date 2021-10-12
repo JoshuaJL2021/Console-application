@@ -16,8 +16,8 @@
         test,
         StoreMenu,*/
         loginconfirm,
-AddRestaurant,
-ShowRestaurant,
+AddCustomers,
+ShowCustomers,
 
 
 

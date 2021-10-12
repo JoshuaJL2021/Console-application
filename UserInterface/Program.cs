@@ -45,10 +45,10 @@ namespace UserInterface
                         //repeat itself
                         page = new LoginMenu();
                         break; 
-                    case MenuType.ShowRestaurant:
+                    case MenuType.ShowCustomers:
                         page = new ShowCustomers(new BL(new Repository()));
                         break;
-                    case MenuType.AddRestaurant:
+                    case MenuType.AddCustomers:
                         page = new AddCustomerMenu(new BL(new Repository()));
                         break;
                         case MenuType.loginconfirm:

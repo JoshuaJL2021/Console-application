@@ -28,5 +28,17 @@
     "Address": "Jacob",
     "Contact": "Friedman",
     "MyOrders": []
+  },
+  {
+    "CustomerName": null,
+    "Address": null,
+    "Contact": null,
+    "MyOrders": []
+  },
+  {
+    "CustomerName": "t",
+    "Address": "x",
+    "Contact": "t",
+    "MyOrders": []
   }
 ]

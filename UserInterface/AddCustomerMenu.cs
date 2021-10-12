@@ -39,22 +39,22 @@ namespace UserInterface
                 case "3":
                     Console.WriteLine("Type in the value for the Name");
                     _rest._name = Console.ReadLine();
-                    return MenuType.AddRestaurant;
+                    return MenuType.AddCustomers;
                 case "2":
                     Console.WriteLine("Type in the value for the Address");
                     _rest._address = Console.ReadLine();
-                    return MenuType.AddRestaurant;
+                    return MenuType.AddCustomers;
                 case "1":
                     Console.WriteLine("Type in the value for the Contact");
                     _rest._contact = Console.ReadLine();
-                    return MenuType.AddRestaurant;
+                    return MenuType.AddCustomers;
                 case "0":
                     return MenuType.MainMenu;
                 default:
                     Console.WriteLine("Please input a valid response!");
                     Console.WriteLine("Press Enter to continue");
                     Console.ReadLine();
-                    return MenuType.ShowRestaurant;
+                    return MenuType.ShowCustomers;
             }
         }
     }

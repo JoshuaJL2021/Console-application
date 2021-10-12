@@ -37,7 +37,7 @@ namespace UserInterface
                     Console.WriteLine("Please input a valid response!");
                     Console.WriteLine("Press Enter to continue");
                     Console.ReadLine();
-                    return MenuType.ShowRestaurant;
+                    return MenuType.ShowCustomers;
             }
         }
     }

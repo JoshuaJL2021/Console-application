@@ -19,8 +19,8 @@ namespace UserInterface
         public MenuType YourChoice()
         {
             string userChoice = Console.ReadLine();
-            string username;
-            string password;
+           // string username;
+           // string password;
             //string contactinformation;
 
             switch (userChoice)
@@ -40,19 +40,19 @@ namespace UserInterface
          
 
                 //insert verification function example:YourChoice(string username,string password);
-                    return MenuType.AddRestaurant;
+                    return MenuType.AddCustomers;
 
                 case "1":
                 //verify if account
-                Console.WriteLine("enter username");
+                /*Console.WriteLine("enter username");
                 username=Console.ReadLine();
                 Console.WriteLine("enter Address");
                 password=Console.ReadLine();
-                Customer user=new Customer(username,password,"");
+                Customer user=new Customer(username,password,"");*/
                // BL bl2=new BL();
                 //bl2.SearchCustomerBL(user);
 
-                    return MenuType.ShowRestaurant;
+                    return MenuType.ShowCustomers;
                 case "0":
                     return MenuType.MainMenu;
                 default:
