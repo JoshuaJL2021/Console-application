@@ -1,0 +1,32 @@
+[
+  {
+    "CustomerName": "Stephen\u0027s restaurant",
+    "Address": "Va",
+    "Contact": "Alexandria",
+    "MyOrders": []
+  },
+  {
+    "CustomerName": "Colin\u0027s restaurant",
+    "Address": "MI",
+    "Contact": "Detroit",
+    "MyOrders": []
+  },
+  {
+    "CustomerName": "Josh",
+    "Address": "PR",
+    "Contact": "Max",
+    "MyOrders": []
+  },
+  {
+    "CustomerName": "john",
+    "Address": "jacob",
+    "Contact": "Jingle heimer schmidt",
+    "MyOrders": []
+  },
+  {
+    "CustomerName": "Maxwell",
+    "Address": "Jacob",
+    "Contact": "Friedman",
+    "MyOrders": []
+  }
+]

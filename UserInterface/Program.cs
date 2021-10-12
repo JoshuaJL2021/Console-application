@@ -1,54 +1,72 @@
 ﻿using System;
-
-
+using BusinessLogic;
+using DataAccessLogic;
 namespace UserInterface
 {
     class Program
     {
         static void Main(string[] args)
         {
-           bool repeat = true;
+            //This is a boolean that has either a false or true value
+            //I will use this to stop the while loop
+            bool repeat = true;
+
+
+            //This is example of polymorphism, abstraction, and inheritance all at the same time
+            IMenu page = new MainMenu();
+            
+
+            //This is a while loop that will keep repeating until I changed the
+            //repeat variable to false
             while (repeat)
             {
+                //Clean the screen on the terminal
                 Console.Clear();
-                Console.WriteLine("Welcome to Lopez shopping center");
-                string userChoice;
-                Console.WriteLine("option 1: Do you want to enter the store");
-                Console.WriteLine("option 2: Do you want to leave the store");
-                userChoice=Console.ReadLine();
-                switch(userChoice)
-                {
-                    case "1":
-                    {
-                        Console.WriteLine("Welcome we will begin shortly Please answer the following: Are you a New User or a Guest");
-                        string accountconfirmation;
-                        Console.WriteLine("press enter to continue");
-                        accountconfirmation=Console.ReadLine();
-                        
-                        break;
-                   
-                   
-                    }
-                    case "2":
-                    {
-                        repeat=false;
-                        Console.WriteLine("test 2");
-                        Console.WriteLine("press enter to continue");
-                        userChoice=Console.ReadLine();
-                        break;
-                    }
 
-                    default:
-                    {
-                       Console.WriteLine("you have chose incorrectly, try again");
-                        Console.WriteLine("press enter to continue");
-                        userChoice=Console.ReadLine();
+                //IMenu interface can hold a bunch of objects as long as they inherited from
+                //IMenu, this lets us dynamically change the page by having the page variable
+                //Point to a different object each time
+                page.Menu();
+                MenuType currentPage = page.YourChoice();
+
+                //switch case will change the page variable to point to another object to change
+                //its MainMenu 
+                switch (currentPage)
+                {
+                    case MenuType.MainMenu:
+                        //If user choosed to go back to the MainMenu
+                        //page will start pointing to a MainMenu object instead
+                        page = new MainMenu();
+                        break;
+                    case MenuType.LoginMenu:
+                        //This will point the page reference variable to a new Restaurant Object
+                        //Since Restaurant Object has different implementation/function of the Menu Method
+                        //It will have different implementations/functions when the while loop goes back and
+                        //repeat itself
+                        page = new LoginMenu();
                         break; 
-                    }
-                    
+                    case MenuType.ShowRestaurant:
+                        page = new ShowCustomers(new BL(new Repository()));
+                        break;
+                    case MenuType.AddRestaurant:
+                        page = new AddCustomerMenu(new BL(new Repository()));
+                        break;
+                        case MenuType.loginconfirm:
+                        page = new LoginConfirmationMenu();
+                        break;
+                    case MenuType.Exit:
+                        Console.WriteLine("You are exiting the application!");
+                        Console.WriteLine("Press Enter to continue");
+                        Console.ReadLine();
+                        repeat = false;
+                        break;
+                    default:
+                        Console.WriteLine("You forgot to add a menu in your enum/code");
+                        repeat = false;
+                        break;
                 }
-                Console.WriteLine("You Have Left the store");
+            }
+
         }
     }
-}
 }
