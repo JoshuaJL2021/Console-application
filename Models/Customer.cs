@@ -10,7 +10,7 @@ namespace Models
          public string _name;
          public string _address;
          public string _contact;
-private List<Orders> customerOrders = new List<Orders>();
+public List<Orders> customerOrders = new List<Orders>();
 
         //in the JSON file the information would be entered in the way the constructors are for each property
         //property that uses the field name

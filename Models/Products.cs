@@ -4,7 +4,7 @@ namespace Models
 {
     public class Products
     {
-        private string _name;
+        public string _name;
         public string Name
         {
             get { return _name; }
@@ -12,7 +12,7 @@ namespace Models
         }
         
 
-        private double _price;
+        public double _price;
         public double Price
         {
             get { return _price; }

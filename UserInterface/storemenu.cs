@@ -2,7 +2,7 @@ using System;
 
 namespace BusinessLogic
 {
-    public class storemenu : IMenu
+    public class StoreMenu : IMenu
     {
         public void Menu()
         {
