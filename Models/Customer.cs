@@ -6,8 +6,7 @@ namespace Models
     public class Customer
     {
         //Created to print out name of corresponding customer on each menu when succesfully signed in
-        public static string username;
-        public static string password;
+        public static string Displayname;
 
 
         //fields
@@ -16,8 +15,12 @@ namespace Models
          public string _address;
          public string _contact;
         public List<Orders> customerOrders = new List<Orders>();
+
+        public string _username;
+        public string _password;
+
         //constructors
-        public Customer(string name, string address, string contact){
+        public Customer(string name, string address, string contact,string user, string pass){
 
         }
         public Customer(){}
@@ -51,18 +54,33 @@ namespace Models
                 set { customerOrders = value; }
                 get { return customerOrders; }
             }
-            public int _age;
+        public int _age;
         public int Age
         {
             get { return _age; }
             set { _age = value; }
         }
+
+        public string UserName
+        {
+            get { return _username; }
+            set { _username = value; }
+        }
     
+    public string Password
+        {
+            get { return _password; }
+            set { _password = value; }
+        }
 
         //in order to simply print out a customers information completely in a writeline
         public override string ToString()
         {
             return $"Name: {_name}\nAddress: {_address}\nContact: {_contact}";
+        }
+        public  string PrintName()
+        {
+            return _name;
         }
 
     

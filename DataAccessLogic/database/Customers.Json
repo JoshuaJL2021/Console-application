@@ -1,16 +1,11 @@
 [
   {
     "CustomerName": "Joshua",
-    "Address": "Va",
-    "Contact": "Alexandria",
+    "Address": "Puerto Rico",
+    "Contact": "939366",
     "MyOrders": [],
-    "Age": 0
-  },
-  {
-    "CustomerName": "Tom",
-    "Address": "MI",
-    "Contact": "Detroit",
-    "MyOrders": [],
-    "Age": 0
+    "Age": 26,
+    "UserName": "JJstark",
+    "Password": "Test"
   }
 ]

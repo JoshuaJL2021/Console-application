@@ -42,10 +42,12 @@ namespace BusinessLogic
       public bool VerifyCredentials()
         {
             List<Customer> listOfCustomers = GetAllCustomersBL();
-            bool result=listOfCustomers.Exists(x => x._name == Customer.username);
+            bool result=listOfCustomers.Exists(x => x._username == Customer.Displayname);
                 if (result==false)
                 { throw new Exception ("User Not found");
                 }
+                string text= listOfCustomers.Find(x => x._username.Contains(Customer.Displayname)).PrintName();
+                     Customer.Displayname=text;
             return result;
         }
 
