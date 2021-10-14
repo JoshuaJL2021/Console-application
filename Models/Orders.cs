@@ -28,7 +28,10 @@ namespace Models
         }
 
 
-
+public override string ToString()
+        {
+            return $"Order Name: {_location}\nTotal Price: {_totalprice}\n";
+        }
         
     }
 }

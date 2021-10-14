@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Models;
+
 using System;
 
 
@@ -35,6 +35,11 @@ namespace Models
                 get { return products; }
             }
         
+        public override string ToString()
+        {
+            return $"Store Name: {_name}\nAddress: {_address}\n";
+        }
+
         
     }
 }

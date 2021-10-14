@@ -19,7 +19,10 @@ namespace Models
             set { _quantity = value; }
         }
 
-        
+        public override string ToString()
+        {
+            return $"Product Name: {_product}\nAddress: {_quantity}\n";
+        }
         
     }
 }

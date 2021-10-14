@@ -19,7 +19,10 @@ namespace Models
             set { _price = value; }
         }
         
-
+public override string ToString()
+        {
+            return $"Product Name: {_name}\nTotal Price: {_price}\n";
+        }
         
     }
 }
