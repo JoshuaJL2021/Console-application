@@ -12,8 +12,6 @@ namespace BusinessLogic
         /// <summary>
         /// We are defining the dependencies this class needs to operate
         /// We do it this way because we can easily switch out which implementation details we will be using
-        /// But later on the lecture, we can then switch our RRDL project to point to an actual database in the cloud and we don't have to touch anything else to
-        /// have the implementation
         /// </summary>
         /// <param name="p_repo"></param>
         public BL(Repository p_repo)
@@ -21,49 +19,105 @@ namespace BusinessLogic
             _repo = p_repo;
         }
 
-        public Customer AddCustomersBL(Customer p_rest)
+        /// <summary>
+        /// this method will send a customer object established in the user interface 
+        /// and the end result would be equal to a customer value established in the method established in the repository class.
+        /// </summary>
+        /// <param name="parameterObj"></param>
+        /// <returns></returns>
+        public Customer AddCustomersBL(Customer parameterObj)
         {
-            return _repo.AddCustomersDL(p_rest);
+            return _repo.AddCustomersDL(parameterObj);
         }
-
+        /// <summary>
+        /// this method returns a list established for Customer objects which is received from a repository method 
+        /// </summary>
+        /// <returns> all the information in the specified json file established in the method .</returns>
         public List<Customer> GetAllCustomersBL()
         {
             return _repo.GetAllCustomersDL();
         }
-        public StoreFront AddStoreFrontBL(StoreFront p_rest)
+
+            /// <summary>
+            /// this method will send a customer object established in the user interface 
+            /// and the end result would be equal to a StoreFront value established in the method established in the repository class.
+            /// 
+            /// </summary>
+            /// <param name="parameterObj"></param>
+            /// <returns></returns>
+        public StoreFront AddStoreFrontBL(StoreFront parameterObj)
         {
-            return _repo.AddStoreFrontDL(p_rest);
+            return _repo.AddStoreFrontDL(parameterObj);
         }
 
+        /// <summary>
+        /// this method returns a list established for Customer objects which is received from a repository method 
+        /// </summary>
+        /// <returns> all the information in the specified json file established in the method .</returns>
         public List<StoreFront> GetAllStoreFrontsBL()
         {
             return _repo.GetAllStoreFrontDL();
             
         }
 
-        public Products AddProductsBL(Products p_rest)
+        /// <summary>
+        /// this method will send a customer object established in the user interface 
+        /// and the end result would be equal to a Products value established in the method established in the repository class.
+        /// 
+        /// </summary>
+        /// <param name="parameterObj"></param>
+        /// <returns></returns>
+        public Products AddProductsBL(Products parameterObj)
         {
-            return _repo.AddProductsDL(p_rest);
+            return _repo.AddProductsDL(parameterObj);
         }
 
+
+        /// <summary>
+        /// this method returns a list established for Customer objects which is received from a repository method 
+        /// </summary>
+        /// <returns> all the information in the specified json file established in the method .</returns>
         public List<Products> GetAllProductsBL()
         {
            return _repo.GetAllProductsDL();
         }
-        public Orders AddOrdersBL(Orders p_rest)
+        /// <summary>
+        /// this method will send a customer object established in the user interface 
+        /// and the end result would be equal to a orders value established in the method established in the repository class.
+        /// 
+        /// </summary>
+        /// <param name="parameterObj"></param>
+        /// <returns></returns>
+        public Orders AddOrdersBL(Orders parameterObj)
         {
-            return _repo.AddOrdersDL(p_rest);
+            return _repo.AddOrdersDL(parameterObj);
         }
 
+        /// <summary>
+        /// this method returns a list established for Customer objects which is received from a repository method 
+        /// </summary>
+        /// <returns> all the information in the specified json file established in the method .</returns>
         public List<Orders> GetAllOrdersBL()
         {
            return _repo.GetAllOrdersDL();
         }
-public LineItems AddLineItemsBL(LineItems p_rest)
-        {
-            return _repo.AddLineItemsDL(p_rest);
-        }
 
+        /// <summary>
+        /// this method will send a customer object established in the user interface 
+        /// and the end result would be equal to a line items value established in the method established in the repository class.
+        /// 
+        /// </summary>
+        /// <param name="parameterObj"></param>
+        /// <returns></returns>
+        public LineItems AddLineItemsBL(LineItems parameterObj)
+                {
+                    return _repo.AddLineItemsDL(parameterObj);
+                }
+                
+        /// <summary>
+        /// this method returns a list established for Customer objects which is received from a repository method 
+        /// </summary>
+        /// <returns> all the information in the specified json file established in the method .</returns>
         public List<LineItems> GetAllLineItemsBL()
         {
            return _repo.GetAllLineItemsDL();
@@ -71,54 +125,3 @@ public LineItems AddLineItemsBL(LineItems p_rest)
 
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-/*
-        public Customer AddCustomerBL(Customer insert)
-        {
-            Customer ex=new Customer();
-            
-
-            return ex;
-        }
-        public Customer SearchCustomerBL(Customer find)
-        {
-
-             Customer ex=new Customer();
-       //     Class1 search= new Class1();
-//search.SearchCustomerBL(find);
-            return ex;
-        }
-
-        public string ViewStoreInventoryBL(){
-            return "string";
-
-        }
-
-         public string PlaceOrderBL()
-         {
-            return "string";
-
-        }
-         public string ViewOrderHistoryBL()
-         {
-            return "string";
-
-        }
-        public string ReplenishInventoryBL()
-         {
-            return "string";
-
-        }
-
-       */
-

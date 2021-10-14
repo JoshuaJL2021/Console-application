@@ -8,13 +8,20 @@ namespace DataAccessLogic
 {
     public class Repository : InterfaceRepository
     {
- //The repository class has a bunch of methods that we will use to get or store information from the database
+    //The repository class has a bunch of methods that we will use to get or store information from the database
     //Does not actually hold the data itself
     
-        //Filepath need to reference from the startup project (RRUI) and hence why we need to go back a folder and cd into RRDL
+        //Filepath need to reference , this format locates this specific folder in the project
         private const string _filepath = "./../DataAccessLogic/Database/";
         private string _jsonString;
 
+        /// <summary>
+        /// Add customer method which begins with receiving the whole list in the db into the created list.
+        /// adds the received parameter into the list at the end.
+        /// then stores the file into the designated path with the json extension hardcoded in
+        /// </summary>
+        /// <param name="p_rest"></param>
+        /// <returns></returns>
         public Customer AddCustomersDL(Customer p_rest)
         {
             //The reason why we need to grab all the information back is because File.WriteAllText method will overwrite anything inside the JSON file
@@ -22,10 +29,12 @@ namespace DataAccessLogic
 
             //We added the new customer from the parameter 
             listOfcustomers.Add(p_rest);
-
+            //formats the list to the indented format.
+            // serialize formats and converts the list into a json formatted string.
             _jsonString = JsonSerializer.Serialize(listOfcustomers, new JsonSerializerOptions{WriteIndented=true});
 
             //This is what adds the customer.json
+            //adds the entire list containing the previous and new customers.
             File.WriteAllText((_filepath+"Customers.json"),_jsonString);
 
             //Will return a customer object from the parameter
@@ -43,17 +52,26 @@ namespace DataAccessLogic
             //The parameter of the Deserialize method needs a string variable that holds the json file
             return JsonSerializer.Deserialize<List<Customer>>(_jsonString);
         }
-public StoreFront AddStoreFrontDL(StoreFront p_rest)
+
+
+        /// <summary>
+        /// Add storefront method which begins with receiving the whole list in the db into the created list.
+        /// adds the received parameter into the list at the end.
+        /// then stores the file into the designated path with the json extension hardcoded in
+        /// </summary>
+        /// <param name="p_rest"></param>
+        /// <returns></returns>
+            public StoreFront AddStoreFrontDL(StoreFront p_rest)
         {
              //The reason why we need to grab all the information back is because File.WriteAllText method will overwrite anything inside the JSON file
-            List<StoreFront> listOfcustomers = GetAllStoreFrontDL();
+            List<StoreFront> listOfstores = GetAllStoreFrontDL();
 
-            //We added the new customer from the parameter 
-            listOfcustomers.Add(p_rest);
+            //We added the new storefront from the parameter 
+            listOfstores.Add(p_rest);
 
-            _jsonString = JsonSerializer.Serialize(listOfcustomers, new JsonSerializerOptions{WriteIndented=true});
+            _jsonString = JsonSerializer.Serialize(listOfstores, new JsonSerializerOptions{WriteIndented=true});
 
-            //This is what adds the customer.json
+            //This is what adds the stores.json
             File.WriteAllText(_filepath+"Stores.json",_jsonString);
 
             //Will return a customer object from the parameter
@@ -70,7 +88,14 @@ public StoreFront AddStoreFrontDL(StoreFront p_rest)
             return JsonSerializer.Deserialize<List<StoreFront>>(_jsonString);
         }
 
-public Products AddProductsDL(Products p_rest)
+            /// <summary>
+            /// Add products method which begins with receiving the whole list in the db into the created list.
+            /// adds the received parameter into the list at the end.
+            /// then stores the file into the designated path with the json extension hardcoded in
+            /// </summary>
+            /// <param name="p_rest"></param>
+            /// <returns></returns>
+            public Products AddProductsDL(Products p_rest)
         {
              //The reason why we need to grab all the information back is because File.WriteAllText method will overwrite anything inside the JSON file
             List<Products> listOfProducts = GetAllProductsDL();
@@ -97,8 +122,14 @@ public Products AddProductsDL(Products p_rest)
             return JsonSerializer.Deserialize<List<Products>>(_jsonString);
         }
 
-
-public Orders AddOrdersDL(Orders p_rest)
+        /// <summary>
+        /// Add orders method which begins with receiving the whole list in the db into the created list.
+        /// adds the received parameter into the list at the end.
+        /// then stores the file into the designated path with the json extension hardcoded in
+        /// </summary>
+        /// <param name="p_rest"></param>
+        /// <returns></returns>
+        public Orders AddOrdersDL(Orders p_rest)
         {
              //The reason why we need to grab all the information back is because File.WriteAllText method will overwrite anything inside the JSON file
             List<Orders> listOfOrders = GetAllOrdersDL();
@@ -124,7 +155,14 @@ public Orders AddOrdersDL(Orders p_rest)
             //The parameter of the Deserialize method needs a string variable that holds the json file
             return JsonSerializer.Deserialize<List<Orders>>(_jsonString);
         }
-public LineItems AddLineItemsDL(LineItems p_rest)
+            /// <summary>
+            /// Add line items method which begins with receiving the whole list in the db into the created list.
+            /// adds the received parameter into the list at the end.
+            /// then stores the file into the designated path with the json extension hardcoded in
+            /// </summary>
+            /// <param name="p_rest"></param>
+            /// <returns></returns>
+        public LineItems AddLineItemsDL(LineItems p_rest)
         {
              //The reason why we need to grab all the information back is because File.WriteAllText method will overwrite anything inside the JSON file
             List<LineItems> listOfLineItems = GetAllLineItemsDL();
