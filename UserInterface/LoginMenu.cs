@@ -1,21 +1,26 @@
 using System;
 using BusinessLogic;
 using Models;
+using System.Collections.Generic;
 namespace UserInterface
 {
     public class LoginMenu : IMenu
     {
-        
+        private BL _restBL;
+        public LoginMenu(BL p_restBL)
+        {
+            _restBL = p_restBL;
+        }
     
         public void Menu()
         {
+            
             Console.WriteLine("Welcome to the Shopping Menu!");
             Console.WriteLine("Are you a new customer or a Returning customer?");
-            Console.WriteLine("[2] - add user");
-            Console.WriteLine("[1] - show me info");
+            Console.WriteLine("[2] - New Customer");
+            Console.WriteLine("[1] - Login");
             Console.WriteLine("[0] - Return to main menu");
-            Console.WriteLine("[x] - Returning User");
-          //  Console.WriteLine(Customer.username);
+            
       
         }
 
@@ -29,16 +34,32 @@ namespace UserInterface
             switch (userChoice)
             {
                 case "2":
-                //create
-         
-
-                //insert verification function example:YourChoice(string username,string password);
+                
                     return MenuType.AddCustomers;
 
                 case "1":
-                //verify if account
-
-                    return MenuType.ShowCustomers;
+               
+            
+                Console.WriteLine("Enter username");
+                Customer.username=Console.ReadLine();
+                try
+                {
+                     _restBL.VerifyCredentials();
+                     Console.WriteLine("Welcome Back " + Customer.username + "\n enter to continue");
+                     Console.ReadLine();
+                }
+                catch (System.Exception)
+                {
+                    Customer.username="";
+                    Console.WriteLine("User was unfortunately not found");
+                Console.WriteLine("You will be sent to the Login Menu again");
+                Console.WriteLine("Press Enter to continue");
+                Console.ReadLine();
+                    return MenuType.LoginMenu;
+                }
+                
+                
+                    return MenuType.StoreMenu;
                 case "0":
                     return MenuType.MainMenu;
                 case "x":

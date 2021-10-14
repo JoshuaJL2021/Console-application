@@ -6,7 +6,7 @@ namespace UserInterface
     {
         public void Menu()
         {
-            Console.WriteLine("Congrats it went through");
+        Console.WriteLine("Congrats it went through");
            Console.WriteLine("[0] - to continue to store selection");
             
       

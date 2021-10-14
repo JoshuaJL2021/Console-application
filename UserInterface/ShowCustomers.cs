@@ -65,17 +65,7 @@ Console.WriteLine("\n\n List of Orders");
             }
             Console.WriteLine("[x] - Go Back");
 
-Console.WriteLine("Enter username");
-                Customer.username=Console.ReadLine();
-                if (listOfCustomers.Exists(x => x._name == Customer.username))
-                {
-                    Console.WriteLine("congrats you were found");
-                }
-                else
-                {
-                    Customer.username="invalid";
-                }
-Console.WriteLine("choose option");
+
                 
 
 

@@ -44,7 +44,7 @@ namespace UserInterface
                         //Since Restaurant Object has different implementation/function of the Menu Method
                         //It will have different implementations/functions when the while loop goes back and
                         //repeat itself
-                        page = new LoginMenu();
+                        page = new LoginMenu(new BL(new Repository()));
                         break; 
                     case MenuType.ShowCustomers:
                         page = new ShowCustomers(new BL(new Repository()));
@@ -88,6 +88,10 @@ namespace UserInterface
                         case MenuType.AddStore:
                         page = new AddStoreFront(new BL(new Repository()));
                         break;
+                        case MenuType.FunctionMenu:
+                        page = new FunctionMenu();
+                        break;
+
                     default:
                         Console.WriteLine("You forgot to add a menu in your enum/code");
                         repeat = false;

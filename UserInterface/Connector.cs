@@ -9,16 +9,16 @@
         LoginMenu,
   
         loginconfirm,
-AddCustomers,
-ShowCustomers,
-StoreMenu,
-ProductDisplayMenu,
-ProductBuyMenu,
+        AddCustomers,
+        ShowCustomers,
+        StoreMenu,
+        ProductDisplayMenu,
+        ProductBuyMenu,
 
-ConfirmPurchaseMenu,
+        ConfirmPurchaseMenu,
 
 
-        Exit,
+                Exit,
 
 
 
@@ -27,6 +27,7 @@ ConfirmPurchaseMenu,
         AddOrder,
         AddProduct,
         AddStore,
+        FunctionMenu,
         
 
     }

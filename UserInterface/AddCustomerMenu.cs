@@ -46,7 +46,7 @@ namespace UserInterface
                     //Add implementation to talk to the repository method to add a restaurant
                     _restBL.AddCustomersBL(_rest);
                    
-                    return MenuType.loginconfirm;
+                    return MenuType.LoginMenu;
                 case "3":
                     Console.WriteLine("Type in the value for the Name");
                     _rest._name = Console.ReadLine();

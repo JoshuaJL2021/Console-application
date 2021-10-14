@@ -1,6 +1,8 @@
 using System;
 using BusinessLogic;
 using Models;
+using System.Collections.Generic;
+
 namespace UserInterface
 {
     public class StoreMenu : IMenu
@@ -15,14 +17,16 @@ namespace UserInterface
             Console.WriteLine("Welcome to the store select menu " + Customer.username );
             Console.WriteLine("Please select the store");
 
-            /* List<StoreFront> listOfCustomers = _restBL.GetAllCustomersBL();
+            Console.WriteLine("\n\n List of StoreFronts");
+            List<StoreFront> listOfStoreFront = _restBL.GetAllStoreFrontsBL();
 
-            foreach (Customer rest in listOfCustomers)
+            foreach (StoreFront rest in listOfStoreFront)
             {
                 Console.WriteLine("====================");
-                Console.WriteLine(rest._name + "\t" + rest._address + "\t" + rest._contact);
+                Console.WriteLine(rest);
                 Console.WriteLine("====================");
-            }*/
+            }
+
             Console.WriteLine("[3] - add store (goes to products display");
             Console.WriteLine("[2] - texas (goes to products display");
             Console.WriteLine("[1] - canada (goes to order history");
