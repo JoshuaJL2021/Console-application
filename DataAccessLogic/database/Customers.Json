@@ -1,36 +1,15 @@
 [
   {
-    "CustomerName": "Stephen\u0027s restaurant",
+    "CustomerName": "Joshua",
     "Address": "Va",
     "Contact": "Alexandria",
     "MyOrders": [],
     "Age": 0
   },
   {
-    "CustomerName": "Colin\u0027s restaurant",
+    "CustomerName": "Tom",
     "Address": "MI",
     "Contact": "Detroit",
-    "MyOrders": [],
-    "Age": 0
-  },
-  {
-    "CustomerName": "yes",
-    "Address": "yes",
-    "Contact": "text",
-    "MyOrders": [],
-    "Age": 0
-  },
-  {
-    "CustomerName": "test",
-    "Address": "yes",
-    "Contact": "fgsw",
-    "MyOrders": [],
-    "Age": 5
-  },
-  {
-    "CustomerName": "ryan",
-    "Address": "razzle",
-    "Contact": "razzle email",
     "MyOrders": [],
     "Age": 0
   }

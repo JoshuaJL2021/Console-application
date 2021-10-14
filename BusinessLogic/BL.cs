@@ -38,6 +38,17 @@ namespace BusinessLogic
             return _repo.GetAllCustomersDL();
         }
 
+
+      public bool VerifyCredentials()
+        {
+            List<Customer> listOfCustomers = GetAllCustomersBL();
+            bool result=listOfCustomers.Exists(x => x._name == Customer.username);
+                if (result==false)
+                { throw new Exception ("User Not found");
+                }
+            return result;
+        }
+
             /// <summary>
             /// this method will send a customer object established in the user interface 
             /// and the end result would be equal to a StoreFront value established in the method established in the repository class.
@@ -123,5 +134,6 @@ namespace BusinessLogic
            return _repo.GetAllLineItemsDL();
         }
 
+    
     }
 }

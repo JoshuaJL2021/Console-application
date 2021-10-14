@@ -19,6 +19,8 @@ namespace BusinessLogic
         /// <returns>It returns the added customer</returns>
         Customer AddCustomersBL(Customer p_rest);
 
+        bool VerifyCredentials();
+
         /// <summary>
         /// Adds a store front to the database
         /// </summary>
