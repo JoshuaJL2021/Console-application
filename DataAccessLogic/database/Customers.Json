@@ -1,16 +1,20 @@
 [
   {
-    "CustomerName": "Joshua",
-    "Address": "Va",
-    "Contact": "Alexandria",
+    "CustomerName": "Joshua Lopez",
+    "Address": "Aguada PR",
+    "Contact": "9393662180",
     "MyOrders": [],
-    "Age": 0
+    "Age": 26,
+    "UserName": "Jjstark",
+    "Password": "Password"
   },
   {
-    "CustomerName": "Tom",
-    "Address": "MI",
-    "Contact": "Detroit",
+    "CustomerName": "John",
+    "Address": "west",
+    "Contact": "Cenaemail",
     "MyOrders": [],
-    "Age": 0
+    "Age": 42,
+    "UserName": "JCena",
+    "Password": "Peace"
   }
 ]

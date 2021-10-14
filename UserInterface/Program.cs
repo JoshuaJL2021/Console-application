@@ -52,11 +52,14 @@ namespace UserInterface
                     case MenuType.AddCustomers:
                         page = new AddCustomerMenu(new BL(new Repository()));
                         break;
+                        case MenuType.StoreMenu:
+                        page = new StoreMenu(new BL(new Repository()));
+                        break;
                         case MenuType.loginconfirm:
                         page = new LoginConfirmationMenu();
                         break;
                     case MenuType.Exit:
-                        Console.WriteLine("You are exiting the application!\n Goodbye "+ Customer.username+" Come back soon");
+                        Console.WriteLine("You are exiting the application!\n Goodbye "+ Customer.Displayname+" Come back soon");
                         Console.WriteLine("Press Enter to continue");
                         Console.ReadLine();
                         repeat = false;

@@ -12,12 +12,11 @@ namespace UserInterface
         */
         public void Menu()
         {
-            Console.WriteLine("Welcome " + Customer.username +" to the Main Menu for Lopez Shopping Center");
+            Console.WriteLine("Welcome " + Customer.Displayname +" to the Main Menu for Lopez Shopping Center");
             Console.WriteLine("What do you want to do?");
 
             Console.WriteLine("[1] - Go Browsing");
             Console.WriteLine("[0] - Exit the store");
-            Console.WriteLine("[x] - Test Functions");
 
           
 
@@ -28,8 +27,6 @@ namespace UserInterface
             string userChoice = Console.ReadLine();
             switch (userChoice)
             {
-                case "x":
-                return MenuType.FunctionMenu;
                 case "1":
                     return MenuType.LoginMenu;
                     
