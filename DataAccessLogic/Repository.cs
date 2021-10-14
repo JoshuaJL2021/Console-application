@@ -109,7 +109,7 @@ public Orders AddOrdersDL(Orders p_rest)
             _jsonString = JsonSerializer.Serialize(listOfOrders, new JsonSerializerOptions{WriteIndented=true});
 
             //This is what adds the Orders.json
-            File.WriteAllText(_filepath+"Ordors.json",_jsonString);
+            File.WriteAllText(_filepath+"Orders.json",_jsonString);
 
             //Will return a Orders object from the parameter
             return p_rest;
@@ -117,7 +117,7 @@ public Orders AddOrdersDL(Orders p_rest)
 
         public List<Orders> GetAllOrdersDL()
         {
-             _jsonString = File.ReadAllText(_filepath+"Products.json");
+             _jsonString = File.ReadAllText(_filepath+"Orders.json");
 
             //Since we are converting from a string to an object that C# understands we need to deserialize the string to object.
             //Json Serializer has a static method called Deserialize and thats why you don't need to instantiate it
