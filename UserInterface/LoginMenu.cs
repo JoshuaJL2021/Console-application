@@ -41,16 +41,19 @@ namespace UserInterface
                
             
                 Console.WriteLine("Enter username");
-                Customer.username=Console.ReadLine();
+                Customer.Displayname=Console.ReadLine();
                 try
                 {
+                    List<Customer> listOfCustomers = _restBL.GetAllCustomersBL();
+
                      _restBL.VerifyCredentials();
-                     Console.WriteLine("Welcome Back " + Customer.username + "\n enter to continue");
+                     Console.WriteLine("Welcome Back " + Customer.Displayname + "\n enter to continue");
+                     
                      Console.ReadLine();
                 }
                 catch (System.Exception)
                 {
-                    Customer.username="";
+                    Customer.Displayname="";
                     Console.WriteLine("User was unfortunately not found");
                 Console.WriteLine("You will be sent to the Login Menu again");
                 Console.WriteLine("Press Enter to continue");
@@ -64,7 +67,7 @@ namespace UserInterface
                     return MenuType.MainMenu;
                 case "x":
                 Console.WriteLine("Enter username");
-                Customer.username=Console.ReadLine();
+                Customer.Displayname=Console.ReadLine();
                 
 
 

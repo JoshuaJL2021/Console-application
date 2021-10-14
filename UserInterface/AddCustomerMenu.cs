@@ -21,15 +21,17 @@ namespace UserInterface
             Console.WriteLine("Name - " + _rest._name);
             Console.WriteLine("Address - "+ _rest._address);
             Console.WriteLine("Contact - "+ _rest._contact);
-            Console.WriteLine("age - "+ _rest._age);
-
-            Console.WriteLine("[4] - Add Customer");
-            Console.WriteLine("[3] - Input value for Name");
+            Console.WriteLine("age - "+ _rest._username);
+            Console.WriteLine("age - "+ _rest._password);
+            
+            Console.WriteLine("[x] - Add Customer");
+            Console.WriteLine("[1] - Input value for Name");
             Console.WriteLine("[2] - Input value for Address");
-            Console.WriteLine("[1] - Input value for contact");
-            Console.WriteLine("[5] - Input value for age");
-            Console.WriteLine("[0] - Go Back");
-
+            Console.WriteLine("[3] - Input value for contact");
+            Console.WriteLine("[4] - Input value for age");
+            Console.WriteLine("[5] - Enter username");
+            Console.WriteLine("[6] - Enter password");
+            Console.WriteLine("[6] - Go Back");
 
 
 
@@ -42,12 +44,12 @@ namespace UserInterface
             string userChoice = Console.ReadLine();
             switch (userChoice)
             {
-                case "4":
+                case "x":
                     //Add implementation to talk to the repository method to add a restaurant
                     _restBL.AddCustomersBL(_rest);
                    
                     return MenuType.LoginMenu;
-                case "3":
+                case "1":
                     Console.WriteLine("Type in the value for the Name");
                     _rest._name = Console.ReadLine();
                     return MenuType.AddCustomers;
@@ -55,14 +57,23 @@ namespace UserInterface
                     Console.WriteLine("Type in the value for the Address");
                     _rest._address = Console.ReadLine();
                     return MenuType.AddCustomers;
-                case "1":
+                case "3":
                     Console.WriteLine("Type in the value for the Contact");
                     _rest._contact = Console.ReadLine();
                     return MenuType.AddCustomers;
-                    case "5":
+                    case "4":
                     Console.WriteLine("Type in the value for the age");
                     _rest._age = Convert.ToInt32(Console.ReadLine());
                     return MenuType.AddLineItem;
+                    case "5":
+                    Console.WriteLine("Type in the value for the username");
+                    _rest._username = Console.ReadLine();
+                    return MenuType.AddCustomers;
+                    case "6":
+                    Console.WriteLine("Type in the value for the password");
+                    _rest._password = Console.ReadLine();
+                    return MenuType.AddCustomers;
+                    
                 case "0":
                     return MenuType.MainMenu;
                 default:

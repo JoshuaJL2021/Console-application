@@ -14,7 +14,7 @@ namespace UserInterface
         }
         public void Menu()
         {
-            Console.WriteLine("Welcome to the store select menu " + Customer.username );
+            Console.WriteLine("Welcome to the store select menu " + Customer.Displayname );
             Console.WriteLine("Please select the store");
 
             Console.WriteLine("\n\n List of StoreFronts");

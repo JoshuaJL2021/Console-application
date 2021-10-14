@@ -14,7 +14,7 @@ namespace UserInterface
         }
         public void Menu()
         {
-            Console.WriteLine("Welcome "+ Customer.username);
+            Console.WriteLine("Welcome "+ Customer.Displayname);
             Console.WriteLine("List of Customers");
             List<Customer> listOfCustomers = _restBL.GetAllCustomersBL();
 
@@ -64,6 +64,8 @@ Console.WriteLine("\n\n List of Orders");
                 Console.WriteLine("====================");
             }
             Console.WriteLine("[x] - Go Back");
+
+
 
 
                 
