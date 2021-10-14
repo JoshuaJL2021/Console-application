@@ -1,6 +1,6 @@
 using System;
 using BusinessLogic;
-
+using Models;
 namespace UserInterface
 {
     public class StoreMenu : IMenu
@@ -12,7 +12,7 @@ namespace UserInterface
         }
         public void Menu()
         {
-            Console.WriteLine("Welcome to the store select menu");
+            Console.WriteLine("Welcome to the store select menu " + Customer.username );
             Console.WriteLine("Please select the store");
 
             /* List<StoreFront> listOfCustomers = _restBL.GetAllCustomersBL();

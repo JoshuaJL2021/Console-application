@@ -29,12 +29,12 @@ namespace UserInterface
                 //
 
                 //insert verification function example:YourChoice(string username,string password);
-                    return MenuType.MainMenu;
+                    return MenuType.StoreMenu;
                     
                 case "1":
                     return MenuType.LoginMenu;
                 case "0":
-                    return MenuType.StoreMenu;
+                    return MenuType.MainMenu;
                 default:
                     Console.WriteLine("Please input a valid response!");
                     Console.WriteLine("Press Enter to continue");

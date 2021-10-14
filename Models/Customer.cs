@@ -5,7 +5,9 @@ namespace Models
 {
     public class Customer
     {
+        //Created to print out name of corresponding customer on each menu when succesfully signed in
         public static string username;
+        public static string password;
 
 
         //fields
@@ -13,11 +15,16 @@ namespace Models
          public string _name;
          public string _address;
          public string _contact;
-public List<Orders> customerOrders = new List<Orders>();
+        public List<Orders> customerOrders = new List<Orders>();
+        //constructors
+        public Customer(string name, string address, string contact){
+
+        }
+        public Customer(){}
 
         //in the JSON file the information would be entered in the way the constructors are for each property
         //property that uses the field name
-                public string CustomerName
+        public string CustomerName
         {
             get { return _name; }
             set { _name = value; }
@@ -50,12 +57,9 @@ public List<Orders> customerOrders = new List<Orders>();
             get { return _age; }
             set { _age = value; }
         }
-       public Customer(string name, string address, string contact){
+    
 
-        }
-        public Customer(){}
-
-//in order to simply print out a customers information completely in a writeline
+        //in order to simply print out a customers information completely in a writeline
         public override string ToString()
         {
             return $"Name: {_name}\nAddress: {_address}\nContact: {_contact}";

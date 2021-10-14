@@ -15,7 +15,7 @@ namespace UserInterface
             Console.WriteLine("[1] - show me info");
             Console.WriteLine("[0] - Return to main menu");
             Console.WriteLine("[x] - Returning User");
-            Console.WriteLine(Customer.username);
+          //  Console.WriteLine(Customer.username);
       
         }
 
@@ -41,9 +41,10 @@ namespace UserInterface
                     return MenuType.ShowCustomers;
                 case "0":
                     return MenuType.MainMenu;
-case "x":
-Console.WriteLine("Enter username");
-Customer.username=Console.ReadLine();
+                case "x":
+                Console.WriteLine("Enter username");
+                Customer.username=Console.ReadLine();
+                
 
 
                     return MenuType.LoginMenu;
