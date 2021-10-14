@@ -1,6 +1,7 @@
 ﻿using System;
 using BusinessLogic;
 using DataAccessLogic;
+using Models;
 namespace UserInterface
 {
     class Program
@@ -43,7 +44,7 @@ namespace UserInterface
                         //Since Restaurant Object has different implementation/function of the Menu Method
                         //It will have different implementations/functions when the while loop goes back and
                         //repeat itself
-                        page = new LoginMenu();
+                        page = new LoginMenu(new BL(new Repository()));
                         break; 
                     case MenuType.ShowCustomers:
                         page = new ShowCustomers(new BL(new Repository()));
@@ -55,11 +56,12 @@ namespace UserInterface
                         page = new LoginConfirmationMenu();
                         break;
                     case MenuType.Exit:
-                        Console.WriteLine("You are exiting the application!");
+                        Console.WriteLine("You are exiting the application!\n Goodbye "+ Customer.username+" Come back soon");
                         Console.WriteLine("Press Enter to continue");
                         Console.ReadLine();
                         repeat = false;
                         break;
+
                     default:
                         Console.WriteLine("You forgot to add a menu in your enum/code");
                         repeat = false;
