@@ -12,9 +12,8 @@ namespace DataAccessLogic
     //Does not actually hold the data itself
     
         //Filepath need to reference from the startup project (RRUI) and hence why we need to go back a folder and cd into RRDL
-        private const string _filepath = "./../DataAccessLogic/Database/Customers.json";
+        private const string _filepath = "./../DataAccessLogic/Database/";
         private string _jsonString;
-
 
         public Customer AddCustomersDL(Customer p_rest)
         {
@@ -27,7 +26,7 @@ namespace DataAccessLogic
             _jsonString = JsonSerializer.Serialize(listOfcustomers, new JsonSerializerOptions{WriteIndented=true});
 
             //This is what adds the customer.json
-            File.WriteAllText(_filepath,_jsonString);
+            File.WriteAllText((_filepath+"Customers.json"),_jsonString);
 
             //Will return a customer object from the parameter
             return p_rest;
@@ -37,63 +36,128 @@ namespace DataAccessLogic
         public List<Customer> GetAllCustomersDL()
         {
             //File class will just read everything in the Resturant.json and put it in a string
-            _jsonString = File.ReadAllText(_filepath);
+            _jsonString = File.ReadAllText(_filepath+"Customers.json");
 
             //Since we are converting from a string to an object that C# understands we need to deserialize the string to object.
             //Json Serializer has a static method called Deserialize and thats why you don't need to instantiate it
             //The parameter of the Deserialize method needs a string variable that holds the json file
             return JsonSerializer.Deserialize<List<Customer>>(_jsonString);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-
-        Customer AddCustomerDAL()
-{
-            Customer ex=new Customer();
-
-            return ex;
-        }
-
-public Customer SearchCustomerBL(Customer find)
+public StoreFront AddStoreFrontDL(StoreFront p_rest)
         {
+             //The reason why we need to grab all the information back is because File.WriteAllText method will overwrite anything inside the JSON file
+            List<StoreFront> listOfcustomers = GetAllStoreFrontDL();
 
-             Customer ex=new Customer();
-            //Class1 search= new Class1();
-            return ex;
+            //We added the new customer from the parameter 
+            listOfcustomers.Add(p_rest);
+
+            _jsonString = JsonSerializer.Serialize(listOfcustomers, new JsonSerializerOptions{WriteIndented=true});
+
+            //This is what adds the customer.json
+            File.WriteAllText(_filepath+"Stores.json",_jsonString);
+
+            //Will return a customer object from the parameter
+            return p_rest;
         }
-        public string ViewStoreInventoryDAL(){
-            return "string";
 
+        public List<StoreFront> GetAllStoreFrontDL()
+        {
+             _jsonString = File.ReadAllText(_filepath+"Stores.json");
+
+            //Since we are converting from a string to an object that C# understands we need to deserialize the string to object.
+            //Json Serializer has a static method called Deserialize and thats why you don't need to instantiate it
+            //The parameter of the Deserialize method needs a string variable that holds the json file
+            return JsonSerializer.Deserialize<List<StoreFront>>(_jsonString);
         }
 
-         public string PlaceOrderDAL()
-         {
-            return "string";
+public Products AddProductsDL(Products p_rest)
+        {
+             //The reason why we need to grab all the information back is because File.WriteAllText method will overwrite anything inside the JSON file
+            List<Products> listOfProducts = GetAllProductsDL();
 
-        }
-         public string ViewOrderHistoryDAL()
-         {
-            return "string";
+            //We added the new Products from the parameter 
+            listOfProducts.Add(p_rest);
 
-        }
-        public string ReplenishInventoryDAL()
-         {
-            return "string";
+            _jsonString = JsonSerializer.Serialize(listOfProducts, new JsonSerializerOptions{WriteIndented=true});
 
+            //This is what adds the Products.json
+            File.WriteAllText(_filepath+"Products.json",_jsonString);
+
+            //Will return a Products object from the parameter
+            return p_rest;
         }
-*/
+
+        public List<Products> GetAllProductsDL()
+        {
+             _jsonString = File.ReadAllText(_filepath+"Products.json");
+
+            //Since we are converting from a string to an object that C# understands we need to deserialize the string to object.
+            //Json Serializer has a static method called Deserialize and thats why you don't need to instantiate it
+            //The parameter of the Deserialize method needs a string variable that holds the json file
+            return JsonSerializer.Deserialize<List<Products>>(_jsonString);
+        }
+
+
+public Orders AddOrdersDL(Orders p_rest)
+        {
+             //The reason why we need to grab all the information back is because File.WriteAllText method will overwrite anything inside the JSON file
+            List<Orders> listOfOrders = GetAllOrdersDL();
+
+            //We added the new Orders from the parameter 
+            listOfOrders.Add(p_rest);
+
+            _jsonString = JsonSerializer.Serialize(listOfOrders, new JsonSerializerOptions{WriteIndented=true});
+
+            //This is what adds the Orders.json
+            File.WriteAllText(_filepath+"Orders.json",_jsonString);
+
+            //Will return a Orders object from the parameter
+            return p_rest;
+        }
+
+        public List<Orders> GetAllOrdersDL()
+        {
+             _jsonString = File.ReadAllText(_filepath+"Orders.json");
+
+            //Since we are converting from a string to an object that C# understands we need to deserialize the string to object.
+            //Json Serializer has a static method called Deserialize and thats why you don't need to instantiate it
+            //The parameter of the Deserialize method needs a string variable that holds the json file
+            return JsonSerializer.Deserialize<List<Orders>>(_jsonString);
+        }
+public LineItems AddLineItemsDL(LineItems p_rest)
+        {
+             //The reason why we need to grab all the information back is because File.WriteAllText method will overwrite anything inside the JSON file
+            List<LineItems> listOfLineItems = GetAllLineItemsDL();
+
+            //We added the new LineItems from the parameter 
+            listOfLineItems.Add(p_rest);
+
+            _jsonString = JsonSerializer.Serialize(listOfLineItems, new JsonSerializerOptions{WriteIndented=true});
+
+            //This is what adds the LineItems.json
+            File.WriteAllText(_filepath+"LineItems.json",_jsonString);
+
+            //Will return a LineItems object from the parameter
+            return p_rest;
+        }
+
+        public List<LineItems> GetAllLineItemsDL()
+        {
+             _jsonString = File.ReadAllText(_filepath+"LineItems.json");
+
+            //Since we are converting from a string to an object that C# understands we need to deserialize the string to object.
+            //Json Serializer has a static method called Deserialize and thats why you don't need to instantiate it
+            //The parameter of the Deserialize method needs a string variable that holds the json file
+            return JsonSerializer.Deserialize<List<LineItems>>(_jsonString);
+        }
+
+
+
+
+
+
+
+
+
     }
 }
