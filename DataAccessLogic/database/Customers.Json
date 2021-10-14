@@ -1,44 +1,16 @@
 [
   {
-    "CustomerName": "Stephen\u0027s restaurant",
+    "CustomerName": "Joshua",
     "Address": "Va",
     "Contact": "Alexandria",
-    "MyOrders": []
+    "MyOrders": [],
+    "Age": 0
   },
   {
-    "CustomerName": "Colin\u0027s restaurant",
+    "CustomerName": "Tom",
     "Address": "MI",
     "Contact": "Detroit",
-    "MyOrders": []
-  },
-  {
-    "CustomerName": "Josh",
-    "Address": "PR",
-    "Contact": "Max",
-    "MyOrders": []
-  },
-  {
-    "CustomerName": "john",
-    "Address": "jacob",
-    "Contact": "Jingle heimer schmidt",
-    "MyOrders": []
-  },
-  {
-    "CustomerName": "Maxwell",
-    "Address": "Jacob",
-    "Contact": "Friedman",
-    "MyOrders": []
-  },
-  {
-    "CustomerName": null,
-    "Address": null,
-    "Contact": null,
-    "MyOrders": []
-  },
-  {
-    "CustomerName": "t",
-    "Address": "x",
-    "Contact": "t",
-    "MyOrders": []
+    "MyOrders": [],
+    "Age": 0
   }
 ]

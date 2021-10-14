@@ -1,0 +1,14 @@
+[
+  {
+    "Name": "popeyes",
+    "Address": "bayamon",
+    "EstablishOrders": [],
+    "EstablishProducts": []
+  },
+  {
+    "Name": "caguas",
+    "Address": "Puerto Rico",
+    "EstablishOrders": [],
+    "EstablishProducts": []
+  }
+]
