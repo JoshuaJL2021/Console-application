@@ -5,6 +5,9 @@ namespace Models
 {
     public class Customer
     {
+        public static string username;
+
+
         //fields
 
          public string _name;
@@ -41,6 +44,12 @@ public List<Orders> customerOrders = new List<Orders>();
                 set { customerOrders = value; }
                 get { return customerOrders; }
             }
+            public int _age;
+        public int Age
+        {
+            get { return _age; }
+            set { _age = value; }
+        }
        public Customer(string name, string address, string contact){
 
         }
@@ -51,5 +60,7 @@ public List<Orders> customerOrders = new List<Orders>();
         {
             return $"Name: {_name}\nAddress: {_address}\nContact: {_contact}";
         }
+
+    
     }
 }

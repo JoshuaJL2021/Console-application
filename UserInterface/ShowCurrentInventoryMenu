@@ -1,16 +1,15 @@
 using System;
-using System.Collections.Generic;
 using BusinessLogic;
 using Models;
 
 namespace UserInterface
 {
-    public class AddCustomerMenu : IMenu
+    public class ShowCurrentInventoryMenu : IMenu
     {
         private static Customer _rest = new Customer();
         private InterfaceBL _restBL;
          
-        public AddCustomerMenu(InterfaceBL p_restBL)
+        public ShowCurrentInventoryMenu(InterfaceBL p_restBL)
         {
             _restBL = p_restBL;
         }
@@ -21,20 +20,11 @@ namespace UserInterface
             Console.WriteLine("Name - " + _rest._name);
             Console.WriteLine("Address - "+ _rest._address);
             Console.WriteLine("Contact - "+ _rest._contact);
-            Console.WriteLine("age - "+ _rest._age);
-
             Console.WriteLine("[4] - Add Customer");
             Console.WriteLine("[3] - Input value for Name");
             Console.WriteLine("[2] - Input value for Address");
             Console.WriteLine("[1] - Input value for contact");
-            Console.WriteLine("[5] - Input value for age");
             Console.WriteLine("[0] - Go Back");
-
-
-
-
-
-            
         }
 
         public MenuType YourChoice()
@@ -44,7 +34,7 @@ namespace UserInterface
             {
                 case "4":
                     //Add implementation to talk to the repository method to add a restaurant
-                    _restBL.AddCustomersBL(_rest);
+                    Console.WriteLine(_restBL.AddCustomersBL(_rest));
                    
                     return MenuType.loginconfirm;
                 case "3":
@@ -59,10 +49,6 @@ namespace UserInterface
                     Console.WriteLine("Type in the value for the Contact");
                     _rest._contact = Console.ReadLine();
                     return MenuType.AddCustomers;
-                    case "5":
-                    Console.WriteLine("Type in the value for the age");
-                    _rest._age = Convert.ToInt32(Console.ReadLine());
-                    return MenuType.AddLineItem;
                 case "0":
                     return MenuType.MainMenu;
                 default:

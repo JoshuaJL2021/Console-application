@@ -1,21 +1,14 @@
 using System;
-using BusinessLogic;
 
 namespace UserInterface
 {
-    public class StoreMenu : IMenu
+    public class ConfirmPurchaseMenu : IMenu
     {
-        private BL _restBL;
-        public StoreMenu(BL p_restBL)
-        {
-            _restBL = p_restBL;
-        }
         public void Menu()
         {
-            Console.WriteLine("Welcome to the store select menu");
-            Console.WriteLine("Please select the store");
-
-            /* List<StoreFront> listOfCustomers = _restBL.GetAllCustomersBL();
+            Console.WriteLine("Here is your total purchase:");
+            Console.WriteLine("Below is our current list of products");
+           /* List<Customer> listOfCustomers = _restBL.GetAllCustomersBL();
 
             foreach (Customer rest in listOfCustomers)
             {
@@ -23,10 +16,9 @@ namespace UserInterface
                 Console.WriteLine(rest._name + "\t" + rest._address + "\t" + rest._contact);
                 Console.WriteLine("====================");
             }*/
-            Console.WriteLine("[3] - add store (goes to products display");
-            Console.WriteLine("[2] - texas (goes to products display");
+            Console.WriteLine("[0] - Go main Menu");
+            Console.WriteLine("[2] -go to purchase display");
             Console.WriteLine("[1] - canada (goes to order history");
-            Console.WriteLine("[0] - exit");
       
         }
 
@@ -36,7 +28,7 @@ namespace UserInterface
             switch (userChoice)
             {
                 case "2":
-                    return MenuType.ProductDisplayMenu;
+                    return MenuType.ConfirmPurchaseMenu;
                 case "1":
                     return MenuType.MainMenu;
                 case "0":

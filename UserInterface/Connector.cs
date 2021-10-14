@@ -1,4 +1,4 @@
-﻿namespace BusinessLogic
+﻿namespace UserInterface
 {
     //This enum will hold the different types of Menu the user can go through
     //This helps to remove potential spelling mistakes in our program by making
@@ -7,21 +7,28 @@
     {
         MainMenu,
         LoginMenu,
-   /*     InventoryReplenishDisplay,
-        CreateAccountDisplay,
-        LoginDisplay,
-        ItemsDisplay,
-        OrderHistory,
-        PaymentDisplay,
-        test,
-        StoreMenu,*/
+  
         loginconfirm,
 AddCustomers,
 ShowCustomers,
+StoreMenu,
+ProductDisplayMenu,
+ProductBuyMenu,
+
+ConfirmPurchaseMenu,
+
+
+        Exit,
 
 
 
-        Exit
+
+        AddLineItem,
+        AddOrder,
+        AddProduct,
+        AddStore,
+        
+
     }
 
     //The purpose of the interface is to ensure that every menu that we will create will have

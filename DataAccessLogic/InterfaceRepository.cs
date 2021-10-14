@@ -17,5 +17,27 @@ namespace DataAccessLogic
         /// </summary>
         /// <returns>It will return a list of customers</returns>
         List<Customer> GetAllCustomersDL();
+
+
+
+        StoreFront AddStoreFrontDL(StoreFront p_rest);
+        
+
+        List<StoreFront> GetAllStoreFrontDL();
+       
+        Products AddProductsDL(Products p_rest);
+        
+        List<Products> GetAllProductsDL();
+
+        Orders AddOrdersDL(Orders p_rest);
+        
+        List<Orders> GetAllOrdersDL();
+        LineItems AddLineItemsDL(LineItems p_rest);
+        
+        List<LineItems> GetAllLineItemsDL();
+
+
+
+
     }
 }

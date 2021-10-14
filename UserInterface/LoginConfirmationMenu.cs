@@ -6,13 +6,8 @@ namespace UserInterface
     {
         public void Menu()
         {
-            //Console.WriteLine("Welcome to the Shopping Menu!");
-            //Console.WriteLine("Are you a new customer or a Returning customer?");
-            //Console.WriteLine("[2] - I am a new user");
-            //Console.WriteLine("[1] - I am a returning customer");
-            //Console.WriteLine("[0] - Return to main menu");
             Console.WriteLine("Congrats it went through");
-           Console.WriteLine("[0] - Return to main menu");
+           Console.WriteLine("[0] - to continue to store selection");
             
       
         }
@@ -39,7 +34,7 @@ namespace UserInterface
                 case "1":
                     return MenuType.LoginMenu;
                 case "0":
-                    return MenuType.MainMenu;
+                    return MenuType.StoreMenu;
                 default:
                     Console.WriteLine("Please input a valid response!");
                     Console.WriteLine("Press Enter to continue");

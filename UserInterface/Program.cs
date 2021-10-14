@@ -1,6 +1,7 @@
 ﻿using System;
 using BusinessLogic;
 using DataAccessLogic;
+using Models;
 namespace UserInterface
 {
     class Program
@@ -54,11 +55,38 @@ namespace UserInterface
                         case MenuType.loginconfirm:
                         page = new LoginConfirmationMenu();
                         break;
+                        case MenuType.StoreMenu:
+                        page = new StoreMenu(new BL(new Repository()));
+                        break;
+                        case MenuType.ProductDisplayMenu:
+                        page = new ProductMenuDisplay(new BL(new Repository()));
+                        break;
+                        case MenuType.ProductBuyMenu:
+                        page = new ProductBuyMenu(new BL(new Repository()));
+                        break;
                     case MenuType.Exit:
-                        Console.WriteLine("You are exiting the application!");
+                        Console.WriteLine("You are exiting the application!\n Goodbye "+ Customer.username+" Come back soon");
                         Console.WriteLine("Press Enter to continue");
                         Console.ReadLine();
                         repeat = false;
+                        break;
+
+
+
+
+
+
+                        case MenuType.AddLineItem:
+                        page = new AddLineItem(new BL(new Repository()));
+                        break;
+                        case MenuType.AddOrder:
+                        page = new AddOrders(new BL(new Repository()));
+                        break;
+                        case MenuType.AddProduct:
+                        page = new AddProduct(new BL(new Repository()));
+                        break;
+                        case MenuType.AddStore:
+                        page = new AddStoreFront(new BL(new Repository()));
                         break;
                     default:
                         Console.WriteLine("You forgot to add a menu in your enum/code");

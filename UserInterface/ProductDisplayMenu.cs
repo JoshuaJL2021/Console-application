@@ -3,10 +3,10 @@ using BusinessLogic;
 
 namespace UserInterface
 {
-    public class StoreMenu : IMenu
+    public class ProductMenuDisplay : IMenu
     {
         private BL _restBL;
-        public StoreMenu(BL p_restBL)
+        public ProductMenuDisplay(BL p_restBL)
         {
             _restBL = p_restBL;
         }
@@ -15,7 +15,7 @@ namespace UserInterface
             Console.WriteLine("Welcome to the store select menu");
             Console.WriteLine("Please select the store");
 
-            /* List<StoreFront> listOfCustomers = _restBL.GetAllCustomersBL();
+            /* List<Customer> listOfCustomers = _restBL.GetAllCustomersBL();
 
             foreach (Customer rest in listOfCustomers)
             {

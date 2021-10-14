@@ -30,6 +30,45 @@ namespace BusinessLogic
         {
             return _repo.GetAllCustomersDL();
         }
+        public StoreFront AddStoreFrontBL(StoreFront p_rest)
+        {
+            return _repo.AddStoreFrontDL(p_rest);
+        }
+
+        public List<StoreFront> GetAllStoreFrontsBL()
+        {
+            return _repo.GetAllStoreFrontDL();
+            
+        }
+
+        public Products AddProductsBL(Products p_rest)
+        {
+            return _repo.AddProductsDL(p_rest);
+        }
+
+        public List<Products> GetAllProductsBL()
+        {
+           return _repo.GetAllProductsDL();
+        }
+        public Orders AddOrdersBL(Orders p_rest)
+        {
+            return _repo.AddOrdersDL(p_rest);
+        }
+
+        public List<Orders> GetAllOrdersBL()
+        {
+           return _repo.GetAllOrdersDL();
+        }
+public LineItems AddLineItemsBL(LineItems p_rest)
+        {
+            return _repo.AddLineItemsDL(p_rest);
+        }
+
+        public List<LineItems> GetAllLineItemsBL()
+        {
+           return _repo.GetAllLineItemsDL();
+        }
+
     }
 }
 
