@@ -7,6 +7,8 @@ namespace Models
 {
     public class StoreFront
     {
+
+public static string SelectedStore;
         public string _name;
         public string Name
         {
@@ -22,17 +24,17 @@ namespace Models
             set { _address = value; }
         }
 
-        public List<Orders> orders = new List<Orders>();
+        public List<Orders> orderslist= new List<Orders>();
         public List<Orders> EstablishOrders
             {
-                set { orders = value; }
-                get { return orders; }
+                set { orderslist = value; }
+                get { return orderslist; }
             }
-        public List<Products> products = new List<Products>();
+        public List<Products> productslist = new List<Products>();
         public List<Products> EstablishProducts
             {
-                set { products = value; }
-                get { return products; }
+                set { productslist= value; }
+                get { return productslist; }
             }
         
         public override string ToString()

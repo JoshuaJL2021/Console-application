@@ -4,8 +4,8 @@ namespace Models
 {
     public class LineItems
     {
-        public string _product;
-        public string Product
+        public Products _product;
+        public Products ProductEstablish
         {
             get { return _product; }
             set { _product = value; }
@@ -21,8 +21,11 @@ namespace Models
 
         public override string ToString()
         {
-            return $"Product Name: {_product}\nAddress: {_quantity}\n";
+            return $"Product: {_product}\nquantity: {_quantity}\n";
         }
         
+        public int AmountGrab(){
+    return _quantity;
+}
     }
 }

@@ -38,8 +38,12 @@ namespace UserInterface
                    
                     return MenuType.loginconfirm;
                 case "3":
-                    Console.WriteLine("Type in the value for the Name");
-                    _rest._product = Console.ReadLine();
+                    
+                    Products _prods=new Products();
+                        Console.WriteLine("Type in the line item product name");
+                        _prods._name =Console.ReadLine();
+                        Console.WriteLine("Type in the line item price");
+                        _prods._price=Convert.ToDouble(Console.ReadLine());
                     return MenuType.AddLineItem;
                 case "2":
                     Console.WriteLine("Type in the value for the quantity");

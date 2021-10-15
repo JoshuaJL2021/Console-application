@@ -27,9 +27,9 @@ namespace UserInterface
                 Console.WriteLine("====================");
             }
 
-            Console.WriteLine("[3] - add store (goes to products display");
-            Console.WriteLine("[2] - texas (goes to products display");
-            Console.WriteLine("[1] - canada (goes to order history");
+            Console.WriteLine("[3] - popeye (goes to products display");
+            Console.WriteLine("[2] - texas (main menu ");
+            Console.WriteLine("[1] - canada (goes to login");
             Console.WriteLine("[0] - exit");
       
         }
@@ -40,6 +40,7 @@ namespace UserInterface
             switch (userChoice)
             {
                 case "2":
+                StoreFront.SelectedStore="popeyes";
                     return MenuType.ProductDisplayMenu;
                 case "1":
                     return MenuType.MainMenu;

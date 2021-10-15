@@ -24,11 +24,15 @@ namespace UserInterface
             Console.WriteLine("Total cost of order - "+ _rest._totalprice);
             Console.WriteLine(_value);
             _rest._location=_value;
-            //Console.WriteLine("Contact - "+ _rest._contact);
+            foreach (LineItems obj in _rest.itemslist)
+            {
+                Console.WriteLine(obj);
+            }
             Console.WriteLine("[4] - Add Customer");
             Console.WriteLine("[3] - Input value for Name");
             Console.WriteLine("[2] - Input value for Address");
             Console.WriteLine("[1] - Input value for total quantity");
+            Console.WriteLine("[11] add to line Item list");
             Console.WriteLine("[0] - Go Back");
         }
 
@@ -53,6 +57,21 @@ namespace UserInterface
                 case "1":
                     Console.WriteLine("Type in the value for the total quantity");
                     _rest._totalprice = Convert.ToDouble(Console.ReadLine());
+                    return MenuType.AddOrder;
+
+                    case "11":
+                    LineItems _items=new LineItems();
+                    Console.WriteLine("Type in the line item product name");
+                    Products _prods=new Products();
+                        Console.WriteLine("Type in the line item product name");
+                        _prods._name =Console.ReadLine();
+                        Console.WriteLine("Type in the line item price");
+                        _prods._price=Convert.ToDouble(Console.ReadLine());
+                    Console.WriteLine("Type in the line item quantity");
+                    _items._quantity=Convert.ToInt32(Console.ReadLine());
+
+                    _rest.itemslist.Add(_items);
+                   
                     return MenuType.AddOrder;
                 case "0":
                     return MenuType.MainMenu;

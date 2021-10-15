@@ -1,5 +1,7 @@
 using System;
 using BusinessLogic;
+using Models;
+using System.Collections.Generic;
 
 namespace UserInterface
 {
@@ -12,22 +14,21 @@ namespace UserInterface
         }
         public void Menu()
         {
-            Console.WriteLine("Welcome to the store select menu");
-            Console.WriteLine("Please select the store");
+            Console.WriteLine("Welcome to the products menu");
+            Console.WriteLine("below is a list of products");
 
-            /* List<Customer> listOfCustomers = _restBL.GetAllCustomersBL();
+            Console.WriteLine("\n\n List of Products");
+            List<Products> listOfProduct = _restBL.GetAllProductsBL();
 
-            foreach (Customer rest in listOfCustomers)
+            foreach (Products rest in listOfProduct)
             {
                 Console.WriteLine("====================");
-                Console.WriteLine(rest._name + "\t" + rest._address + "\t" + rest._contact);
+                Console.WriteLine(rest);
                 Console.WriteLine("====================");
-            }*/
-            Console.WriteLine("[3] - add store (goes to products display");
-            Console.WriteLine("[2] - texas (goes to products display");
-            Console.WriteLine("[1] - canada (goes to order history");
-            Console.WriteLine("[0] - exit");
-      
+            }
+            
+            Console.WriteLine("\n [0] - exit");
+            Console.WriteLine("\n [1] - Back to store select");
         }
 
         public MenuType YourChoice()
@@ -36,11 +37,11 @@ namespace UserInterface
             switch (userChoice)
             {
                 case "2":
-                    return MenuType.ProductDisplayMenu;
+                    return MenuType.ProductBuyMenu;
                 case "1":
-                    return MenuType.MainMenu;
+                    return MenuType.StoreMenu;
                 case "0":
-                    return MenuType.LoginMenu;
+                    return MenuType.MainMenu;
                 default:
                     Console.WriteLine("Please input a valid response!");
                     Console.WriteLine("Press Enter to continue");

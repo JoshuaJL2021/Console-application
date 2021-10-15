@@ -7,5 +7,23 @@
     "Age": 26,
     "UserName": "JJstark",
     "Password": "Test"
+  },
+  {
+    "CustomerName": "Max",
+    "Address": "testre",
+    "Contact": null,
+    "MyOrders": [],
+    "Age": 0,
+    "UserName": "tt12",
+    "Password": "System.Security.SecureString"
+  },
+  {
+    "CustomerName": "Terry",
+    "Address": "Homestead",
+    "Contact": null,
+    "MyOrders": [],
+    "Age": 0,
+    "UserName": "TerryCrews",
+    "Password": "White"
   }
 ]

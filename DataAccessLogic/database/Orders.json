@@ -1,32 +1,3 @@
 [
-  {
-    "ItemsList": [],
-    "Location": {
-      "Name": "testname",
-      "Address": "hc pr",
-      "EstablishOrders": [],
-      "EstablishProducts": []
-    },
-    "TotalPrice": 43
-  },
-  {
-    "ItemsList": [],
-    "Location": {
-      "Name": "test name",
-      "Address": "test spot",
-      "EstablishOrders": [],
-      "EstablishProducts": []
-    },
-    "TotalPrice": 54.8
-  },
-  {
-    "ItemsList": [],
-    "Location": {
-      "Name": "xyz",
-      "Address": "test",
-      "EstablishOrders": [],
-      "EstablishProducts": []
-    },
-    "TotalPrice": 6
-  }
+  
 ]
