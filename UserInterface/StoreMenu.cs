@@ -27,9 +27,8 @@ namespace UserInterface
                 Console.WriteLine("====================");
             }
 
-            Console.WriteLine("[3] - add store (goes to products display");
-            Console.WriteLine("[2] - texas (goes to products display");
-            Console.WriteLine("[1] - canada (goes to order history");
+            Console.WriteLine("[2] - Select the store (goes to products display");
+            Console.WriteLine("[1] - canada (goes to login");
             Console.WriteLine("[0] - exit");
       
         }
@@ -40,7 +39,14 @@ namespace UserInterface
             switch (userChoice)
             {
                 case "2":
-                    return MenuType.LoginMenu;
+                Console.WriteLine("Enter store you want to enter");
+                string storename=Console.ReadLine();
+                StoreFront.SelectedStore=storename;
+                Console.WriteLine("Enter store address you want to enter");
+                string storeaddress=Console.ReadLine();
+                StoreFront.SelectedAddress=storeaddress;
+ Console.Clear();
+                    return MenuType.ProductDisplayMenu;
                 case "1":
                     return MenuType.MainMenu;
                 case "0":

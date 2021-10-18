@@ -21,9 +21,8 @@ namespace UserInterface
             Console.WriteLine("Name - " + _rest._name);
             Console.WriteLine("Address - "+ _rest._address);
             Console.WriteLine("Contact - "+ _rest._contact);
-            Console.WriteLine("age - "+ _rest._age);
-            Console.WriteLine("Username - "+ _rest._username);
-            Console.WriteLine("Password - "+ _rest._password);
+            Console.WriteLine("username - "+ _rest._username);
+            Console.WriteLine("password - "+ _rest._password);
             
             Console.WriteLine("[x] - Add Customer");
             Console.WriteLine("[1] - Input value for Name");
@@ -32,7 +31,7 @@ namespace UserInterface
             Console.WriteLine("[4] - Input value for age");
             Console.WriteLine("[5] - Enter username");
             Console.WriteLine("[6] - Enter password");
-            Console.WriteLine("[6] - Go Back");
+            Console.WriteLine("[0] - Go Back");
 
 
 
@@ -65,13 +64,14 @@ namespace UserInterface
                     case "4":
                     Console.WriteLine("Type in the value for the age");
                     _rest._age = Convert.ToInt32(Console.ReadLine());
-                    return MenuType.AddCustomers;
+                    return MenuType.AddLineItem;
                     case "5":
                     Console.WriteLine("Type in the value for the username");
                     _rest._username = Console.ReadLine();
                     return MenuType.AddCustomers;
                     case "6":
                     Console.WriteLine("Type in the value for the password");
+                    
                     _rest._password = Console.ReadLine();
                     return MenuType.AddCustomers;
                     

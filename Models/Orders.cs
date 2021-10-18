@@ -7,11 +7,11 @@ namespace Models
 {
     public class Orders
     {
-        public List<LineItems> strings = new List<LineItems>();
+        public List<LineItems> itemslist = new List<LineItems>();
         public List<LineItems> ItemsList
             {
-                set { strings = value; }
-                get { return strings; }
+                set { itemslist = value; }
+                get { return itemslist; }
             }
         public StoreFront _location;
         public StoreFront Location

@@ -23,6 +23,9 @@ public override string ToString()
         {
             return $"Product Name: {_name}\nTotal Price: {_price}\n";
         }
+public double PriceGrab(){
+    return _price;
+}
         
     }
 }
