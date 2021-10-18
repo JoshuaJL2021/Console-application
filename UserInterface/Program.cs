@@ -34,6 +34,7 @@ namespace UserInterface
                 //its MainMenu 
                 switch (currentPage)
                 {
+                    
                     case MenuType.MainMenu:
                         //If user choosed to go back to the MainMenu
                         //page will start pointing to a MainMenu object instead
@@ -56,9 +57,11 @@ namespace UserInterface
                         page = new LoginConfirmationMenu();
                         break;
                         case MenuType.StoreMenu:
+                        Console.Clear();
                         page = new StoreMenu(new BL(new Repository()));
                         break;
                         case MenuType.ProductDisplayMenu:
+                        Console.Clear();
                         page = new ProductMenuDisplay(new BL(new Repository()));
                         break;
                         case MenuType.ProductBuyMenu:

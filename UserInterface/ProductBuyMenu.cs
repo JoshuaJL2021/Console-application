@@ -1,5 +1,7 @@
 using System;
 using BusinessLogic;
+using System.Collections.Generic;
+using Models;
 
 namespace UserInterface
 {
@@ -12,18 +14,19 @@ namespace UserInterface
         }
         public void Menu()
         {
-            Console.WriteLine("Welcome to the store select menu");
-            Console.WriteLine("Please select the store");
+            Console.WriteLine("Welcome to the order menu");
+            Console.WriteLine("What would you like to buy");
 
-            /* List<Customer> listOfCustomers = _restBL.GetAllCustomersBL();
+             Console.WriteLine("\n\n List of Products you can purchase");
+            List<Products> listOfProduct = _restBL.GetAllProductsBL();
 
-            foreach (Customer rest in listOfCustomers)
+            foreach (Products rest in listOfProduct)
             {
                 Console.WriteLine("====================");
-                Console.WriteLine(rest._name + "\t" + rest._address + "\t" + rest._contact);
+                Console.WriteLine(rest);
                 Console.WriteLine("====================");
-            }*/
-            Console.WriteLine("[3] - add store (goes to products display");
+            }
+            Console.WriteLine("[3] - Confirm Purchase");
             Console.WriteLine("[2] - texas (goes to products display");
             Console.WriteLine("[1] - canada (goes to order history");
             Console.WriteLine("[0] - exit");

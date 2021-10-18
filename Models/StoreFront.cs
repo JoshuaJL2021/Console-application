@@ -9,6 +9,7 @@ namespace Models
     {
 
 public static string SelectedStore;
+public static string SelectedAddress;
         public string _name;
         public string Name
         {
