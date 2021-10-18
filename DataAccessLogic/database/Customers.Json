@@ -16,5 +16,14 @@
     "Age": 42,
     "UserName": "JCena",
     "Password": "Peace"
+  },
+  {
+    "CustomerName": "Bryan",
+    "Address": "Danielson",
+    "Contact": "Aewemail",
+    "MyOrders": [],
+    "Age": 0,
+    "UserName": "DBry",
+    "Password": "brie"
   }
 ]

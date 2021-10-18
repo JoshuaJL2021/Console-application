@@ -124,7 +124,7 @@ namespace UserInterface
                 }
                 catch (System.Exception)
                 {
-                    Customer.Displayname="";
+                    Customer.Displayname=null;
                     Console.WriteLine("User was unfortunately not found");
                 Console.WriteLine("You will be sent to the Login Menu again");
                 Console.WriteLine("Press Enter to continue");
