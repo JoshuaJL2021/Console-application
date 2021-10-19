@@ -55,7 +55,6 @@ namespace UserInterface
 
                 case "1":
                Console.ForegroundColor = ConsoleColor.Green;
-        // Console.BackgroundColor = ConsoleColor.Black;
             
                 Console.WriteLine("Enter username");
                 Customer.Displayname=Console.ReadLine();
@@ -71,7 +70,6 @@ namespace UserInterface
                 catch (System.Exception)
                 {
                     Console.ForegroundColor = ConsoleColor.White;
-        // Console.BackgroundColor = ConsoleColor.Black;
                     Customer.Displayname=null;
                     Console.WriteLine("User was unfortunately not found");
                 Console.WriteLine("You will be sent to the Login Menu again");
