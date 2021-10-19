@@ -8,8 +8,8 @@ namespace Models
     public class StoreFront
     {
 
-public static string SelectedStore;
-public static string SelectedAddress;
+public static string selectedStore;
+public static string selectedAddress;
         public string _name;
         public string Name
         {

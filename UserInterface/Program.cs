@@ -63,15 +63,15 @@ namespace UserInterface
                         Console.Clear();
                         page = new StoreMenu(new BL(new Repository()));
                         break;
-                        //case MenuType.ProductDisplayMenu:
+                        case MenuType.ProductDisplayMenu:
                         
-                        //page = new ProductMenuDisplay(new BL(new Repository()));
-                        //break;
+                        page = new ProductMenuDisplay(new BL(new Repository()));
+                        break;
                         //case MenuType.ProductBuyMenu:
                         //page = new ProductBuyMenu(new BL(new Repository()));
                         //break;
                     case MenuType.Exit:
-                        Console.WriteLine("You are exiting the application!\n Goodbye "+ Customer.Displayname+" Come back soon");
+                        Console.WriteLine("You are exiting the application!\n Goodbye "+ Customer.displayName+" Come back soon");
                         Console.WriteLine("Press Enter to continue");
                         Console.ReadLine();
                         repeat = false;
