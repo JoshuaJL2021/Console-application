@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using BusinessLogic;
 using Models;
 using System.Security;
+using System.Linq;
 
 namespace UserInterface
 {
@@ -15,11 +16,56 @@ namespace UserInterface
         }
         public void Menu()
         {
-            Console.WriteLine("Welcome "+ Customer.Displayname);
-            Console.WriteLine("List of Customers");
-            List<Customer> listOfCustomers = _restBL.GetAllCustomersBL();
+            Console.WriteLine("Welcome "+ Customer.displayName);
+            Console.WriteLine("insert store name");
+            //StoreFront.selectedStore=Console.ReadLine();
+            string searchname=Console.ReadLine();
+            List<StoreFront> listOfStoreFront = _restBL.GetAllStoreFrontsBL();
 
-            foreach (Customer rest in listOfCustomers)
+            /* var myLinqQuery =  from store in text
+            			   where store.Contains(StoreFront.selectedStore)
+            				select store;
+                    foreach (string store in myLinqQuery)
+            Console.Write(store + "\n "); */
+StoreFront test=_restBL.GetStore(searchname);
+Console.Write(test + "\n ");
+test.productslist.Add(_restBL.CreateProduct());
+test.productslist.Add(_restBL.CreateProduct());
+foreach(Products p in test.productslist)
+{
+    Console.WriteLine(p);
+}
+test._name="TestInsertion";
+_restBL.AddStoreFrontBL(test);
+
+StoreFront test2=_restBL.GetStore(test._name);
+Console.Write(test2 + "\n ");
+test2.productslist=_restBL.ShowProducts(test); 
+test2.productslist.Add(_restBL.CreateProduct());
+foreach(Products p in test2.productslist)
+{
+    Console.WriteLine(p);
+}
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+            //List<Customer> listOfCustomers = _restBL.GetAllCustomersBL();
+
+/*             foreach (Customer rest in listOfCustomers)
             {
                 Console.WriteLine("====================");
                 Console.WriteLine(rest._name + "\t" + rest._address + "\t" + rest._contact);
@@ -63,7 +109,7 @@ Console.WriteLine("\n\n List of Orders");
                 Console.WriteLine("====================");
                 Console.WriteLine(rest);
                 Console.WriteLine("====================");
-            }
+            } */
             Console.WriteLine("[x] - Go Back");
 
 

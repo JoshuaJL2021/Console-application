@@ -19,7 +19,7 @@ namespace BusinessLogic
         /// <returns>It returns the added customer</returns>
         Customer AddCustomersBL(Customer p_rest);
 
-        bool VerifyCredentials();
+        void VerifyCredentials();
 
         /// <summary>
         /// Adds a store front to the database
@@ -86,6 +86,14 @@ namespace BusinessLogic
         /// </summary>
         /// <returns>It will return a  product</returns>
         Products CreateProduct();
+
+        bool VerifyStore();
+
+        StoreFront GetStore(string name);
+
+        List<Products> ShowProducts(StoreFront chosen);
+
+        List<StoreFront> SearchStores(string name);
 
     }
 }

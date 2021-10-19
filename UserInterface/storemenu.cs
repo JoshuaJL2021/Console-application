@@ -8,6 +8,7 @@ namespace UserInterface
     public class StoreMenu : IMenu
     {
         private BL _restBL;
+        public static List<StoreFront> searchresult;
         public StoreMenu(BL p_restBL)
         {
             _restBL = p_restBL;
@@ -15,19 +16,33 @@ namespace UserInterface
         public void Menu()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("Welcome to the store select menu " + Customer.Displayname );
+            Console.WriteLine("Welcome to the store select menu " + Customer.displayName.ToUpper() );
             Console.WriteLine("Please select the store");
 
             Console.WriteLine("\n\n List of StoreFronts");
             List<StoreFront> listOfStoreFront = _restBL.GetAllStoreFrontsBL();
             Console.ForegroundColor = ConsoleColor.White;
-            foreach (StoreFront rest in listOfStoreFront)
+            if(searchresult!= null)
             {
-                Console.WriteLine("====================");
-                Console.WriteLine(rest);
-                Console.WriteLine("====================");
+                foreach (StoreFront rest in searchresult)
+                        {
+                            Console.WriteLine("====================");
+                            Console.WriteLine(rest);
+                            Console.WriteLine("====================");
+                        } 
             }
+                else
+                {
+                foreach (StoreFront rest in listOfStoreFront)
+                            {
+                                Console.WriteLine("====================");
+                                Console.WriteLine(rest);
+                                Console.WriteLine("====================");
+                            } 
+                }
+
             Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("[3] - Search the store (goes to products display");
             Console.WriteLine("[2] - Select the store (goes to products display");
             Console.WriteLine("[1] - canada (goes to login");
             Console.WriteLine("[0] - exit");
@@ -36,17 +51,72 @@ namespace UserInterface
 
         public MenuType YourChoice()
         {
+            
             string userChoice = Console.ReadLine();
             switch (userChoice)
             {
+                case "3":
+                Console.WriteLine("Enter store you want to search for");
+                string storen=Console.ReadLine();
+                List<StoreFront>test=new List<StoreFront>();
+                
+                try
+                {
+
+                     foreach(StoreFront s in _restBL.SearchStores(storen))
+                    {
+                        Console.WriteLine(s);
+                        test.Add(s);
+
+                    }
+                    searchresult=test;
+                     Console.ReadLine();
+                }
+                catch (System.Exception)
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+        
+                    searchresult=null;
+                    Console.WriteLine("Store was unfortunately not found please enter name as shown in list above");
+                    Console.WriteLine("You will be sent to Store display again ");
+                    Console.WriteLine("Press Enter to continue");
+                    Console.ReadLine();
+                    return MenuType.StoreMenu;
+                }
+                
+                
+                    return MenuType.StoreMenu;
+
                 case "2":
                 Console.WriteLine("Enter store you want to enter");
                 string storename=Console.ReadLine();
-                StoreFront.SelectedStore=storename;
+                StoreFront.selectedStore=storename;
+
                 Console.WriteLine("Enter store address you want to enter");
                 string storeaddress=Console.ReadLine();
-                StoreFront.SelectedAddress=storeaddress;
- Console.Clear();
+                StoreFront.selectedAddress=storeaddress;
+                try
+                {
+
+                     _restBL.VerifyStore();
+                     Console.WriteLine("Welcome to " + StoreFront.selectedStore + "\n enter to continue");
+                     
+                     Console.ReadLine();
+                }
+                catch (System.Exception)
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+        
+                    StoreFront.selectedStore=null;
+                    StoreFront.selectedAddress=null;
+                    Console.WriteLine("Store was unfortunately not found please enter name as shown in list above");
+                    Console.WriteLine("You will be sent to Store display again ");
+                    Console.WriteLine("Press Enter to continue");
+                    Console.ReadLine();
+                    return MenuType.StoreMenu;
+                }
+                
+                
                     return MenuType.ProductDisplayMenu;
                 case "1":
                     return MenuType.MainMenu;

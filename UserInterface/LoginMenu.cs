@@ -16,7 +16,7 @@ namespace UserInterface
         {
         Console.ForegroundColor = ConsoleColor.DarkYellow;
          //Console.BackgroundColor = ConsoleColor.DarkBlue;
-            if(Customer.Displayname==null)
+            if(Customer.displayName==null)
             {
                Console.WriteLine("Welcome to the Shopping Menu!");
             Console.WriteLine("Are you a new customer or a Returning customer?");
@@ -45,7 +45,7 @@ namespace UserInterface
         public MenuType YourChoice()
         {
             string userChoice = Console.ReadLine();
-           if(Customer.Displayname==null)
+           if(Customer.displayName==null)
            {
                 switch (userChoice)
             {
@@ -55,24 +55,23 @@ namespace UserInterface
 
                 case "1":
                Console.ForegroundColor = ConsoleColor.Green;
-        // Console.BackgroundColor = ConsoleColor.Black;
+        
             
                 Console.WriteLine("Enter username");
-                Customer.Displayname=Console.ReadLine();
+                Customer.displayName=Console.ReadLine();
                 try
                 {
-                    List<Customer> listOfCustomers = _restBL.GetAllCustomersBL();
 
                      _restBL.VerifyCredentials();
-                     Console.WriteLine("Welcome Back " + Customer.Displayname + "\n enter to continue");
+                     Console.WriteLine("Welcome Back " + Customer.displayName + "\n enter to continue");
                      
                      Console.ReadLine();
                 }
                 catch (System.Exception)
                 {
                     Console.ForegroundColor = ConsoleColor.White;
-        // Console.BackgroundColor = ConsoleColor.Black;
-                    Customer.Displayname=null;
+        
+                    Customer.displayName=null;
                     Console.WriteLine("User was unfortunately not found");
                 Console.WriteLine("You will be sent to the Login Menu again");
                 Console.WriteLine("Press Enter to continue");
@@ -84,13 +83,6 @@ namespace UserInterface
                     return MenuType.StoreMenu;
                 case "0":
                     return MenuType.MainMenu;
-                case "x":
-                Console.WriteLine("Enter username");
-                Customer.Displayname=Console.ReadLine();
-                
-
-
-                    return MenuType.LoginMenu;
 
                 default:
                     Console.WriteLine("Please input a valid response!");
@@ -115,24 +107,24 @@ namespace UserInterface
 
                 case "1":
                
-            Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Enter username");
                 
-                Customer.Displayname=Console.ReadLine();
+                Customer.displayName=Console.ReadLine();
 
                 try
                 {
                     List<Customer> listOfCustomers = _restBL.GetAllCustomersBL();
                     
                      _restBL.VerifyCredentials();
-                     Console.WriteLine("Welcome Back " + Customer.Displayname + "\n enter to continue");
+                     Console.WriteLine("Welcome Back " + Customer.displayName + "\n enter to continue");
                      
                      Console.ReadLine();
                 }
                 catch (System.Exception)
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                    Customer.Displayname="";
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Customer.displayName="";
                     Console.WriteLine("User was unfortunately not found");
                 Console.WriteLine("You will be sent to the Login Menu again");
                 Console.WriteLine("Press Enter to continue");
@@ -144,13 +136,7 @@ namespace UserInterface
                     return MenuType.StoreMenu;
                 case "0":
                     return MenuType.MainMenu;
-                case "x":
-                Console.WriteLine("Enter username");
-                Customer.Displayname=Console.ReadLine();
-                
 
-
-                    return MenuType.LoginMenu;
 
                 default:
                     Console.WriteLine("Please input a valid response!");

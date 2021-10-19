@@ -2,6 +2,7 @@ using System;
 using Models;
 using DataAccessLogic;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BusinessLogic
 {
@@ -39,16 +40,15 @@ namespace BusinessLogic
         }
 
 
-      public bool VerifyCredentials()
+      public void VerifyCredentials()
         {
             List<Customer> listOfCustomers = GetAllCustomersBL();
-            bool result=listOfCustomers.Exists(x => x._username == Customer.Displayname);
+            bool result=listOfCustomers.Exists(x => x._username == Customer.displayName);
                 if (result==false)
                 { throw new Exception ("User Not found");
                 }
-                string text= listOfCustomers.Find(x => x._username.Contains(Customer.Displayname)).PrintName();
-                     Customer.Displayname=text;
-            return result;
+                string text= listOfCustomers.Find(x => x._username.Contains(Customer.displayName)).PrintName();
+                     Customer.displayName=text;
         }
 
             /// <summary>
@@ -148,6 +148,58 @@ namespace BusinessLogic
             return obj;
 
         }
-    
+
+        public bool VerifyStore()
+        {
+            List<StoreFront> listOfStores = GetAllStoreFrontsBL();
+            bool result=listOfStores.Exists(x => x._name == StoreFront.selectedStore);
+                if (result==false)
+                { throw new Exception ("Store Not found");
+                }
+                return result;
+               
+        }
+
+        public StoreFront GetStore(string name)
+        {
+            StoreFront obj=new StoreFront();
+            List<StoreFront> listOfStores = GetAllStoreFrontsBL();
+                bool result=listOfStores.Exists(x => x._name == name);
+                if (result==false)
+                { throw new Exception ("Store Not found");
+                }
+               obj=listOfStores.FirstOrDefault(rest => rest.Name == name);
+
+
+            return obj;
+        }
+
+        public List<Products> ShowProducts(StoreFront chosen)
+        {
+            List<Products> listOfProduct = new List<Products>();
+            chosen=GetStore(chosen._name);
+            foreach(Products p in chosen.productslist)
+            {
+                listOfProduct.Add(p);
+            }
+            return listOfProduct;
+        }
+
+        public List<StoreFront> SearchStores(string name)
+        {
+            List<StoreFront> listOfRestaurant = _repo.GetAllStoreFrontDL();
+            
+            //Select method will give a list of boolean if the condition was true/false
+            //Where method will give the actual element itself based on some condition
+            //ToList method will convert into List that our method currently needs to return.
+            //ToLower will lowercase the string to make it not case sensitive
+            listOfRestaurant=listOfRestaurant.Where(rest => rest._name.ToLower().Contains(name.ToLower())).ToList();
+            if(listOfRestaurant.Count<1)
+            { 
+                throw new Exception ("Store Not found");
+            }
+            
+            return listOfRestaurant;
+        }
     }
 }
