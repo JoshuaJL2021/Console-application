@@ -135,8 +135,19 @@ namespace BusinessLogic
         {
            return _repo.GetAllLineItemsDL();
         }
+        
 
+        public Products CreateProduct()
+        { 
+            Products obj= new Products();
+            Console.WriteLine("Type in the line item/ product name\n");
+             obj._name =Console.ReadLine();
+             Console.WriteLine("\nType in the product price\n");
+              obj._price=Convert.ToDouble(Console.ReadLine());
+
+            return obj;
+
+        }
     
     }
 }
-

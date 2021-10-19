@@ -14,19 +14,20 @@ namespace UserInterface
         }
         public void Menu()
         {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("Welcome to the store select menu " + Customer.Displayname );
             Console.WriteLine("Please select the store");
 
             Console.WriteLine("\n\n List of StoreFronts");
             List<StoreFront> listOfStoreFront = _restBL.GetAllStoreFrontsBL();
-
+            Console.ForegroundColor = ConsoleColor.White;
             foreach (StoreFront rest in listOfStoreFront)
             {
                 Console.WriteLine("====================");
                 Console.WriteLine(rest);
                 Console.WriteLine("====================");
             }
-
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("[2] - Select the store (goes to products display");
             Console.WriteLine("[1] - canada (goes to login");
             Console.WriteLine("[0] - exit");
