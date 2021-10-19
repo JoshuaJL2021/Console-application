@@ -87,7 +87,7 @@ namespace BusinessLogic
         /// <returns>It will return a  product</returns>
         Products CreateProduct();
 
-        bool VerifyStore();
+        bool VerifyStore(string name);
 
         StoreFront GetStore(string name);
 
@@ -95,5 +95,6 @@ namespace BusinessLogic
 
         List<StoreFront> SearchStores(string name);
 
+        Products VerifyProduct(string product,StoreFront chosen);
     }
 }

@@ -17,13 +17,14 @@ namespace UserInterface
 
         public void Menu()
         {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("Adding a new Restaurant");
             Console.WriteLine("Name - " + _rest._name);
             Console.WriteLine("Address - "+ _rest._address);
             Console.WriteLine("Contact - "+ _rest._contact);
             Console.WriteLine("username - "+ _rest._username);
             Console.WriteLine("password - "+ _rest._password);
-            
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("[x] - Add Customer");
             Console.WriteLine("[1] - Input value for Name");
             Console.WriteLine("[2] - Input value for Address");

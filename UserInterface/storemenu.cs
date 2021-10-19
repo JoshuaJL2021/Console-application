@@ -44,8 +44,8 @@ namespace UserInterface
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("[3] - Search the store (goes to products display");
             Console.WriteLine("[2] - Select the store (goes to products display");
-            Console.WriteLine("[1] - canada (goes to login");
-            Console.WriteLine("[0] - exit");
+            Console.WriteLine("[1] - goes to login");
+            Console.WriteLine("[0] - exit to main menu");
       
         }
 
@@ -100,7 +100,7 @@ namespace UserInterface
                 try
                 {
 
-                     _restBL.VerifyStore();
+                     _restBL.GetStore(storename);
                      Console.WriteLine("Welcome to " + StoreFront.selectedStore + "\n enter to continue");
                      
                      Console.ReadLine();

@@ -18,7 +18,7 @@ namespace UserInterface
             Console.WriteLine("Welcome to the " + StoreFront.selectedStore + " products menu");
             Console.WriteLine("below is a list of products");
 
-            Console.WriteLine("\n\n List of Products in " + StoreFront.selectedStore);
+            Console.WriteLine("\n\nList of Products in " + StoreFront.selectedStore);
             StoreFront test=_restBL.GetStore(StoreFront.selectedStore);
             Console.ForegroundColor = ConsoleColor.White;
             foreach (Products rest in _restBL.ShowProducts(test))
@@ -28,8 +28,10 @@ namespace UserInterface
                 Console.WriteLine("====================");
             } 
             
-            Console.WriteLine("\n [0] - exit");
-            Console.WriteLine("\n [1] - Back to store select");
+            Console.WriteLine("[2] - Begin to Place an Order");
+            Console.WriteLine("[1] - Back to store select");
+            Console.WriteLine("[0] - exit");
+            
         }
 
         public MenuType YourChoice()

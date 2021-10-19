@@ -149,13 +149,10 @@ namespace BusinessLogic
 
         }
 
-        public bool VerifyStore()
+        public bool VerifyStore(string name)
         {
             List<StoreFront> listOfStores = GetAllStoreFrontsBL();
-            bool result=listOfStores.Exists(x => x._name == StoreFront.selectedStore);
-                if (result==false)
-                { throw new Exception ("Store Not found");
-                }
+            bool result=listOfStores.Exists(x => x._name == name);
                 return result;
                
         }
@@ -164,10 +161,12 @@ namespace BusinessLogic
         {
             StoreFront obj=new StoreFront();
             List<StoreFront> listOfStores = GetAllStoreFrontsBL();
-                bool result=listOfStores.Exists(x => x._name == name);
+                bool result=VerifyStore(name);
                 if (result==false)
-                { throw new Exception ("Store Not found");
+                {
+                     throw new Exception ("Store Not found");
                 }
+
                obj=listOfStores.FirstOrDefault(rest => rest.Name == name);
 
 
@@ -200,6 +199,20 @@ namespace BusinessLogic
             }
 
             return listOfRestaurant;
+        }
+
+        public Products VerifyProduct(string product,StoreFront chosen)
+        {
+            Products obj = new Products();
+            List<Products> listOfProduct = new List<Products>();
+            listOfProduct=ShowProducts(chosen);
+            bool result=listOfProduct.Exists(x => x._name == product);
+           if (result==false)
+                {
+                     throw new Exception ("Product Not found in store");
+                }
+                obj=listOfProduct.FirstOrDefault(rest => rest._name == product);
+            return obj;
         }
     }
 }

@@ -27,7 +27,10 @@ namespace UserInterface
             				select store;
                     foreach (string store in myLinqQuery)
             Console.Write(store + "\n "); */
-StoreFront test=_restBL.GetStore(searchname);
+
+
+            //adds products to specified store
+/* StoreFront test=_restBL.GetStore(searchname);//verifies it received the store
 Console.Write(test + "\n ");
 test.productslist.Add(_restBL.CreateProduct());
 test.productslist.Add(_restBL.CreateProduct());
@@ -35,17 +38,19 @@ foreach(Products p in test.productslist)
 {
     Console.WriteLine(p);
 }
-test._name="TestInsertion";
-_restBL.AddStoreFrontBL(test);
+Console.WriteLine("Right new name");
 
-StoreFront test2=_restBL.GetStore(test._name);
+test._name=Console.ReadLine();;
+_restBL.AddStoreFrontBL(test); */
+
+/* StoreFront test2=_restBL.GetStore(test._name);
 Console.Write(test2 + "\n ");
 test2.productslist=_restBL.ShowProducts(test); 
 test2.productslist.Add(_restBL.CreateProduct());
 foreach(Products p in test2.productslist)
 {
     Console.WriteLine(p);
-}
+} */
 
 
 

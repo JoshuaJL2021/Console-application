@@ -16,6 +16,8 @@ namespace UserInterface
 
         public void Menu()
         {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("Adding a new Product");
             Console.WriteLine("Name - " + _rest._name);
             Console.WriteLine("Price - "+ _rest._price);

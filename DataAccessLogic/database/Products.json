@@ -10,5 +10,9 @@
   {
     "Name": "razzle",
     "Price": 0.5
+  },
+  {
+    "Name": "Testproduct",
+    "Price": 10.5
   }
 ]
