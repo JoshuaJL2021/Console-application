@@ -40,7 +40,7 @@ namespace UserInterface
             Console.WriteLine("[4] - Add StoreFront");
             Console.WriteLine("[3] - Input value for Name");
             Console.WriteLine("[2] - Input value for Address");
-Console.WriteLine("[11] - input products for list");
+//Console.WriteLine("[11] - input products for list");
 Console.WriteLine("[12] - input orders for list");
            
             Console.WriteLine("[0] - Go Back");
@@ -75,26 +75,22 @@ Console.WriteLine("[12] - input orders for list");
 
                     case "12":
                     Orders _details=new Orders();
-                    StoreFront store=new StoreFront();
-                    store._name=_rest._name;
-                    store._address=_rest._address;
-                    _details._location=store;
-double total=0;
+                            StoreFront store=new StoreFront();
+                            store._name=_rest._name;
+                            store._address=_rest._address;
+                            _details._location=store;
+                    double total=0;
                     double cost=0.0;
                     int totalitems=0;
-                double payment=0;
+                    double payment=0;
                     bool decision=true;
                     do{
                         
                     LineItems _lines=new LineItems();
 
-                   Products _prods=new Products();
-                        Console.WriteLine("Type in the line item product name\n");
-                        _prods._name =Console.ReadLine();
-                        Console.WriteLine("\nType in the line item price\n");
-                        _prods._price=Convert.ToDouble(Console.ReadLine());
-                        
-                        _rest.productslist.Add(_prods);
+                    Products _prods=_restBL.CreateProduct();
+                         _rest.productslist.Add(_prods);
+                       
 
                     Console.WriteLine("\nType in the line item quantity\n");
                     _lines._quantity=Convert.ToInt32(Console.ReadLine());
@@ -103,14 +99,7 @@ double total=0;
 
                     _details.itemslist.Add(_lines);
                     
-
-            
-           /* foreach (Products obj in _rest.productslist)
-            {
-                Console.WriteLine(obj);
-                cost=cost+obj.PriceGrab();
-            }*/
-
+            //
             foreach (LineItems obj in _details.itemslist)
             {
                 Console.WriteLine(obj);

@@ -134,5 +134,46 @@
         "Price": 2.5
       }
     ]
+  },
+  {
+    "Name": "test1",
+    "Address": "test2",
+    "EstablishOrders": [
+      {
+        "ItemsList": [
+          {
+            "ProductEstablish": {
+              "Name": "Candy Bar",
+              "Price": 1.5
+            },
+            "Quantity": 5
+          },
+          {
+            "ProductEstablish": {
+              "Name": "chips",
+              "Price": 2
+            },
+            "Quantity": 3
+          }
+        ],
+        "Location": {
+          "Name": "test1",
+          "Address": "test2",
+          "EstablishOrders": [],
+          "EstablishProducts": []
+        },
+        "TotalPrice": 13.5
+      }
+    ],
+    "EstablishProducts": [
+      {
+        "Name": "Candy Bar",
+        "Price": 1.5
+      },
+      {
+        "Name": "chips",
+        "Price": 2
+      }
+    ]
   }
 ]

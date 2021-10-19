@@ -14,6 +14,8 @@ namespace UserInterface
     
         public void Menu()
         {
+        Console.ForegroundColor = ConsoleColor.DarkYellow;
+         //Console.BackgroundColor = ConsoleColor.DarkBlue;
             if(Customer.Displayname==null)
             {
                Console.WriteLine("Welcome to the Shopping Menu!");
@@ -52,7 +54,8 @@ namespace UserInterface
                     return MenuType.AddCustomers;
 
                 case "1":
-               
+               Console.ForegroundColor = ConsoleColor.Green;
+        // Console.BackgroundColor = ConsoleColor.Black;
             
                 Console.WriteLine("Enter username");
                 Customer.Displayname=Console.ReadLine();
@@ -67,6 +70,8 @@ namespace UserInterface
                 }
                 catch (System.Exception)
                 {
+                    Console.ForegroundColor = ConsoleColor.White;
+        // Console.BackgroundColor = ConsoleColor.Black;
                     Customer.Displayname=null;
                     Console.WriteLine("User was unfortunately not found");
                 Console.WriteLine("You will be sent to the Login Menu again");
@@ -110,13 +115,15 @@ namespace UserInterface
 
                 case "1":
                
-            
+            Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine("Enter username");
+                
                 Customer.Displayname=Console.ReadLine();
+
                 try
                 {
                     List<Customer> listOfCustomers = _restBL.GetAllCustomersBL();
-
+                    
                      _restBL.VerifyCredentials();
                      Console.WriteLine("Welcome Back " + Customer.Displayname + "\n enter to continue");
                      
@@ -124,6 +131,7 @@ namespace UserInterface
                 }
                 catch (System.Exception)
                 {
+                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
                     Customer.Displayname="";
                     Console.WriteLine("User was unfortunately not found");
                 Console.WriteLine("You will be sent to the Login Menu again");

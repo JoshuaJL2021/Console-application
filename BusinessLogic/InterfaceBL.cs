@@ -77,7 +77,15 @@ namespace BusinessLogic
         /// This will return a list of line items stored in the database
         /// It will also capitalize every name of the product
         /// </summary>
-        /// <returns>It will return a list of product</returns>
+        /// <returns>It will return a list of Line Items</returns>
         List<LineItems> GetAllLineItemsBL();
+
+        /// <summary>
+        /// This creates a Product and returns the value 
+        /// This method is more for establishing the payment of the order
+        /// </summary>
+        /// <returns>It will return a  product</returns>
+        Products CreateProduct();
+
     }
 }
