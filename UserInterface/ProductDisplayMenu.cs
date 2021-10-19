@@ -14,19 +14,19 @@ namespace UserInterface
         }
         public void Menu()
         {
-           
+           Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("Welcome to the " + StoreFront.selectedStore + " products menu");
             Console.WriteLine("below is a list of products");
 
-            Console.WriteLine("\n\n List of Products");
-            List<Products> listOfProduct = _restBL.GetAllProductsBL();
-
-            foreach (Products rest in listOfProduct)
+            Console.WriteLine("\n\n List of Products in " + StoreFront.selectedStore);
+            StoreFront test=_restBL.GetStore(StoreFront.selectedStore);
+            Console.ForegroundColor = ConsoleColor.White;
+            foreach (Products rest in _restBL.ShowProducts(test))
             {
                 Console.WriteLine("====================");
                 Console.WriteLine(rest);
                 Console.WriteLine("====================");
-            }
+            } 
             
             Console.WriteLine("\n [0] - exit");
             Console.WriteLine("\n [1] - Back to store select");

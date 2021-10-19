@@ -15,10 +15,10 @@ namespace UserInterface
         public void Menu()
         {
         Console.ForegroundColor = ConsoleColor.DarkYellow;
-         //Console.BackgroundColor = ConsoleColor.DarkBlue;
             if(Customer.displayName==null)
             {
                Console.WriteLine("Welcome to the Shopping Menu!");
+               Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Are you a new customer or a Returning customer?");
             Console.WriteLine("[2] - New Customer");
             Console.WriteLine("[1] - Login");
@@ -27,8 +27,10 @@ namespace UserInterface
             }
             else
             {
+                
             Console.WriteLine("Welcome to the Shopping Menu!");
-            Console.WriteLine("Are you a new customer or a Returning customer?");
+            Console.ForegroundColor = ConsoleColor.Green;
+
             Console.WriteLine("[3] - View stores");
             Console.WriteLine("[2] - New Customer");
             Console.WriteLine("[1] - Login as different user");
@@ -54,7 +56,7 @@ namespace UserInterface
                     return MenuType.AddCustomers;
 
                 case "1":
-               Console.ForegroundColor = ConsoleColor.Green;
+               Console.ForegroundColor = ConsoleColor.DarkYellow;
         
             
                 Console.WriteLine("Enter username");

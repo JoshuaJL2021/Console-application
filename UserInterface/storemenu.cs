@@ -56,13 +56,14 @@ namespace UserInterface
             switch (userChoice)
             {
                 case "3":
+
                 Console.WriteLine("Enter store you want to search for");
                 string storen=Console.ReadLine();
                 List<StoreFront>test=new List<StoreFront>();
                 
                 try
                 {
-
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                      foreach(StoreFront s in _restBL.SearchStores(storen))
                     {
                         Console.WriteLine(s);
@@ -88,6 +89,7 @@ namespace UserInterface
                     return MenuType.StoreMenu;
 
                 case "2":
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("Enter store you want to enter");
                 string storename=Console.ReadLine();
                 StoreFront.selectedStore=storename;
