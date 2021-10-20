@@ -111,7 +111,6 @@ string cancel2;
 
 
 
-
             Console.WriteLine("\nnow begin creating an order");
             foreach(Products p in newstore.productslist)
             {
@@ -224,8 +223,10 @@ string cancel2;
             }
                 
                 Console.WriteLine("Total cost $"+ _details.TotalPrice);
+                // newstore.orderslist.Add(_details);
+                // StoreFront test=newstore;
+                // _restBL.AddStoreFrontBL(test);
                 _details._totalprice=0;
-
 
 
 
