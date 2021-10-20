@@ -27,9 +27,11 @@ namespace UserInterface
                 Console.WriteLine(rest);
                 Console.WriteLine("====================");
             } 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\n [0] - exit");
-            Console.WriteLine("\n [1] - Back to store select");
+            
+            Console.WriteLine("[2] - Begin to Place an Order");
+            Console.WriteLine("[1] - Back to store select");
+            Console.WriteLine("[0] - exit");
+            
         }
 
         public MenuType YourChoice()

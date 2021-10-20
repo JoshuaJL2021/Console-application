@@ -24,7 +24,7 @@ namespace UserInterface
             Console.WriteLine("Contact - "+ _rest._contact);
             Console.WriteLine("username - "+ _rest._username);
             Console.WriteLine("password - "+ _rest._password);
-             Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("[x] - Add Customer");
             Console.WriteLine("[1] - Input value for Name");
             Console.WriteLine("[2] - Input value for Address");

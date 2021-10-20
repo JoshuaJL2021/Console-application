@@ -44,7 +44,7 @@ namespace UserInterface
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("[3] - Search the store (goes to products display");
             Console.WriteLine("[2] - Select the store (goes to products display");
-            Console.WriteLine("[1] - go to login");
+            Console.WriteLine("[1] - goes to login");
             Console.WriteLine("[0] - exit to main menu");
       
         }
@@ -56,21 +56,21 @@ namespace UserInterface
             switch (userChoice)
             {
                 case "3":
-Console.ForegroundColor = ConsoleColor.DarkYellow;
+
                 Console.WriteLine("Enter store you want to search for");
                 string storen=Console.ReadLine();
                 List<StoreFront>test=new List<StoreFront>();
                 
                 try
                 {
-                
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                      foreach(StoreFront s in _restBL.SearchStores(storen))
                     {
+                        Console.WriteLine(s);
                         test.Add(s);
 
                     }
                     searchresult=test;
-                    Console.WriteLine("Press Enter to continue");
                      Console.ReadLine();
                 }
                 catch (System.Exception)
@@ -100,7 +100,7 @@ Console.ForegroundColor = ConsoleColor.DarkYellow;
                 try
                 {
 
-                     _restBL.VerifyStore();
+                     _restBL.GetStore(storename);
                      Console.WriteLine("Welcome to " + StoreFront.selectedStore + "\n enter to continue");
                      
                      Console.ReadLine();
