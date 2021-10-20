@@ -276,5 +276,127 @@
       ]
     },
     "TotalPrice": 7.5
+  },
+  {
+    "ItemsList": [
+      {
+        "ProductEstablish": {
+          "Name": "Beers",
+          "Price": 2.5
+        },
+        "Quantity": 67
+      },
+      {
+        "ProductEstablish": {
+          "Name": "Lasagna",
+          "Price": 5.5
+        },
+        "Quantity": 18
+      }
+    ],
+    "Location": {
+      "Name": "Polos Pizza",
+      "Address": "Turabo",
+      "EstablishOrders": [],
+      "EstablishProducts": [
+        {
+          "Name": "Pizza",
+          "Price": 10.99
+        },
+        {
+          "Name": "Beers",
+          "Price": 2.5
+        },
+        {
+          "Name": "Lasagna",
+          "Price": 5.5
+        }
+      ],
+      "Stock": [
+        {
+          "ProductEstablish": {
+            "Name": "Pizza",
+            "Price": 10.99
+          },
+          "Quantity": 30
+        },
+        {
+          "ProductEstablish": {
+            "Name": "Beers",
+            "Price": 2.5
+          },
+          "Quantity": 69
+        },
+        {
+          "ProductEstablish": {
+            "Name": "Lasagna",
+            "Price": 5.5
+          },
+          "Quantity": 19
+        }
+      ]
+    },
+    "TotalPrice": 2.5
+  },
+  {
+    "ItemsList": [
+      {
+        "ProductEstablish": {
+          "Name": "Pizza",
+          "Price": 10.99
+        },
+        "Quantity": 29
+      },
+      {
+        "ProductEstablish": {
+          "Name": "Beers",
+          "Price": 2.5
+        },
+        "Quantity": 67
+      }
+    ],
+    "Location": {
+      "Name": "Polos Pizza",
+      "Address": "Turabo",
+      "EstablishOrders": [],
+      "EstablishProducts": [
+        {
+          "Name": "Pizza",
+          "Price": 10.99
+        },
+        {
+          "Name": "Beers",
+          "Price": 2.5
+        },
+        {
+          "Name": "Lasagna",
+          "Price": 5.5
+        }
+      ],
+      "Stock": [
+        {
+          "ProductEstablish": {
+            "Name": "Pizza",
+            "Price": 10.99
+          },
+          "Quantity": 30
+        },
+        {
+          "ProductEstablish": {
+            "Name": "Beers",
+            "Price": 2.5
+          },
+          "Quantity": 69
+        },
+        {
+          "ProductEstablish": {
+            "Name": "Lasagna",
+            "Price": 5.5
+          },
+          "Quantity": 19
+        }
+      ]
+    },
+    "TotalPrice": 21.98
   }
 ]
