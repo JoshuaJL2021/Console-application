@@ -30,8 +30,8 @@ namespace UserInterface
             } 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("[3] - Begin Purchase");
-            Console.WriteLine("[2] - texas (goes to products display");
-            Console.WriteLine("[1] - canada (goes to order history");
+            Console.WriteLine("[2] - goes to products display");
+
             Console.WriteLine("[0] - exit");
       
         }
@@ -66,6 +66,10 @@ namespace UserInterface
                          
                     _prods=_restBL.VerifyProduct(productsname,store);
                     loop=false;
+                    Console.WriteLine("\nType in the line item quantity\n");
+                    _lines._quantity=Convert.ToInt32(Console.ReadLine());
+                    _lines._product=_prods;
+                    _details.itemslist.Add(_lines);
                     }
                     catch (System.Exception)
                     {
@@ -86,30 +90,18 @@ namespace UserInterface
                               loop=true;  ;
                                 
                         }
-                    }
-                    
+                    }//end of catch
+
+                    }//end of while
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Console.WriteLine("\nType in the line item quantity\n");
-                    _lines._quantity=Convert.ToInt32(Console.ReadLine());
-                    }_lines._product=_prods;
+                    
+                    
 
 
-                    _details.itemslist.Add(_lines);
+                    
                     
             //
-            foreach (LineItems obj in _details.itemslist)
-            {
-                Console.WriteLine(obj);
-                totalitems=obj.AmountGrab();
-                cost=obj._product.PriceGrab();
-                payment=(cost * totalitems);
-                totalitems=0;
-                cost=0;
-
-            }
             
-            total=total+payment;
-            Console.WriteLine("\ntotal cost for the order is: " + total);
             
                 string checkout;
                     Console.WriteLine("\nDo you wish to add more items to check out? type yes or no\n");
@@ -127,11 +119,27 @@ namespace UserInterface
                         }
                     }while(decision);
 
+            foreach (LineItems obj in _details.itemslist)
+            {
+                Console.WriteLine(obj);
+                totalitems=obj.AmountGrab();
+                
+                cost=obj._product.PriceGrab();
+                payment=(cost * totalitems);
+                
+                totalitems=0;
+                cost=0;
+                total=total+payment;
+                Console.WriteLine("\ntotal cost for the order is: " + total);
+            }
+            
+            
+            
+            
 
-                                _details._totalprice=total;
 
 
-
+                _details._totalprice=total;
                 _restBL.AddOrdersBL(_details);
                 _details._location.orderslist.Add(_details);
                 Console.WriteLine("Receite:");
@@ -143,7 +151,9 @@ namespace UserInterface
             }
                 
                 Console.WriteLine("Total cost $"+ _details.TotalPrice);
-                _details=null;
+                _details._totalprice=0;
+                _details.itemslist=null;
+                
                 Console.ReadLine();
                 return MenuType.ProductBuyMenu;
                 case "2":

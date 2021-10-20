@@ -93,5 +93,63 @@
       ]
     },
     "TotalPrice": 10
+  },
+  {
+    "ItemsList": [
+      {
+        "ProductEstablish": {
+          "Name": "beans",
+          "Price": 2
+        },
+        "Quantity": 5
+      },
+      {
+        "ProductEstablish": {
+          "Name": "rice",
+          "Price": 2
+        },
+        "Quantity": 2
+      }
+    ],
+    "Location": {
+      "Name": "TestInsertion",
+      "Address": "pr",
+      "EstablishOrders": [
+        {
+          "ItemsList": [
+            {
+              "ProductEstablish": null,
+              "Quantity": 10
+            }
+          ],
+          "Location": {
+            "Name": "place",
+            "Address": "pr",
+            "EstablishOrders": [],
+            "EstablishProducts": []
+          },
+          "TotalPrice": 9.29
+        }
+      ],
+      "EstablishProducts": [
+        {
+          "Name": "Pizza",
+          "Price": 5.69
+        },
+        {
+          "Name": "Burgers",
+          "Price": 3.6
+        },
+        {
+          "Name": "rice",
+          "Price": 2
+        },
+        {
+          "Name": "beans",
+          "Price": 2
+        }
+      ]
+    },
+    "TotalPrice": 14
   }
 ]
