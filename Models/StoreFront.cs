@@ -37,10 +37,17 @@ public static string selectedAddress;
                 set { productslist= value; }
                 get { return productslist; }
             }
+
+        public List<LineItems> _itemslist = new List<LineItems>();
+        public List<LineItems> Stock
+            {
+                set { _itemslist= value; }
+                get { return _itemslist; }
+            }
         
         public override string ToString()
         {
-            return $"Store Name: {_name}\nAddress: {_address}\n";
+            return $"Store Name : {_name}\nAddress: {_address}\n";
         }
 
         

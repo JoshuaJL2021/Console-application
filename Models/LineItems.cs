@@ -21,7 +21,7 @@ namespace Models
 
         public override string ToString()
         {
-            return $"{_product}\nquantity: {_quantity}\n";
+            return $"{_product}\nquantity available : {_quantity}\n";
         }
         
         public int AmountGrab(){

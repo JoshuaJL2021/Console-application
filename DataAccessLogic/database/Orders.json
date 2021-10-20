@@ -3,487 +3,17 @@
     "ItemsList": [
       {
         "ProductEstablish": {
-          "Name": "Pizza",
-          "Price": 5.69
-        },
-        "Quantity": 2
-      },
-      {
-        "ProductEstablish": {
-          "Name": "Burgers",
-          "Price": 3.6
-        },
-        "Quantity": 2
-      }
-    ],
-    "Location": {
-      "Name": "TestInsertion",
-      "Address": "pr",
-      "EstablishOrders": [
-        {
-          "ItemsList": [
-            {
-              "ProductEstablish": null,
-              "Quantity": 10
-            }
-          ],
-          "Location": {
-            "Name": "place",
-            "Address": "pr",
-            "EstablishOrders": [],
-            "EstablishProducts": []
-          },
-          "TotalPrice": 9.29
-        }
-      ],
-      "EstablishProducts": [
-        {
-          "Name": "Pizza",
-          "Price": 5.69
-        },
-        {
-          "Name": "Burgers",
-          "Price": 3.6
-        },
-        {
-          "Name": "rice",
-          "Price": 2
-        },
-        {
-          "Name": "beans",
-          "Price": 2
-        }
-      ]
-    },
-    "TotalPrice": 18.580000000000002
-  },
-  {
-    "ItemsList": [
-      {
-        "ProductEstablish": {
           "Name": "eggs",
           "Price": 1.33
-        },
-        "Quantity": 5
-      },
-      {
-        "ProductEstablish": {
-          "Name": "chips",
-          "Price": 2
-        },
-        "Quantity": 6
-      }
-    ],
-    "Location": {
-      "Name": "Store2",
-      "Address": "test2",
-      "EstablishOrders": [
-        {
-          "ItemsList": [
-            {
-              "ProductEstablish": {
-                "Name": "Candy Bar",
-                "Price": 1.5
-              },
-              "Quantity": 5
-            },
-            {
-              "ProductEstablish": {
-                "Name": "chips",
-                "Price": 2
-              },
-              "Quantity": 3
-            }
-          ],
-          "Location": {
-            "Name": "test1",
-            "Address": "test2",
-            "EstablishOrders": [],
-            "EstablishProducts": []
-          },
-          "TotalPrice": 13.5
-        }
-      ],
-      "EstablishProducts": [
-        {
-          "Name": "Candy Bar",
-          "Price": 1.5
-        },
-        {
-          "Name": "chips",
-          "Price": 2
-        },
-        {
-          "Name": "pancakes",
-          "Price": 2.23
-        },
-        {
-          "Name": "eggs",
-          "Price": 1.33
-        }
-      ]
-    },
-    "TotalPrice": 18.65
-  },
-  {
-    "ItemsList": [
-      {
-        "ProductEstablish": {
-          "Name": "chips",
-          "Price": 2
-        },
-        "Quantity": 8
-      },
-      {
-        "ProductEstablish": {
-          "Name": "Candy Bar",
-          "Price": 1.5
-        },
-        "Quantity": 2
-      }
-    ],
-    "Location": {
-      "Name": "Store2",
-      "Address": "test2",
-      "EstablishOrders": [
-        {
-          "ItemsList": [
-            {
-              "ProductEstablish": {
-                "Name": "Candy Bar",
-                "Price": 1.5
-              },
-              "Quantity": 5
-            },
-            {
-              "ProductEstablish": {
-                "Name": "chips",
-                "Price": 2
-              },
-              "Quantity": 3
-            }
-          ],
-          "Location": {
-            "Name": "test1",
-            "Address": "test2",
-            "EstablishOrders": [],
-            "EstablishProducts": []
-          },
-          "TotalPrice": 13.5
-        }
-      ],
-      "EstablishProducts": [
-        {
-          "Name": "Candy Bar",
-          "Price": 1.5
-        },
-        {
-          "Name": "chips",
-          "Price": 2
-        },
-        {
-          "Name": "pancakes",
-          "Price": 2.23
-        },
-        {
-          "Name": "eggs",
-          "Price": 1.33
-        }
-      ]
-    },
-    "TotalPrice": 19
-  },
-  {
-    "ItemsList": [
-      {
-        "ProductEstablish": {
-          "Name": "eggs",
-          "Price": 1.33
-        },
-        "Quantity": 10
-      },
-      {
-        "ProductEstablish": {
-          "Name": "chips",
-          "Price": 2
-        },
-        "Quantity": 3
-      }
-    ],
-    "Location": {
-      "Name": "Store2",
-      "Address": "test2",
-      "EstablishOrders": [
-        {
-          "ItemsList": [
-            {
-              "ProductEstablish": {
-                "Name": "Candy Bar",
-                "Price": 1.5
-              },
-              "Quantity": 5
-            },
-            {
-              "ProductEstablish": {
-                "Name": "chips",
-                "Price": 2
-              },
-              "Quantity": 3
-            }
-          ],
-          "Location": {
-            "Name": "test1",
-            "Address": "test2",
-            "EstablishOrders": [],
-            "EstablishProducts": []
-          },
-          "TotalPrice": 13.5
-        }
-      ],
-      "EstablishProducts": [
-        {
-          "Name": "Candy Bar",
-          "Price": 1.5
-        },
-        {
-          "Name": "chips",
-          "Price": 2
-        },
-        {
-          "Name": "pancakes",
-          "Price": 2.23
-        },
-        {
-          "Name": "eggs",
-          "Price": 1.33
-        }
-      ]
-    },
-    "TotalPrice": 19.3
-  },
-  {
-    "ItemsList": [
-      {
-        "ProductEstablish": {
-          "Name": "chips",
-          "Price": 2
-        },
-        "Quantity": 5
-      },
-      {
-        "ProductEstablish": {
-          "Name": "pancakes",
-          "Price": 2.23
-        },
-        "Quantity": 2
-      }
-    ],
-    "Location": {
-      "Name": "Store2",
-      "Address": "test2",
-      "EstablishOrders": [
-        {
-          "ItemsList": [
-            {
-              "ProductEstablish": {
-                "Name": "Candy Bar",
-                "Price": 1.5
-              },
-              "Quantity": 5
-            },
-            {
-              "ProductEstablish": {
-                "Name": "chips",
-                "Price": 2
-              },
-              "Quantity": 3
-            }
-          ],
-          "Location": {
-            "Name": "test1",
-            "Address": "test2",
-            "EstablishOrders": [],
-            "EstablishProducts": []
-          },
-          "TotalPrice": 13.5
-        }
-      ],
-      "EstablishProducts": [
-        {
-          "Name": "Candy Bar",
-          "Price": 1.5
-        },
-        {
-          "Name": "chips",
-          "Price": 2
-        },
-        {
-          "Name": "pancakes",
-          "Price": 2.23
-        },
-        {
-          "Name": "eggs",
-          "Price": 1.33
-        }
-      ]
-    },
-    "TotalPrice": 14.46
-  },
-  {
-    "ItemsList": [
-      {
-        "ProductEstablish": {
-          "Name": "chips",
-          "Price": 2
-        },
-        "Quantity": 6
-      },
-      {
-        "ProductEstablish": {
-          "Name": "pancakes",
-          "Price": 2.23
-        },
-        "Quantity": 2
-      }
-    ],
-    "Location": {
-      "Name": "Store2",
-      "Address": "test2",
-      "EstablishOrders": [
-        {
-          "ItemsList": [
-            {
-              "ProductEstablish": {
-                "Name": "Candy Bar",
-                "Price": 1.5
-              },
-              "Quantity": 5
-            },
-            {
-              "ProductEstablish": {
-                "Name": "chips",
-                "Price": 2
-              },
-              "Quantity": 3
-            }
-          ],
-          "Location": {
-            "Name": "test1",
-            "Address": "test2",
-            "EstablishOrders": [],
-            "EstablishProducts": []
-          },
-          "TotalPrice": 13.5
-        }
-      ],
-      "EstablishProducts": [
-        {
-          "Name": "Candy Bar",
-          "Price": 1.5
-        },
-        {
-          "Name": "chips",
-          "Price": 2
-        },
-        {
-          "Name": "pancakes",
-          "Price": 2.23
-        },
-        {
-          "Name": "eggs",
-          "Price": 1.33
-        }
-      ]
-    },
-    "TotalPrice": 16.46
-  },
-  {
-    "ItemsList": [
-      {
-        "ProductEstablish": {
-          "Name": "beans",
-          "Price": 2
-        },
-        "Quantity": 2
-      },
-      {
-        "ProductEstablish": {
-          "Name": "Burgers",
-          "Price": 3.6
-        },
-        "Quantity": 2
-      },
-      {
-        "ProductEstablish": {
-          "Name": "Pizza",
-          "Price": 5.69
         },
         "Quantity": 1
-      }
-    ],
-    "Location": {
-      "Name": "TestInsertion",
-      "Address": "pr",
-      "EstablishOrders": [
-        {
-          "ItemsList": [
-            {
-              "ProductEstablish": null,
-              "Quantity": 10
-            }
-          ],
-          "Location": {
-            "Name": "place",
-            "Address": "pr",
-            "EstablishOrders": [],
-            "EstablishProducts": []
-          },
-          "TotalPrice": 9.29
-        }
-      ],
-      "EstablishProducts": [
-        {
-          "Name": "Pizza",
-          "Price": 5.69
-        },
-        {
-          "Name": "Burgers",
-          "Price": 3.6
-        },
-        {
-          "Name": "rice",
-          "Price": 2
-        },
-        {
-          "Name": "beans",
-          "Price": 2
-        }
-      ]
-    },
-    "TotalPrice": 16.89
-  },
-  {
-    "ItemsList": [
-      {
-        "ProductEstablish": {
-          "Name": "eggs",
-          "Price": 1.33
-        },
-        "Quantity": 3
       },
       {
         "ProductEstablish": {
           "Name": "pancakes",
           "Price": 2.23
         },
-        "Quantity": 3
-      },
-      {
-        "ProductEstablish": {
-          "Name": "Candy Bar",
-          "Price": 1.5
-        },
-        "Quantity": 1
+        "Quantity": 2
       }
     ],
     "Location": {
@@ -511,7 +41,8 @@
             "Name": "test1",
             "Address": "test2",
             "EstablishOrders": [],
-            "EstablishProducts": []
+            "EstablishProducts": [],
+            "Stock": []
           },
           "TotalPrice": 13.5
         }
@@ -533,8 +64,217 @@
           "Name": "eggs",
           "Price": 1.33
         }
+      ],
+      "Stock": []
+    },
+    "TotalPrice": 5.79
+  },
+  {
+    "ItemsList": [
+      {
+        "ProductEstablish": {
+          "Name": "Chicken",
+          "Price": 2.5
+        },
+        "Quantity": 0
+      },
+      {
+        "ProductEstablish": {
+          "Name": "Soda",
+          "Price": 1.5
+        },
+        "Quantity": 0
+      }
+    ],
+    "Location": {
+      "Name": "KFC",
+      "Address": "aguadilla",
+      "EstablishOrders": [],
+      "EstablishProducts": [
+        {
+          "Name": "Chicken",
+          "Price": 2.5
+        },
+        {
+          "Name": "Soda",
+          "Price": 1.5
+        }
+      ],
+      "Stock": [
+        {
+          "ProductEstablish": {
+            "Name": "Soda",
+            "Price": 1.5
+          },
+          "Quantity": 10
+        },
+        {
+          "ProductEstablish": {
+            "Name": "Soda",
+            "Price": 1.5
+          },
+          "Quantity": 10
+        }
       ]
     },
-    "TotalPrice": 12.18
+    "TotalPrice": 8
+  },
+  {
+    "ItemsList": [
+      {
+        "ProductEstablish": {
+          "Name": "Corn",
+          "Price": 1.5
+        },
+        "Quantity": -2
+      },
+      {
+        "ProductEstablish": {
+          "Name": "Mash",
+          "Price": 1.25
+        },
+        "Quantity": -3
+      }
+    ],
+    "Location": {
+      "Name": "Church",
+      "Address": "aguadilla",
+      "EstablishOrders": [],
+      "EstablishProducts": [
+        {
+          "Name": "Mash",
+          "Price": 1.25
+        },
+        {
+          "Name": "Corn",
+          "Price": 1.5
+        }
+      ],
+      "Stock": [
+        {
+          "ProductEstablish": {
+            "Name": "Corn",
+            "Price": 1.5
+          },
+          "Quantity": 15
+        },
+        {
+          "ProductEstablish": {
+            "Name": "Corn",
+            "Price": 1.5
+          },
+          "Quantity": 15
+        }
+      ]
+    },
+    "TotalPrice": 4.5
+  },
+  {
+    "ItemsList": [
+      {
+        "ProductEstablish": {
+          "Name": "Fries",
+          "Price": 1.25
+        },
+        "Quantity": 35
+      }
+    ],
+    "Location": {
+      "Name": "KFC",
+      "Address": "caguas",
+      "EstablishOrders": [],
+      "EstablishProducts": [
+        {
+          "Name": "Chickens",
+          "Price": 2.5
+        },
+        {
+          "Name": "Sodas",
+          "Price": 1.5
+        },
+        {
+          "Name": "Fries",
+          "Price": 1.25
+        }
+      ],
+      "Stock": [
+        {
+          "ProductEstablish": {
+            "Name": "Fries",
+            "Price": 1.25
+          },
+          "Quantity": 40
+        },
+        {
+          "ProductEstablish": {
+            "Name": "Fries",
+            "Price": 1.25
+          },
+          "Quantity": 40
+        },
+        {
+          "ProductEstablish": {
+            "Name": "Fries",
+            "Price": 1.25
+          },
+          "Quantity": 40
+        }
+      ]
+    },
+    "TotalPrice": 6.25
+  },
+  {
+    "ItemsList": [
+      {
+        "ProductEstablish": {
+          "Name": "Chicken",
+          "Price": 2.5
+        },
+        "Quantity": 47
+      }
+    ],
+    "Location": {
+      "Name": "Church",
+      "Address": "Vega Baja",
+      "EstablishOrders": [],
+      "EstablishProducts": [
+        {
+          "Name": "Chicken",
+          "Price": 2.5
+        },
+        {
+          "Name": "Soda bottles",
+          "Price": 1.59
+        },
+        {
+          "Name": "Mash",
+          "Price": 1.25
+        }
+      ],
+      "Stock": [
+        {
+          "ProductEstablish": {
+            "Name": "Chicken",
+            "Price": 2.5
+          },
+          "Quantity": 50
+        },
+        {
+          "ProductEstablish": {
+            "Name": "Soda bottles",
+            "Price": 1.59
+          },
+          "Quantity": 20
+        },
+        {
+          "ProductEstablish": {
+            "Name": "Mash",
+            "Price": 1.25
+          },
+          "Quantity": 40
+        }
+      ]
+    },
+    "TotalPrice": 7.5
   }
 ]

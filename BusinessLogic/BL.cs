@@ -214,6 +214,35 @@ namespace BusinessLogic
                 obj=listOfProduct.FirstOrDefault(rest => rest._name == product);
             return obj;
         }
-        
+
+        public LineItems VerifyStock(string product, StoreFront chosen)
+        {
+            LineItems obj=new LineItems();
+            List<LineItems> listofline = new List<LineItems>();
+            listofline=ShowStock(chosen);
+            bool result=listofline.Exists(x => x._product._name == product);
+           if (result==false)
+                {
+                     throw new Exception ("Product Not found in store");
+                }
+                obj=listofline.FirstOrDefault(rest => rest._product._name == product);
+            return obj;
+        }
+
+        public List<LineItems> ShowStock(StoreFront chosen)
+        {
+            List<LineItems> listOfProduct = new List<LineItems>();
+            chosen=GetStore(chosen._name);
+            foreach(LineItems p in chosen._itemslist)
+            {
+                listOfProduct.Add(p);
+            }
+            return listOfProduct;
+        }
+
+        public StoreFront ModifyStoreRecordBL(StoreFront CurrentSelection)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

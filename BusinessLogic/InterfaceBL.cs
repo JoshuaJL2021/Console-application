@@ -96,5 +96,10 @@ namespace BusinessLogic
         List<StoreFront> SearchStores(string name);
 
         Products VerifyProduct(string product,StoreFront chosen);
+
+        LineItems VerifyStock(string product,StoreFront chosen);
+        List<LineItems> ShowStock(StoreFront chosen);
+        
+        StoreFront ModifyStoreRecordBL(StoreFront CurrentSelection);
     }
 }

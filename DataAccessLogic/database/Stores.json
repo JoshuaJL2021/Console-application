@@ -3,13 +3,15 @@
     "Name": "popeyes",
     "Address": "bayamon",
     "EstablishOrders": [],
-    "EstablishProducts": []
+    "EstablishProducts": [],
+    "Stock": []
   },
   {
     "Name": "caguas",
     "Address": "Puerto Rico",
     "EstablishOrders": [],
-    "EstablishProducts": []
+    "EstablishProducts": [],
+    "Stock": []
   },
   {
     "Name": "place",
@@ -26,7 +28,8 @@
           "Name": "place",
           "Address": "pr",
           "EstablishOrders": [],
-          "EstablishProducts": []
+          "EstablishProducts": [],
+          "Stock": []
         },
         "TotalPrice": 9.29
       }
@@ -40,7 +43,8 @@
         "Name": "Burgers",
         "Price": 3.6
       }
-    ]
+    ],
+    "Stock": []
   },
   {
     "Name": "Mcdonalds",
@@ -74,7 +78,8 @@
           "Name": "Mcdonalds",
           "Address": "Florida",
           "EstablishOrders": [],
-          "EstablishProducts": []
+          "EstablishProducts": [],
+          "Stock": []
         },
         "TotalPrice": 0
       }
@@ -92,7 +97,8 @@
         "Name": "Soda",
         "Price": 1.5
       }
-    ]
+    ],
+    "Stock": []
   },
   {
     "Name": "Chipotle",
@@ -119,7 +125,8 @@
           "Name": "Chipotle",
           "Address": "Miami",
           "EstablishOrders": [],
-          "EstablishProducts": []
+          "EstablishProducts": [],
+          "Stock": []
         },
         "TotalPrice": 16.48
       }
@@ -133,7 +140,8 @@
         "Name": "Soda",
         "Price": 2.5
       }
-    ]
+    ],
+    "Stock": []
   },
   {
     "Name": "test1",
@@ -160,7 +168,8 @@
           "Name": "test1",
           "Address": "test2",
           "EstablishOrders": [],
-          "EstablishProducts": []
+          "EstablishProducts": [],
+          "Stock": []
         },
         "TotalPrice": 13.5
       }
@@ -174,93 +183,90 @@
         "Name": "chips",
         "Price": 2
       }
-    ]
+    ],
+    "Stock": []
   },
   {
-    "Name": "TestInsertion",
-    "Address": "pr",
-    "EstablishOrders": [
-      {
-        "ItemsList": [
-          {
-            "ProductEstablish": null,
-            "Quantity": 10
-          }
-        ],
-        "Location": {
-          "Name": "place",
-          "Address": "pr",
-          "EstablishOrders": [],
-          "EstablishProducts": []
-        },
-        "TotalPrice": 9.29
-      }
-    ],
+    "Name": "KFC",
+    "Address": "caguas",
+    "EstablishOrders": [],
     "EstablishProducts": [
       {
-        "Name": "Pizza",
-        "Price": 5.69
+        "Name": "Chickens",
+        "Price": 2.5
       },
       {
-        "Name": "Burgers",
-        "Price": 3.6
-      },
-      {
-        "Name": "rice",
-        "Price": 2
-      },
-      {
-        "Name": "beans",
-        "Price": 2
-      }
-    ]
-  },
-  {
-    "Name": "Store2",
-    "Address": "test2",
-    "EstablishOrders": [
-      {
-        "ItemsList": [
-          {
-            "ProductEstablish": {
-              "Name": "Candy Bar",
-              "Price": 1.5
-            },
-            "Quantity": 5
-          },
-          {
-            "ProductEstablish": {
-              "Name": "chips",
-              "Price": 2
-            },
-            "Quantity": 3
-          }
-        ],
-        "Location": {
-          "Name": "test1",
-          "Address": "test2",
-          "EstablishOrders": [],
-          "EstablishProducts": []
-        },
-        "TotalPrice": 13.5
-      }
-    ],
-    "EstablishProducts": [
-      {
-        "Name": "Candy Bar",
+        "Name": "Sodas",
         "Price": 1.5
       },
       {
-        "Name": "chips",
-        "Price": 2
+        "Name": "Fries",
+        "Price": 1.25
+      }
+    ],
+    "Stock": [
+      {
+        "ProductEstablish": {
+          "Name": "Fries",
+          "Price": 1.25
+        },
+        "Quantity": 40
       },
       {
-        "Name": "pancakes",
-        "Price": 2.23
+        "ProductEstablish": {
+          "Name": "Fries",
+          "Price": 1.25
+        },
+        "Quantity": 40
       },
       {
-        "Name": "eggs",
-        "Price": 1.33
+        "ProductEstablish": {
+          "Name": "Fries",
+          "Price": 1.25
+        },
+        "Quantity": 40
+      }
+    ]
+  },
+  {
+    "Name": "Church",
+    "Address": "Vega Baja",
+    "EstablishOrders": [],
+    "EstablishProducts": [
+      {
+        "Name": "Chicken",
+        "Price": 2.5
+      },
+      {
+        "Name": "Soda bottles",
+        "Price": 1.59
+      },
+      {
+        "Name": "Mash",
+        "Price": 1.25
+      }
+    ],
+    "Stock": [
+      {
+        "ProductEstablish": {
+          "Name": "Chicken",
+          "Price": 2.5
+        },
+        "Quantity": 50
+      },
+      {
+        "ProductEstablish": {
+          "Name": "Soda bottles",
+          "Price": 1.59
+        },
+        "Quantity": 20
+      },
+      {
+        "ProductEstablish": {
+          "Name": "Mash",
+          "Price": 1.25
+        },
+        "Quantity": 40
       }
     ]
   }

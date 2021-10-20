@@ -27,7 +27,7 @@ namespace UserInterface
             }
             else
             {
-                
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("Welcome to the Shopping Menu!");
             Console.ForegroundColor = ConsoleColor.Green;
 
