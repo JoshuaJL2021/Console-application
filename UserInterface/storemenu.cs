@@ -71,6 +71,7 @@ namespace UserInterface
 
                     }
                     searchresult=test;
+                    Console.WriteLine("Click Enter to see results");
                      Console.ReadLine();
                 }
                 catch (System.Exception)

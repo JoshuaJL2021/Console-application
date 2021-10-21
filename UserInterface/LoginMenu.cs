@@ -65,7 +65,7 @@ namespace UserInterface
                 {
 
                      _restBL.VerifyCredentials();
-                     Console.WriteLine("Welcome Back " + Customer.displayName + "\n enter to continue");
+                     Console.WriteLine("Welcome Back " + Customer.displayName + "\nenter to continue");
                      
                      Console.ReadLine();
                 }

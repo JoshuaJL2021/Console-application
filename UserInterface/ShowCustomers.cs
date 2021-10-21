@@ -16,47 +16,6 @@ namespace UserInterface
         }
         public void Menu()
         {
-     /*        LineItems test=new LineItems();
-            List<LineItems>testlist=new List<LineItems>();
-            int counter=0;
-            LineItems test2=new LineItems();
-bool testing=true;
-string cancel2;
-            while(testing)
-            {
-                test=new LineItems();
-                test._product=_restBL.CreateProduct();
-                Console.WriteLine("Enter Amount store has available for "+test._product);
-                test._quantity = Convert.ToInt32(Console.ReadLine());
-                
-                testlist.Add(test); 
-                 Console.WriteLine("Would you like to cancel the item?type yes or no\n?");
-                cancel2=Console.ReadLine();
-
-             
-                    if (cancel2=="yes" || cancel2=="Yes" || cancel2=="YES")
-                    {
-                        testing=false;
-                        }
-                        else
-                        {
-
-                              testing=true;  ;
-                               
-                        }
-                
-                
-                
-                
-            } 
-            foreach(LineItems s in testlist)
-            {
-                Console.WriteLine(s._product);
-            } */
-
-
-
-            Console.WriteLine("Welcome "+ Customer.displayName);
             Console.WriteLine("Start creating a storefront full screen");
             StoreFront newstore=new StoreFront();
             Console.WriteLine("Enter name of store");
@@ -99,31 +58,69 @@ string cancel2;
 
             Console.ReadLine();
             _restBL.AddStoreFrontBL(newstore);
+ //Console.WriteLine("Enter store you want to edit");
+   //         string searchname=Console.ReadLine();
+// StoreFront test=_restBL.GetStore(searchname);//verifies it received the store
+// Console.WriteLine( "Your store is : " + test + "\n ");
+// Console.WriteLine( "----------------------------------");
+// Console.WriteLine( "Your store current products :\n ");
+// foreach(Products p in test.productslist)
+// {
+//     Console.WriteLine(p);
+// }
+// Console.WriteLine( "----------------------------------");
+// Console.WriteLine( "Your store current Line Products :\n ");
+// foreach(LineItems p in test._itemslist)
+// {
+//     Console.WriteLine(p);
+// }
+
+// Console.WriteLine( "----------------------------------");
+// Console.WriteLine( "Current list in file");
+// //_restBL.ReplaceInformation(StoreFront Store)
+// List<StoreFront> listOfstores = _restBL.GetAllStoreFrontsBL();
+// foreach(StoreFront s in listOfstores)
+// {
+//     Console.WriteLine(s);
+// }
+// Console.WriteLine( "----------------------------------");
+// listOfstores.Remove(test);
+// StoreFront test2=test;
+// Console.WriteLine( "Current list after remove");
+// foreach(StoreFront s in listOfstores)
+// {
+//     Console.WriteLine(s);
+// }
+// Console.WriteLine( "----------------------------------");
 
 
 
+            //We added the new storefront from the parameter 
+            //listOfstores.Add(p_rest);
 
 
 
+            /* Console.WriteLine("Welcome "+ Customer.displayName);
 
-
-
-
-
-
-            Console.WriteLine("\nnow begin creating an order");
-            foreach(Products p in newstore.productslist)
+            StoreFront.selectedStore=Console.ReadLine();
+            StoreFront test4=_restBL.GetStore(StoreFront.selectedStore);
+            Console.ForegroundColor = ConsoleColor.White;
+            foreach (LineItems rest in _restBL.ShowStock(test4))
             {
-                Console.WriteLine(p);
-            }
-            Orders _details=new Orders();
-            StoreFront store=_restBL.GetStore(newstore._name);
+                Console.WriteLine("====================");
+                Console.WriteLine(rest);
+                Console.WriteLine("====================");
+            } 
+            Console.WriteLine("\n\n\n");
+
+Orders _details=new Orders();
+            StoreFront store=_restBL.GetStore(StoreFront.selectedStore);
                             _details._location=store;
                     double total=0;
                     double cost=0.0;
-                    int totalitems=0;
                     int selectedamount=0;
                     double payment=0;
+                    List<string>cartResult=new List<string>();
                     bool decision=true;
                     do{
                         
@@ -133,7 +130,7 @@ string cancel2;
                     while(loop==true)
                     {
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Console.WriteLine("Enter the name of the product from the store");
+                    Console.WriteLine("Enter the name of the product from the store to add to your cart");
                     string productsname=Console.ReadLine();
                     string cancel;
                     try
@@ -141,10 +138,10 @@ string cancel2;
                          
                     _lines=_restBL.VerifyStock(productsname,store);
                     loop=false;
-                    Console.WriteLine("\nType in the line item quantity you want to buy\n");
-                    selectedamount=Convert.ToInt32(Console.ReadLine());
+                    // Console.WriteLine("\nType in the line item quantity you want to buy\n");
+                    // selectedamount=Convert.ToInt32(Console.ReadLine());
                    // _lines._product=_prods;
-                   _lines._quantity=_lines._quantity-selectedamount;
+                   //_lines._quantity=_lines._quantity-selectedamount;
                     _details.itemslist.Add(_lines);
                     }
                     catch (System.Exception)
@@ -152,7 +149,7 @@ string cancel2;
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("please try again you have entered the information wrong");
                         loop=true;
-                        Console.WriteLine("Would you like to cancel the item?type yes or no\n?");
+                        Console.WriteLine("Would you like to cancel the item? \ntype yes or no\n?");
                         cancel=Console.ReadLine();
 
              
@@ -168,7 +165,7 @@ string cancel2;
                         }
                     }//end of catch
 
-                   totalitems=totalitems+selectedamount;
+                    // totalitems=totalitems+selectedamount;
                     }//end of while
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     
@@ -191,18 +188,23 @@ string cancel2;
                         }
                     }while(decision);
 
+            double linecost=0.0;
             foreach (LineItems obj in _details.itemslist)
             {
                 Console.WriteLine(obj);
-                
+                Console.WriteLine("\nType in the line item quantity you want to buy\n");
+                selectedamount=Convert.ToInt32(Console.ReadLine());
                 cost=obj._product.PriceGrab();
                 payment=(cost * selectedamount);
-                
+                linecost=payment;
                 
                 total=total+payment;
-                Console.WriteLine("\ntotal cost for the order is: " + total + "for "+ selectedamount+" items");
-            selectedamount=0;
+                string temp;
+              //  Console.WriteLine("\ntotal cost for the order is: " + total + " for "+ selectedamount+" items");
+                temp="\n"+obj._product  + "\t $"+obj._product._price+" selecting "+ selectedamount + " =$"+ linecost;
+                cartResult.Add(temp);
                 cost=0;
+                linecost=0;
                 }
             
             
@@ -214,19 +216,33 @@ string cancel2;
                 _details._totalprice=total;
                 _restBL.AddOrdersBL(_details);
                 _details._location.orderslist.Add(_details);
-                Console.WriteLine("Receite:");
-                Console.WriteLine("Store: "+ _details._location._name + " Address: "+ _details._location._address  );
-                foreach (LineItems obj in _details.itemslist)
-            {
-                Console.WriteLine(obj._product);
+                Console.WriteLine("\nReceite:");
+                Console.WriteLine("Store: "+ _details._location._name + "\n Address: "+ _details._location._address  );
+                foreach(String s in cartResult)
+                {
+                    Console.WriteLine(s);
+                }
+            //     foreach (LineItems obj in _details.itemslist)
+            // {
+            //     Console.WriteLine(obj._product);
 
-            }
+            // }
                 
                 Console.WriteLine("Total cost $"+ _details.TotalPrice);
-                // newstore.orderslist.Add(_details);
-                // StoreFront test=newstore;
-                // _restBL.AddStoreFrontBL(test);
                 _details._totalprice=0;
+                _details.itemslist=null;
+                
+                Console.ReadLine();
+           
+
+
+
+
+
+
+
+
+
 
 
 
@@ -271,63 +287,6 @@ foreach(Products p in test2.productslist)
   
 
 
-
-
-
-
-
-
-
-
-
-
-            //List<Customer> listOfCustomers = _restBL.GetAllCustomersBL();
-
-/*             foreach (Customer rest in listOfCustomers)
-            {
-                Console.WriteLine("====================");
-                Console.WriteLine(rest._name + "\t" + rest._address + "\t" + rest._contact);
-                Console.WriteLine("====================");
-                
-            }
-
-Console.WriteLine("\n\n List of StoreFronts");
-            List<StoreFront> listOfStoreFront = _restBL.GetAllStoreFrontsBL();
-
-            foreach (StoreFront rest in listOfStoreFront)
-            {
-                Console.WriteLine("====================");
-                Console.WriteLine(rest);
-                Console.WriteLine("====================");
-            }
-Console.WriteLine("\n\n List of Products");
-            List<Products> listOfProduct = _restBL.GetAllProductsBL();
-
-            foreach (Products rest in listOfProduct)
-            {
-                Console.WriteLine("====================");
-                Console.WriteLine(rest);
-                Console.WriteLine("====================");
-            }
-            Console.WriteLine("\n\n List of LineItems");
-            List<LineItems> listOfLineItem = _restBL.GetAllLineItemsBL();
-
-            foreach (LineItems rest in listOfLineItem)
-            {
-                Console.WriteLine("====================");
-                Console.WriteLine(rest);
-                Console.WriteLine("====================");
-            }
-
-Console.WriteLine("\n\n List of Orders");
-            List<Orders> listOfOrder = _restBL.GetAllOrdersBL();
-
-            foreach (Orders rest in listOfOrder)
-            {
-                Console.WriteLine("====================");
-                Console.WriteLine(rest);
-                Console.WriteLine("====================");
-            } */
             Console.WriteLine("[x] - Go Back");
 
 
