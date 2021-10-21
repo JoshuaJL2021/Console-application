@@ -19,7 +19,6 @@ namespace BusinessLogic
         /// <returns>It returns the added customer</returns>
         Customer AddCustomersBL(Customer p_rest);
 
-        void VerifyCredentials();
 
         /// <summary>
         /// Adds a store front to the database
@@ -87,19 +86,23 @@ namespace BusinessLogic
         /// <returns>It will return a  product</returns>
         Products CreateProduct();
 
+        
         bool VerifyStore(string name);
 
         StoreFront GetStore(string name);
 
-        List<Products> ShowProducts(StoreFront chosen);
+        // List<Products> ShowProducts(StoreFront chosen);
 
         List<StoreFront> SearchStores(string name);
 
-        Products VerifyProduct(string product,StoreFront chosen);
+        // Products VerifyProduct(string product, StoreFront chosen);
 
-        LineItems VerifyStock(string product,StoreFront chosen);
+        LineItems VerifyStock(string product, StoreFront chosen);
         List<LineItems> ShowStock(StoreFront chosen);
-        
-        StoreFront ModifyStoreRecordBL(StoreFront CurrentSelection);
+
+        StoreFront ModifyStoreRecordBL(StoreFront currentSelection);
+        void VerifyCredentials(string name);
+        Customer GetCustomer(string name);
+
     }
 }

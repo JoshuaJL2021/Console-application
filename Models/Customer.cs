@@ -6,7 +6,6 @@ namespace Models
     public class Customer
     {
         //Created to print out name of corresponding customer on each menu when succesfully signed in
-        public static string displayName;
 
 
         //fields

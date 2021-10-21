@@ -71,6 +71,25 @@ namespace DataAccessLogic
         /// <returns>It will return a list of line items</returns>
         List<LineItems> GetAllLineItemsDL();
 
+        
+        bool DLVerifyStore(string name);
+
+        StoreFront DLGetStore(string name);
+
+        
+
+        List<StoreFront> DLSearchStores(string name);
+// List<Products> DLShowProducts(StoreFront chosen);
+//         Products DLVerifyProduct(string product,StoreFront chosen);
+
+        LineItems DLVerifyStock(string product,StoreFront chosen);
+        List<LineItems> DLShowStock(StoreFront chosen);
+        
+        StoreFront DLModifyStoreRecord(StoreFront currentSelection);
+
+        Customer DLGetCustomer(string name);
+
+        bool VerifyCredentials(string name);
 
 
 

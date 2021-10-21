@@ -14,8 +14,15 @@ namespace UserInterface
         { 
             Console.ForegroundColor = ConsoleColor.DarkYellow;
          Console.BackgroundColor = ConsoleColor.DarkBlue;
-
-            Console.WriteLine("Welcome " + Customer.displayName +" to the Main Menu for Lopez Shopping Center");
+            if(SingletonUser.currentuser==null)
+            {
+                Console.WriteLine("Welcome to the Main Menu for Lopez Shopping Center");
+            }
+            else
+            {
+                Console.WriteLine("Welcome " + SingletonUser.currentuser._name +" to the Main Menu for Lopez Shopping Center");
+            }
+            
             Console.WriteLine("What do you want to do?");
 
             Console.WriteLine("[1] - Go Browsing");

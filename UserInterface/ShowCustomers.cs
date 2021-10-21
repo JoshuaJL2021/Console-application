@@ -16,82 +16,137 @@ namespace UserInterface
         }
         public void Menu()
         {
-            Console.WriteLine("Start creating a storefront full screen");
-            StoreFront newstore=new StoreFront();
-            Console.WriteLine("Enter name of store");
-            newstore._name=Console.ReadLine();
-            Console.WriteLine("Enter Address of store");
-            newstore._address=Console.ReadLine();
-            Console.WriteLine("\nnow begin adding items to the stores inventory");
-            bool choice=true;
-            LineItems storeStock=new LineItems();
-            Products item=new Products();
-            while(choice)
+            Console.WriteLine("Enter store you want to edit");
+            string searchname = Console.ReadLine();
+            StoreFront test = _restBL.GetStore(searchname);//verifies it received the store
+            Console.WriteLine("Your store is : " + test + "\n ");
+            Console.WriteLine("----------------------------------");
+            Console.WriteLine("Your store current Line Products :\n ");
+            foreach (LineItems p in test._itemslist)
             {
-                storeStock=new LineItems();
-                item=_restBL.CreateProduct();
-                newstore.productslist.Add(item);
-               storeStock._product=item;
-               Console.WriteLine("Enter Amount store has available for "+storeStock._product);
-                storeStock._quantity = Convert.ToInt32(Console.ReadLine());
-           newstore._itemslist.Add(storeStock);
-                    string checkout;
-                    Console.WriteLine("\nDo you wish to add more items to check out? type yes or no\n");
-                    checkout=Console.ReadLine();
-
-             
-                    if (checkout=="yes" || checkout=="Yes" || checkout=="YES"){
-                        choice=true;
-                        }
-                        else
-                        {
-
-                                choice=false;
-                                
-                        }
-
+                Console.WriteLine(p);
             }
-            foreach(LineItems s in newstore._itemslist)
+
+            Console.WriteLine("----------------------------------");
+            Console.WriteLine("\nCurrent list in file");
+
+            List<StoreFront> listOfstores = _restBL.GetAllStoreFrontsBL();
+           // var organized=listOfstores.OrderBy(x => x._name);
+
+            foreach (StoreFront s in listOfstores)
             {
                 Console.WriteLine(s);
             }
+            Console.WriteLine("----------------------------------");
+            
+            listOfstores.RemoveAll(x => x._name == test._name);//thi
+            StoreFront test2 = test;
+            Console.WriteLine("\nEnter new address");
+            test2._address=Console.ReadLine();
 
-            Console.ReadLine();
-            _restBL.AddStoreFrontBL(newstore);
- //Console.WriteLine("Enter store you want to edit");
-   //         string searchname=Console.ReadLine();
-// StoreFront test=_restBL.GetStore(searchname);//verifies it received the store
-// Console.WriteLine( "Your store is : " + test + "\n ");
-// Console.WriteLine( "----------------------------------");
-// Console.WriteLine( "Your store current products :\n ");
-// foreach(Products p in test.productslist)
-// {
-//     Console.WriteLine(p);
-// }
-// Console.WriteLine( "----------------------------------");
-// Console.WriteLine( "Your store current Line Products :\n ");
-// foreach(LineItems p in test._itemslist)
-// {
-//     Console.WriteLine(p);
-// }
+            _restBL.ModifyStoreRecordBL(test2);
+            Console.WriteLine("\nCurrent list after remove");
+            foreach (StoreFront s in listOfstores)
+            {
+                Console.WriteLine(s);
+            }
+            Console.WriteLine("----------------------------------");
+            List<StoreFront> listOfstoresnew = _restBL.GetAllStoreFrontsBL();
+            Console.WriteLine("\nCurrent list from database now");
+            foreach (StoreFront s in listOfstoresnew)
+            {
+                Console.WriteLine(s);
+            }
+            Console.WriteLine("----------------------------------");
 
-// Console.WriteLine( "----------------------------------");
-// Console.WriteLine( "Current list in file");
-// //_restBL.ReplaceInformation(StoreFront Store)
-// List<StoreFront> listOfstores = _restBL.GetAllStoreFrontsBL();
-// foreach(StoreFront s in listOfstores)
-// {
-//     Console.WriteLine(s);
-// }
-// Console.WriteLine( "----------------------------------");
-// listOfstores.Remove(test);
-// StoreFront test2=test;
-// Console.WriteLine( "Current list after remove");
-// foreach(StoreFront s in listOfstores)
-// {
-//     Console.WriteLine(s);
-// }
-// Console.WriteLine( "----------------------------------");
+
+
+
+
+            //     Console.WriteLine("Start creating a storefront full screen");
+            //     StoreFront newstore=new StoreFront();
+            //     Console.WriteLine("Enter name of store");
+            //     newstore._name=Console.ReadLine();
+            //     Console.WriteLine("Enter Address of store");
+            //     newstore._address=Console.ReadLine();
+            //     Console.WriteLine("\nnow begin adding items to the stores inventory");
+            //     bool choice=true;
+            //     LineItems storeStock=new LineItems();
+            //     Products item=new Products();
+            //     while(choice)
+            //     {
+            //         storeStock=new LineItems();
+            //         item=_restBL.CreateProduct();
+            //         newstore.productslist.Add(item);
+            //        storeStock._product=item;
+            //        Console.WriteLine("Enter Amount store has available for "+storeStock._product);
+            //         storeStock._quantity = Convert.ToInt32(Console.ReadLine());
+            //    newstore._itemslist.Add(storeStock);
+            //             string checkout;
+            //             Console.WriteLine("\nDo you wish to add more items to check out? type yes or no\n");
+            //             checkout=Console.ReadLine();
+
+
+            //             if (checkout=="yes" || checkout=="Yes" || checkout=="YES"){
+            //                 choice=true;
+            //                 }
+            //                 else
+            //                 {
+
+            //                         choice=false;
+
+            //                 }
+
+            //     }
+            //     foreach(LineItems s in newstore._itemslist)
+            //     {
+            //         Console.WriteLine(s);
+            //     }
+
+            //     Console.ReadLine();
+            //     _restBL.AddStoreFrontBL(newstore);
+
+
+
+
+
+
+
+
+            //Console.WriteLine("Enter store you want to edit");
+            //         string searchname=Console.ReadLine();
+            // StoreFront test=_restBL.GetStore(searchname);//verifies it received the store
+            // Console.WriteLine( "Your store is : " + test + "\n ");
+            // Console.WriteLine( "----------------------------------");
+            // Console.WriteLine( "Your store current products :\n ");
+            // foreach(Products p in test.productslist)
+            // {
+            //     Console.WriteLine(p);
+            // }
+            // Console.WriteLine( "----------------------------------");
+            // Console.WriteLine( "Your store current Line Products :\n ");
+            // foreach(LineItems p in test._itemslist)
+            // {
+            //     Console.WriteLine(p);
+            // }
+
+            // Console.WriteLine( "----------------------------------");
+            // Console.WriteLine( "Current list in file");
+            // //_restBL.ReplaceInformation(StoreFront Store)
+            // List<StoreFront> listOfstores = _restBL.GetAllStoreFrontsBL();
+            // foreach(StoreFront s in listOfstores)
+            // {
+            //     Console.WriteLine(s);
+            // }
+            // Console.WriteLine( "----------------------------------");
+            // listOfstores.Remove(test);
+            // StoreFront test2=test;
+            // Console.WriteLine( "Current list after remove");
+            // foreach(StoreFront s in listOfstores)
+            // {
+            //     Console.WriteLine(s);
+            // }
+            // Console.WriteLine( "----------------------------------");
 
 
 
@@ -259,39 +314,39 @@ Orders _details=new Orders();
 
 
             //adds products to specified store
-/* StoreFront test=_restBL.GetStore(searchname);//verifies it received the store
-Console.Write(test + "\n ");
-test.productslist.Add(_restBL.CreateProduct());
-test.productslist.Add(_restBL.CreateProduct());
-foreach(Products p in test.productslist)
-{
-    Console.WriteLine(p);
-}
-Console.WriteLine("Right new name");
+            /* StoreFront test=_restBL.GetStore(searchname);//verifies it received the store
+            Console.Write(test + "\n ");
+            test.productslist.Add(_restBL.CreateProduct());
+            test.productslist.Add(_restBL.CreateProduct());
+            foreach(Products p in test.productslist)
+            {
+                Console.WriteLine(p);
+            }
+            Console.WriteLine("Right new name");
 
-test._name=Console.ReadLine();;
-_restBL.AddStoreFrontBL(test); */
+            test._name=Console.ReadLine();;
+            _restBL.AddStoreFrontBL(test); */
 
-/* StoreFront test2=_restBL.GetStore(test._name);
-Console.Write(test2 + "\n ");
-test2.productslist=_restBL.ShowProducts(test); 
-test2.productslist.Add(_restBL.CreateProduct());
-foreach(Products p in test2.productslist)
-{
-    Console.WriteLine(p);
-} */
-
-
+            /* StoreFront test2=_restBL.GetStore(test._name);
+            Console.Write(test2 + "\n ");
+            test2.productslist=_restBL.ShowProducts(test); 
+            test2.productslist.Add(_restBL.CreateProduct());
+            foreach(Products p in test2.productslist)
+            {
+                Console.WriteLine(p);
+            } */
 
 
-  
+
+
+
 
 
             Console.WriteLine("[x] - Go Back");
 
 
 
-                
+
 
 
 

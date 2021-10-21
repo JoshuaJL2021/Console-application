@@ -20,20 +20,6 @@
       "Name": "Church",
       "Address": "Vega Baja",
       "EstablishOrders": [],
-      "EstablishProducts": [
-        {
-          "Name": "Chicken",
-          "Price": 2.5
-        },
-        {
-          "Name": "Soda bottles",
-          "Price": 1.59
-        },
-        {
-          "Name": "Mash",
-          "Price": 1.25
-        }
-      ],
       "Stock": [
         {
           "ProductEstablish": {
@@ -81,20 +67,6 @@
       "Name": "Church",
       "Address": "Vega Baja",
       "EstablishOrders": [],
-      "EstablishProducts": [
-        {
-          "Name": "Chicken",
-          "Price": 2.5
-        },
-        {
-          "Name": "Soda bottles",
-          "Price": 1.59
-        },
-        {
-          "Name": "Mash",
-          "Price": 1.25
-        }
-      ],
       "Stock": [
         {
           "ProductEstablish": {
@@ -149,28 +121,6 @@
       "Name": "Walmart",
       "Address": "Homestead",
       "EstablishOrders": [],
-      "EstablishProducts": [
-        {
-          "Name": "Shampoo",
-          "Price": 2.55
-        },
-        {
-          "Name": "Matches",
-          "Price": 2.25
-        },
-        {
-          "Name": "Tshirts",
-          "Price": 4.99
-        },
-        {
-          "Name": "Socks",
-          "Price": 3
-        },
-        {
-          "Name": "Toothpaste",
-          "Price": 2.33
-        }
-      ],
       "Stock": [
         {
           "ProductEstablish": {
@@ -210,5 +160,52 @@
       ]
     },
     "TotalPrice": 12.2
+  },
+  {
+    "ItemsList": [
+      {
+        "ProductEstablish": {
+          "Name": "Mash",
+          "Price": 1.25
+        },
+        "Quantity": 40
+      },
+      {
+        "ProductEstablish": {
+          "Name": "Chicken",
+          "Price": 2.5
+        },
+        "Quantity": 50
+      }
+    ],
+    "Location": {
+      "Name": "Church",
+      "Address": "test address",
+      "EstablishOrders": [],
+      "Stock": [
+        {
+          "ProductEstablish": {
+            "Name": "Chicken",
+            "Price": 2.5
+          },
+          "Quantity": 50
+        },
+        {
+          "ProductEstablish": {
+            "Name": "Soda bottles",
+            "Price": 1.59
+          },
+          "Quantity": 20
+        },
+        {
+          "ProductEstablish": {
+            "Name": "Mash",
+            "Price": 1.25
+          },
+          "Quantity": 40
+        }
+      ]
+    },
+    "TotalPrice": 10
   }
 ]

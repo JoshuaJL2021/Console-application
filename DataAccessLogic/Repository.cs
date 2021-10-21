@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using Models;
 
@@ -189,13 +190,138 @@ namespace DataAccessLogic
             return JsonSerializer.Deserialize<List<LineItems>>(_jsonString);
         }
 
+        public bool DLVerifyStore(string name)
+        {
+            List<StoreFront> listOfStores = GetAllStoreFrontDL();
+            bool result = listOfStores.Exists(x => x._name == name);
+            return result;
+        }
+        // 
+
+        public List<StoreFront> DLSearchStores(string name)
+        {
+            List<StoreFront> listOfRestaurant = GetAllStoreFrontDL();
+
+            //Select method will give a list of boolean if the condition was true/false
+            //Where method will give the actual element itself based on some condition
+            //ToList method will convert into List that our method currently needs to return.
+            //ToLower will lowercase the string to make it not case sensitive
+            listOfRestaurant = listOfRestaurant.Where(rest => rest._name.ToLower().Contains(name.ToLower())).ToList();
+            if (listOfRestaurant.Count < 1)
+            {
+                throw new Exception("Store Not found");
+            }
+
+            return listOfRestaurant;
+        }
+
+     
+        public LineItems DLVerifyStock(string product, StoreFront chosen)
+        {
+            LineItems obj = new LineItems();
+            List<LineItems> listofline = new List<LineItems>();
+            listofline = DLShowStock(chosen);
+            bool result = listofline.Exists(x => x._product._name == product);
+            if (result == false)
+            {
+                throw new Exception("Product Not found in store");
+            }
+            obj = listofline.FirstOrDefault(rest => rest._product._name == product);
+            return obj;
+        }
+
+        public List<LineItems> DLShowStock(StoreFront chosen)
+        {
+             List<LineItems> listOfProduct = new List<LineItems>();
+            chosen = DLGetStore(chosen._name);
+            foreach (LineItems p in chosen._itemslist)
+            {
+                listOfProduct.Add(p);
+            }
+            return listOfProduct;
+        }
+public StoreFront DLGetStore(string name)
+        {
+           StoreFront obj = new StoreFront();
+            List<StoreFront> listOfStores = GetAllStoreFrontDL();
+            bool result = DLVerifyStore(name);
+            if (result == false)
+            {
+                throw new Exception("Store Not found");
+            }
+
+            obj = listOfStores.FirstOrDefault(rest => rest.Name == name);
 
 
+            return obj;
+        }
+        public StoreFront DLModifyStoreRecord(StoreFront currentSelection)
+        {
+            StoreFront test = DLGetStore(currentSelection._name);
+            List<StoreFront> listOfstores = GetAllStoreFrontDL();
+            listOfstores.RemoveAll(x => x._name == test._name);
+            listOfstores.Add(currentSelection);
+            var organized=listOfstores.OrderBy(x => x._name);
+            _jsonString = JsonSerializer.Serialize(organized, new JsonSerializerOptions{WriteIndented=true});
+
+            //This is what adds the stores.json
+            File.WriteAllText(_filepath+"Stores.json",_jsonString);
+
+            //Will return a customer object from the parameter
+            return currentSelection;
 
 
+        }
+
+        public Customer DLGetCustomer(string name)
+        {
+            Customer obj = new Customer();
+            List<Customer> listOfStores = GetAllCustomersDL();
+            bool result = VerifyCredentials(name);
+            if (result == false)
+            {
+                throw new Exception("Store Not found");
+            }
+
+            obj = listOfStores.FirstOrDefault(rest => rest._username == name);
 
 
+            return obj;
+        }
 
-
+        public bool VerifyCredentials(string name)
+        {
+            List<Customer> listOfCustomers = GetAllCustomersDL();
+            bool result = listOfCustomers.Exists(x => x._username == name);
+            if (result == false)
+            {
+                throw new Exception("User Not found");
+            }
+            return result;
+        }   
+        
+        // public Products DLVerifyProduct(string product, StoreFront chosen)
+        // {
+        //     Products obj = new Products();
+        //     List<Products> listOfProduct = new List<Products>();
+        //     listOfProduct = DLShowProducts(chosen);
+        //     bool result = listOfProduct.Exists(x => x._name == product);
+        //     if (result == false)
+        //     {
+        //         throw new Exception("Product Not found in store");
+        //     }
+        //     obj = listOfProduct.FirstOrDefault(rest => rest._name == product);
+        //     return obj;
+        // }
+//public List<Products> DLShowProducts(StoreFront chosen)
+        // {
+        //     List<Products> listOfProduct = new List<Products>();
+        //     chosen = DLGetStore(chosen._name);
+        //     // foreach (Products p in chosen.productslist)
+        //     // {
+        //     //     listOfProduct.Add(p);
+        //     // }
+        //     return listOfProduct;
+        // }
     }
 }

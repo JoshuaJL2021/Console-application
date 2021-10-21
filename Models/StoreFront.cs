@@ -31,12 +31,12 @@ public static string selectedAddress;
                 set { orderslist = value; }
                 get { return orderslist; }
             }
-        public List<Products> productslist = new List<Products>();
-        public List<Products> EstablishProducts
-            {
-                set { productslist= value; }
-                get { return productslist; }
-            }
+        // public List<Products> productslist = new List<Products>();
+        // public List<Products> EstablishProducts
+        //     {
+        //         set { productslist= value; }
+        //         get { return productslist; }
+        //     }
 
         public List<LineItems> _itemslist = new List<LineItems>();
         public List<LineItems> Stock

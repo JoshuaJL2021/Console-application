@@ -70,7 +70,7 @@ namespace UserInterface
                         page = new ProductBuyMenu(new BL(new Repository()));
                         break;
                     case MenuType.Exit:
-                        Console.WriteLine("You are exiting the application!\n Goodbye "+ Customer.displayName+" Come back soon");
+                        Console.WriteLine("You are exiting the application!\n Goodbye, Come back soon");
                         Console.WriteLine("Press Enter to continue");
                         Console.ReadLine();
                         repeat = false;

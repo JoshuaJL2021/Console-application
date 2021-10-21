@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace BusinessLogic
 {
-    public class BL :InterfaceBL
+    public class BL : InterfaceBL
     {
 
         private Repository _repo;
@@ -40,24 +40,15 @@ namespace BusinessLogic
         }
 
 
-      public void VerifyCredentials()
-        {
-            List<Customer> listOfCustomers = GetAllCustomersBL();
-            bool result=listOfCustomers.Exists(x => x._username == Customer.displayName);
-                if (result==false)
-                { throw new Exception ("User Not found");
-                }
-                string text= listOfCustomers.Find(x => x._username.Contains(Customer.displayName)).PrintName();
-                     Customer.displayName=text;
-        }
+       
 
-            /// <summary>
-            /// this method will send a customer object established in the user interface 
-            /// and the end result would be equal to a StoreFront value established in the method established in the repository class.
-            /// 
-            /// </summary>
-            /// <param name="parameterObj"></param>
-            /// <returns></returns>
+        /// <summary>
+        /// this method will send a customer object established in the user interface 
+        /// and the end result would be equal to a StoreFront value established in the method established in the repository class.
+        /// 
+        /// </summary>
+        /// <param name="parameterObj"></param>
+        /// <returns></returns>
         public StoreFront AddStoreFrontBL(StoreFront parameterObj)
         {
             return _repo.AddStoreFrontDL(parameterObj);
@@ -70,7 +61,7 @@ namespace BusinessLogic
         public List<StoreFront> GetAllStoreFrontsBL()
         {
             return _repo.GetAllStoreFrontDL();
-            
+
         }
 
         /// <summary>
@@ -92,7 +83,7 @@ namespace BusinessLogic
         /// <returns> all the information in the specified json file established in the method .</returns>
         public List<Products> GetAllProductsBL()
         {
-           return _repo.GetAllProductsDL();
+            return _repo.GetAllProductsDL();
         }
         /// <summary>
         /// this method will send a customer object established in the user interface 
@@ -112,7 +103,7 @@ namespace BusinessLogic
         /// <returns> all the information in the specified json file established in the method .</returns>
         public List<Orders> GetAllOrdersBL()
         {
-           return _repo.GetAllOrdersDL();
+            return _repo.GetAllOrdersDL();
         }
 
         /// <summary>
@@ -123,27 +114,27 @@ namespace BusinessLogic
         /// <param name="parameterObj"></param>
         /// <returns></returns>
         public LineItems AddLineItemsBL(LineItems parameterObj)
-                {
-                    return _repo.AddLineItemsDL(parameterObj);
-                }
-                
+        {
+            return _repo.AddLineItemsDL(parameterObj);
+        }
+
         /// <summary>
         /// this method returns a list established for Customer objects which is received from a repository method 
         /// </summary>
         /// <returns> all the information in the specified json file established in the method .</returns>
         public List<LineItems> GetAllLineItemsBL()
         {
-           return _repo.GetAllLineItemsDL();
+            return _repo.GetAllLineItemsDL();
         }
-        
+
 
         public Products CreateProduct()
-        { 
-            Products obj= new Products();
+        {
+            Products obj = new Products();
             Console.WriteLine("Type in the line item/ product name\n");
-             obj._name =Console.ReadLine();
-             Console.WriteLine("\nType in the line item/ products price\n");
-              obj._price=Convert.ToDouble(Console.ReadLine());
+            obj._name = Console.ReadLine();
+            Console.WriteLine("\nType in the line item/ products price\n");
+            obj._price = Convert.ToDouble(Console.ReadLine());
 
             return obj;
 
@@ -151,98 +142,56 @@ namespace BusinessLogic
 
         public bool VerifyStore(string name)
         {
-            List<StoreFront> listOfStores = GetAllStoreFrontsBL();
-            bool result=listOfStores.Exists(x => x._name == name);
-                return result;
-               
+            
+            return _repo.DLVerifyStore(name);
+
         }
 
         public StoreFront GetStore(string name)
         {
-            StoreFront obj=new StoreFront();
-            List<StoreFront> listOfStores = GetAllStoreFrontsBL();
-                bool result=VerifyStore(name);
-                if (result==false)
-                {
-                     throw new Exception ("Store Not found");
-                }
-
-               obj=listOfStores.FirstOrDefault(rest => rest.Name == name);
-
-
-            return obj;
+            return _repo.DLGetStore(name);
         }
 
-        public List<Products> ShowProducts(StoreFront chosen)
-        {
-            List<Products> listOfProduct = new List<Products>();
-            chosen=GetStore(chosen._name);
-            foreach(Products p in chosen.productslist)
-            {
-                listOfProduct.Add(p);
-            }
-            return listOfProduct;
-        }
+       
 
         public List<StoreFront> SearchStores(string name)
         {
-            List<StoreFront> listOfRestaurant = _repo.GetAllStoreFrontDL();
-            
-            //Select method will give a list of boolean if the condition was true/false
-            //Where method will give the actual element itself based on some condition
-            //ToList method will convert into List that our method currently needs to return.
-            //ToLower will lowercase the string to make it not case sensitive
-            listOfRestaurant=listOfRestaurant.Where(rest => rest._name.ToLower().Contains(name.ToLower())).ToList();
-            if(listOfRestaurant.Count<1)
-            { 
-                throw new Exception ("Store Not found");
-            }
-
-            return listOfRestaurant;
+            return _repo.DLSearchStores(name);
         }
 
-        public Products VerifyProduct(string product,StoreFront chosen)
-        {
-            Products obj = new Products();
-            List<Products> listOfProduct = new List<Products>();
-            listOfProduct=ShowProducts(chosen);
-            bool result=listOfProduct.Exists(x => x._name == product);
-           if (result==false)
-                {
-                     throw new Exception ("Product Not found in store");
-                }
-                obj=listOfProduct.FirstOrDefault(rest => rest._name == product);
-            return obj;
-        }
 
         public LineItems VerifyStock(string product, StoreFront chosen)
         {
-            LineItems obj=new LineItems();
-            List<LineItems> listofline = new List<LineItems>();
-            listofline=ShowStock(chosen);
-            bool result=listofline.Exists(x => x._product._name == product);
-           if (result==false)
-                {
-                     throw new Exception ("Product Not found in store");
-                }
-                obj=listofline.FirstOrDefault(rest => rest._product._name == product);
-            return obj;
+           return _repo.DLVerifyStock(product,chosen);
         }
 
         public List<LineItems> ShowStock(StoreFront chosen)
         {
-            List<LineItems> listOfProduct = new List<LineItems>();
-            chosen=GetStore(chosen._name);
-            foreach(LineItems p in chosen._itemslist)
-            {
-                listOfProduct.Add(p);
-            }
-            return listOfProduct;
+            return _repo.DLShowStock(chosen);
         }
 
-        public StoreFront ModifyStoreRecordBL(StoreFront CurrentSelection)
+        public StoreFront ModifyStoreRecordBL(StoreFront currentSelection)
         {
-            throw new NotImplementedException();
+            return _repo.DLModifyStoreRecord(currentSelection);
+        
+        } 
+        public void VerifyCredentials(String name)
+        {
+            _repo.VerifyCredentials(name);
+            
         }
+        public Customer GetCustomer(string name)
+        {
+            return _repo.DLGetCustomer(name);
+        }
+        
+        // public List<Products> ShowProducts(StoreFront chosen)
+        // {
+        //     return _repo.DLShowProducts(chosen);
+        // }
+        // public Products VerifyProduct(string product, StoreFront chosen)
+        // {
+        //     return _repo.DLVerifyProduct(product,chosen);
+        // }
     }
 }
