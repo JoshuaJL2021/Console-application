@@ -1,5 +1,33 @@
 [
   {
+    "Name": "Church",
+    "Address": "Mayaguez",
+    "EstablishOrders": [],
+    "Stock": [
+      {
+        "ProductEstablish": {
+          "Name": "Chicken",
+          "Price": 2.5
+        },
+        "Quantity": 78
+      },
+      {
+        "ProductEstablish": {
+          "Name": "Mash",
+          "Price": 1.25
+        },
+        "Quantity": 50
+      },
+      {
+        "ProductEstablish": {
+          "Name": "Soda bottles",
+          "Price": 1.59
+        },
+        "Quantity": 45
+      }
+    ]
+  },
+  {
     "Name": "Walmart",
     "Address": "San Juan",
     "EstablishOrders": [],
@@ -27,45 +55,17 @@
       },
       {
         "ProductEstablish": {
-          "Name": "Socks",
-          "Price": 3
-        },
-        "Quantity": 25
-      },
-      {
-        "ProductEstablish": {
           "Name": "Toothpaste",
           "Price": 2.33
         },
-        "Quantity": 100
-      }
-    ]
-  },
-  {
-    "Name": "Church",
-    "Address": "Mayaguez",
-    "EstablishOrders": [],
-    "Stock": [
-      {
-        "ProductEstablish": {
-          "Name": "Chicken",
-          "Price": 2.5
-        },
-        "Quantity": 50
+        "Quantity": 200
       },
       {
         "ProductEstablish": {
-          "Name": "Soda bottles",
-          "Price": 1.59
+          "Name": "Socks",
+          "Price": 3
         },
-        "Quantity": 20
-      },
-      {
-        "ProductEstablish": {
-          "Name": "Mash",
-          "Price": 1.25
-        },
-        "Quantity": 40
+        "Quantity": 28
       }
     ]
   }

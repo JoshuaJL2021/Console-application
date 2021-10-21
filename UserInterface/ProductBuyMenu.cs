@@ -30,9 +30,9 @@ namespace UserInterface
             } 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("[3] - Begin Purchase");
-            Console.WriteLine("[2] - texas (goes to products display");
-            Console.WriteLine("[1] - canada (goes to order history");
-            Console.WriteLine("[0] - exit");
+            Console.WriteLine("[2] - goes to products display");
+            Console.WriteLine("[1] - goes to exit");
+            Console.WriteLine("[0] - goes to login");
       
         }
 
@@ -67,7 +67,17 @@ namespace UserInterface
                          
                     _lines=_restBL.VerifyStock(productsname,store);
                     loop=false;
+                    if(_details.itemslist.Exists(x => x._product._name ==_lines._product._name))
+                    {
+                        Console.WriteLine("This item is already in the cart");
+
+                    }
+                    else
+                    {
+                        
                     _details.itemslist.Add(_lines);
+                    }
+                    
                     }
                     catch (System.Exception)
                     {

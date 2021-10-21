@@ -28,6 +28,7 @@ namespace UserInterface
             Console.WriteLine("[1] - Go Browsing");
             Console.WriteLine("[0] - Exit the store");
             Console.WriteLine("[x] - Test Functions");
+            Console.WriteLine("[a] - replenish inventory");
 
           
 
@@ -38,6 +39,9 @@ namespace UserInterface
             string userChoice = Console.ReadLine();
             switch (userChoice)
             {
+                case "A":
+                case "a":
+                return MenuType.ReplenishMenu;
                 case "x":
                 return MenuType.FunctionMenu;
                 case "1":

@@ -261,6 +261,8 @@ public StoreFront DLGetStore(string name)
             List<StoreFront> listOfstores = GetAllStoreFrontDL();
             listOfstores.RemoveAll(x => x._name == test._name);
             listOfstores.Add(currentSelection);
+            var stockitems=test._itemslist.OrderBy(x => x._product._name);
+            test._itemslist=stockitems.ToList<LineItems>();
             var organized=listOfstores.OrderBy(x => x._name);
             _jsonString = JsonSerializer.Serialize(organized, new JsonSerializerOptions{WriteIndented=true});
 

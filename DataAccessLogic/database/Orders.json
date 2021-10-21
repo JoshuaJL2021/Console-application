@@ -207,5 +207,52 @@
       ]
     },
     "TotalPrice": 10
+  },
+  {
+    "ItemsList": [
+      {
+        "ProductEstablish": {
+          "Name": "Soda bottles",
+          "Price": 1.59
+        },
+        "Quantity": 45
+      },
+      {
+        "ProductEstablish": {
+          "Name": "Chicken",
+          "Price": 2.5
+        },
+        "Quantity": 78
+      }
+    ],
+    "Location": {
+      "Name": "Church",
+      "Address": "Mayaguez",
+      "EstablishOrders": [],
+      "Stock": [
+        {
+          "ProductEstablish": {
+            "Name": "Chicken",
+            "Price": 2.5
+          },
+          "Quantity": 78
+        },
+        {
+          "ProductEstablish": {
+            "Name": "Mash",
+            "Price": 1.25
+          },
+          "Quantity": 50
+        },
+        {
+          "ProductEstablish": {
+            "Name": "Soda bottles",
+            "Price": 1.59
+          },
+          "Quantity": 45
+        }
+      ]
+    },
+    "TotalPrice": 9.77
   }
 ]
