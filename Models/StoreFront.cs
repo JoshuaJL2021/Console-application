@@ -31,16 +31,23 @@ public static string selectedAddress;
                 set { orderslist = value; }
                 get { return orderslist; }
             }
-        public List<Products> productslist = new List<Products>();
-        public List<Products> EstablishProducts
+        // public List<Products> productslist = new List<Products>();
+        // public List<Products> EstablishProducts
+        //     {
+        //         set { productslist= value; }
+        //         get { return productslist; }
+        //     }
+
+        public List<LineItems> _itemslist = new List<LineItems>();
+        public List<LineItems> Stock
             {
-                set { productslist= value; }
-                get { return productslist; }
+                set { _itemslist= value; }
+                get { return _itemslist; }
             }
         
         public override string ToString()
         {
-            return $"Store Name: {_name}\nAddress: {_address}\n";
+            return $"Store Name : {_name}\nAddress: {_address}\n";
         }
 
         

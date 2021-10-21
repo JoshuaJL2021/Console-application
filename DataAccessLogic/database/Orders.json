@@ -5,7 +5,7 @@
       "Name": "testname",
       "Address": "hc pr",
       "EstablishOrders": [],
-      "EstablishProducts": []
+      "Stock": []
     },
     "TotalPrice": 43
   },
@@ -15,7 +15,7 @@
       "Name": "test name",
       "Address": "test spot",
       "EstablishOrders": [],
-      "EstablishProducts": []
+      "Stock": []
     },
     "TotalPrice": 54.8
   },
@@ -25,7 +25,7 @@
       "Name": "xyz",
       "Address": "test",
       "EstablishOrders": [],
-      "EstablishProducts": []
+      "Stock": []
     },
     "TotalPrice": 6
   },
@@ -68,29 +68,12 @@
             "Name": "place",
             "Address": "pr",
             "EstablishOrders": [],
-            "EstablishProducts": []
+            "Stock": []
           },
           "TotalPrice": 9.29
         }
       ],
-      "EstablishProducts": [
-        {
-          "Name": "Pizza",
-          "Price": 5.69
-        },
-        {
-          "Name": "Burgers",
-          "Price": 3.6
-        },
-        {
-          "Name": "rice",
-          "Price": 2
-        },
-        {
-          "Name": "beans",
-          "Price": 2
-        }
-      ]
+      "Stock": []
     },
     "TotalPrice": 10
   },
@@ -126,30 +109,60 @@
             "Name": "place",
             "Address": "pr",
             "EstablishOrders": [],
-            "EstablishProducts": []
+            "Stock": []
           },
           "TotalPrice": 9.29
         }
       ],
-      "EstablishProducts": [
+      "Stock": []
+    },
+    "TotalPrice": 14
+  },
+  {
+    "ItemsList": [
+      {
+        "ProductEstablish": {
+          "Name": "Mash",
+          "Price": 1.25
+        },
+        "Quantity": 40
+      },
+      {
+        "ProductEstablish": {
+          "Name": "Chicken",
+          "Price": 2.5
+        },
+        "Quantity": 50
+      }
+    ],
+    "Location": {
+      "Name": "Church",
+      "Address": "Mayaguez",
+      "EstablishOrders": [],
+      "Stock": [
         {
-          "Name": "Pizza",
-          "Price": 5.69
+          "ProductEstablish": {
+            "Name": "Chicken",
+            "Price": 2.5
+          },
+          "Quantity": 50
         },
         {
-          "Name": "Burgers",
-          "Price": 3.6
+          "ProductEstablish": {
+            "Name": "Soda bottles",
+            "Price": 1.59
+          },
+          "Quantity": 20
         },
         {
-          "Name": "rice",
-          "Price": 2
-        },
-        {
-          "Name": "beans",
-          "Price": 2
+          "ProductEstablish": {
+            "Name": "Mash",
+            "Price": 1.25
+          },
+          "Quantity": 40
         }
       ]
     },
-    "TotalPrice": 14
+    "TotalPrice": 10
   }
 ]

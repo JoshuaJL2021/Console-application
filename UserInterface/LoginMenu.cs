@@ -15,7 +15,7 @@ namespace UserInterface
         public void Menu()
         {
         Console.ForegroundColor = ConsoleColor.DarkYellow;
-            if(Customer.displayName==null)
+            if(SingletonUser.currentuser==null)
             {
                Console.WriteLine("Welcome to the Shopping Menu!");
                Console.ForegroundColor = ConsoleColor.Green;
@@ -27,7 +27,7 @@ namespace UserInterface
             }
             else
             {
-                
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("Welcome to the Shopping Menu!");
             Console.ForegroundColor = ConsoleColor.Green;
 
@@ -47,7 +47,7 @@ namespace UserInterface
         public MenuType YourChoice()
         {
             string userChoice = Console.ReadLine();
-           if(Customer.displayName==null)
+           if(SingletonUser.currentuser==null)
            {
                 switch (userChoice)
             {
@@ -60,12 +60,12 @@ namespace UserInterface
         
             
                 Console.WriteLine("Enter username");
-                Customer.displayName=Console.ReadLine();
+                string name=Console.ReadLine();
                 try
                 {
 
-                     _restBL.VerifyCredentials();
-                     Console.WriteLine("Welcome Back " + Customer.displayName + "\n enter to continue");
+                     SingletonUser.currentuser=_restBL.GetCustomer(name);
+                     Console.WriteLine("Welcome Back " + SingletonUser.currentuser._name + "\nenter to continue");
                      
                      Console.ReadLine();
                 }
@@ -73,7 +73,7 @@ namespace UserInterface
                 {
                     Console.ForegroundColor = ConsoleColor.White;
         
-                    Customer.displayName=null;
+                    SingletonUser.currentuser=null;
                     Console.WriteLine("User was unfortunately not found");
                 Console.WriteLine("You will be sent to the Login Menu again");
                 Console.WriteLine("Press Enter to continue");
@@ -112,21 +112,21 @@ namespace UserInterface
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Enter username");
                 
-                Customer.displayName=Console.ReadLine();
+                string name=Console.ReadLine();
 
                 try
                 {
-                    List<Customer> listOfCustomers = _restBL.GetAllCustomersBL();
+                    //List<Customer> listOfCustomers = _restBL.GetAllCustomersBL();
                     
-                     _restBL.VerifyCredentials();
-                     Console.WriteLine("Welcome Back " + Customer.displayName + "\n enter to continue");
+                    SingletonUser.currentuser=_restBL.GetCustomer(name);
+                     Console.WriteLine("Welcome Back " + SingletonUser.currentuser._name + "\n enter to continue");
                      
                      Console.ReadLine();
                 }
                 catch (System.Exception)
                 {
                     Console.ForegroundColor = ConsoleColor.White;
-                    Customer.displayName="";
+                    SingletonUser.currentuser=null;
                     Console.WriteLine("User was unfortunately not found");
                 Console.WriteLine("You will be sent to the Login Menu again");
                 Console.WriteLine("Press Enter to continue");

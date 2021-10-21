@@ -21,10 +21,10 @@ namespace UserInterface
             Console.WriteLine("\n\nList of Products in " + StoreFront.selectedStore);
             StoreFront test=_restBL.GetStore(StoreFront.selectedStore);
             Console.ForegroundColor = ConsoleColor.White;
-            foreach (Products rest in _restBL.ShowProducts(test))
+            foreach (LineItems rest in _restBL.ShowStock(test))
             {
                 Console.WriteLine("====================");
-                Console.WriteLine(rest);
+                Console.WriteLine(rest._product);
                 Console.WriteLine("====================");
             } 
             

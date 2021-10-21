@@ -16,7 +16,7 @@ namespace UserInterface
         public void Menu()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("Welcome to the store select menu " + Customer.displayName.ToUpper() );
+            Console.WriteLine("Welcome to the store select menu " + SingletonUser.currentuser._name.ToUpper() );
             Console.WriteLine("Please select the store");
 
             Console.WriteLine("\n\n List of StoreFronts");
@@ -42,10 +42,10 @@ namespace UserInterface
                 }
 
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("[3] - Search the store (goes to products display");
+            Console.WriteLine("[3] - Search the store ");
             Console.WriteLine("[2] - Select the store (goes to products display");
             Console.WriteLine("[1] - goes to login");
-            Console.WriteLine("[0] - exit to main menu");
+            Console.WriteLine("[0] - exit to Main menu");
       
         }
 
@@ -71,6 +71,7 @@ namespace UserInterface
 
                     }
                     searchresult=test;
+                    Console.WriteLine("Click Enter to see results");
                      Console.ReadLine();
                 }
                 catch (System.Exception)
@@ -121,9 +122,9 @@ namespace UserInterface
                 
                     return MenuType.ProductDisplayMenu;
                 case "1":
-                    return MenuType.MainMenu;
-                case "0":
                     return MenuType.LoginMenu;
+                case "0":
+                    return MenuType.MainMenu;
                 default:
                     Console.WriteLine("Please input a valid response!");
                     Console.WriteLine("Press Enter to continue");

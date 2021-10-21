@@ -8,8 +8,7 @@ namespace UserInterface
     {
         static void Main(string[] args)
         {
-            
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+         Console.ForegroundColor = ConsoleColor.DarkYellow;
          Console.BackgroundColor = ConsoleColor.DarkBlue;
             //This is a boolean that has either a false or true value
             //I will use this to stop the while loop
@@ -64,14 +63,14 @@ namespace UserInterface
                         page = new StoreMenu(new BL(new Repository()));
                         break;
                         case MenuType.ProductDisplayMenu:
-                        
+                        Console.Clear();
                         page = new ProductMenuDisplay(new BL(new Repository()));
                         break;
                         case MenuType.ProductBuyMenu:
                         page = new ProductBuyMenu(new BL(new Repository()));
                         break;
                     case MenuType.Exit:
-                        Console.WriteLine("You are exiting the application!\n Goodbye "+ Customer.displayName+" Come back soon");
+                        Console.WriteLine("You are exiting the application!\n Goodbye, Come back soon");
                         Console.WriteLine("Press Enter to continue");
                         Console.ReadLine();
                         repeat = false;

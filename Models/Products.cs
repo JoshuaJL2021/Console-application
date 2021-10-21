@@ -10,7 +10,7 @@ namespace Models
             get { return _name; }
             set { _name = value; }
         }
-        
+
 
         public double _price;
         public double Price
@@ -18,14 +18,15 @@ namespace Models
             get { return _price; }
             set { _price = value; }
         }
-        
-public override string ToString()
+
+        public override string ToString()
         {
             return $"Product Name: {_name}\n Price $: {_price}\n";
         }
-public double PriceGrab(){
-    return _price;
-}
-        
+        public double PriceGrab()
+        {
+            return _price;
+        }
+
     }
 }
