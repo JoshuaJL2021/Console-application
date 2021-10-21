@@ -15,6 +15,7 @@
         ProductDisplayMenu,
         ProductBuyMenu,
         ReplenishMenu,
+        MyProfile,
 
         ConfirmPurchaseMenu,
 

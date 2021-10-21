@@ -17,10 +17,12 @@ namespace UserInterface
             if(SingletonUser.currentuser==null)
             {
                 Console.WriteLine("Welcome to the Main Menu for Lopez Shopping Center");
+                
             }
             else
             {
                 Console.WriteLine("Welcome " + SingletonUser.currentuser._name +" to the Main Menu for Lopez Shopping Center");
+            Console.WriteLine("[b] - MyProfile");
             }
             
             Console.WriteLine("What do you want to do?");
@@ -29,7 +31,7 @@ namespace UserInterface
             Console.WriteLine("[0] - Exit the store");
             Console.WriteLine("[x] - Test Functions");
             Console.WriteLine("[a] - replenish inventory");
-
+            
           
 
         }
@@ -39,6 +41,10 @@ namespace UserInterface
             string userChoice = Console.ReadLine();
             switch (userChoice)
             {
+                case "B":
+                case "b":
+                return MenuType.MyProfile;
+
                 case "A":
                 case "a":
                 return MenuType.ReplenishMenu;

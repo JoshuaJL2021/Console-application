@@ -261,13 +261,28 @@ public StoreFront DLGetStore(string name)
             List<StoreFront> listOfstores = GetAllStoreFrontDL();
             listOfstores.RemoveAll(x => x._name == test._name);
             listOfstores.Add(currentSelection);
-            var stockitems=test._itemslist.OrderBy(x => x._product._name);
-            test._itemslist=stockitems.ToList<LineItems>();
             var organized=listOfstores.OrderBy(x => x._name);
             _jsonString = JsonSerializer.Serialize(organized, new JsonSerializerOptions{WriteIndented=true});
 
             //This is what adds the stores.json
             File.WriteAllText(_filepath+"Stores.json",_jsonString);
+
+            //Will return a customer object from the parameter
+            return currentSelection;
+
+
+        }
+        public Customer DLModifyCustomerRecord(Customer currentSelection)
+        {
+            Customer test = DLGetCustomer(currentSelection._username);
+            List<Customer> listOfstores = GetAllCustomersDL();
+            listOfstores.RemoveAll(x => x._username == test._username);
+            listOfstores.Add(currentSelection);
+            var organized=listOfstores.OrderBy(x => x._name);
+            _jsonString = JsonSerializer.Serialize(organized, new JsonSerializerOptions{WriteIndented=true});
+
+            //This is what adds the stores.json
+            File.WriteAllText(_filepath+"Customers.json",_jsonString);
 
             //Will return a customer object from the parameter
             return currentSelection;

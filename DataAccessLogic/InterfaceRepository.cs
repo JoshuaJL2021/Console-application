@@ -91,6 +91,7 @@ namespace DataAccessLogic
 
         bool VerifyCredentials(string name);
 
+        Customer DLModifyCustomerRecord(Customer currentSelection);
 
 
     }

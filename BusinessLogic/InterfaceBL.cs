@@ -103,6 +103,7 @@ namespace BusinessLogic
         StoreFront ModifyStoreRecordBL(StoreFront currentSelection);
         void VerifyCredentials(string name);
         Customer GetCustomer(string name);
+        Customer ModifyCustomerRecord(Customer currentSelection);
 
     }
 }
