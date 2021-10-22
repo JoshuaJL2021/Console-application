@@ -1,12 +1,107 @@
 [
   {
-    "CustomerName": "Joshua Lopez",
-    "Address": "Aguada PR",
-    "Contact": "9393662180",
-    "MyOrders": [],
-    "Age": 26,
-    "UserName": "Jjstark",
-    "Password": "Password"
+    "CustomerName": "Bryan",
+    "Address": "Danielson",
+    "Contact": "Aewemail",
+    "MyOrders": [
+      {
+        "ItemsList": [
+          {
+            "ProductEstablish": {
+              "Name": "Chicken",
+              "Price": 2.5
+            },
+            "Quantity": 50
+          },
+          {
+            "ProductEstablish": {
+              "Name": "Mash",
+              "Price": 1.25
+            },
+            "Quantity": 40
+          }
+        ],
+        "Location": {
+          "Name": "Church",
+          "Address": "Mayaguez",
+          "EstablishOrders": [],
+          "Stock": [
+            {
+              "ProductEstablish": {
+                "Name": "Chicken",
+                "Price": 2.5
+              },
+              "Quantity": 50
+            },
+            {
+              "ProductEstablish": {
+                "Name": "Soda bottles",
+                "Price": 1.59
+              },
+              "Quantity": 20
+            },
+            {
+              "ProductEstablish": {
+                "Name": "Mash",
+                "Price": 1.25
+              },
+              "Quantity": 40
+            }
+          ]
+        },
+        "TotalPrice": 7.5
+      },
+      {
+        "ItemsList": [
+          {
+            "ProductEstablish": {
+              "Name": "Soda bottles",
+              "Price": 1.59
+            },
+            "Quantity": 20
+          },
+          {
+            "ProductEstablish": {
+              "Name": "Mash",
+              "Price": 1.25
+            },
+            "Quantity": 40
+          }
+        ],
+        "Location": {
+          "Name": "Church",
+          "Address": "Mayaguez",
+          "EstablishOrders": [],
+          "Stock": [
+            {
+              "ProductEstablish": {
+                "Name": "Chicken",
+                "Price": 2.5
+              },
+              "Quantity": 50
+            },
+            {
+              "ProductEstablish": {
+                "Name": "Soda bottles",
+                "Price": 1.59
+              },
+              "Quantity": 20
+            },
+            {
+              "ProductEstablish": {
+                "Name": "Mash",
+                "Price": 1.25
+              },
+              "Quantity": 40
+            }
+          ]
+        },
+        "TotalPrice": 4.43
+      }
+    ],
+    "Age": 0,
+    "UserName": "DBry",
+    "Password": "brie"
   },
   {
     "CustomerName": "John",
@@ -18,12 +113,45 @@
     "Password": "Peace"
   },
   {
-    "CustomerName": "Bryan",
-    "Address": "Danielson",
-    "Contact": "Aewemail",
-    "MyOrders": [],
-    "Age": 0,
-    "UserName": "DBry",
-    "Password": "brie"
+    "CustomerName": "Joshua Lopez",
+    "Address": "Aguada PR",
+    "Contact": "9393662180",
+    "MyOrders": [
+      {
+        "ItemsList": null,
+        "Location": {
+          "Name": "Church",
+          "Address": "Mayaguez",
+          "EstablishOrders": [],
+          "Stock": [
+            {
+              "ProductEstablish": {
+                "Name": "Chicken",
+                "Price": 2.5
+              },
+              "Quantity": 50
+            },
+            {
+              "ProductEstablish": {
+                "Name": "Soda bottles",
+                "Price": 1.59
+              },
+              "Quantity": 20
+            },
+            {
+              "ProductEstablish": {
+                "Name": "Mash",
+                "Price": 1.25
+              },
+              "Quantity": 40
+            }
+          ]
+        },
+        "TotalPrice": 0
+      }
+    ],
+    "Age": 26,
+    "UserName": "Jjstark",
+    "Password": "Password"
   }
 ]

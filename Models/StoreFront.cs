@@ -47,7 +47,7 @@ public static string selectedAddress;
         
         public override string ToString()
         {
-            return $"Store Name : {_name}\tAddress: {_address}\n";
+            return $"Store Name : {_name}\tAddress: {_address}";
         }
 
         

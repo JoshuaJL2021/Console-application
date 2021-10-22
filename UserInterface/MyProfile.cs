@@ -18,7 +18,7 @@ namespace UserInterface
         public void Menu()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("Adding a new Restaurant");
+            Console.WriteLine("Editing current user");
             Console.WriteLine("Name - " + SingletonUser.currentuser._name);
             Console.WriteLine("Address - "+ SingletonUser.currentuser._address);
             Console.WriteLine("Contact - "+ SingletonUser.currentuser._contact);

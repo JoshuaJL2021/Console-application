@@ -154,11 +154,10 @@ namespace UserInterface
                     if (confirmation == "yes" || confirmation == "Yes" || confirmation == "YES")
                     {
                         _details._totalprice = total;
-                        // Orders testing = _details;
-                        // Console.WriteLine("++++++++++++++++++" + testing._totalprice);
+                        
                         _restBL.AddOrdersBL(_details);
                         SingletonUser.currentuser.customerOrders.Add(_details);
-                        // _details._location.orderslist.Add(_details);
+                        
                         Console.WriteLine("\nReceite:");
                         Console.WriteLine("Store: " + _details._location._name + "\n Address: " + _details._location._address);
                         foreach (String s in cartResult)
@@ -168,13 +167,13 @@ namespace UserInterface
 
                         Console.WriteLine("Total cost $" + _details.TotalPrice);
 
-                        _details.itemslist = null;
-                        _details._totalprice = 0;
                         Console.ReadLine();
                         return MenuType.ProductBuyMenu;
                     }
                     else
                     {
+                        _details.itemslist = null;
+                        _details._totalprice = 0;
                         return MenuType.ProductBuyMenu;
                     }
 

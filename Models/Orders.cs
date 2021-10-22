@@ -30,7 +30,7 @@ namespace Models
 
 public override string ToString()
         {
-            string text=$"Order is for : {_location}\tTotal Price :${_totalprice}\n";
+            string text=$"Order is from location : {_location}\tTotal Price :${_totalprice}";
             return text;
         }
         
