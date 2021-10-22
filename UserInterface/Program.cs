@@ -69,6 +69,12 @@ namespace UserInterface
                         case MenuType.ProductBuyMenu:
                         page = new ProductBuyMenu(new BL(new Repository()));
                         break;
+                        case MenuType.ReplenishMenu:
+                        page = new ReplenishInventoryMenu(new BL(new Repository()));
+                        break;
+                        case MenuType.MyProfile:
+                        page = new MyProfile(new BL(new Repository()));
+                        break;
                     case MenuType.Exit:
                         Console.WriteLine("You are exiting the application!\n Goodbye, Come back soon");
                         Console.WriteLine("Press Enter to continue");

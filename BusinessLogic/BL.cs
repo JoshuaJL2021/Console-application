@@ -175,6 +175,12 @@ namespace BusinessLogic
             return _repo.DLModifyStoreRecord(currentSelection);
         
         } 
+
+        public Customer ModifyCustomerRecord(Customer currentSelection)
+        {
+            return _repo.DLModifyCustomerRecord(currentSelection);
+        
+        } 
         public void VerifyCredentials(String name)
         {
             _repo.VerifyCredentials(name);
