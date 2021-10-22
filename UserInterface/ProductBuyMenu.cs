@@ -147,16 +147,17 @@ namespace UserInterface
 
 
 
-                    _details._totalprice = total;
+                    
                     string confirmation;
                     Console.WriteLine("Confirm Purchase enter yes or no\nif you enter no you must restart the order");
                     confirmation = Console.ReadLine();
                     if (confirmation == "yes" || confirmation == "Yes" || confirmation == "YES")
                     {
-                        Orders testing = _details;
-                        Console.WriteLine("++++++++++++++++++" + testing._totalprice);
+                        _details._totalprice = total;
+                        // Orders testing = _details;
+                        // Console.WriteLine("++++++++++++++++++" + testing._totalprice);
                         _restBL.AddOrdersBL(_details);
-                        SingletonUser.currentuser.customerOrders.Add(testing);
+                        SingletonUser.currentuser.customerOrders.Add(_details);
                         // _details._location.orderslist.Add(_details);
                         Console.WriteLine("\nReceite:");
                         Console.WriteLine("Store: " + _details._location._name + "\n Address: " + _details._location._address);
