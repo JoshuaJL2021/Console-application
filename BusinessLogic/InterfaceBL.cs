@@ -35,20 +35,6 @@ namespace BusinessLogic
         List<StoreFront> GetAllStoreFrontsBL();
 
 
-        /// <summary>
-        /// Adds a customer to the product
-        /// </summary>
-        /// <param name="p_rest">This is the product we are adding</param>
-        /// <returns>It returns the product customer</returns>
-        Products AddProductsBL(Products p_rest);
-
-
-        /// <summary>
-        /// This will return a list of products stored in the database
-        /// It will also capitalize every name of the product
-        /// </summary>
-        /// <returns>It will return a list of product</returns>
-        List<Products> GetAllProductsBL();
 
         /// <summary>
         /// Adds a customer to the orders
@@ -65,19 +51,7 @@ namespace BusinessLogic
         /// <returns>It will return a list of product</returns>
         List<Orders> GetAllOrdersBL();
 
-        /// <summary>
-        /// This will return a list of orders stored in the database
-        /// It will also capitalize every name of the product
-        /// </summary>
-        /// <returns>It will return a list of product</returns>
-        LineItems AddLineItemsBL(LineItems p_rest);
-
-        /// <summary>
-        /// This will return a list of line items stored in the database
-        /// It will also capitalize every name of the product
-        /// </summary>
-        /// <returns>It will return a list of Line Items</returns>
-        List<LineItems> GetAllLineItemsBL();
+        
 
         /// <summary>
         /// This creates a Product and returns the value 
@@ -86,23 +60,80 @@ namespace BusinessLogic
         /// <returns>It will return a  product</returns>
         Products CreateProduct();
 
-        
+        /// <summary>
+        /// Verifies in the database if the entered store name and address is located in the database
+        /// used for the search and modify store front methods.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>true or false </returns>
         bool VerifyStore(string name);
 
+        /// <summary>
+        /// Verifies in the database if the entered store name and address is located in the database
+        /// and retrieves the found store or an exception
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>returns the retrieved store information from the db </returns>
         StoreFront GetStore(string name);
 
-        // List<Products> ShowProducts(StoreFront chosen);
-
+        /// <summary>
+        /// Verifies in the database if the entered store name and address is located in the database
+        /// and retrieves the found store or an exception
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>returns the retrieved store information from the db </returns>
         List<StoreFront> SearchStores(string name);
 
-        // Products VerifyProduct(string product, StoreFront chosen);
 
+        /// <summary>
+        /// This method verifies if the stock is in the specified store as well
+        /// </summary>
+        /// <param name="product"></param>
+        /// <param name="chosen"></param>
+        /// <returns>returns the line item from the db that matches</returns>
         LineItems VerifyStock(string product, StoreFront chosen);
+
+        /// <summary>
+        /// This method receives all the line items from the specified store
+        /// </summary>
+        /// <param name="chosen"></param>
+        /// <returns></returns>
         List<LineItems> ShowStock(StoreFront chosen);
 
+        /// <summary>
+        /// this method takes the selected store , erases the previous information from the json file
+        /// enters the new information into the json file
+        /// also organizes in alphabetical order.
+        /// </summary>
+        /// <param name="currentSelection"></param>
+        /// <returns></returns>
         StoreFront ModifyStoreRecordBL(StoreFront currentSelection);
+
+        /// <summary>
+        /// Verifies in the database if the entered client user name is located in the database
+        /// used for the search and modify store front methods.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>verifies if there is an exception </returns>
         void VerifyCredentials(string name);
+
+        /// <summary>
+        /// Verifies in the database if the entered information is located in the database
+        /// and retrieves the found Customer or an exception
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>returns the retrieved Customer information from the db </returns>
         Customer GetCustomer(string name);
+
+        /// <summary>
+        /// this method takes the Customer  , erases the previous information from the json file
+        /// that matches the user information
+        /// enters the new information into the json file
+        /// also organizes in alphabetical order.
+        /// </summary>
+        /// <param name="currentSelection"></param>
+        /// <returns></returns>
+
         Customer ModifyCustomerRecord(Customer currentSelection);
 
     }
