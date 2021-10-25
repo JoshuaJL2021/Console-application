@@ -101,7 +101,7 @@ namespace UserInterface
                 try
                 {
 
-                     _restBL.GetStore(storename);
+                     SingletonUser.currentstore=_restBL.GetStore(storename);
                      Console.WriteLine("Welcome to " + StoreFront.selectedStore + "\n enter to continue");
                      
                      Console.ReadLine();
@@ -109,7 +109,7 @@ namespace UserInterface
                 catch (System.Exception)
                 {
                     Console.ForegroundColor = ConsoleColor.White;
-        
+                    SingletonUser.currentstore=null;
                     StoreFront.selectedStore=null;
                     StoreFront.selectedAddress=null;
                     Console.WriteLine("Store was unfortunately not found please enter name as shown in list above");

@@ -7,7 +7,7 @@ namespace UserInterface
 {
     public class MyProfile : IMenu
     {
-        private static Customer _rest = new Customer();
+        private static Customer _rest = SingletonUser.currentuser;
         private InterfaceBL _restBL;
          
         public MyProfile(InterfaceBL p_restBL)
@@ -17,6 +17,7 @@ namespace UserInterface
 
         public void Menu()
         {
+           
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("Editing current user");
             Console.WriteLine("Name - " + SingletonUser.currentuser._name);
@@ -28,13 +29,13 @@ namespace UserInterface
                 Console.WriteLine(i);
             }
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("[x] - Add Customer");
-            Console.WriteLine("[1] - Input value for Name");
-            Console.WriteLine("[2] - Input value for Address");
-            Console.WriteLine("[3] - Input value for contact");
-            Console.WriteLine("[4] - Input value for age");
-            Console.WriteLine("[5] - Enter username");
-            Console.WriteLine("[6] - Enter password");
+            Console.WriteLine("[x] - Save Changes");
+            Console.WriteLine("[1] - Change value for Name");
+            Console.WriteLine("[2] - Change value for Address");
+            Console.WriteLine("[3] - Change value for contact");
+            Console.WriteLine("[4] - Change value for age");
+            Console.WriteLine("[5] - Change username");
+            Console.WriteLine("[6] - Change password");
             Console.WriteLine("[0] - Go Back");
 
 
@@ -49,35 +50,36 @@ namespace UserInterface
             switch (userChoice)
             {
                 case "x":
-                    //Add implementation to talk to the repository method to add a restaurant
+                    
                     _restBL.ModifyCustomerRecord(SingletonUser.currentuser);
                    
                     return MenuType.LoginMenu;
                 case "1":
                     Console.WriteLine("Type in the value for the Name");
                     _rest._name = Console.ReadLine();
-                    return MenuType.AddCustomers;
+                    return MenuType.MyProfile;
                 case "2":
                     Console.WriteLine("Type in the value for the Address");
                     _rest._address = Console.ReadLine();
-                    return MenuType.AddCustomers;
+                 
+                    return MenuType.MyProfile;
                 case "3":
                     Console.WriteLine("Type in the value for the Contact");
                     _rest._contact = Console.ReadLine();
-                    return MenuType.AddCustomers;
+                    return MenuType.MyProfile;
                     case "4":
                     Console.WriteLine("Type in the value for the age");
                     _rest._age = Convert.ToInt32(Console.ReadLine());
-                    return MenuType.AddLineItem;
+                    return MenuType.MyProfile;
                     case "5":
                     Console.WriteLine("Type in the value for the username");
                     _rest._username = Console.ReadLine();
-                    return MenuType.AddCustomers;
+                    return MenuType.MyProfile;
                     case "6":
                     Console.WriteLine("Type in the value for the password");
                     
                     _rest._password = Console.ReadLine();
-                    return MenuType.AddCustomers;
+                    return MenuType.MyProfile;
                     
                 case "0":
                     return MenuType.MainMenu;

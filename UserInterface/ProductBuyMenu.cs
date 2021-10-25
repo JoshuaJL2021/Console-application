@@ -16,11 +16,11 @@ namespace UserInterface
         public void Menu()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("Welcome to the " + StoreFront.selectedStore + " products menu");
+            Console.WriteLine("\nWelcome to the " + SingletonUser.currentstore._name + " products menu");
             Console.WriteLine("below is a list of products");
 
-            Console.WriteLine("\n\nList of Products in " + StoreFront.selectedStore);
-            StoreFront test = _restBL.GetStore(StoreFront.selectedStore);
+            Console.WriteLine("\n\nList of Products in " + SingletonUser.currentstore);
+            StoreFront test = _restBL.GetStore(SingletonUser.currentstore._name);
             Console.ForegroundColor = ConsoleColor.White;
             foreach (LineItems rest in _restBL.ShowStock(test))
             {
@@ -43,7 +43,7 @@ namespace UserInterface
             {
                 case "3":
                     Orders _details = new Orders();
-                    StoreFront store = _restBL.GetStore(StoreFront.selectedStore);
+                    StoreFront store = _restBL.GetStore(SingletonUser.currentstore._name);
                     _details._location = store;
                     double total = 0;
                     double cost = 0.0;
@@ -103,7 +103,6 @@ namespace UserInterface
                         }//end of while
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
 
-                        //
 
 
                         string checkout;
@@ -129,6 +128,7 @@ namespace UserInterface
                         Console.WriteLine(obj);
                         Console.WriteLine("\nType in the line item quantity you want to buy\n");
                         selectedamount = Convert.ToInt32(Console.ReadLine());
+                        obj._quantity = obj._quantity - selectedamount;
                         cost = obj._product.PriceGrab();
                         payment = (cost * selectedamount);
                         linecost = payment;
@@ -139,6 +139,8 @@ namespace UserInterface
                         cartResult.Add(temp);
                         cost = 0;
                         linecost = 0;
+                        SingletonUser.currentstore._itemslist.RemoveAll(x => x._product._name == obj._product._name);
+                        SingletonUser.currentstore._itemslist.Add(obj);
                     }
 
 
@@ -147,17 +149,18 @@ namespace UserInterface
 
 
 
-                    
+
                     string confirmation;
                     Console.WriteLine("Confirm Purchase enter yes or no\nif you enter no you must restart the order");
                     confirmation = Console.ReadLine();
                     if (confirmation == "yes" || confirmation == "Yes" || confirmation == "YES")
                     {
                         _details._totalprice = total;
-                        
+
                         _restBL.AddOrdersBL(_details);
                         SingletonUser.currentuser.customerOrders.Add(_details);
-                        
+                        _restBL.ModifyCustomerRecord(SingletonUser.currentuser);
+                        _restBL.ModifyStoreRecordBL(SingletonUser.currentstore);
                         Console.WriteLine("\nReceite:");
                         Console.WriteLine("Store: " + _details._location._name + "\n Address: " + _details._location._address);
                         foreach (String s in cartResult)

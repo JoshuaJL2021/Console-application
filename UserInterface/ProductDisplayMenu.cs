@@ -15,11 +15,11 @@ namespace UserInterface
         public void Menu()
         {
            Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("Welcome to the " + StoreFront.selectedStore + " products menu");
+            Console.WriteLine("Welcome to the " + SingletonUser.currentstore._name + " products menu");
             Console.WriteLine("below is a list of products");
 
-            Console.WriteLine("\n\nList of Products in " + StoreFront.selectedStore);
-            StoreFront test=_restBL.GetStore(StoreFront.selectedStore);
+            Console.WriteLine("\n\nList of Products in " + SingletonUser.currentstore);
+            StoreFront test=_restBL.GetStore(SingletonUser.currentstore._name);
             Console.ForegroundColor = ConsoleColor.White;
             foreach (LineItems rest in _restBL.ShowStock(test))
             {
