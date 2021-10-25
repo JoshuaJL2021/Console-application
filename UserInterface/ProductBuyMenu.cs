@@ -128,6 +128,7 @@ namespace UserInterface
                         Console.WriteLine(obj);
                         Console.WriteLine("\nType in the line item quantity you want to buy\n");
                         selectedamount = Convert.ToInt32(Console.ReadLine());
+                        obj._quantity = obj._quantity - selectedamount;
                         cost = obj._product.PriceGrab();
                         payment = (cost * selectedamount);
                         linecost = payment;
@@ -138,6 +139,8 @@ namespace UserInterface
                         cartResult.Add(temp);
                         cost = 0;
                         linecost = 0;
+                        SingletonUser.currentstore._itemslist.RemoveAll(x => x._product._name == obj._product._name);
+                        SingletonUser.currentstore._itemslist.Add(obj);
                     }
 
 
@@ -157,6 +160,7 @@ namespace UserInterface
                         _restBL.AddOrdersBL(_details);
                         SingletonUser.currentuser.customerOrders.Add(_details);
                         _restBL.ModifyCustomerRecord(SingletonUser.currentuser);
+                        _restBL.ModifyStoreRecordBL(SingletonUser.currentstore);
                         Console.WriteLine("\nReceite:");
                         Console.WriteLine("Store: " + _details._location._name + "\n Address: " + _details._location._address);
                         foreach (String s in cartResult)
