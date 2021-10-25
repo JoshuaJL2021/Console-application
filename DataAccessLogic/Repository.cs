@@ -96,33 +96,7 @@ namespace DataAccessLogic
             /// </summary>
             /// <param name="p_rest"></param>
             /// <returns></returns>
-            public Products AddProductsDL(Products p_rest)
-        {
-             //The reason why we need to grab all the information back is because File.WriteAllText method will overwrite anything inside the JSON file
-            List<Products> listOfProducts = GetAllProductsDL();
-
-            //We added the new Products from the parameter 
-            listOfProducts.Add(p_rest);
-
-            _jsonString = JsonSerializer.Serialize(listOfProducts, new JsonSerializerOptions{WriteIndented=true});
-
-            //This is what adds the Products.json
-            File.WriteAllText(_filepath+"Products.json",_jsonString);
-
-            //Will return a Products object from the parameter
-            return p_rest;
-        }
-
-        public List<Products> GetAllProductsDL()
-        {
-             _jsonString = File.ReadAllText(_filepath+"Products.json");
-
-            //Since we are converting from a string to an object that C# understands we need to deserialize the string to object.
-            //Json Serializer has a static method called Deserialize and thats why you don't need to instantiate it
-            //The parameter of the Deserialize method needs a string variable that holds the json file
-            return JsonSerializer.Deserialize<List<Products>>(_jsonString);
-        }
-
+            
         /// <summary>
         /// Add orders method which begins with receiving the whole list in the db into the created list.
         /// adds the received parameter into the list at the end.
@@ -163,32 +137,7 @@ namespace DataAccessLogic
             /// </summary>
             /// <param name="p_rest"></param>
             /// <returns></returns>
-        public LineItems AddLineItemsDL(LineItems p_rest)
-        {
-             //The reason why we need to grab all the information back is because File.WriteAllText method will overwrite anything inside the JSON file
-            List<LineItems> listOfLineItems = GetAllLineItemsDL();
 
-            //We added the new LineItems from the parameter 
-            listOfLineItems.Add(p_rest);
-
-            _jsonString = JsonSerializer.Serialize(listOfLineItems, new JsonSerializerOptions{WriteIndented=true});
-
-            //This is what adds the LineItems.json
-            File.WriteAllText(_filepath+"LineItems.json",_jsonString);
-
-            //Will return a LineItems object from the parameter
-            return p_rest;
-        }
-
-        public List<LineItems> GetAllLineItemsDL()
-        {
-             _jsonString = File.ReadAllText(_filepath+"LineItems.json");
-
-            //Since we are converting from a string to an object that C# understands we need to deserialize the string to object.
-            //Json Serializer has a static method called Deserialize and thats why you don't need to instantiate it
-            //The parameter of the Deserialize method needs a string variable that holds the json file
-            return JsonSerializer.Deserialize<List<LineItems>>(_jsonString);
-        }
 
         public bool DLVerifyStore(string name)
         {
@@ -317,28 +266,5 @@ public StoreFront DLGetStore(string name)
             return result;
         }   
         
-        // public Products DLVerifyProduct(string product, StoreFront chosen)
-        // {
-        //     Products obj = new Products();
-        //     List<Products> listOfProduct = new List<Products>();
-        //     listOfProduct = DLShowProducts(chosen);
-        //     bool result = listOfProduct.Exists(x => x._name == product);
-        //     if (result == false)
-        //     {
-        //         throw new Exception("Product Not found in store");
-        //     }
-        //     obj = listOfProduct.FirstOrDefault(rest => rest._name == product);
-        //     return obj;
-        // }
-//public List<Products> DLShowProducts(StoreFront chosen)
-        // {
-        //     List<Products> listOfProduct = new List<Products>();
-        //     chosen = DLGetStore(chosen._name);
-        //     // foreach (Products p in chosen.productslist)
-        //     // {
-        //     //     listOfProduct.Add(p);
-        //     // }
-        //     return listOfProduct;
-        // }
     }
 }

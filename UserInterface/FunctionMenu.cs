@@ -17,9 +17,7 @@ namespace UserInterface
 
             Console.WriteLine("[1] - Go Browsing");
             Console.WriteLine("[0] - Exit the store");
-            Console.WriteLine("[a] add LineItems");
           Console.WriteLine("[b] add Orders");
-          Console.WriteLine("[c] add Products");
           Console.WriteLine("[d] add StoreFront");
             Console.WriteLine("[e] - show me info");
 
@@ -35,12 +33,10 @@ namespace UserInterface
                     
                 case "0":
                     return MenuType.Exit;
-                    case "a":
-                    return MenuType.AddLineItem;
+    
                     case "b":
                     return MenuType.AddOrder;
-                    case "c":
-                    return MenuType.AddProduct;
+                    
                     case "d":
                     return MenuType.AddStore;
                 case "e":

@@ -25,72 +25,93 @@ namespace DataAccessLogic
         /// <param name="p_rest">This is the store front we will be adding to the database</param>
         /// <returns>It will just return the store front we are adding</returns>
         StoreFront AddStoreFrontDL(StoreFront p_rest);
-        
+
         /// <summary>
         /// This will return a list of store front stored in the database
         /// </summary>
         /// <returns>It will return a list of store front</returns>
         List<StoreFront> GetAllStoreFrontDL();
-       
-       /// <summary>
+
+        /// <summary>
         /// It will add a store front in our database
         /// </summary>
         /// <param name="p_rest">This is the store front we will be adding to the database</param>
         /// <returns>It will just return the store front we are adding</returns>
-        Products AddProductsDL(Products p_rest);
-        
-        /// <summary>
-        /// This will return a list of product stored in the database
-        /// </summary>
-        /// <returns>It will return a list of product</returns>
-        List<Products> GetAllProductsDL();
-
-        /// <summary>
-        /// It will add a orders in our database
-        /// </summary>
-        /// <param name="p_rest">This is the orders we will be adding to the database</param>
-        /// <returns>It will just return the orders we are adding</returns>
         Orders AddOrdersDL(Orders p_rest);
-        
+
         /// <summary>
         /// This will return a list of orders stored in the database
         /// </summary>
         /// <returns>It will return a list of orders</returns>
         List<Orders> GetAllOrdersDL();
 
-        /// <summary>
-        /// It will add a LineItems in our database
-        /// </summary>
-        /// <param name="p_rest">This is the lineitems we will be adding to the database</param>
-        /// <returns>It will just return the lineitems we are adding</returns>
-        LineItems AddLineItemsDL(LineItems p_rest);
-        
-        /// <summary>
-        /// This will return a list of line items stored in the database
-        /// </summary>
-        /// <returns>It will return a list of line items</returns>
-        List<LineItems> GetAllLineItemsDL();
 
-        
+        /// <summary>
+        /// Verifies in the database if the entered store name and address is located in the database
+        /// used for the search and modify store front methods.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>true or false </returns>
         bool DLVerifyStore(string name);
-
+        /// <summary>
+        /// Verifies in the database if the entered store name and address is located in the database
+        /// and retrieves the found store or an exception
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>returns the retrieved store information from the db </returns>
         StoreFront DLGetStore(string name);
-
-        
-
+        /// <summary>
+        /// Verifies in the database if the entered store name and address is located in the database
+        /// and retrieves the found store or an exception
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>returns the retrieved store information from the db </returns>
         List<StoreFront> DLSearchStores(string name);
-// List<Products> DLShowProducts(StoreFront chosen);
-//         Products DLVerifyProduct(string product,StoreFront chosen);
-
-        LineItems DLVerifyStock(string product,StoreFront chosen);
+        /// <summary>
+        /// This method verifies if the stock is in the specified store as well
+        /// </summary>
+        /// <param name="product"></param>
+        /// <param name="chosen"></param>
+        /// <returns>returns the line item from the db that matches</returns>
+        LineItems DLVerifyStock(string product, StoreFront chosen);
+        /// <summary>
+        /// This method receives all the line items from the specified store
+        /// </summary>
+        /// <param name="chosen"></param>
+        /// <returns></returns>
         List<LineItems> DLShowStock(StoreFront chosen);
-        
-        StoreFront DLModifyStoreRecord(StoreFront currentSelection);
 
+        /// <summary>
+        /// this method takes the selected store , erases the previous information from the json file
+        /// enters the new information into the json file
+        /// also organizes in alphabetical order.
+        /// </summary>
+        /// <param name="currentSelection"></param>
+        /// <returns></returns>
+        StoreFront DLModifyStoreRecord(StoreFront currentSelection);
+        /// <summary>
+        /// Verifies in the database if the entered client user name is located in the database
+        /// used for the search and modify Customer front methods.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>returns true or false </returns>
+        bool VerifyCredentials(string name);
+        /// <summary>
+        /// Verifies in the database if the entered information is located in the database
+        /// and retrieves the found store or an exception
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>returns the retrieved Customer information from the db </returns>
         Customer DLGetCustomer(string name);
 
-        bool VerifyCredentials(string name);
-
+        /// <summary>
+        /// this method takes the Customer  , erases the previous information from the json file
+        /// that matches the user information
+        /// enters the new information into the json file
+        /// also organizes in alphabetical order.
+        /// </summary>
+        /// <param name="currentSelection"></param>
+        /// <returns></returns>
         Customer DLModifyCustomerRecord(Customer currentSelection);
 
 

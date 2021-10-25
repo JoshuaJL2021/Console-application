@@ -87,15 +87,11 @@ namespace UserInterface
 
 
 
-                        case MenuType.AddLineItem:
-                        page = new AddLineItem(new BL(new Repository()));
-                        break;
+                       
                         case MenuType.AddOrder:
                         page = new AddOrders(new BL(new Repository()));
                         break;
-                        case MenuType.AddProduct:
-                        page = new AddProduct(new BL(new Repository()));
-                        break;
+                        
                         case MenuType.AddStore:
                         page = new AddStoreFront(new BL(new Repository()));
                         break;
