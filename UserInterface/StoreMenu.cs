@@ -1,3 +1,4 @@
+
 using System;
 using BusinessLogic;
 using Models;
@@ -7,9 +8,9 @@ namespace UserInterface
 {
     public class StoreMenu : IMenu
     {
-        private BL _restBL;
+        private InterfaceBL _restBL;
         public static List<StoreFront> searchresult;
-        public StoreMenu(BL p_restBL)
+        public StoreMenu(InterfaceBL p_restBL)
         {
             _restBL = p_restBL;
         }

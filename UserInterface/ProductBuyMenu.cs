@@ -8,8 +8,8 @@ namespace UserInterface
     public class ProductBuyMenu : IMenu
     {
         private static Orders _details = new Orders();
-        private BL _restBL;
-        public ProductBuyMenu(BL p_restBL)
+        private InterfaceBL _restBL;
+        public ProductBuyMenu(InterfaceBL p_restBL)
         {
             _restBL = p_restBL;
         }

@@ -18,7 +18,6 @@ namespace DataAccessLogic.Entities
         }
 
         public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<Store> Stores { get; set; }
         public virtual DbSet<Test> Tests { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -29,9 +28,7 @@ namespace DataAccessLogic.Entities
             {
                 entity.ToTable("Customer");
 
-                entity.Property(e => e.CustomerId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("CustomerID");
+                entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
 
                 entity.Property(e => e.Email)
                     .IsRequired()
@@ -59,25 +56,6 @@ namespace DataAccessLogic.Entities
                     .IsUnicode(false);
 
                 entity.Property(e => e.UserName)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false);
-            });
-
-            modelBuilder.Entity<Store>(entity =>
-            {
-                entity.ToTable("Store");
-
-                entity.Property(e => e.StoreId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("StoreID");
-
-                entity.Property(e => e.Location)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.StoreName)
                     .IsRequired()
                     .HasMaxLength(255)
                     .IsUnicode(false);
