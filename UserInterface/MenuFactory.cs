@@ -6,7 +6,7 @@ namespace UserInterface
     /// <summary>
     /// Designed to create menu objects
     /// </summary>
-    public class MenuFactory : IFactory
+    public class MenuFactory : IFactoryPattern
     {
         public IMenu GetMenu(MenuType p_menu)
         {
