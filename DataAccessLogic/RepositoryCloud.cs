@@ -36,6 +36,22 @@ namespace DataAccessLogic
             return p_rest;
         }
 
+        public List<Customer> GetAllCustomersDL()
+        {
+            return _context.Customers.Select(rest => 
+                new Model.Customer()
+                {
+                    
+                    Id = rest.CustomerId,
+                    CustomerName = rest.FirstName,
+                    Contact = rest.Email,
+                    UserName = rest.UserName,
+                    Password=rest.Password,
+                    Position=rest.Position
+                }
+            ).ToList();
+        }
+
         public Orders AddOrdersDL(Orders p_rest)
         {
             throw new System.NotImplementedException();
@@ -88,21 +104,6 @@ namespace DataAccessLogic
             throw new System.NotImplementedException();
         }
 
-        public List<Customer> GetAllCustomersDL()
-        {
-            return _context.Customers.Select(rest => 
-                new Model.Customer()
-                {
-                    
-                    Id = rest.CustomerId,
-                    CustomerName = rest.FirstName,
-                    Contact = rest.Email,
-                    UserName = rest.UserName,
-                    Password=rest.Password,
-                    Position=rest.Position
-                }
-            ).ToList();
-        }
 
         public List<Orders> GetAllOrdersDL()
         {
