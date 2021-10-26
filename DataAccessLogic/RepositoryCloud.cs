@@ -24,8 +24,9 @@ namespace DataAccessLogic
                     Email = p_rest._contact,
                     UserName = p_rest._username,
                     Password=p_rest._password,
-                    Position=p_rest.Position,
+                    Category=p_rest.Position,
                     Age=p_rest._age,
+                    Address=p_rest._address
 
                 }
             );
@@ -34,22 +35,6 @@ namespace DataAccessLogic
             _context.SaveChanges();
 
             return p_rest;
-        }
-
-        public List<Customer> GetAllCustomersDL()
-        {
-            return _context.Customers.Select(rest => 
-                new Model.Customer()
-                {
-                    
-                    Id = rest.CustomerId,
-                    CustomerName = rest.FirstName,
-                    Contact = rest.Email,
-                    UserName = rest.UserName,
-                    Password=rest.Password,
-                    Position=rest.Position
-                }
-            ).ToList();
         }
 
         public Orders AddOrdersDL(Orders p_rest)
@@ -104,6 +89,22 @@ namespace DataAccessLogic
             throw new System.NotImplementedException();
         }
 
+        public List<Customer> GetAllCustomersDL()
+        {
+            return _context.Customers.Select(rest => 
+                new Model.Customer()
+                {
+                    
+                    Id = rest.CustomerId,
+                    CustomerName = rest.FirstName,
+                    Contact = rest.Email,
+                    UserName = rest.UserName,
+                    Password=rest.Password,
+                    Position=rest.Category,
+                    Address=rest.Address,
+                }
+            ).ToList();
+        }
 
         public List<Orders> GetAllOrdersDL()
         {
