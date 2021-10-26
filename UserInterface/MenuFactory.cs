@@ -1,6 +1,9 @@
 using BusinessLogic;
 using DataAccessLogic;
-
+using System.IO;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using DataAccessLogic.Entities;
 namespace UserInterface
 {
     /// <summary>
@@ -10,8 +13,18 @@ namespace UserInterface
     {
         public IMenu GetMenu(MenuType p_menu)
         {
+            var configuration = new ConfigurationBuilder() //Configurationbuilder is the class that came from the Microsoft.extensions.configuration package
+                .SetBasePath(Directory.GetCurrentDirectory()) //Gets the current directory of the RRUI file path
+                .AddJsonFile("appsetting.json") //Adds the appsetting.json file in our RRUI
+                .Build(); //Builds our configuration
+
+            DbContextOptions<P0DatabaseContext> options = new DbContextOptionsBuilder<P0DatabaseContext>()
+                .UseSqlServer(configuration.GetConnectionString("Reference2DB"))
+                .Options;
             switch (p_menu)
             {
+                
+
                case MenuType.MainMenu:
                         //If user choosed to go back to the MainMenu
                         //page will start pointing to a MainMenu object instead
@@ -25,10 +38,10 @@ namespace UserInterface
                         return new LoginMenu(new BL(new Repository()));
                         
                     case MenuType.ShowCustomers:
-                        return new ShowCustomers(new BL(new Repository()));
+                        return new ShowCustomers(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
                      
                     case MenuType.AddCustomers:
-                        return new AddCustomerMenu(new BL(new Repository()));
+                        return new AddCustomerMenu(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
                   
                         case MenuType.loginconfirm:
                         return new LoginConfirmationMenu();

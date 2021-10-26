@@ -9,13 +9,13 @@ namespace BusinessLogic
     public class BL : InterfaceBL
     {
 
-        private Repository _repo;
+        private InterfaceRepository _repo;
         /// <summary>
         /// We are defining the dependencies this class needs to operate
         /// We do it this way because we can easily switch out which implementation details we will be using
         /// </summary>
         /// <param name="p_repo"></param>
-        public BL(Repository p_repo)
+        public BL(InterfaceRepository p_repo)
         {
             _repo = p_repo;
         }

@@ -17,7 +17,8 @@ namespace Models
 
         public string _username;
         public string _password;
-
+        public int Id { get; set; }
+        public string Position { get; set; }
         //constructors
         public Customer(string name, string address, string contact,string user, string pass){
 

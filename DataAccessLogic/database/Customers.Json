@@ -1,5 +1,7 @@
 [
   {
+    "Id": 0,
+    "Position": null,
     "CustomerName": "Bryan",
     "Address": "Danielson",
     "Contact": "Briebella@gmail",
@@ -291,6 +293,8 @@
     "Password": "brie"
   },
   {
+    "Id": 0,
+    "Position": null,
     "CustomerName": "John",
     "Address": "west",
     "Contact": "Cenaemail",
@@ -300,6 +304,8 @@
     "Password": "Peace"
   },
   {
+    "Id": 0,
+    "Position": null,
     "CustomerName": "Joshua Lopez",
     "Address": "Aguada PR",
     "Contact": "9393662180",
@@ -495,5 +501,27 @@
     "Age": 26,
     "UserName": "Jjstark",
     "Password": "Password"
+  },
+  {
+    "Id": 0,
+    "Position": null,
+    "CustomerName": "Elon Musk",
+    "Address": "testaddres",
+    "Contact": "Musk@test.com",
+    "MyOrders": [],
+    "Age": 45,
+    "UserName": "MuskTes",
+    "Password": "Tesla"
+  },
+  {
+    "Id": 0,
+    "Position": "Client",
+    "CustomerName": "Testerman",
+    "Address": "testingadd",
+    "Contact": "Test@gmail.com",
+    "MyOrders": [],
+    "Age": 420,
+    "UserName": "TestUser",
+    "Password": "testingpass"
   }
 ]

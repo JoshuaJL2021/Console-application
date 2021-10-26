@@ -40,11 +40,6 @@ namespace DataAccessLogic.Entities
                     .HasMaxLength(255)
                     .IsUnicode(false);
 
-                entity.Property(e => e.LastName)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false);
-
                 entity.Property(e => e.Password)
                     .IsRequired()
                     .HasMaxLength(255)
