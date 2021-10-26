@@ -8,7 +8,7 @@ namespace Models
     public class Orders
     {
         public List<LineItems> itemslist = new List<LineItems>();
-        public List<LineItems> ItemsList
+        public List<LineItems> PurchaseList
             {
                 set { itemslist = value; }
                 get { return itemslist; }

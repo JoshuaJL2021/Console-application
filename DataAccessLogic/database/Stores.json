@@ -6,17 +6,17 @@
     "Stock": [
       {
         "ProductEstablish": {
-          "Name": "Chicken",
-          "Price": 2.5
-        },
-        "Quantity": 50
-      },
-      {
-        "ProductEstablish": {
           "Name": "Soda bottles",
           "Price": 1.59
         },
-        "Quantity": 20
+        "Quantity": 17
+      },
+      {
+        "ProductEstablish": {
+          "Name": "Chicken",
+          "Price": 2.5
+        },
+        "Quantity": 43
       },
       {
         "ProductEstablish": {
@@ -58,14 +58,14 @@
           "Name": "Toothpaste",
           "Price": 2.33
         },
-        "Quantity": 112
+        "Quantity": 10
       },
       {
         "ProductEstablish": {
           "Name": "Socks",
           "Price": 3
         },
-        "Quantity": 15
+        "Quantity": 2
       }
     ]
   }
