@@ -13,17 +13,17 @@
       },
       {
         "ProductEstablish": {
-          "Name": "Mash",
-          "Price": 1.25
-        },
-        "Quantity": 46
-      },
-      {
-        "ProductEstablish": {
           "Name": "Chicken",
           "Price": 2.5
         },
-        "Quantity": 70
+        "Quantity": 68
+      },
+      {
+        "ProductEstablish": {
+          "Name": "Mash",
+          "Price": 1.25
+        },
+        "Quantity": 42
       }
     ]
   },

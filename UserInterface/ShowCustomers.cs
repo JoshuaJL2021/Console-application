@@ -9,8 +9,8 @@ namespace UserInterface
 {
     public class ShowCustomers : IMenu
     {
-        private BL _restBL;
-        public ShowCustomers(BL p_restBL)
+        private InterfaceBL _restBL;
+        public ShowCustomers(InterfaceBL p_restBL)
         {
             _restBL = p_restBL;
         }

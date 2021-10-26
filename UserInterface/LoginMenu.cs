@@ -6,8 +6,8 @@ namespace UserInterface
 {
     public class LoginMenu : IMenu
     {
-        private BL _restBL;
-        public LoginMenu(BL p_restBL)
+        private InterfaceBL _restBL;
+        public LoginMenu(InterfaceBL p_restBL)
         {
             _restBL = p_restBL;
         }

@@ -7,7 +7,7 @@ namespace UserInterface
 {
     public class ProductMenuDisplay : IMenu
     {
-        private BL _restBL;
+        private InterfaceBL _restBL;
         public ProductMenuDisplay(BL p_restBL)
         {
             _restBL = p_restBL;
