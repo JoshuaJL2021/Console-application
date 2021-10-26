@@ -1,6 +1,6 @@
 namespace UserInterface
 {
-    public interface IFactory
+    public interface IFactoryPattern
     {
         /// <summary>
         /// Will give a derived/child class from IMenu interface based on the enum MenuType
