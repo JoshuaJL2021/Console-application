@@ -1,5 +1,5 @@
-obj
-vs
-.vscode
 bin
+obj
+.vs
+.vscode
 appsetting.json
