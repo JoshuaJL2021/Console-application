@@ -18,6 +18,7 @@ namespace UserInterface
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
              Console.BackgroundColor = ConsoleColor.DarkBlue;
+             _rest=_restBL.CreateProduct();
             Console.WriteLine("Adding a new Product");
             Console.WriteLine("Name - " + _rest._name);
             Console.WriteLine("Price - "+ _rest._price);
@@ -34,7 +35,7 @@ namespace UserInterface
             {
                 case "4":
                     //Add implementation to talk to the repository method to add a restaurant
-                    _restBL.AddProductsBL(_rest);
+                  //  _restBL.AddProductsBL(_rest);
                    
                    return MenuType.loginconfirm;
                 case "3":
@@ -43,7 +44,7 @@ namespace UserInterface
                     return MenuType.AddProduct;
                 case "2":
                     Console.WriteLine("Type in the value for the product");
-                    _rest._price = Convert.ToDouble(Console.ReadLine());
+                    _rest._price = Convert.ToDecimal(Console.ReadLine());
                     return MenuType.AddProduct;
                 
                 case "0":

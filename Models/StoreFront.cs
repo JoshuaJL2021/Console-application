@@ -10,6 +10,7 @@ namespace Models
 
 public static string selectedStore;
 public static string selectedAddress;
+public int Id { get; set; }
         public string _name;
         public string Name
         {
@@ -24,6 +25,7 @@ public static string selectedAddress;
             get { return _address; }
             set { _address = value; }
         }
+        
 
         public List<Orders> orderslist= new List<Orders>();
         public List<Orders> EstablishOrders
@@ -47,7 +49,7 @@ public static string selectedAddress;
         
         public override string ToString()
         {
-            return $"Store Name : {_name}\tAddress: {_address}";
+            return $"Id: {Id}\tStore Name : {_name}\tAddress: {_address}";
         }
 
         

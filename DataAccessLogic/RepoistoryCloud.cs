@@ -47,7 +47,21 @@ namespace DataAccessLogic
 
         public StoreFront AddStoreFrontDL(StoreFront p_rest)
         {
-            throw new System.NotImplementedException();
+             _context.StoreFronts.Add
+            (
+                new Entity.StoreFront()
+                {
+                    StoreName = p_rest._name,
+                    Location = p_rest._address
+                    
+
+                }
+            );
+
+            //This method will save the changes made to the database
+            _context.SaveChanges();
+
+            return p_rest;
         }
 
 
@@ -64,7 +78,19 @@ namespace DataAccessLogic
 
         public List<StoreFront> DLSearchStores(string name)
         {
-            throw new System.NotImplementedException();
+            List<StoreFront> listOfRestaurant = GetAllStoreFrontDL();
+
+            //Select method will give a list of boolean if the condition was true/false
+            //Where method will give the actual element itself based on some condition
+            //ToList method will convert into List that our method currently needs to return.
+            //ToLower will lowercase the string to make it not case sensitive
+            listOfRestaurant = listOfRestaurant.Where(rest => rest._name.ToLower().Contains(name.ToLower())).ToList();
+            if (listOfRestaurant.Count < 1)
+            {
+                throw new Exception("Store Not found");
+            }
+
+            return listOfRestaurant;
         }
 
         public List<LineItems> DLShowStock(StoreFront chosen)
@@ -139,7 +165,16 @@ namespace DataAccessLogic
 
         public List<StoreFront> GetAllStoreFrontDL()
         {
-            throw new System.NotImplementedException();
+            List<StoreFront>test=_context.StoreFronts.Select(rest => 
+                new Model.StoreFront()
+                {
+                    
+                    Id = rest.StoreId,
+                    _name = rest.StoreName,
+                    _address = rest.Location
+                }
+            ).ToList();
+            return test;
         }
          public Customer DLGetCustomer(string name,string password)
         {
@@ -193,6 +228,49 @@ namespace DataAccessLogic
 
             //Will return a customer object from the parameter
             return currentSelection;
+        }
+
+        public LineItems AddStockToDB(StoreFront storeid, LineItems item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Models.Products> GetAllProductsDL()
+        {
+            List<Models.Products>test=_context.Products.Select(rest => 
+                new Model.Products()
+                {
+                    
+                    Id = rest.ProductId,
+                    _name = rest.Name,
+                    _price = rest.Price,
+                    Description=rest.Description,
+                    Category=rest.Category
+
+                }
+            ).ToList();
+            return test;
+        }
+
+        public Products AddProductsDL(Products parameterObj)
+        {
+            _context.Products.Add
+            (
+                new Entity.Product()
+                {
+                    Name = parameterObj._name,
+                    Price = parameterObj._price,
+                    Description = parameterObj.Description,
+                    Category=parameterObj.Category,
+                   
+
+                }
+            );
+
+            //This method will save the changes made to the database
+            _context.SaveChanges();
+
+            return parameterObj;
         }
     }
 }

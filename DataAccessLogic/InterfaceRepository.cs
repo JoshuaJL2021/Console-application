@@ -114,6 +114,11 @@ namespace DataAccessLogic
         /// <returns></returns>
         Customer DLModifyCustomerRecord(Customer currentSelection);
 
+        LineItems AddStockToDB(StoreFront storeid, LineItems item);
+
+        List<Products> GetAllProductsDL();
+
+         Products AddProductsDL(Products parameterObj);
 
     }
 }

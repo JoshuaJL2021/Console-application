@@ -4,6 +4,7 @@ namespace Models
 {
     public class LineItems
     {
+        
         public Products _product;
         public Products ProductEstablish
         {

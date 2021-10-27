@@ -56,7 +56,7 @@ namespace UserInterface
                     return MenuType.AddOrder;
                 case "1":
                     Console.WriteLine("Type in the value for the total quantity");
-                    _rest._totalprice = Convert.ToDouble(Console.ReadLine());
+                    _rest._totalprice = Convert.ToDecimal(Console.ReadLine());
                     return MenuType.AddOrder;
 
                     case "11":
@@ -66,7 +66,7 @@ namespace UserInterface
                         Console.WriteLine("Type in the line item product name");
                         _prods._name =Console.ReadLine();
                         Console.WriteLine("Type in the line item price");
-                        _prods._price=Convert.ToDouble(Console.ReadLine());
+                        _prods._price=Convert.ToDecimal(Console.ReadLine());
                     Console.WriteLine("Type in the line item quantity");
                     _items._quantity=Convert.ToInt32(Console.ReadLine());
 

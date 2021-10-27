@@ -55,10 +55,10 @@ Console.WriteLine("[12] - input orders for list");
                 case "5":
                 StoreFront store=_restBL.GetStore(_rest._name);
                             _details._location=store;
-                    double total=0;
-                    double cost=0.0;
+                    decimal total=0;
+                    Decimal cost=0;
                     int totalitems=0;
-                    double payment=0;
+                    Decimal payment=0;
                     bool decision=true;
                     do{
                         

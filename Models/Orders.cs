@@ -7,6 +7,7 @@ namespace Models
 {
     public class Orders
     {
+        public int Id { get; set; }
         public List<LineItems> itemslist = new List<LineItems>();
         public List<LineItems> ItemsList
             {
@@ -20,8 +21,8 @@ namespace Models
             set { _location = value; }
         }
 
-        public double _totalprice;
-        public double TotalPrice
+        public decimal _totalprice;
+        public decimal TotalPrice
         {
             get { return _totalprice; }
             set { _totalprice = value; }

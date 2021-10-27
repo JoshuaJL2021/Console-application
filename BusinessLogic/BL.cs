@@ -66,7 +66,12 @@ namespace BusinessLogic
             Console.WriteLine("Type in the line item/ product name\n");
             obj._name = Console.ReadLine();
             Console.WriteLine("\nType in the line item/ products price\n");
-            obj._price = Convert.ToDouble(Console.ReadLine());
+            obj._price = Convert.ToDecimal(Console.ReadLine());
+            Console.WriteLine("Type in the line item/ product Description\n");
+            obj.Description = Console.ReadLine();
+            Console.WriteLine("Type in the line item/ product Category\n");
+            obj.Category = Console.ReadLine();
+
 
             return obj;
 
@@ -121,6 +126,28 @@ namespace BusinessLogic
         public Customer GetCustomer(string name,string password)
         {
             return _repo.DLGetCustomer(name,password);
+        }
+
+         /// <summary>
+        /// this method will send a customer object established in the user interface 
+        /// and the end result would be equal to a Products value established in the method established in the repository class.
+        /// 
+        /// </summary>
+        /// <param name="parameterObj"></param>
+        /// <returns></returns>
+        public Products AddProductsBL(Products parameterObj)
+        {
+            return _repo.AddProductsDL(parameterObj);
+        }
+
+
+        /// <summary>
+        /// this method returns a list established for Customer objects which is received from a repository method 
+        /// </summary>
+        /// <returns> all the information in the specified json file established in the method .</returns>
+        public List<Products> GetAllProductsBL()
+        {
+           return _repo.GetAllProductsDL();
         }
         
     }

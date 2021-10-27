@@ -138,5 +138,9 @@ namespace BusinessLogic
 
         Customer ModifyCustomerRecord(Customer currentSelection);
 
+        Products AddProductsBL(Products parameterObj);
+
+        List<Products> GetAllProductsBL();
+
     }
 }

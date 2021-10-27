@@ -4,6 +4,7 @@ namespace Models
 {
     public class Products
     {
+        public int Id { get; set; }
         public string _name;
         public string Name
         {
@@ -12,18 +13,21 @@ namespace Models
         }
         
 
-        public double _price;
-        public double Price
+        public decimal _price;
+        public decimal Price
         {
             get { return _price; }
             set { _price = value; }
         }
+
+        public string Description { get; set; }
+        public string Category { get; set; }
         
 public override string ToString()
         {
             return $"Product Name: {_name}\n Price $: {_price}\n";
         }
-public double PriceGrab(){
+public decimal PriceGrab(){
     return _price;
 }
         

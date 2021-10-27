@@ -28,7 +28,8 @@ namespace UserInterface
                 Console.WriteLine("What do you want to do?");
                 Console.WriteLine("[1] - Go Browsing");
                 Console.WriteLine("[0] - Exit the store");
-                Console.WriteLine("[x] - Test Functions");
+                Console.WriteLine("[x] - Show");
+                Console.WriteLine("[y] - test");
                 Console.WriteLine("[a] - replenish inventory");
                 Console.WriteLine("[b] - MyProfile\n");
 
@@ -56,6 +57,8 @@ namespace UserInterface
                     return MenuType.ReplenishMenu;
                 case "x":
                     return MenuType.loginconfirm;
+                    case "y":
+                    return MenuType.ShowCustomers;
                 case "1":
                     return MenuType.LoginMenu;
 

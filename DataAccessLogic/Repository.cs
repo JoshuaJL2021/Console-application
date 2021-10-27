@@ -264,7 +264,21 @@ public StoreFront DLGetStore(string name)
                 throw new Exception("User Not found");
             }
             return result;
-        }   
-        
+        }
+
+        public LineItems AddStockToDB(StoreFront storeid, LineItems item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Products> GetAllProductsDL()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Products AddProductsDL(Products parameterObj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
