@@ -70,7 +70,7 @@ namespace DataAccessLogic
 
             return obj;
         }
-          public Models.Customer DLModifyCustomerRecord(Models.Customer currentSelection)
+        public Models.Customer DLModifyCustomerRecord(Models.Customer currentSelection)
         {
             Models.Customer test = DLGetCustomer(currentSelection._username, currentSelection._password);
 
@@ -108,7 +108,7 @@ namespace DataAccessLogic
 
             return result;
         }
-        
+
 
 
 
@@ -205,7 +205,7 @@ namespace DataAccessLogic
         }
 
 
-public Orders AddOrdersDL(Orders p_rest)
+        public Orders AddOrdersDL(Orders p_rest)
         {
             throw new System.NotImplementedException();
         }
@@ -251,8 +251,8 @@ public Orders AddOrdersDL(Orders p_rest)
 
 
 
-        
-      
+
+
 
         public LineItems AddStockToDB(StoreFront store, Products prod, int quantity)
         {
@@ -311,6 +311,46 @@ public Orders AddOrdersDL(Orders p_rest)
             _context.SaveChanges();
 
             return parameterObj;
+        }
+
+        public bool VerifyProduct(int identification)
+        {
+            Entity.Product restToFind = _context.Products.Find(identification);
+            // Model.Products test=new Model.Products();
+            // test._name=restToFind.Name;
+            // test.Id=restToFind.ProductId;
+            // test._price=restToFind.Price;
+            // test.Category=restToFind.Category;
+            // test.Description=restToFind.Description;
+            bool result = true;
+            if (restToFind == null)
+            {
+                result = false;
+            }
+            return result;
+
+        }
+        public Products GetProduct(int obj)
+        { 
+            Models.Products test=new Models.Products();
+            bool result=VerifyProduct(obj);
+            if(result==false)
+            {
+                throw new Exception("Product Was not found with entered ID number");
+            }
+            else
+            {
+            Entity.Product restToFind = _context.Products.Find(obj);
+            test._name=restToFind.Name;
+            test.Id=restToFind.ProductId;
+            test._price=restToFind.Price;
+            test.Category=restToFind.Category;
+            test.Description=restToFind.Description;
+                return test;
+            }
+            
+            
+
         }
     }
 }

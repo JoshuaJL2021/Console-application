@@ -143,5 +143,17 @@ namespace BusinessLogic
         List<Products> GetAllProductsBL();
         LineItems AddStock(StoreFront id, Products Id, int quantity);
 
+        
+        /// <summary>
+        /// Verifies in the database if the entered client user name is located in the database
+        /// used for the search and modify store front methods.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="password"></param>
+        /// <returns>verifies if there is an exception </returns>
+        bool VerifyProduct(int identification);
+        Products GetProduct(int obj);
+      
+
     }
 }

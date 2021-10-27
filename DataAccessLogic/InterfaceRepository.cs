@@ -119,7 +119,9 @@ namespace DataAccessLogic
         List<Products> GetAllProductsDL();
 
          Products AddProductsDL(Products parameterObj);
-         
+
+         bool VerifyProduct(int identification);
+         Products GetProduct(int obj);
 
     }
 }

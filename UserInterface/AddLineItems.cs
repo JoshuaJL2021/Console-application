@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using BusinessLogic;
 using Models;
 
@@ -19,29 +20,10 @@ namespace UserInterface
             Console.WriteLine("Adding a new LineItem");
 
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("Enter store you want to enter");
-                string storename=Console.ReadLine();
-                StoreFront.selectedStore=storename;
-
-                Console.WriteLine("Enter store address you want to enter");
-                string storeaddress=Console.ReadLine();
-                StoreFront.selectedAddress=storeaddress;
-                try
-                {
-
-                     SingletonUser.currentstore=_restBL.GetStore(storename,storeaddress);
-                     Console.WriteLine("Welcome to " + StoreFront.selectedStore + "\n enter to continue");
-                     Console.ReadLine();
-                }
-                catch (System.Exception)
-                {
-                    Console.ForegroundColor = ConsoleColor.White;
-                    SingletonUser.currentstore=null;
-                    Console.WriteLine("Store was unfortunately not found please enter name as shown in list above");
-                    Console.WriteLine("You will be sent to Store display again ");
-                    Console.WriteLine("Press Enter to continue");
-                    Console.ReadLine();
-                }
+            Console.WriteLine(SingletonUser.currentstore);
+            Console.WriteLine(_rest._product);
+                
+                
 
                 
 
@@ -66,16 +48,56 @@ namespace UserInterface
                    
                     return MenuType.MainMenu;
                 case "3":
-                   _rest._product=_restBL.CreateProduct();
+                List<Products> listOfRestaurants = _restBL.GetAllProductsBL();
+
+            foreach (Products rest in listOfRestaurants)
+            {
+                Console.WriteLine("====================");
+                Console.WriteLine(rest);
+                Console.WriteLine("====================");
+            }
+                Console.WriteLine("Type in the product Id u want");
+                int num = Convert.ToInt32(Console.ReadLine());
+                   try
+                   {
+                        _rest._product=_restBL.GetProduct(num);
+                   }
+                   catch (System.Exception)
+                   {
+                       
+                       throw;
+                   }
                     return MenuType.AddLineItem;
                 case "2":
                     Console.WriteLine("Type in the value for the quantity");
                     _rest._quantity = Convert.ToInt32(Console.ReadLine());
                     return MenuType.AddLineItem;
                 case "1":
-                    //Console.WriteLine("Type in the value for the Contact");
-                    //_rest._contact = Console.ReadLine();
-                    return MenuType.AddCustomers;
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("Enter store you want to enter");
+                string storename=Console.ReadLine();
+
+
+                Console.WriteLine("Enter store address you want to enter");
+                string storeaddress=Console.ReadLine();
+                
+                try
+                {
+
+                     SingletonUser.currentstore=_restBL.GetStore(storename,storeaddress);
+                     Console.WriteLine("Welcome to " + SingletonUser.currentstore + "\n enter to continue");
+                     Console.ReadLine();
+                }
+                catch (System.Exception)
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                    SingletonUser.currentstore=null;
+                    Console.WriteLine("Store was unfortunately not found please enter name as shown in list above");
+                    Console.WriteLine("You will be sent to Store display again ");
+                    Console.WriteLine("Press Enter to continue");
+                    Console.ReadLine();
+                }
+                    return MenuType.AddLineItem;
                 case "0":
                     return MenuType.MainMenu;
                 default:

@@ -72,7 +72,7 @@ namespace Models
         //in order to simply print out a customers information completely in a writeline
         public override string ToString()
         {
-            return $"Name: {_name}\nAddress: {_address}\nContact: {_contact}";
+            return $"Name: {_name}\tAddress: {_address}\tContact: {_contact}";
         }
         public  string PrintName()
         {

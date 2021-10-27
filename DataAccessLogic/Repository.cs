@@ -281,5 +281,24 @@ public StoreFront DLGetStore(string name,string address)
             throw new NotImplementedException();
         }
 
+        public bool VerifyProduct(int identification)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Products GetProduct(int obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DLVerifyStore(int identification)
+        {
+            throw new NotImplementedException();
+        }
+
+        public StoreFront DLGetStore(int obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -19,10 +19,10 @@ namespace UserInterface
             Console.WriteLine("[0] - Exit the store");
             Console.WriteLine("[a] - replenish inventory");
             Console.WriteLine("[b] - MyProfile\n");
-          Console.WriteLine("[c] add Products");
-          Console.WriteLine("[d] add StoreFront");
+            Console.WriteLine("[c] add Products");
+            Console.WriteLine("[d] add StoreFront");
             Console.WriteLine("[e] - show me info");
-            Console.WriteLine("[f] -Show problem");
+            Console.WriteLine("[f] -test");
             Console.WriteLine("[g] -add line item/stock table");
 
         }

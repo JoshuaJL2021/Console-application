@@ -154,5 +154,15 @@ namespace BusinessLogic
         {
             return _repo.AddStockToDB(id,Id,quantity);
         }
+
+        public bool VerifyProduct(int identification)
+        {
+            return _repo.VerifyProduct(identification);
+        }
+
+        public Products GetProduct(int obj)
+        {
+            return _repo.GetProduct(obj);
+        }
     }
 }

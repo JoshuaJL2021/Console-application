@@ -25,7 +25,7 @@ namespace Models
         
 public override string ToString()
         {
-            return $"Product Name: {_name}\n Price $: {_price}\n";
+            return $"ID: {Id}\tProduct Name: {_name}\t Price $: {_price}\n";
         }
 public decimal PriceGrab(){
     return _price;
