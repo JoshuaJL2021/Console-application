@@ -1,11 +1,38 @@
 using System;
+using System.Collections.Generic;
 using BusinessLogic;
+using Models;
+
 namespace UserInterface
 {
     public class LoginConfirmationMenu : IMenu
     {
+        private InterfaceBL _restBL;
+         
+        public LoginConfirmationMenu(InterfaceBL p_restBL)
+        {
+            _restBL = p_restBL;
+        }
         public void Menu()
         {
+            List<Customer> listOfRestaurants = _restBL.GetAllCustomersBL();
+
+            foreach (Customer rest in listOfRestaurants)
+            {
+                Console.WriteLine("====================");
+                Console.WriteLine(rest._age);
+                Console.WriteLine("====================");
+            }
+            Console.WriteLine("Enter username");
+                string name=Console.ReadLine();
+                Console.WriteLine("Enter Pass");
+                string pass=Console.ReadLine();
+            Customer test = _restBL.GetCustomer(name,pass);//verifies it received the store
+            Console.WriteLine("Your Name is : " + test + "\n ");
+            Console.WriteLine("age - "+ test._age);
+            Console.WriteLine("position - "+ test.Position);
+            Console.WriteLine("username - "+ test._username);
+            Console.WriteLine("id - "+ test.Id);
         Console.WriteLine("Congrats it went through");
            Console.WriteLine("[0] - to continue to store selection");
             

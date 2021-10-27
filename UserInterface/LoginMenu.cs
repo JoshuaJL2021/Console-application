@@ -61,10 +61,12 @@ namespace UserInterface
             
                 Console.WriteLine("Enter username");
                 string name=Console.ReadLine();
+                Console.WriteLine("Enter Pass");
+                string pass=Console.ReadLine();
                 try
                 {
 
-                     SingletonUser.currentuser=_restBL.GetCustomer(name);
+                     SingletonUser.currentuser=_restBL.GetCustomer(name,pass);
                      Console.WriteLine("Welcome Back " + SingletonUser.currentuser._name + "\nenter to continue");
                      
                      Console.ReadLine();
@@ -109,16 +111,17 @@ namespace UserInterface
 
                 case "1":
                
-                Console.ForegroundColor = ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("Enter username");
-                
                 string name=Console.ReadLine();
+                Console.WriteLine("Enter Pass");
+                string pass=Console.ReadLine();
 
                 try
                 {
                     //List<Customer> listOfCustomers = _restBL.GetAllCustomersBL();
                     
-                    SingletonUser.currentuser=_restBL.GetCustomer(name);
+                    SingletonUser.currentuser=_restBL.GetCustomer(name,pass);
                      Console.WriteLine("Welcome Back " + SingletonUser.currentuser._name + "\n enter to continue");
                      
                      Console.ReadLine();

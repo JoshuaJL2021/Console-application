@@ -223,7 +223,7 @@ public StoreFront DLGetStore(string name)
         }
         public Customer DLModifyCustomerRecord(Customer currentSelection)
         {
-            Customer test = DLGetCustomer(currentSelection._username);
+            Customer test = DLGetCustomer(currentSelection._username,currentSelection._password);
             List<Customer> listOfstores = GetAllCustomersDL();
             listOfstores.RemoveAll(x => x._username == test._username);
             listOfstores.Add(currentSelection);
@@ -239,11 +239,11 @@ public StoreFront DLGetStore(string name)
 
         }
 
-        public Customer DLGetCustomer(string name)
+        public Customer DLGetCustomer(string name,string password)
         {
             Customer obj = new Customer();
             List<Customer> listOfStores = GetAllCustomersDL();
-            bool result = VerifyCredentials(name);
+            bool result = VerifyCredentials(name,password);
             if (result == false)
             {
                 throw new Exception("Store Not found");
@@ -255,7 +255,7 @@ public StoreFront DLGetStore(string name)
             return obj;
         }
 
-        public bool VerifyCredentials(string name)
+        public bool VerifyCredentials(string name,string password)
         {
             List<Customer> listOfCustomers = GetAllCustomersDL();
             bool result = listOfCustomers.Exists(x => x._username == name);

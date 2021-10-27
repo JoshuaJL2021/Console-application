@@ -24,6 +24,9 @@ namespace UserInterface
             Console.WriteLine("Address - "+ SingletonUser.currentuser._address);
             Console.WriteLine("Contact - "+ SingletonUser.currentuser._contact);
             Console.WriteLine("username - "+ SingletonUser.currentuser._username);
+             Console.WriteLine("Age - "+ SingletonUser.currentuser._age);
+            Console.WriteLine("Position - "+ SingletonUser.currentuser.Position);
+            Console.WriteLine("Account number - "+ SingletonUser.currentuser.Id);
             foreach (Orders i in SingletonUser.currentuser.customerOrders)
             {
                 Console.WriteLine(i);

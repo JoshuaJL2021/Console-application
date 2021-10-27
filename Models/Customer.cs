@@ -17,7 +17,9 @@ namespace Models
 
         public string _username;
         public string _password;
-
+        public int _age { get; set; }
+        public int Id { get; set; }
+        public string Position { get; set; }
         //constructors
         public Customer(string name, string address, string contact,string user, string pass){
 
@@ -53,12 +55,7 @@ namespace Models
                 set { customerOrders = value; }
                 get { return customerOrders; }
             }
-        public int _age;
-        public int Age
-        {
-            get { return _age; }
-            set { _age = value; }
-        }
+        
 
         public string UserName
         {

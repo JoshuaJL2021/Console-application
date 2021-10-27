@@ -114,16 +114,18 @@ namespace BusinessLogic
         /// used for the search and modify store front methods.
         /// </summary>
         /// <param name="name"></param>
+        /// <param name="password"></param>
         /// <returns>verifies if there is an exception </returns>
-        void VerifyCredentials(string name);
+        void VerifyCredentials(string name,string password);
 
         /// <summary>
         /// Verifies in the database if the entered information is located in the database
         /// and retrieves the found Customer or an exception
         /// </summary>
         /// <param name="name"></param>
+        /// <param name="password"></param>
         /// <returns>returns the retrieved Customer information from the db </returns>
-        Customer GetCustomer(string name);
+        Customer GetCustomer(string name,string password);
 
         /// <summary>
         /// this method takes the Customer  , erases the previous information from the json file

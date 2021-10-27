@@ -55,7 +55,7 @@ namespace UserInterface
                 case "a":
                     return MenuType.ReplenishMenu;
                 case "x":
-                    return MenuType.FunctionMenu;
+                    return MenuType.loginconfirm;
                 case "1":
                     return MenuType.LoginMenu;
 

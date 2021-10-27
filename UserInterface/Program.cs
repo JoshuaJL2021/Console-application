@@ -16,7 +16,7 @@ namespace UserInterface
 
             //Moved the creation logic into another class called MenuFactory instead
             //To follow Single Responsibility Principle
-            IFactory factory = new MenuFactory();
+            IFactoryPattern factory = new MenuFactory();
 
             //This is example of polymorphism, abstraction, and inheritance all at the same time
             //Example of Covariance

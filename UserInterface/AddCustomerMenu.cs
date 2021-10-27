@@ -24,6 +24,8 @@ namespace UserInterface
             Console.WriteLine("Contact - "+ _rest._contact);
             Console.WriteLine("username - "+ _rest._username);
             Console.WriteLine("password - "+ _rest._password);
+            Console.WriteLine("Age - "+ _rest._age);
+            Console.WriteLine("password - "+ _rest.Position);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("[x] - Add Customer");
             Console.WriteLine("[1] - Input value for Name");
@@ -32,6 +34,7 @@ namespace UserInterface
             Console.WriteLine("[4] - Input value for age");
             Console.WriteLine("[5] - Enter username");
             Console.WriteLine("[6] - Enter password");
+            Console.WriteLine("[7] - Enter Position");
             Console.WriteLine("[0] - Go Back");
 
 
@@ -65,7 +68,7 @@ namespace UserInterface
                     case "4":
                     Console.WriteLine("Type in the value for the age");
                     _rest._age = Convert.ToInt32(Console.ReadLine());
-                    return MenuType.AddLineItem;
+                    return MenuType.AddCustomers;
                     case "5":
                     Console.WriteLine("Type in the value for the username");
                     _rest._username = Console.ReadLine();
@@ -75,14 +78,18 @@ namespace UserInterface
                     
                     _rest._password = Console.ReadLine();
                     return MenuType.AddCustomers;
+                    case "7":
+                    Console.WriteLine("Type in the value for the Position");
                     
+                    _rest.Position = Console.ReadLine();
+                    return MenuType.AddCustomers;
                 case "0":
                     return MenuType.MainMenu;
                 default:
                     Console.WriteLine("Please input a valid response!");
                     Console.WriteLine("Press Enter to continue");
                     Console.ReadLine();
-                    return MenuType.ShowCustomers;
+                    return MenuType.LoginMenu;
             }
         }
     }

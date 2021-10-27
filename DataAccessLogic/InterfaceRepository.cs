@@ -95,14 +95,14 @@ namespace DataAccessLogic
         /// </summary>
         /// <param name="name"></param>
         /// <returns>returns true or false </returns>
-        bool VerifyCredentials(string name);
+        bool VerifyCredentials(string name,string password);
         /// <summary>
         /// Verifies in the database if the entered information is located in the database
         /// and retrieves the found store or an exception
         /// </summary>
         /// <param name="name"></param>
         /// <returns>returns the retrieved Customer information from the db </returns>
-        Customer DLGetCustomer(string name);
+        Customer DLGetCustomer(string name,string password);
 
         /// <summary>
         /// this method takes the Customer  , erases the previous information from the json file
