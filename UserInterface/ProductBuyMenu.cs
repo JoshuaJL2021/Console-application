@@ -20,7 +20,7 @@ namespace UserInterface
             Console.WriteLine("below is a list of products");
 
             Console.WriteLine("\n\nList of Products in " + SingletonUser.currentstore);
-            StoreFront test = _restBL.GetStore(SingletonUser.currentstore._name);
+            StoreFront test = _restBL.GetStore(SingletonUser.currentstore._name,SingletonUser.currentstore._address);
             Console.ForegroundColor = ConsoleColor.White;
             foreach (LineItems rest in _restBL.ShowStock(test))
             {
@@ -43,7 +43,7 @@ namespace UserInterface
             {
                 case "3":
                     Orders _details = new Orders();
-                    StoreFront store = _restBL.GetStore(SingletonUser.currentstore._name);
+                    StoreFront store = _restBL.GetStore(SingletonUser.currentstore._name,SingletonUser.currentstore._address);
                     _details._location = store;
                     decimal total = 0;
                     decimal cost = 0;

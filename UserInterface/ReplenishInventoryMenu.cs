@@ -30,7 +30,9 @@ namespace UserInterface
 
             Console.WriteLine("Enter store you want to edit");
             string searchname = Console.ReadLine();
-            StoreFront test = _restBL.GetStore(searchname);//verifies it received the store
+            Console.WriteLine("Enter store address you want to edit");
+            string ad = Console.ReadLine();
+            StoreFront test = _restBL.GetStore(searchname,ad);//verifies it received the store
             Console.WriteLine("Your store is : " + test + "\n ");
             Console.WriteLine("----------------------------------");
             Console.WriteLine("Your store current Line Products :\n ");

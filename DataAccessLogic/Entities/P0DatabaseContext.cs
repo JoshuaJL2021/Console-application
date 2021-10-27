@@ -80,21 +80,25 @@ namespace DataAccessLogic.Entities
                 entity.HasOne(d => d.Customer)
                     .WithMany()
                     .HasForeignKey(d => d.CustomerId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__OrderHist__Custo__787EE5A0");
 
                 entity.HasOne(d => d.Order)
                     .WithMany()
                     .HasForeignKey(d => d.OrderId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__OrderHist__Order__778AC167");
 
                 entity.HasOne(d => d.Product)
                     .WithMany()
                     .HasForeignKey(d => d.ProductId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__OrderHist__Produ__7A672E12");
 
                 entity.HasOne(d => d.Store)
                     .WithMany()
                     .HasForeignKey(d => d.StoreId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__OrderHist__Store__797309D9");
             });
 
@@ -141,11 +145,13 @@ namespace DataAccessLogic.Entities
                 entity.HasOne(d => d.Product)
                     .WithMany()
                     .HasForeignKey(d => d.ProductId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Stock__ProductID__6EF57B66");
 
                 entity.HasOne(d => d.Store)
                     .WithMany()
                     .HasForeignKey(d => d.StoreId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Stock__StoreID__6E01572D");
             });
 

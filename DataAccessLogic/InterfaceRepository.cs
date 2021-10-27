@@ -52,14 +52,14 @@ namespace DataAccessLogic
         /// </summary>
         /// <param name="name"></param>
         /// <returns>true or false </returns>
-        bool DLVerifyStore(string name);
+        bool DLVerifyStore(string name,string address);
         /// <summary>
         /// Verifies in the database if the entered store name and address is located in the database
         /// and retrieves the found store or an exception
         /// </summary>
         /// <param name="name"></param>
         /// <returns>returns the retrieved store information from the db </returns>
-        StoreFront DLGetStore(string name);
+        StoreFront DLGetStore(string name,string address);
         /// <summary>
         /// Verifies in the database if the entered store name and address is located in the database
         /// and retrieves the found store or an exception
@@ -114,11 +114,12 @@ namespace DataAccessLogic
         /// <returns></returns>
         Customer DLModifyCustomerRecord(Customer currentSelection);
 
-        LineItems AddStockToDB(StoreFront storeid, LineItems item);
+        LineItems AddStockToDB(StoreFront store, Products prod, int quantity);
 
         List<Products> GetAllProductsDL();
 
          Products AddProductsDL(Products parameterObj);
+         
 
     }
 }

@@ -139,7 +139,7 @@ namespace DataAccessLogic
             /// <returns></returns>
 
 
-        public bool DLVerifyStore(string name)
+        public bool DLVerifyStore(string name,string address)
         {
             List<StoreFront> listOfStores = GetAllStoreFrontDL();
             bool result = listOfStores.Exists(x => x._name == name);
@@ -182,18 +182,18 @@ namespace DataAccessLogic
         public List<LineItems> DLShowStock(StoreFront chosen)
         {
              List<LineItems> listOfProduct = new List<LineItems>();
-            chosen = DLGetStore(chosen._name);
+            chosen = DLGetStore(chosen._name,chosen._address);
             foreach (LineItems p in chosen._itemslist)
             {
                 listOfProduct.Add(p);
             }
             return listOfProduct;
         }
-public StoreFront DLGetStore(string name)
+public StoreFront DLGetStore(string name,string address)
         {
            StoreFront obj = new StoreFront();
             List<StoreFront> listOfStores = GetAllStoreFrontDL();
-            bool result = DLVerifyStore(name);
+            bool result = DLVerifyStore(name,address);
             if (result == false)
             {
                 throw new Exception("Store Not found");
@@ -206,7 +206,7 @@ public StoreFront DLGetStore(string name)
         }
         public StoreFront DLModifyStoreRecord(StoreFront currentSelection)
         {
-            StoreFront test = DLGetStore(currentSelection._name);
+            StoreFront test = DLGetStore(currentSelection._name,currentSelection._address);
             List<StoreFront> listOfstores = GetAllStoreFrontDL();
             listOfstores.RemoveAll(x => x._name == test._name);
             listOfstores.Add(currentSelection);
@@ -266,7 +266,7 @@ public StoreFront DLGetStore(string name)
             return result;
         }
 
-        public LineItems AddStockToDB(StoreFront storeid, LineItems item)
+        public LineItems AddStockToDB(StoreFront id, Products Id, int quantity)
         {
             throw new NotImplementedException();
         }
@@ -280,5 +280,6 @@ public StoreFront DLGetStore(string name)
         {
             throw new NotImplementedException();
         }
+
     }
 }

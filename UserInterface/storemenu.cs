@@ -101,7 +101,7 @@ namespace UserInterface
                 try
                 {
 
-                     SingletonUser.currentstore=_restBL.GetStore(storename);
+                     SingletonUser.currentstore=_restBL.GetStore(storename,storeaddress);
                      Console.WriteLine("Welcome to " + StoreFront.selectedStore + "\n enter to continue");
                      
                      Console.ReadLine();

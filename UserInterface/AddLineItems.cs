@@ -17,8 +17,36 @@ namespace UserInterface
         public void Menu()
         {
             Console.WriteLine("Adding a new LineItem");
-            Console.WriteLine("products Name - " + _rest._product);
-            Console.WriteLine("products quantity - "+ _rest._quantity);
+
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("Enter store you want to enter");
+                string storename=Console.ReadLine();
+                StoreFront.selectedStore=storename;
+
+                Console.WriteLine("Enter store address you want to enter");
+                string storeaddress=Console.ReadLine();
+                StoreFront.selectedAddress=storeaddress;
+                try
+                {
+
+                     SingletonUser.currentstore=_restBL.GetStore(storename,storeaddress);
+                     Console.WriteLine("Welcome to " + StoreFront.selectedStore + "\n enter to continue");
+                     Console.ReadLine();
+                }
+                catch (System.Exception)
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                    SingletonUser.currentstore=null;
+                    Console.WriteLine("Store was unfortunately not found please enter name as shown in list above");
+                    Console.WriteLine("You will be sent to Store display again ");
+                    Console.WriteLine("Press Enter to continue");
+                    Console.ReadLine();
+                }
+
+                
+
+
+
             
             Console.WriteLine("[4] - Add LineItem");
             Console.WriteLine("[3] - Input value for products name");
@@ -34,16 +62,11 @@ namespace UserInterface
             {
                 case "4":
                     //Add implementation to talk to the repository method to add a restaurant
-                    _restBL.AddLineItemsBL(_rest);
+                    _restBL.AddStock(SingletonUser.currentstore, _rest._product, _rest._quantity);
                    
-                    return MenuType.loginconfirm;
+                    return MenuType.MainMenu;
                 case "3":
-                    
-                    Products _prods=new Products();
-                        Console.WriteLine("Type in the line item product name");
-                        _prods._name =Console.ReadLine();
-                        Console.WriteLine("Type in the line item price");
-                        _prods._price=Convert.ToDouble(Console.ReadLine());
+                   _rest._product=_restBL.CreateProduct();
                     return MenuType.AddLineItem;
                 case "2":
                     Console.WriteLine("Type in the value for the quantity");
@@ -59,7 +82,7 @@ namespace UserInterface
                     Console.WriteLine("Please input a valid response!");
                     Console.WriteLine("Press Enter to continue");
                     Console.ReadLine();
-                    return MenuType.ShowCustomers;
+                    return MenuType.AddLineItem;
             }
         }
     }

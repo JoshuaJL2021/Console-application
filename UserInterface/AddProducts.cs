@@ -18,13 +18,20 @@ namespace UserInterface
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
              Console.BackgroundColor = ConsoleColor.DarkBlue;
-             _rest=_restBL.CreateProduct();
             Console.WriteLine("Adding a new Product");
+             _rest=_restBL.CreateProduct();
+            
+
             Console.WriteLine("Name - " + _rest._name);
             Console.WriteLine("Price - "+ _rest._price);
-            Console.WriteLine("[4] - Add Product");
-            Console.WriteLine("[3] - Input value for Name");
-            Console.WriteLine("[2] - Input value for price");
+            Console.WriteLine("Description - "+ _rest.Description);
+            Console.WriteLine("Category - "+ _rest.Category);
+
+            Console.WriteLine("[5] - Add Product");
+        //    Console.WriteLine("[4] - Input value for Name");
+        //     Console.WriteLine("[3] - Input value for Price");
+        //     Console.WriteLine("[2] - Input value for Description");
+        //      Console.WriteLine("[1] - Input value for Category");
             Console.WriteLine("[0] - Go Back");
         }
 
@@ -33,27 +40,34 @@ namespace UserInterface
             string userChoice = Console.ReadLine();
             switch (userChoice)
             {
-                case "4":
+                case "5":
                     //Add implementation to talk to the repository method to add a restaurant
-                  //  _restBL.AddProductsBL(_rest);
+                  _restBL.AddProductsBL(_rest);
                    
-                   return MenuType.loginconfirm;
-                case "3":
+                   return MenuType.MainMenu;
+                case "4":
                     Console.WriteLine("Type in the value for the productName");
                     _rest._name = Console.ReadLine();
                     return MenuType.AddProduct;
-                case "2":
+                case "3":
                     Console.WriteLine("Type in the value for the product");
                     _rest._price = Convert.ToDecimal(Console.ReadLine());
                     return MenuType.AddProduct;
-                
+                 case "2":
+                    Console.WriteLine("Type in the value for the Description");
+                    _rest.Description = Console.ReadLine();
+                    return MenuType.AddProduct;
+                     case "1":
+                    Console.WriteLine("Type in the value for the Category");
+                    _rest.Category = Console.ReadLine();
+                    return MenuType.AddProduct;
                 case "0":
                     return MenuType.MainMenu;
                 default:
                     Console.WriteLine("Please input a valid response!");
                     Console.WriteLine("Press Enter to continue");
                     Console.ReadLine();
-                    return MenuType.ShowCustomers;
+                    return MenuType.AddProduct;
             }
         }
     }

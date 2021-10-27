@@ -14,26 +14,38 @@ namespace UserInterface
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.BackgroundColor = ConsoleColor.DarkBlue;
-            if (SingletonUser.currentuser == null)
+
+
+
+            if(SingletonUser.currentuser==null)
             {
                 Console.WriteLine("Welcome to the Main Menu for Lopez Shopping Center");
                 Console.WriteLine("What do you want to do?");
                 Console.WriteLine("[1] - Go Browsing");
                 Console.WriteLine("[0] - Exit the store");
-                Console.WriteLine("[x] - Test Functions");
+                
             }
-            else
+            else{
+                if (SingletonUser.currentuser.Position == "Manager")
             {
                 Console.WriteLine("Welcome " + SingletonUser.currentuser._name + " to the Main Menu for Lopez Shopping Center");
                 Console.WriteLine("What do you want to do?");
                 Console.WriteLine("[1] - Go Browsing");
                 Console.WriteLine("[0] - Exit the store");
-                Console.WriteLine("[x] - Show");
-                Console.WriteLine("[y] - test");
-                Console.WriteLine("[a] - replenish inventory");
-                Console.WriteLine("[b] - MyProfile\n");
+                Console.WriteLine("[x] - Functions");
+            
+                
+            }
+            else
+            {
+                Console.WriteLine("Welcome to the Main Menu for Lopez Shopping Center");
+                Console.WriteLine("What do you want to do?");
+                Console.WriteLine("[1] - Go Browsing");
+                Console.WriteLine("[0] - Exit the store");
 
             }
+            }
+            
 
 
 
@@ -48,17 +60,8 @@ namespace UserInterface
             string userChoice = Console.ReadLine();
             switch (userChoice)
             {
-                case "B":
-                case "b":
-                    return MenuType.MyProfile;
-
-                case "A":
-                case "a":
-                    return MenuType.ReplenishMenu;
                 case "x":
-                    return MenuType.loginconfirm;
-                    case "y":
-                    return MenuType.ShowCustomers;
+                    return MenuType.FunctionMenu;
                 case "1":
                     return MenuType.LoginMenu;
 

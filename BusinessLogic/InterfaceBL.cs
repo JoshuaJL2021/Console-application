@@ -66,7 +66,7 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="name"></param>
         /// <returns>true or false </returns>
-        bool VerifyStore(string name);
+        bool VerifyStore(string name,string address);
 
         /// <summary>
         /// Verifies in the database if the entered store name and address is located in the database
@@ -74,7 +74,7 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="name"></param>
         /// <returns>returns the retrieved store information from the db </returns>
-        StoreFront GetStore(string name);
+        StoreFront GetStore(string name,string address);
 
         /// <summary>
         /// Verifies in the database if the entered store name and address is located in the database
@@ -141,6 +141,7 @@ namespace BusinessLogic
         Products AddProductsBL(Products parameterObj);
 
         List<Products> GetAllProductsBL();
+        LineItems AddStock(StoreFront id, Products Id, int quantity);
 
     }
 }

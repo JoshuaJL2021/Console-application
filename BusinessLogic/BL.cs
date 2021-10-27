@@ -77,16 +77,16 @@ namespace BusinessLogic
 
         }
 
-        public bool VerifyStore(string name)
+        public bool VerifyStore(string name,string address)
         {
             
-            return _repo.DLVerifyStore(name);
+            return _repo.DLVerifyStore(name,address);
 
         }
 
-        public StoreFront GetStore(string name)
+        public StoreFront GetStore(string name,string address)
         {
-            return _repo.DLGetStore(name);
+            return _repo.DLGetStore(name,address);
         }
 
        
@@ -149,6 +149,10 @@ namespace BusinessLogic
         {
            return _repo.GetAllProductsDL();
         }
-        
+
+        public LineItems AddStock(StoreFront id, Products Id, int quantity)
+        {
+            return _repo.AddStockToDB(id,Id,quantity);
+        }
     }
 }

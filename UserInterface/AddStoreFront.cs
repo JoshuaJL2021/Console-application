@@ -37,7 +37,7 @@ namespace UserInterface
                 Console.WriteLine(obj);
             }
 
-            Console.WriteLine("[5] - Submit with receite");
+            //Console.WriteLine("[5] - Submit with receite");
             Console.WriteLine("[4] - Add StoreFront");
             Console.WriteLine("[3] - Input value for Name");
             Console.WriteLine("[2] - Input value for Address");
@@ -53,7 +53,7 @@ Console.WriteLine("[12] - input orders for list");
             switch (userChoice)
             {
                 case "5":
-                StoreFront store=_restBL.GetStore(_rest._name);
+                StoreFront store=_restBL.GetStore(_rest._name,_rest._address);
                             _details._location=store;
                     decimal total=0;
                     Decimal cost=0;
@@ -161,7 +161,7 @@ Console.WriteLine("[12] - input orders for list");
                     //Add implementation to talk to the repository method to add a restaurant
                     _restBL.AddStoreFrontBL(_rest);
                    
-                    return MenuType.loginconfirm;
+                    return MenuType.MainMenu;
                 case "3":
                     Console.WriteLine("Type in the value for the Name");
                     _rest._name = Console.ReadLine();

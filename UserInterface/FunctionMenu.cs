@@ -17,9 +17,13 @@ namespace UserInterface
 
             Console.WriteLine("[1] - Go Browsing");
             Console.WriteLine("[0] - Exit the store");
-          Console.WriteLine("[b] add Orders");
+            Console.WriteLine("[a] - replenish inventory");
+            Console.WriteLine("[b] - MyProfile\n");
+          Console.WriteLine("[c] add Products");
           Console.WriteLine("[d] add StoreFront");
             Console.WriteLine("[e] - show me info");
+            Console.WriteLine("[f] -Show problem");
+            Console.WriteLine("[g] -add line item/stock table");
 
         }
 
@@ -33,14 +37,26 @@ namespace UserInterface
                     
                 case "0":
                     return MenuType.Exit;
+                    case "B":
+                case "b":
+                    return MenuType.MyProfile;
+
+                case "A":
+                case "a":
+                    return MenuType.ReplenishMenu;
+
+                    case "c":
+                    return MenuType.AddProduct;
     
-                    case "b":
-                    return MenuType.AddOrder;
-                    
                     case "d":
                     return MenuType.AddStore;
-                case "e":
-                    return MenuType.ShowCustomers;
+                    
+                    case "e":
+                    return MenuType.DisplayDB;
+                case "f":
+                    return MenuType.loginconfirm;
+                    case "g":
+                    return MenuType.AddLineItem;
                 
                 default:
                     Console.WriteLine("Please input a valid response!");

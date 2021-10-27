@@ -19,7 +19,7 @@ namespace UserInterface
             Console.WriteLine("below is a list of products");
 
             Console.WriteLine("\n\nList of Products in " + SingletonUser.currentstore);
-            StoreFront test=_restBL.GetStore(SingletonUser.currentstore._name);
+            StoreFront test=_restBL.GetStore(SingletonUser.currentstore._name,SingletonUser.currentstore._address);
             Console.ForegroundColor = ConsoleColor.White;
             foreach (LineItems rest in _restBL.ShowStock(test))
             {

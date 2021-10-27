@@ -10,7 +10,7 @@ namespace DataAccessLogic
     public class RespositoryCloud : InterfaceRepository
     {
         private Entity.P0DatabaseContext _context;
-        public RespositoryCloud(Entity.P0DatabaseContext p_context) 
+        public RespositoryCloud(Entity.P0DatabaseContext p_context)
         {
             _context = p_context;
         }
@@ -24,10 +24,10 @@ namespace DataAccessLogic
                     FirstName = p_rest._name,
                     Email = p_rest._contact,
                     UserName = p_rest._username,
-                    Password=p_rest._password,
-                    Category=p_rest.Position,
-                    Age=p_rest._age,
-                    Address=p_rest._address
+                    Password = p_rest._password,
+                    Category = p_rest.Position,
+                    Age = p_rest._age,
+                    Address = p_rest._address
 
                 }
             );
@@ -37,26 +37,93 @@ namespace DataAccessLogic
 
             return p_rest;
         }
-
-        public Orders AddOrdersDL(Orders p_rest)
+        public List<Customer> GetAllCustomersDL()
         {
-            throw new System.NotImplementedException();
+            List<Customer> test = _context.Customers.Select(rest =>
+                   new Model.Customer()
+                   {
+
+                       Id = rest.CustomerId,
+                       CustomerName = rest.FirstName,
+                       Contact = rest.Email,
+                       UserName = rest.UserName,
+                       Password = rest.Password,
+                       Position = rest.Category,
+                       Address = rest.Address,
+                       _age = rest.Age,
+                   }
+            ).ToList();
+            return test;
+        }
+        public Customer DLGetCustomer(string name, string password)
+        {
+            Customer obj = new Customer();
+            List<Customer> listOfStores = GetAllCustomersDL();
+            bool result = VerifyCredentials(name, password);
+            if (result == false)
+            {
+                throw new Exception("Customer Not found");
+            }
+
+            obj = listOfStores.FirstOrDefault(rest => rest._username == name && rest._password == password);
+
+
+            return obj;
+        }
+          public Models.Customer DLModifyCustomerRecord(Models.Customer currentSelection)
+        {
+            Models.Customer test = DLGetCustomer(currentSelection._username, currentSelection._password);
+
+            _context.Customers.Update
+            (
+                new Entity.Customer()
+                {
+                    FirstName = currentSelection._name,
+                    Email = currentSelection._contact,
+                    UserName = currentSelection._username,
+                    Password = currentSelection._password,
+                    Category = currentSelection.Position,
+                    Age = currentSelection._age,
+                    Address = currentSelection._address,
+                    CustomerId = currentSelection.Id
+                }
+            );
+
+            //This method will save the changes made to the database
+            _context.SaveChanges();
+
+            //Will return a customer object from the parameter
+            return currentSelection;
         }
 
-       
+        public bool VerifyCredentials(string name, string password)
+        {
+            List<Customer> listOfCustomers = GetAllCustomersDL();
+            bool result = true;
+            Customer obj = listOfCustomers.FirstOrDefault(rest => rest._username == name && rest._password == password);
+            if (obj == null)
+            {
+                result = false;
+            }
+
+            return result;
+        }
+        
+
+
 
         public StoreFront AddStoreFrontDL(StoreFront p_rest)
         {
-             _context.StoreFronts.Add
-            (
-                new Entity.StoreFront()
-                {
-                    StoreName = p_rest._name,
-                    Location = p_rest._address
-                    
+            _context.StoreFronts.Add
+           (
+               new Entity.StoreFront()
+               {
+                   StoreName = p_rest._name,
+                   Location = p_rest._address
 
-                }
-            );
+
+               }
+           );
 
             //This method will save the changes made to the database
             _context.SaveChanges();
@@ -65,11 +132,33 @@ namespace DataAccessLogic
         }
 
 
-        public StoreFront DLGetStore(string name)
+        public StoreFront DLGetStore(string name, string address)
         {
-            throw new System.NotImplementedException();
-        }
+            StoreFront obj = new StoreFront();
+            List<StoreFront> listOfStores = GetAllStoreFrontDL();
+            bool result = DLVerifyStore(name, address);
+            if (result == false)
+            {
+                throw new Exception("Store Not found");
+            }
 
+            obj = listOfStores.FirstOrDefault(rest => rest._name == name && rest._address == address);
+
+
+            return obj;
+        }
+        public bool DLVerifyStore(string name, string addre)
+        {
+            List<StoreFront> listOfCustomers = GetAllStoreFrontDL();
+            bool result = true;
+            StoreFront obj = listOfCustomers.FirstOrDefault(rest => rest._name == name && rest._address == addre);
+            if (obj == null)
+            {
+                result = false;
+            }
+
+            return result;
+        }
 
         public StoreFront DLModifyStoreRecord(StoreFront currentSelection)
         {
@@ -92,7 +181,19 @@ namespace DataAccessLogic
 
             return listOfRestaurant;
         }
+        public List<StoreFront> GetAllStoreFrontDL()
+        {
+            List<StoreFront> test = _context.StoreFronts.Select(rest =>
+                   new Model.StoreFront()
+                   {
 
+                       Id = rest.StoreId,
+                       _name = rest.StoreName,
+                       _address = rest.Location
+                   }
+            ).ToList();
+            return test;
+        }
         public List<LineItems> DLShowStock(StoreFront chosen)
         {
             throw new System.NotImplementedException();
@@ -103,28 +204,12 @@ namespace DataAccessLogic
             throw new System.NotImplementedException();
         }
 
-        public bool DLVerifyStore(string name)
+
+public Orders AddOrdersDL(Orders p_rest)
         {
             throw new System.NotImplementedException();
         }
 
-        public List<Customer> GetAllCustomersDL()
-        {
-            List<Customer>test=_context.Customers.Select(rest => 
-                new Model.Customer()
-                {
-                    
-                    Id = rest.CustomerId,
-                    CustomerName = rest.FirstName,
-                    Contact = rest.Email,
-                    UserName = rest.UserName,
-                    Password=rest.Password,
-                    Position=rest.Category,
-                    Address=rest.Address,
-                }
-            ).ToList();
-            return test;
-        }
 
         public List<Orders> GetAllOrdersDL()
         {
@@ -163,91 +248,46 @@ namespace DataAccessLogic
         //     // return listOfRest;
         // }
 
-        public List<StoreFront> GetAllStoreFrontDL()
+
+
+
+        
+      
+
+        public LineItems AddStockToDB(StoreFront store, Products prod, int quantity)
         {
-            List<StoreFront>test=_context.StoreFronts.Select(rest => 
-                new Model.StoreFront()
-                {
-                    
-                    Id = rest.StoreId,
-                    _name = rest.StoreName,
-                    _address = rest.Location
-                }
-            ).ToList();
-            return test;
-        }
-         public Customer DLGetCustomer(string name,string password)
-        {
-            Customer obj = new Customer();
-            List<Customer> listOfStores = GetAllCustomersDL();
-            bool result = VerifyCredentials(name,password);
-            if (result == false)
-            {
-                throw new Exception("Customer Not found");
-            }
-
-            obj = listOfStores.FirstOrDefault(rest => rest._username == name && rest._password == password);
+            LineItems test = new LineItems();
+            _context.Stocks.Add
+           (
+               new Entity.Stock()
+               {
+                   StoreId = store.Id,
+                   ProductId = prod.Id,
+                   InStock = quantity
 
 
-            return obj;
-        }
-
-        public bool VerifyCredentials(string name,string password)
-        {
-            List<Customer> listOfCustomers = GetAllCustomersDL();
-            bool result=true;
-            Customer obj = listOfCustomers.FirstOrDefault(rest => rest._username == name && rest._password == password);
-            if (obj == null)
-            {
-                result=false;
-            }
-            
-            return result;
-        }
-        public Models.Customer DLModifyCustomerRecord(Models.Customer currentSelection)
-        {
-            Models.Customer test = DLGetCustomer(currentSelection._username,currentSelection._password);
-
-            _context.Customers.Update
-            (
-                new Entity.Customer()
-                {
-                    FirstName = currentSelection._name,
-                    Email = currentSelection._contact,
-                    UserName = currentSelection._username,
-                    Password=currentSelection._password,
-                    Category=currentSelection.Position,
-                    Age=currentSelection._age,
-                    Address=currentSelection._address,
-                    CustomerId=currentSelection.Id
-                }
-            );
+               }
+           );
 
             //This method will save the changes made to the database
             _context.SaveChanges();
 
-            //Will return a customer object from the parameter
-            return currentSelection;
-        }
-
-        public LineItems AddStockToDB(StoreFront storeid, LineItems item)
-        {
-            throw new NotImplementedException();
+            return test;
         }
 
         public List<Models.Products> GetAllProductsDL()
         {
-            List<Models.Products>test=_context.Products.Select(rest => 
-                new Model.Products()
-                {
-                    
-                    Id = rest.ProductId,
-                    _name = rest.Name,
-                    _price = rest.Price,
-                    Description=rest.Description,
-                    Category=rest.Category
+            List<Models.Products> test = _context.Products.Select(rest =>
+                   new Model.Products()
+                   {
 
-                }
+                       Id = rest.ProductId,
+                       _name = rest.Name,
+                       _price = rest.Price,
+                       Description = rest.Description,
+                       Category = rest.Category
+
+                   }
             ).ToList();
             return test;
         }
@@ -261,8 +301,8 @@ namespace DataAccessLogic
                     Name = parameterObj._name,
                     Price = parameterObj._price,
                     Description = parameterObj.Description,
-                    Category=parameterObj.Category,
-                   
+                    Category = parameterObj.Category,
+
 
                 }
             );
