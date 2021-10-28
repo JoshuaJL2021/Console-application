@@ -189,5 +189,10 @@ namespace BusinessLogic
         {
             return _repo.GetOrderID(obj);
         }
+
+        public void ModifyStockTable(int storenumber, int productnumber,int quantity)
+        {
+            _repo.ModifyStockTable(storenumber,productnumber,quantity);
+        }
     }
 }

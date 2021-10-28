@@ -325,5 +325,10 @@ public StoreFront DLGetStore(string name,string address)
         {
             throw new NotImplementedException();
         }
+
+        public void ModifyStockTable(int storenumber, int productnumber,int quantity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

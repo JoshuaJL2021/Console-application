@@ -28,15 +28,7 @@ namespace UserInterface
             //     _restBL.AddStoreFrontBL(test);
 
             //Print all store fr
-                List<StoreFront> listOfRestaurants = _restBL.GetAllStoreFrontsBL();
-Orders temp=new Orders();
-temp._totalprice=3;
-_restBL.AddOrdersBL(temp);
-List<Orders> orderlist = _restBL.GetAllOrdersBL();
-foreach (Orders t in orderlist)
-{
-    Console.WriteLine(t);
-}
+
 
             // foreach (StoreFront rest in listOfRestaurants)
             // {

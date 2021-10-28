@@ -486,5 +486,23 @@ namespace DataAccessLogic
                obj.Id=temp.Id;
                return obj;
         }
+
+        public void ModifyStockTable(int storenumber, int productnumber,int quantity)
+        {
+
+            _context.Stocks.Update
+            (
+                new Entity.Stock()
+                {
+                    StoreId=storenumber,
+                    ProductId=productnumber,
+                    InStock=quantity
+                    
+                }
+            );
+
+            //This method will save the changes made to the database
+            _context.SaveChanges();
+        }
     }
 }
