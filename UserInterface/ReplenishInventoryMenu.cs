@@ -7,8 +7,7 @@ namespace UserInterface
 {
     public class ReplenishInventoryMenu : IMenu
     {
-        private static StoreFront _rest = new StoreFront();
-        private static Orders _details = new Orders();
+        private Orders _details = new Orders();
 
         private InterfaceBL _restBL;
 
@@ -28,15 +27,13 @@ namespace UserInterface
                 Console.WriteLine("\t\t\t\t" + s);
             }
 
-            Console.WriteLine("Enter store you want to edit");
-            string searchname = Console.ReadLine();
-            Console.WriteLine("Enter store address you want to edit");
-            string ad = Console.ReadLine();
-            StoreFront test = _restBL.GetStore(searchname,ad);//verifies it received the store
-            Console.WriteLine("Your store is : " + test + "\n ");
+            Console.WriteLine("Enter the Store Id number you want to see inventory for");
+            int num = Convert.ToInt32(Console.ReadLine());
+            StoreFront store = _restBL.GetStoreByID(num);
+            Console.WriteLine("Your store is : " + store + "\n ");
             Console.WriteLine("----------------------------------");
             Console.WriteLine("Your store current Line Products :\n ");
-            foreach (LineItems p in test._itemslist)
+            foreach (LineItems p in _restBL.GetInventory(store.Id))
             {
                 Console.WriteLine(p);
             }
@@ -49,13 +46,13 @@ namespace UserInterface
             while (loop == true)
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("Enter the name of the product from the store to edit your inventory");
-                string productsname = Console.ReadLine();
+                Console.WriteLine("Enter the Id of the product from the store to add to your cart");
+                int productsname = Convert.ToInt32(Console.ReadLine());
                 string cancel;
                 try
                 {
 
-                    //_lines = _restBL.VerifyStock(productsname, test);
+                    _lines = _restBL.VerifyStock(productsname, store);
                     loop = false;
                     if (_details.itemslist.Exists(x => x._product._name == _lines._product._name))
                     {
@@ -68,7 +65,7 @@ namespace UserInterface
                         amount = Convert.ToInt32(Console.ReadLine());
                         _lines._quantity = _lines._quantity + amount;
                         _details.itemslist.Add(_lines);
-                        listOfstores.RemoveAll(x => x._name == test._name);
+
                     }
 
                 }
@@ -111,17 +108,10 @@ namespace UserInterface
             }//end of while
             foreach (LineItems s in _details.itemslist)
             {
-                test._itemslist.RemoveAll(x => x._product._name == s._product._name);
-                test._itemslist.Add(s);
+                _restBL.ModifyStockTable(store.Id, s._product.Id, s._quantity);
             }
 
-            foreach (LineItems s in test._itemslist)
-            {
-                Console.WriteLine(s);
 
-            }
-
-            _restBL.ModifyStoreRecordBL(test);
 
 
             Console.WriteLine("Record has been updated");
@@ -130,7 +120,7 @@ namespace UserInterface
 
 
             Console.WriteLine("[5] - Main Menu");
-            
+
 
             Console.WriteLine("[0] - Go Back");
         }

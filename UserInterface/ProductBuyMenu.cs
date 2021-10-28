@@ -165,6 +165,7 @@ namespace UserInterface
                         foreach(LineItems s in _details.itemslist)
                         {
                             _restBL.InsertHistory(store.Id,s._product.Id,Test.Id,SingletonUser.currentuser.Id);
+                            _restBL.ModifyStockTable(store.Id,s._product.Id,s._quantity);
                         }
                         Console.WriteLine("\nReceite:");
                         Console.WriteLine("Store: " + _details._location._name + "\n Address: " + _details._location._address);

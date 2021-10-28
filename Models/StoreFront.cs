@@ -8,8 +8,6 @@ namespace Models
     public class StoreFront
     {
 
-public static string selectedStore;
-public static string selectedAddress;
 public int Id { get; set; }
         public string _name;
         public string Name

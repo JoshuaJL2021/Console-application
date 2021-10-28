@@ -162,6 +162,8 @@ namespace BusinessLogic
       void InsertHistory(int store, int prod,int order, int customer);
 
       Orders GetOrderByID(Orders obj);
+
+      void ModifyStockTable(int storenumber,int productnumber,int quantity);
       
 
     }

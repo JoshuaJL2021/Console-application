@@ -55,7 +55,7 @@ namespace UserInterface
                         return new ProductBuyMenu(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
                      
                         case MenuType.ReplenishMenu:
-                        return new ReplenishInventoryMenu(new BL(new Repository()));
+                        return new ReplenishInventoryMenu(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
                   
                         case MenuType.MyProfile:
                         return new MyProfile(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
