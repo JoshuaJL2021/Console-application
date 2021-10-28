@@ -186,45 +186,76 @@ namespace UserInterface
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            /// <summary>
+/// <summary>
             /// Show list of stores and afterwards get the products from the stock table
             /// </summary>
             /// <returns></returns>
-             List<StoreFront> listofstores = _restBL.GetAllStoreFrontsBL();
+            //  List<StoreFront> listofstores = _restBL.GetAllStoreFrontsBL();
 
-            foreach (StoreFront rest in listofstores)
+            // foreach (StoreFront rest in listofstores)
+            // {
+            //     Console.WriteLine("====================");
+            //     Console.WriteLine(rest);
+            //     Console.WriteLine("====================");
+            // }
+
+        
+            List<Orders> listOfRestaurants = _restBL.GetMyOrderHistory(SingletonUser.currentuser.Id);
+  
+
+            foreach (Orders rest in listOfRestaurants)
             {
                 Console.WriteLine("====================");
-                Console.WriteLine(rest);
+                Console.WriteLine("Order Id number: "+ rest.Id);
+                Console.WriteLine("Bought from the store: "+ rest._location.Name+ " located in " + rest._location.Address);
+                Console.WriteLine("Purchase the following:");
+                foreach(LineItems s in rest.itemslist)
+                {
+                    Console.WriteLine(s._product._name);
+                }
+                Console.WriteLine("Total cost of order was: "+rest._totalprice);
                 Console.WriteLine("====================");
             }
 
-            Console.WriteLine("Enter the Store Id number you want to see inventory for");
-            int num=Convert.ToInt32(Console.ReadLine());
-            List<LineItems> listOfRestaurants = _restBL.GetInventory(num);
 
-            foreach (LineItems rest in listOfRestaurants)
-            {
-                Console.WriteLine("====================");
-                Console.WriteLine(rest);
-                Console.WriteLine("====================");
-            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // /// <summary>
+            // /// Show list of stores and afterwards get the products from the stock table
+            // /// </summary>
+            // /// <returns></returns>
+            //  List<StoreFront> listofstores = _restBL.GetAllStoreFrontsBL();
+
+            // foreach (StoreFront rest in listofstores)
+            // {
+            //     Console.WriteLine("====================");
+            //     Console.WriteLine(rest);
+            //     Console.WriteLine("====================");
+            // }
+
+            // Console.WriteLine("Enter the Store Id number you want to see inventory for");
+            // int num=Convert.ToInt32(Console.ReadLine());
+            // List<LineItems> listOfRestaurants = _restBL.GetInventory(num);
+
+            // foreach (LineItems rest in listOfRestaurants)
+            // {
+            //     Console.WriteLine("====================");
+            //     Console.WriteLine(rest);
+            //     Console.WriteLine("====================");
+            // }
+
+            
 
 
 

@@ -15,19 +15,19 @@ namespace DataAccessLogic
             _context = p_context;
         }
 
-        public Customer AddCustomersDL(Customer p_rest)
+        public Customer AddCustomersDL(Customer parameterobj)
         {
             _context.Customers.Add
             (
                 new Entity.Customer()
                 {
-                    FirstName = p_rest._name,
-                    Email = p_rest._contact,
-                    UserName = p_rest._username,
-                    Password = p_rest._password,
-                    Category = p_rest.Position,
-                    Age = p_rest._age,
-                    Address = p_rest._address
+                    FirstName = parameterobj._name,
+                    Email = parameterobj._contact,
+                    UserName = parameterobj._username,
+                    Password = parameterobj._password,
+                    Category = parameterobj.Position,
+                    Age = parameterobj._age,
+                    Address = parameterobj._address
 
                 }
             );
@@ -35,22 +35,22 @@ namespace DataAccessLogic
             //This method will save the changes made to the database
             _context.SaveChanges();
 
-            return p_rest;
+            return parameterobj;
         }
         public List<Customer> GetAllCustomersDL()
         {
-            List<Customer> test = _context.Customers.Select(rest =>
+            List<Customer> test = _context.Customers.Select(client =>
                    new Model.Customer()
                    {
 
-                       Id = rest.CustomerId,
-                       CustomerName = rest.FirstName,
-                       Contact = rest.Email,
-                       UserName = rest.UserName,
-                       Password = rest.Password,
-                       Position = rest.Category,
-                       Address = rest.Address,
-                       _age = rest.Age,
+                       Id = client.CustomerId,
+                       CustomerName = client.FirstName,
+                       Contact = client.Email,
+                       UserName = client.UserName,
+                       Password = client.Password,
+                       Position = client.Category,
+                       Address = client.Address,
+                       _age = client.Age,
                    }
             ).ToList();
             return test;
@@ -100,7 +100,7 @@ namespace DataAccessLogic
         {
             List<Customer> listOfCustomers = GetAllCustomersDL();
             bool result = true;
-            Customer obj = listOfCustomers.FirstOrDefault(rest => rest._username == name && rest._password == password);
+            Customer obj = listOfCustomers.FirstOrDefault(client => client._username == name && client._password == password);
             if (obj == null)
             {
                 result = false;
@@ -112,14 +112,14 @@ namespace DataAccessLogic
 
 
 
-        public StoreFront AddStoreFrontDL(StoreFront p_rest)
+        public StoreFront AddStoreFrontDL(StoreFront parameterobj)
         {
             _context.StoreFronts.Add
            (
                new Entity.StoreFront()
                {
-                   StoreName = p_rest._name,
-                   Location = p_rest._address
+                   StoreName = parameterobj._name,
+                   Location = parameterobj._address
 
 
                }
@@ -128,75 +128,41 @@ namespace DataAccessLogic
             //This method will save the changes made to the database
             _context.SaveChanges();
 
-            return p_rest;
+            return parameterobj;
         }
 
 
-        public StoreFront DLGetStore(string name, string address)
-        {
-            StoreFront obj = new StoreFront();
-            List<StoreFront> listOfStores = GetAllStoreFrontDL();
-            bool result = DLVerifyStore(name, address);
-            if (result == false)
-            {
-                throw new Exception("Store Not found");
-            }
-
-            obj = listOfStores.FirstOrDefault(rest => rest._name == name && rest._address == address);
 
 
-            return obj;
-        }
-        public bool DLVerifyStore(string name, string addre)
-        {
-            List<StoreFront> listOfCustomers = GetAllStoreFrontDL();
-            bool result = true;
-            StoreFront obj = listOfCustomers.FirstOrDefault(rest => rest._name == name && rest._address == addre);
-            if (obj == null)
-            {
-                result = false;
-            }
-
-            return result;
-        }
-
-        public StoreFront DLModifyStoreRecord(StoreFront currentSelection)
-        {
-            throw new System.NotImplementedException();
-        }
 
         public List<StoreFront> DLSearchStores(string name)
         {
-            List<StoreFront> listOfRestaurant = GetAllStoreFrontDL();
+            List<StoreFront> listofstores = GetAllStoreFrontDL();
 
             //Select method will give a list of boolean if the condition was true/false
             //Where method will give the actual element itself based on some condition
             //ToList method will convert into List that our method currently needs to return.
             //ToLower will lowercase the string to make it not case sensitive
-            listOfRestaurant = listOfRestaurant.Where(rest => rest._name.ToLower().Contains(name.ToLower())).ToList();
-            if (listOfRestaurant.Count < 1)
+            listofstores = listofstores.Where(store => store._name.ToLower().Contains(name.ToLower())).ToList();
+            if (listofstores.Count < 1)
             {
                 throw new Exception("Store Not found");
             }
 
-            return listOfRestaurant;
+            return listofstores;
         }
         public List<StoreFront> GetAllStoreFrontDL()
         {
-            List<StoreFront> test = _context.StoreFronts.Select(rest =>
+            List<StoreFront> test = _context.StoreFronts.Select(storeobj =>
                    new Model.StoreFront()
                    {
 
-                       Id = rest.StoreId,
-                       _name = rest.StoreName,
-                       _address = rest.Location
+                       Id = storeobj.StoreId,
+                       _name = storeobj.StoreName,
+                       _address = storeobj.Location
                    }
             ).ToList();
             return test;
-        }
-        public List<LineItems> DLShowStock(StoreFront chosen)
-        {
-            throw new System.NotImplementedException();
         }
 
         public LineItems DLVerifyStock(int productnum, StoreFront chosen)
@@ -209,23 +175,23 @@ namespace DataAccessLogic
             {
                 throw new Exception("Product Not found in store");
             }
-            obj = listofline.FirstOrDefault(rest => rest._product.Id == productnum);
+            obj = listofline.FirstOrDefault(prodobj => prodobj._product.Id == productnum);
             return obj;
         }
 
 
-        public Orders AddOrdersDL(Orders p_rest)
+        public Orders AddOrdersDL(Orders parameterobj)
         {
             _context.OrdersRecords.Add
             (
                 new Entity.OrdersRecord()
                 {
-                    Total = p_rest._totalprice
+                    Total = parameterobj._totalprice
 
 
                 });
-                 _context.SaveChanges();
-            return p_rest;
+            _context.SaveChanges();
+            return parameterobj;
         }
 
 
@@ -241,39 +207,6 @@ namespace DataAccessLogic
             ).ToList();
             return test;
         }
-
-        // public List<Model.Restaurant> GetAllRestaurant()
-        // {
-        //     //Method Syntax
-        //     return _context.Restaurants.Select(rest => 
-        //         new Model.Restaurant()
-        //         {
-        //             Name = rest.RestName,
-        //             State = rest.RestState,
-        //             City = rest.RestCity,
-        //             Id = rest.RestId
-        //         }
-        //     ).ToList();
-
-
-        //     //Query Syntax
-        //     // var result = (from rest in _context.Restaurants
-        //     //             select rest);
-
-        //     // List<Model.Restaurant> listOfRest = new List<Model.Restaurant>();
-        //     // foreach (var rest in result)
-        //     // {
-        //     //     listOfRest.Add(new Model.Restaurant(){
-        //     //         Name = rest.RestName,
-        //     //         State = rest.RestState,
-        //     //         City = rest.RestCity,
-        //     //         Id = rest.RestId
-        //     //     });
-        //     // }
-
-        //     // return listOfRest;
-        // }
-
 
 
 
@@ -303,15 +236,15 @@ namespace DataAccessLogic
 
         public List<Models.Products> GetAllProductsDL()
         {
-            List<Models.Products> test = _context.Products.Select(rest =>
+            List<Models.Products> test = _context.Products.Select(prodobj =>
                    new Model.Products()
                    {
 
-                       Id = rest.ProductId,
-                       _name = rest.Name,
-                       _price = rest.Price,
-                       Description = rest.Description,
-                       Category = rest.Category
+                       Id = prodobj.ProductId,
+                       _name = prodobj.Name,
+                       _price = prodobj.Price,
+                       Description = prodobj.Description,
+                       Category = prodobj.Category
 
                    }
             ).ToList();
@@ -341,15 +274,9 @@ namespace DataAccessLogic
 
         public bool VerifyProduct(int identification)
         {
-            Entity.Product restToFind = _context.Products.Find(identification);
-            // Model.Products test=new Model.Products();
-            // test._name=restToFind.Name;
-            // test.Id=restToFind.ProductId;
-            // test._price=restToFind.Price;
-            // test.Category=restToFind.Category;
-            // test.Description=restToFind.Description;
+            Entity.Product looking = _context.Products.Find(identification);
             bool result = true;
-            if (restToFind == null)
+            if (looking == null)
             {
                 result = false;
             }
@@ -366,12 +293,12 @@ namespace DataAccessLogic
             }
             else
             {
-                Entity.Product restToFind = _context.Products.Find(obj);
-                test._name = restToFind.Name;
-                test.Id = restToFind.ProductId;
-                test._price = restToFind.Price;
-                test.Category = restToFind.Category;
-                test.Description = restToFind.Description;
+                Entity.Product looking = _context.Products.Find(obj);
+                test._name = looking.Name;
+                test.Id = looking.ProductId;
+                test._price = looking.Price;
+                test.Category = looking.Category;
+                test.Description = looking.Description;
                 return test;
             }
 
@@ -400,7 +327,7 @@ namespace DataAccessLogic
 
 
             //Mapping the Queryable<Entity.Review> into a list<Model.Review>
-            List<Model.LineItems> listOfReview = new List<Model.LineItems>();
+            List<Model.LineItems> listofItems = new List<Model.LineItems>();
 
             foreach (var rev in innerJoinResult2)
             {
@@ -416,10 +343,10 @@ namespace DataAccessLogic
                 };
                 test._quantity = rev.InStock;
 
-                listOfReview.Add(test);
+                listofItems.Add(test);
             }
 
-            return listOfReview;
+            return listofItems;
         }
 
         public StoreFront GetStoreByID(int number)
@@ -432,25 +359,20 @@ namespace DataAccessLogic
             }
             else
             {
-                Entity.StoreFront restToFind = _context.StoreFronts.Find(number);
-                test._name = restToFind.StoreName;
-                test.Id = restToFind.StoreId;
-                test._address = restToFind.Location;
+                Entity.StoreFront looking = _context.StoreFronts.Find(number);
+                test._name = looking.StoreName;
+                test.Id = looking.StoreId;
+                test._address = looking.Location;
                 return test;
             }
 
         }
         public bool VerifyStorebyID(int number)
         {
-            Entity.StoreFront restToFind = _context.StoreFronts.Find(number);
-            // Model.Products test=new Model.Products();
-            // test._name=restToFind.Name;
-            // test.Id=restToFind.ProductId;
-            // test._price=restToFind.Price;
-            // test.Category=restToFind.Category;
-            // test.Description=restToFind.Description;
+            Entity.StoreFront looking = _context.StoreFronts.Find(number);
+
             bool result = true;
-            if (restToFind == null)
+            if (looking == null)
             {
                 result = false;
             }
@@ -460,18 +382,18 @@ namespace DataAccessLogic
 
         public void InsertHistory(int store, int prod, int order, int customer)
         {
-             _context.OrderHistories.Add
-            (
-                new Entity.OrderHistory()
-                {
-                    StoreId=store,
-                    ProductId=prod,
-                    OrderId=order,
-                    CustomerId=customer
+            _context.OrderHistories.Add
+           (
+               new Entity.OrderHistory()
+               {
+                   StoreId = store,
+                   ProductId = prod,
+                   OrderId = order,
+                   CustomerId = customer
 
 
-                }
-            );
+               }
+           );
 
             //This method will save the changes made to the database
             _context.SaveChanges();
@@ -479,30 +401,72 @@ namespace DataAccessLogic
 
         public Orders GetOrderID(Orders obj)
         {
-             List<Model.Orders> test= new List<Model.Orders>();
-                test= GetAllOrdersDL();
-                IEnumerable<Orders> query = test.OrderBy(x => x.Id);
-               Models.Orders temp=query.Last();
-               obj.Id=temp.Id;
-               return obj;
+            List<Model.Orders> test = new List<Model.Orders>();
+            test = GetAllOrdersDL();
+            IEnumerable<Orders> query = test.OrderBy(x => x.Id);
+            Models.Orders temp = query.Last();
+            obj.Id = temp.Id;
+            return obj;
         }
 
-        public void ModifyStockTable(int storenumber, int productnumber,int quantity)
+        public void ModifyStockTable(int storenumber, int productnumber, int quantity)
         {
 
             _context.Stocks.Update
             (
                 new Entity.Stock()
                 {
-                    StoreId=storenumber,
-                    ProductId=productnumber,
-                    InStock=quantity
-                    
+                    StoreId = storenumber,
+                    ProductId = productnumber,
+                    InStock = quantity
+
                 }
             );
 
             //This method will save the changes made to the database
             _context.SaveChanges();
         }
+
+        public List<Orders> GetMyOrderHistory(int objId)
+        {
+            var innerJoinResult2 = from compl in _context.OrderHistories
+                                   where compl.CustomerId == objId
+                                   select new { compl.Order, compl.Product, compl.Store };
+                                   Console.WriteLine(innerJoinResult2.Count());
+
+
+            //Mapping the Queryable<Entity.Review> into a list<Model.Review>
+            List<Model.Orders> listofItems = new List<Model.Orders>();
+
+            foreach (var rev in innerJoinResult2)
+            {
+                LineItems test = new LineItems();
+                Model.Orders mine = new Orders();
+                
+                test._product = new Model.Products()
+                {
+                    _price = rev.Product.Price,
+                    _name = rev.Product.Name,
+                    Id = rev.Product.ProductId,
+                    Description = rev.Product.Description,
+                    Category = rev.Product.Category
+
+                };
+                mine.Id = rev.Order.OrderId;
+                mine.TotalPrice = rev.Order.Total;
+                mine.itemslist.Add(test);
+                mine._location = new Model.StoreFront()
+                {
+                    _name = rev.Store.StoreName,
+                    _address = rev.Store.Location,
+                    Id = rev.Store.StoreId
+                };
+
+                listofItems.Add(mine);
+            }
+
+            return listofItems;
+        }
+      
     }
 }

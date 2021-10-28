@@ -330,5 +330,15 @@ public StoreFront DLGetStore(string name,string address)
         {
             throw new NotImplementedException();
         }
+
+        public List<Orders> GetMyOrderHistory(int objId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string testmethod(int obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

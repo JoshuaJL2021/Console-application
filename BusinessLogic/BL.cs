@@ -10,11 +10,7 @@ namespace BusinessLogic
     {
 
         private InterfaceRepository _repo;
-        /// <summary>
-        /// We are defining the dependencies this class needs to operate
-        /// We do it this way because we can easily switch out which implementation details we will be using
-        /// </summary>
-        /// <param name="p_repo"></param>
+       
         public BL(InterfaceRepository p_repo)
         {
             _repo = p_repo;
@@ -77,19 +73,6 @@ namespace BusinessLogic
 
         }
 
-        public bool VerifyStore(string name,string address)
-        {
-            
-            return _repo.DLVerifyStore(name,address);
-
-        }
-
-        public StoreFront GetStore(string name,string address)
-        {
-            return _repo.DLGetStore(name,address);
-        }
-
-       
 
         public List<StoreFront> SearchStores(string name)
         {
@@ -101,17 +84,6 @@ namespace BusinessLogic
         {
            return _repo.DLVerifyStock(productnum,chosen);
         }
-
-        public List<LineItems> ShowStock(StoreFront chosen)
-        {
-            return _repo.DLShowStock(chosen);
-        }
-
-        public StoreFront ModifyStoreRecordBL(StoreFront currentSelection)
-        {
-            return _repo.DLModifyStoreRecord(currentSelection);
-        
-        } 
 
         public Customer ModifyCustomerRecord(Customer currentSelection)
         {
@@ -128,23 +100,14 @@ namespace BusinessLogic
             return _repo.DLGetCustomer(name,password);
         }
 
-         /// <summary>
-        /// this method will send a customer object established in the user interface 
-        /// and the end result would be equal to a Products value established in the method established in the repository class.
-        /// 
-        /// </summary>
-        /// <param name="parameterObj"></param>
-        /// <returns></returns>
+         
         public Products AddProductsBL(Products parameterObj)
         {
             return _repo.AddProductsDL(parameterObj);
         }
 
 
-        /// <summary>
-        /// this method returns a list established for Customer objects which is received from a repository method 
-        /// </summary>
-        /// <returns> all the information in the specified json file established in the method .</returns>
+        
         public List<Products> GetAllProductsBL()
         {
            return _repo.GetAllProductsDL();
@@ -194,5 +157,12 @@ namespace BusinessLogic
         {
             _repo.ModifyStockTable(storenumber,productnumber,quantity);
         }
+
+        public List<Orders> GetMyOrderHistory(int objId)
+        {
+            return _repo.GetMyOrderHistory(objId);
+        }
+
+       
     }
 }

@@ -6,32 +6,30 @@ namespace BusinessLogic
     public interface InterfaceBL
     {
         /// <summary>
-        /// This will return a list of customer stored in the database
-        /// It will also capitalize every name of the Customer
+        /// This will return a list of customers stored in the database
         /// </summary>
-        /// <returns>It will return a list of Customer</returns>
+        /// <returns>It will return a list of customers</returns>
         List<Customer> GetAllCustomersBL();
 
         /// <summary>
-        /// Adds a customer to the database
+        /// It will add a customer in our database
         /// </summary>
-        /// <param name="p_rest">This is the customer we are adding</param>
-        /// <returns>It returns the added customer</returns>
-        Customer AddCustomersBL(Customer p_rest);
+        /// <param name="p_rest">This is the customer we will be adding to the database</param>
+        /// <returns>It will just return the customer we are adding</returns>
+        Customer AddCustomersBL(Customer parameterobj);
 
 
         /// <summary>
-        /// Adds a store front to the database
+        /// It will add a store front in our database
         /// </summary>
-        /// <param name="p_rest">This is the store front we are adding</param>
-        /// <returns>It returns the added store front</returns>
-        StoreFront AddStoreFrontBL(StoreFront p_rest);
+        /// <param name="p_rest">This is the store front we will be adding to the database</param>
+        /// <returns>It will just return the store front we are adding</returns>
+        StoreFront AddStoreFrontBL(StoreFront parameterobj);
 
         /// <summary>
-        /// This will return a list of store fronts stored in the database
-        /// It will also capitalize every name of the store front
+        /// This will return a list of store front stored in the database
         /// </summary>
-        /// <returns>It will return a list of store fronts</returns>
+        /// <returns>It will return a list of store front</returns>
         List<StoreFront> GetAllStoreFrontsBL();
 
 
@@ -41,17 +39,11 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="p_rest">This is the product we are adding</param>
         /// <returns>It returns the product customer</returns>     
-        Orders AddOrdersBL(Orders p_rest);
+        Orders AddOrdersBL(Orders parameterobj);
 
 
-        /// <summary>
-        /// This will return a list of orders stored in the database
-        /// It will also capitalize every name of the product
-        /// </summary>
-        /// <returns>It will return a list of product</returns>
-        List<Orders> GetAllOrdersBL();
 
-        
+
 
         /// <summary>
         /// This creates a Product and returns the value 
@@ -60,21 +52,6 @@ namespace BusinessLogic
         /// <returns>It will return a  product</returns>
         Products CreateProduct();
 
-        /// <summary>
-        /// Verifies in the database if the entered store name and address is located in the database
-        /// used for the search and modify store front methods.
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns>true or false </returns>
-        bool VerifyStore(string name,string address);
-
-        /// <summary>
-        /// Verifies in the database if the entered store name and address is located in the database
-        /// and retrieves the found store or an exception
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns>returns the retrieved store information from the db </returns>
-        StoreFront GetStore(string name,string address);
 
         /// <summary>
         /// Verifies in the database if the entered store name and address is located in the database
@@ -93,39 +70,14 @@ namespace BusinessLogic
         /// <returns>returns the line item from the db that matches</returns>
         LineItems VerifyStock(int productnum, StoreFront chosen);
 
-        /// <summary>
-        /// This method receives all the line items from the specified store
-        /// </summary>
-        /// <param name="chosen"></param>
-        /// <returns></returns>
-        List<LineItems> ShowStock(StoreFront chosen);
-
-        /// <summary>
-        /// this method takes the selected store , erases the previous information from the json file
-        /// enters the new information into the json file
-        /// also organizes in alphabetical order.
-        /// </summary>
-        /// <param name="currentSelection"></param>
-        /// <returns></returns>
-        StoreFront ModifyStoreRecordBL(StoreFront currentSelection);
-
-        /// <summary>
-        /// Verifies in the database if the entered client user name is located in the database
-        /// used for the search and modify store front methods.
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="password"></param>
-        /// <returns>verifies if there is an exception </returns>
-        void VerifyCredentials(string name,string password);
 
         /// <summary>
         /// Verifies in the database if the entered information is located in the database
-        /// and retrieves the found Customer or an exception
+        /// and retrieves the found store or an exception
         /// </summary>
         /// <param name="name"></param>
-        /// <param name="password"></param>
         /// <returns>returns the retrieved Customer information from the db </returns>
-        Customer GetCustomer(string name,string password);
+        Customer GetCustomer(string name, string password);
 
         /// <summary>
         /// this method takes the Customer  , erases the previous information from the json file
@@ -135,36 +87,98 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="currentSelection"></param>
         /// <returns></returns>
-
         Customer ModifyCustomerRecord(Customer currentSelection);
 
+        /// <summary>
+        /// Receives a created Product object and will insert it into the database.
+        /// No information is changed
+        /// </summary>
+        /// <param name="parameterObj"></param>
+        /// <returns>created product object that was sent in</returns>
         Products AddProductsBL(Products parameterObj);
 
+        /// <summary>
+        /// Receives a created Product object and will insert it into the database.
+        /// No information is changed
+        /// </summary>
+        /// <param name="parameterObj"></param>
+        /// <returns>created product object that was sent in</returns>
         List<Products> GetAllProductsBL();
+
+        /// <summary>
+        /// Adds a Line Item essentially into the stock db table
+        /// It receives a storefront which will utilize only its ID 
+        /// It recieves a product will utilize only the ID
+        /// Receives a integer to represent the amount of items
+        /// </summary>
+        /// <param name="store"></param>
+        /// <param name="prod"></param>
+        /// <param name="quantity"></param>
+        /// <returns></returns>
         LineItems AddStock(StoreFront id, Products Id, int quantity);
 
-        
-        /// <summary>
-        /// Verifies in the database if the entered client user name is located in the database
-        /// used for the search and modify store front methods.
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="password"></param>
-        /// <returns>verifies if there is an exception </returns>
-        bool VerifyProduct(int identification);
-        Products GetProduct(int obj);
 
+        /// <summary>
+        /// Verifies product is in db
+        /// searches by the product id number that is sent
+        /// </summary>
+        /// <param name="productidentification"></param>
+        /// <returns></returns>
+        bool VerifyProduct(int identification);
+        /// <summary>
+        /// Returns a Product with information retrieved from the db
+        /// </summary>
+        /// <param name="productid"></param>
+        /// <returns>Product if not an exception</returns>
+
+        Products GetProduct(int obj);
+        /// <summary>
+        /// Returns a list of Line Items which contain all products related to the specified store
+        /// </summary>
+        /// <param name="storeid"></param>
+        /// <returns>a list of </returns>
         List<LineItems> GetInventory(int obj);
 
-      StoreFront GetStoreByID(int number);
-      bool VerifyStorebyID(int number);
+        /// <summary>
+        /// Sends an id number to be searched for and retrieves the stores saved information
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns>Returns the store that matches the Id if not an exception</returns>
 
-      void InsertHistory(int store, int prod,int order, int customer);
+        StoreFront GetStoreByID(int number);
 
-      Orders GetOrderByID(Orders obj);
+        /// <summary>
+        /// insert into the database table Order History
+        /// Sends the store id, product id (essentially line item)
+        /// sends the recently created Order Id and customer Id
+        /// Receives the actual result from a method in the repositry project
+        /// </summary>
+        /// <param name="store"></param>
+        /// <param name="prod"></param>
+        /// <param name="order"></param>
+        /// <param name="customer"></param>
+        void InsertHistory(int store, int prod, int order, int customer);
 
-      void ModifyStockTable(int storenumber,int productnumber,int quantity);
-      
+        /// <summary>
+        /// Used after the insert into purchases table
+        /// it will return the order object with the LAST id in the table
+        /// Receives the actual result from a method in the repositry project
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns>obj.Id</returns>
+        Orders GetOrderByID(Orders obj);
 
+        /// <summary>
+        /// This method occurs in replenish inventory and purchasing
+        /// essentially takes the selected store id number and line item and send that info to data logic method
+        /// Receives the actual result from a method in the repositry project
+        /// </summary>
+        /// <param name="storenumber"></param>
+        /// <param name="productnumber"></param>
+        /// <param name="quantity"></param>
+        void ModifyStockTable(int storenumber, int productnumber, int quantity);
+
+        List<Orders> GetMyOrderHistory(int objId);
+        
     }
 }

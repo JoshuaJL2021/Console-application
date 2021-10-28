@@ -27,9 +27,21 @@ namespace UserInterface
              Console.WriteLine("Age - "+ SingletonUser.currentuser._age);
             Console.WriteLine("Position - "+ SingletonUser.currentuser.Position);
             Console.WriteLine("Account number - "+ SingletonUser.currentuser.Id);
-            foreach (Orders i in SingletonUser.currentuser.customerOrders)
+            List<Orders> listofOrders = _restBL.GetMyOrderHistory(SingletonUser.currentuser.Id);
+  
+
+            foreach (Orders history in listofOrders)
             {
-                Console.WriteLine(i);
+                Console.WriteLine("====================");
+                Console.WriteLine("Order Id number: "+ history.Id);
+                Console.WriteLine("Bought from the store: "+ history._location.Name+ " located in " + history._location.Address);
+                Console.WriteLine("Purchase the following:");
+                foreach(LineItems s in history.itemslist)
+                {
+                    Console.WriteLine(s._product._name);
+                }
+                Console.WriteLine("Total cost of order was: "+history._totalprice);
+                Console.WriteLine("====================");
             }
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("[x] - Save Changes");

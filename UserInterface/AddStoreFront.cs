@@ -53,8 +53,8 @@ Console.WriteLine("[12] - input orders for list");
             switch (userChoice)
             {
                 case "5":
-                StoreFront store=_restBL.GetStore(_rest._name,_rest._address);
-                            _details._location=store;
+                // StoreFront store=_restBL.GetStore(_rest._name,_rest._address);
+                //             _details._location=store;
                     decimal total=0;
                     Decimal cost=0;
                     int totalitems=0;
