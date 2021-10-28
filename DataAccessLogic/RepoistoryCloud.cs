@@ -331,26 +331,68 @@ namespace DataAccessLogic
 
         }
         public Products GetProduct(int obj)
-        { 
-            Models.Products test=new Models.Products();
-            bool result=VerifyProduct(obj);
-            if(result==false)
+        {
+            Models.Products test = new Models.Products();
+            bool result = VerifyProduct(obj);
+            if (result == false)
             {
                 throw new Exception("Product Was not found with entered ID number");
             }
             else
             {
-            Entity.Product restToFind = _context.Products.Find(obj);
-            test._name=restToFind.Name;
-            test.Id=restToFind.ProductId;
-            test._price=restToFind.Price;
-            test.Category=restToFind.Category;
-            test.Description=restToFind.Description;
+                Entity.Product restToFind = _context.Products.Find(obj);
+                test._name = restToFind.Name;
+                test.Id = restToFind.ProductId;
+                test._price = restToFind.Price;
+                test.Category = restToFind.Category;
+                test.Description = restToFind.Description;
                 return test;
             }
-            
-            
+
+
 
         }
+
+        public List<LineItems> GetInventory(int obj)
+        {
+            // var innerJoinResult = from s in _context.StoreFronts // outer sequence
+            // 				  join st in _context.Stocks //inner sequence 
+            // 				  on s.StoreId equals st.StoreId // key selector 
+            //                   where s.StoreId==obj
+            // 				  select new { // result selector 
+            // 								StoreName = s.StoreName, 
+            //                                 StoreLocation=s.Location,
+            //                                 StockItem=st.Product.Name,
+            //                                 StockItemPrice=st.Product.Price,
+            // 								storequantity = st.InStock 
+            // 							};
+            
+
+            var innerJoinResult2 = from compl in _context.Stocks
+                                   where compl.StoreId == obj
+                                   select new {compl.Product, compl.InStock};
+
+
+            //Mapping the Queryable<Entity.Review> into a list<Model.Review>
+            List<Model.LineItems> listOfReview = new List<Model.LineItems>();
+            
+            foreach (var rev in innerJoinResult2)
+            {LineItems test=new LineItems();
+                test._product=new Model.Products(){
+                    _price=rev.Product.Price,
+                    _name=rev.Product.Name,
+                    Id=rev.Product.ProductId,
+                    Description=rev.Product.Description,
+                    Category=rev.Product.Category
+
+                };
+                test._quantity=rev.InStock;
+
+                listOfReview.Add(test);
+            }
+
+            return listOfReview;
+        }
+
     }
 }

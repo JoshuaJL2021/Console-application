@@ -123,5 +123,7 @@ namespace DataAccessLogic
          bool VerifyProduct(int identification);
          Products GetProduct(int obj);
 
+         List<LineItems> GetInventory(int obj);
+
     }
 }

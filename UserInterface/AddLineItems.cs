@@ -34,7 +34,7 @@ namespace UserInterface
             Console.WriteLine("[3] - Input value for products name");
             Console.WriteLine("[2] - Input value for products quantity");
             Console.WriteLine("[0] - Go Back");
-            Console.WriteLine(_rest.ToString());
+            
         }
 
         public MenuType YourChoice()

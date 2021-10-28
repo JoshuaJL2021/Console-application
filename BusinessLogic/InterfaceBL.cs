@@ -153,6 +153,9 @@ namespace BusinessLogic
         /// <returns>verifies if there is an exception </returns>
         bool VerifyProduct(int identification);
         Products GetProduct(int obj);
+
+        List<LineItems> GetInventory(int obj);
+
       
 
     }

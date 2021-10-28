@@ -15,33 +15,51 @@ namespace UserInterface
         }
         public void Menu()
         {
-            List<Products> listOfRestaurants = _restBL.GetAllProductsBL();
+            Console.WriteLine("Enter the Store Id number you want to see inventory for");
+            int num=Convert.ToInt32(Console.ReadLine());
+            List<LineItems> listOfRestaurants = _restBL.GetInventory(num);
 
-            foreach (Products rest in listOfRestaurants)
+            foreach (LineItems rest in listOfRestaurants)
             {
                 Console.WriteLine("====================");
                 Console.WriteLine(rest);
                 Console.WriteLine("====================");
             }
-            Console.WriteLine("Enter Product Id");
-            int num = Convert.ToInt32(Console.ReadLine());
-            bool result;
-            try
-            {
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
-                result=_restBL.VerifyProduct(num);
-                Console.WriteLine(result);
-            }
-            catch (System.Exception)
-            {
-                Console.ForegroundColor = ConsoleColor.White;
+
+
+
+
+
+
+
+            //checks if product is in db by integer
+            // List<Products> listOfRestaurants = _restBL.GetAllProductsBL();
+
+            // foreach (Products rest in listOfRestaurants)
+            // {
+            //     Console.WriteLine("====================");
+            //     Console.WriteLine(rest);
+            //     Console.WriteLine("====================");
+            // }
+            // Console.WriteLine("Enter Product Id");
+            // int num = Convert.ToInt32(Console.ReadLine());
+            // bool result;
+            // try
+            // {
+            //     Console.ForegroundColor = ConsoleColor.DarkYellow;
+            //     result=_restBL.VerifyProduct(num);
+            //     Console.WriteLine(result);
+            // }
+            // catch (System.Exception)
+            // {
+            //     Console.ForegroundColor = ConsoleColor.White;
 
                 
-                Console.WriteLine("product was unfortunately not found please enter name as shown in list above");
-                Console.WriteLine("You will be sent to Store display again ");
-                Console.WriteLine("Press Enter to continue");
-                Console.ReadLine();
-            }
+            //     Console.WriteLine("product was unfortunately not found please enter name as shown in list above");
+            //     Console.WriteLine("You will be sent to Store display again ");
+            //     Console.WriteLine("Press Enter to continue");
+            //     Console.ReadLine();
+            // }
             // Console.WriteLine("Enter username");
             //     string name=Console.ReadLine();
             //     Console.WriteLine("Enter Pass");

@@ -300,5 +300,12 @@ public StoreFront DLGetStore(string name,string address)
         {
             throw new NotImplementedException();
         }
+
+        public List<LineItems> GetInventory(int obj)
+        {
+            throw new NotImplementedException();
+        }
+
+    
     }
 }

@@ -164,5 +164,10 @@ namespace BusinessLogic
         {
             return _repo.GetProduct(obj);
         }
+
+        public List<LineItems> GetInventory(int obj)
+        {
+           return _repo.GetInventory(obj);
+        }
     }
 }
