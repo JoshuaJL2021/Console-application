@@ -67,9 +67,12 @@ namespace DataAccessLogic.Entities
 
             modelBuilder.Entity<OrderHistory>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.ReferenceId)
+                    .HasName("PK__OrderHis__E1A99A798589480E");
 
                 entity.ToTable("OrderHistory");
+
+                entity.Property(e => e.ReferenceId).HasColumnName("ReferenceID");
 
                 entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
 
@@ -78,24 +81,24 @@ namespace DataAccessLogic.Entities
                 entity.Property(e => e.StoreId).HasColumnName("StoreID");
 
                 entity.HasOne(d => d.Customer)
-                    .WithMany()
+                    .WithMany(p => p.OrderHistories)
                     .HasForeignKey(d => d.CustomerId)
-                    .HasConstraintName("FK__OrderHist__Custo__787EE5A0");
+                    .HasConstraintName("FK__OrderHist__Custo__07C12930");
 
                 entity.HasOne(d => d.Order)
-                    .WithMany()
+                    .WithMany(p => p.OrderHistories)
                     .HasForeignKey(d => d.OrderId)
-                    .HasConstraintName("FK__OrderHist__Order__778AC167");
+                    .HasConstraintName("FK__OrderHist__Order__06CD04F7");
 
                 entity.HasOne(d => d.Product)
-                    .WithMany()
+                    .WithMany(p => p.OrderHistories)
                     .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK__OrderHist__Produ__7A672E12");
+                    .HasConstraintName("FK__OrderHist__Produ__09A971A2");
 
                 entity.HasOne(d => d.Store)
-                    .WithMany()
+                    .WithMany(p => p.OrderHistories)
                     .HasForeignKey(d => d.StoreId)
-                    .HasConstraintName("FK__OrderHist__Store__797309D9");
+                    .HasConstraintName("FK__OrderHist__Store__08B54D69");
             });
 
             modelBuilder.Entity<OrdersRecord>(entity =>
@@ -103,7 +106,7 @@ namespace DataAccessLogic.Entities
                 entity.HasKey(e => e.OrderId)
                     .HasName("PK__OrdersRe__C3905BCF2432D13D");
 
-                entity.Property(e => e.Total).HasColumnType("decimal(18, 0)");
+                entity.Property(e => e.Total).HasColumnType("money");
             });
 
             modelBuilder.Entity<Product>(entity =>
@@ -125,28 +128,31 @@ namespace DataAccessLogic.Entities
                     .HasMaxLength(255)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Price).HasColumnType("decimal(18, 0)");
+                entity.Property(e => e.Price).HasColumnType("money");
             });
 
             modelBuilder.Entity<Stock>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => new { e.StoreId, e.ProductId })
+                    .HasName("PK__Stock__F0C23C8FFE8CD921");
 
                 entity.ToTable("Stock");
 
-                entity.Property(e => e.ProductId).HasColumnName("ProductID");
-
                 entity.Property(e => e.StoreId).HasColumnName("StoreID");
 
+                entity.Property(e => e.ProductId).HasColumnName("ProductID");
+
                 entity.HasOne(d => d.Product)
-                    .WithMany()
+                    .WithMany(p => p.Stocks)
                     .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK__Stock__ProductID__6EF57B66");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Stock__ProductID__114A936A");
 
                 entity.HasOne(d => d.Store)
-                    .WithMany()
+                    .WithMany(p => p.Stocks)
                     .HasForeignKey(d => d.StoreId)
-                    .HasConstraintName("FK__Stock__StoreID__6E01572D");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Stock__StoreID__10566F31");
             });
 
             modelBuilder.Entity<StoreFront>(entity =>

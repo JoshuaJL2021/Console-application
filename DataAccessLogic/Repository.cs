@@ -139,7 +139,7 @@ namespace DataAccessLogic
             /// <returns></returns>
 
 
-        public bool DLVerifyStore(string name)
+        public bool DLVerifyStore(string name,string address)
         {
             List<StoreFront> listOfStores = GetAllStoreFrontDL();
             bool result = listOfStores.Exists(x => x._name == name);
@@ -182,18 +182,18 @@ namespace DataAccessLogic
         public List<LineItems> DLShowStock(StoreFront chosen)
         {
              List<LineItems> listOfProduct = new List<LineItems>();
-            chosen = DLGetStore(chosen._name);
+            chosen = DLGetStore(chosen._name,chosen._address);
             foreach (LineItems p in chosen._itemslist)
             {
                 listOfProduct.Add(p);
             }
             return listOfProduct;
         }
-public StoreFront DLGetStore(string name)
+public StoreFront DLGetStore(string name,string address)
         {
            StoreFront obj = new StoreFront();
             List<StoreFront> listOfStores = GetAllStoreFrontDL();
-            bool result = DLVerifyStore(name);
+            bool result = DLVerifyStore(name,address);
             if (result == false)
             {
                 throw new Exception("Store Not found");
@@ -206,7 +206,7 @@ public StoreFront DLGetStore(string name)
         }
         public StoreFront DLModifyStoreRecord(StoreFront currentSelection)
         {
-            StoreFront test = DLGetStore(currentSelection._name);
+            StoreFront test = DLGetStore(currentSelection._name,currentSelection._address);
             List<StoreFront> listOfstores = GetAllStoreFrontDL();
             listOfstores.RemoveAll(x => x._name == test._name);
             listOfstores.Add(currentSelection);
@@ -223,7 +223,7 @@ public StoreFront DLGetStore(string name)
         }
         public Customer DLModifyCustomerRecord(Customer currentSelection)
         {
-            Customer test = DLGetCustomer(currentSelection._username);
+            Customer test = DLGetCustomer(currentSelection._username,currentSelection._password);
             List<Customer> listOfstores = GetAllCustomersDL();
             listOfstores.RemoveAll(x => x._username == test._username);
             listOfstores.Add(currentSelection);
@@ -239,11 +239,11 @@ public StoreFront DLGetStore(string name)
 
         }
 
-        public Customer DLGetCustomer(string name)
+        public Customer DLGetCustomer(string name,string password)
         {
             Customer obj = new Customer();
             List<Customer> listOfStores = GetAllCustomersDL();
-            bool result = VerifyCredentials(name);
+            bool result = VerifyCredentials(name,password);
             if (result == false)
             {
                 throw new Exception("Store Not found");
@@ -255,7 +255,7 @@ public StoreFront DLGetStore(string name)
             return obj;
         }
 
-        public bool VerifyCredentials(string name)
+        public bool VerifyCredentials(string name,string password)
         {
             List<Customer> listOfCustomers = GetAllCustomersDL();
             bool result = listOfCustomers.Exists(x => x._username == name);
@@ -264,7 +264,56 @@ public StoreFront DLGetStore(string name)
                 throw new Exception("User Not found");
             }
             return result;
-        }   
-        
+        }
+
+        public LineItems AddStockToDB(StoreFront id, Products Id, int quantity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Products> GetAllProductsDL()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Products AddProductsDL(Products parameterObj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool VerifyProduct(int identification)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Products GetProduct(int obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DLVerifyStore(int identification)
+        {
+            throw new NotImplementedException();
+        }
+
+        public StoreFront DLGetStore(int obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<LineItems> GetInventory(int obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public StoreFront GetStoreByID(int number)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool VerifyStorebyID(int number)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

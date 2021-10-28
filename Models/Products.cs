@@ -4,29 +4,32 @@ namespace Models
 {
     public class Products
     {
+        public int Id { get; set; }
         public string _name;
         public string Name
         {
             get { return _name; }
             set { _name = value; }
         }
+        
 
-
-        public double _price;
-        public double Price
+        public decimal _price;
+        public decimal Price
         {
             get { return _price; }
             set { _price = value; }
         }
 
-        public override string ToString()
+        public string Description { get; set; }
+        public string Category { get; set; }
+        
+public override string ToString()
         {
-            return $"Product Name: {_name}\n Price $: {_price}\n";
+            return $"ID: {Id}\tProduct Name: {_name}\t Price $: {_price}\n";
         }
-        public double PriceGrab()
-        {
-            return _price;
-        }
-
+public decimal PriceGrab(){
+    return _price;
+}
+        
     }
 }

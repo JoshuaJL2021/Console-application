@@ -7,6 +7,7 @@ namespace DataAccessLogic.Entities
 {
     public partial class OrderHistory
     {
+        public int ReferenceId { get; set; }
         public int? OrderId { get; set; }
         public int? CustomerId { get; set; }
         public int? StoreId { get; set; }

@@ -35,33 +35,51 @@ namespace UserInterface
                         //Since Restaurant Object has different implementation/function of the Menu Method
                         //It will have different implementations/functions when the while loop goes back and
                         //repeat itself
-                        return new LoginMenu(new BL(new Repository()));
+                        return new LoginMenu(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
                         
-                    case MenuType.ShowCustomers:
-                        return new ShowCustomers(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
                      
                     case MenuType.AddCustomers:
                         return new AddCustomerMenu(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
                   
-                        case MenuType.loginconfirm:
-                        return new LoginConfirmationMenu();
+                        
                       
                         case MenuType.StoreMenu:
                         
-                       return new StoreMenu(new BL(new Repository()));
+                       return new StoreMenu(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
                      
                         case MenuType.ProductDisplayMenu:
                         
-                        return new ProductMenuDisplay(new BL(new Repository()));
+                        return new ProductMenuDisplay(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
                     
                         case MenuType.ProductBuyMenu:
-                        return new ProductBuyMenu(new BL(new Repository()));
+                        return new ProductBuyMenu(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
                      
                         case MenuType.ReplenishMenu:
                         return new ReplenishInventoryMenu(new BL(new Repository()));
                   
                         case MenuType.MyProfile:
-                        return new MyProfile(new BL(new Repository()));
+                        return new MyProfile(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
+
+
+
+
+                        
+//                         case MenuType.DisplayDB:
+//                         return new DisplayDBinfo(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
+//                         case MenuType.AddStore:
+//                         return new AddStoreFront(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
+//                         case MenuType.loginconfirm:
+//                         return new LoginConfirmationMenu(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
+//                         case MenuType.ShowCustomers:
+//                         return new ShowCustomers(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
+//                         case MenuType.AddProduct:
+//                         return new AddProduct(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
+                        case MenuType.FunctionMenu:
+                        return new FunctionMenu();
+//   case MenuType.AddLineItem:
+//                         return new AddLineItem(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
+
+
               
                 default:
                     return null;

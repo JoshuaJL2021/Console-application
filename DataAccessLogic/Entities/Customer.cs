@@ -7,6 +7,11 @@ namespace DataAccessLogic.Entities
 {
     public partial class Customer
     {
+        public Customer()
+        {
+            OrderHistories = new HashSet<OrderHistory>();
+        }
+
         public int CustomerId { get; set; }
         public string FirstName { get; set; }
         public string Email { get; set; }
@@ -15,5 +20,7 @@ namespace DataAccessLogic.Entities
         public string UserName { get; set; }
         public string Password { get; set; }
         public string Category { get; set; }
+
+        public virtual ICollection<OrderHistory> OrderHistories { get; set; }
     }
 }

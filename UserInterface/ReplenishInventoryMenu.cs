@@ -30,7 +30,9 @@ namespace UserInterface
 
             Console.WriteLine("Enter store you want to edit");
             string searchname = Console.ReadLine();
-            StoreFront test = _restBL.GetStore(searchname);//verifies it received the store
+            Console.WriteLine("Enter store address you want to edit");
+            string ad = Console.ReadLine();
+            StoreFront test = _restBL.GetStore(searchname,ad);//verifies it received the store
             Console.WriteLine("Your store is : " + test + "\n ");
             Console.WriteLine("----------------------------------");
             Console.WriteLine("Your store current Line Products :\n ");
@@ -75,18 +77,18 @@ namespace UserInterface
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("please try again you have entered the information wrong");
                     loop = true;
-                    Console.WriteLine("Would you like to try again \ntype yes or no\n?");
+                    Console.WriteLine("Would you like to not try again \ntype yes or no\n?");
                     cancel = Console.ReadLine();
 
 
-                    if (cancel == "no" || cancel == "NO" || cancel == "no")
+                    if (cancel == "yes" || cancel == "Yes" || cancel == "YES")
                     {
-                        loop = true;
+                        loop = false;
                     }
                     else
                     {
 
-                        loop = false; ;
+                        loop = true; ;
 
                     }
                 }//end of catch

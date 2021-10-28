@@ -17,6 +17,7 @@ namespace Models
 
         public string _username;
         public string _password;
+        public int _age { get; set; }
         public int Id { get; set; }
         public string Position { get; set; }
         //constructors
@@ -54,12 +55,7 @@ namespace Models
                 set { customerOrders = value; }
                 get { return customerOrders; }
             }
-        public int _age;
-        public int Age
-        {
-            get { return _age; }
-            set { _age = value; }
-        }
+        
 
         public string UserName
         {
@@ -76,7 +72,7 @@ namespace Models
         //in order to simply print out a customers information completely in a writeline
         public override string ToString()
         {
-            return $"Name: {_name}\nAddress: {_address}\nContact: {_contact}";
+            return $"Name: {_name}\tAddress: {_address}\tContact: {_contact}";
         }
         public  string PrintName()
         {

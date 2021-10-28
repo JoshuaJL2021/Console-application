@@ -19,10 +19,10 @@ namespace UserInterface
             Console.WriteLine("\nWelcome to the " + SingletonUser.currentstore._name + " products menu");
             Console.WriteLine("below is a list of products");
 
-            Console.WriteLine("\n\nList of Products in " + SingletonUser.currentstore);
-            StoreFront test = _restBL.GetStore(SingletonUser.currentstore._name);
+            Console.WriteLine("\n\nList of Products in " + SingletonUser.currentstore._name);
+            StoreFront test=_restBL.GetStoreByID(SingletonUser.currentstore.Id);
             Console.ForegroundColor = ConsoleColor.White;
-            foreach (LineItems rest in _restBL.ShowStock(test))
+            foreach (LineItems rest in _restBL.GetInventory(SingletonUser.currentstore.Id))
             {
                 Console.WriteLine("====================");
                 Console.WriteLine(rest);
@@ -43,12 +43,12 @@ namespace UserInterface
             {
                 case "3":
                     Orders _details = new Orders();
-                    StoreFront store = _restBL.GetStore(SingletonUser.currentstore._name);
+                    StoreFront store = _restBL.GetStore(SingletonUser.currentstore._name,SingletonUser.currentstore._address);
                     _details._location = store;
-                    double total = 0;
-                    double cost = 0.0;
+                    decimal total = 0;
+                    decimal cost = 0;
                     int selectedamount = 0;
-                    double payment = 0;
+                    decimal payment = 0;
                     List<string> cartResult = new List<string>();
                     bool decision = true;
                     do
@@ -122,7 +122,7 @@ namespace UserInterface
                         }
                     } while (decision);
 
-                    double linecost = 0.0;
+                    decimal linecost = 0;
                     foreach (LineItems obj in _details.itemslist)
                     {
                         Console.WriteLine(obj);
