@@ -91,7 +91,7 @@ namespace BusinessLogic
         /// <param name="product"></param>
         /// <param name="chosen"></param>
         /// <returns>returns the line item from the db that matches</returns>
-        LineItems VerifyStock(string product, StoreFront chosen);
+        LineItems VerifyStock(int productnum, StoreFront chosen);
 
         /// <summary>
         /// This method receives all the line items from the specified store
@@ -158,6 +158,10 @@ namespace BusinessLogic
 
       StoreFront GetStoreByID(int number);
       bool VerifyStorebyID(int number);
+
+      void InsertHistory(int store, int prod,int order, int customer);
+
+      Orders GetOrderByID(Orders obj);
       
 
     }

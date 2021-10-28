@@ -165,17 +165,17 @@ namespace DataAccessLogic
         }
 
      
-        public LineItems DLVerifyStock(string product, StoreFront chosen)
+        public LineItems DLVerifyStock(int productnum, StoreFront chosen)
         {
             LineItems obj = new LineItems();
-            List<LineItems> listofline = new List<LineItems>();
-            listofline = DLShowStock(chosen);
-            bool result = listofline.Exists(x => x._product._name == product);
-            if (result == false)
-            {
-                throw new Exception("Product Not found in store");
-            }
-            obj = listofline.FirstOrDefault(rest => rest._product._name == product);
+            // List<LineItems> listofline = new List<LineItems>();
+            // listofline = DLShowStock(chosen);
+            // bool result = listofline.Exists(x => x._product._name == product);
+            // if (result == false)
+            // {
+            //     throw new Exception("Product Not found in store");
+            // }
+            // obj = listofline.FirstOrDefault(rest => rest._product._name == product);
             return obj;
         }
 
@@ -312,6 +312,16 @@ public StoreFront DLGetStore(string name,string address)
         }
 
         public bool VerifyStorebyID(int number)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void InsertHistory(int store, int prod, int order, int customer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Orders GetOrderID(Orders obj)
         {
             throw new NotImplementedException();
         }

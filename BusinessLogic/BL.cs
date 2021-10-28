@@ -97,9 +97,9 @@ namespace BusinessLogic
         }
 
 
-        public LineItems VerifyStock(string product, StoreFront chosen)
+        public LineItems VerifyStock(int productnum, StoreFront chosen)
         {
-           return _repo.DLVerifyStock(product,chosen);
+           return _repo.DLVerifyStock(productnum,chosen);
         }
 
         public List<LineItems> ShowStock(StoreFront chosen)
@@ -178,6 +178,16 @@ namespace BusinessLogic
         public bool VerifyStorebyID(int number)
         {
             throw new NotImplementedException();
+        }
+
+        public void InsertHistory(int store, int prod, int order, int customer)
+        {
+            _repo.InsertHistory(store,prod,order,customer);
+        }
+
+        public Orders GetOrderByID(Orders obj)
+        {
+            return _repo.GetOrderID(obj);
         }
     }
 }

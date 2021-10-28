@@ -29,42 +29,50 @@ namespace UserInterface
 
             //Print all store fr
                 List<StoreFront> listOfRestaurants = _restBL.GetAllStoreFrontsBL();
+Orders temp=new Orders();
+temp._totalprice=3;
+_restBL.AddOrdersBL(temp);
+List<Orders> orderlist = _restBL.GetAllOrdersBL();
+foreach (Orders t in orderlist)
+{
+    Console.WriteLine(t);
+}
 
-            foreach (StoreFront rest in listOfRestaurants)
-            {
-                Console.WriteLine("====================");
-                Console.WriteLine(rest);
-                Console.WriteLine(rest.Id);
-                Console.WriteLine("====================");
-            }
-            /// Search store function
-            Console.WriteLine("Enter StoreName");
-                string name=Console.ReadLine();
-                List<StoreFront>test=new List<StoreFront>();
+            // foreach (StoreFront rest in listOfRestaurants)
+            // {
+            //     Console.WriteLine("====================");
+            //     Console.WriteLine(rest);
+            //     Console.WriteLine(rest.Id);
+            //     Console.WriteLine("====================");
+            // }
+            // /// Search store function
+            // Console.WriteLine("Enter StoreName");
+            //     string name=Console.ReadLine();
+            //     List<StoreFront>test=new List<StoreFront>();
                 
-                try
-                {
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
-                     foreach(StoreFront s in _restBL.SearchStores(name))
-                    {
-                        Console.WriteLine(s);
-                        test.Add(s);
+            //     try
+            //     {
+            //     Console.ForegroundColor = ConsoleColor.DarkYellow;
+            //          foreach(StoreFront s in _restBL.SearchStores(name))
+            //         {
+            //             Console.WriteLine(s);
+            //             test.Add(s);
 
-                    }
-                    searchresult=test;
-                    Console.WriteLine("Click Enter to see results");
-                     Console.ReadLine();
-                }
-                catch (System.Exception)
-                {
-                    Console.ForegroundColor = ConsoleColor.White;
+            //         }
+            //         searchresult=test;
+            //         Console.WriteLine("Click Enter to see results");
+            //          Console.ReadLine();
+            //     }
+            //     catch (System.Exception)
+            //     {
+            //         Console.ForegroundColor = ConsoleColor.White;
         
-                    searchresult=null;
-                    Console.WriteLine("Store was unfortunately not found please enter name as shown in list above");
-                    Console.WriteLine("You will be sent to Store display again ");
-                    Console.WriteLine("Press Enter to continue");
-                    Console.ReadLine();
-                }
+            //         searchresult=null;
+            //         Console.WriteLine("Store was unfortunately not found please enter name as shown in list above");
+            //         Console.WriteLine("You will be sent to Store display again ");
+            //         Console.WriteLine("Press Enter to continue");
+            //         Console.ReadLine();
+            //     }
 
             
 

@@ -73,7 +73,7 @@ namespace DataAccessLogic
         /// <param name="product"></param>
         /// <param name="chosen"></param>
         /// <returns>returns the line item from the db that matches</returns>
-        LineItems DLVerifyStock(string product, StoreFront chosen);
+        LineItems DLVerifyStock(int productnum, StoreFront chosen);
         /// <summary>
         /// This method receives all the line items from the specified store
         /// </summary>
@@ -127,5 +127,7 @@ namespace DataAccessLogic
          StoreFront GetStoreByID(int number);
           bool VerifyStorebyID(int number);
 
+          void InsertHistory(int store, int prod, int order, int customer);
+        Orders GetOrderID(Orders obj);
     }
 }

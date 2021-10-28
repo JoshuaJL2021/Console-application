@@ -124,6 +124,7 @@ namespace UserInterface
                     SingletonUser.currentuser=_restBL.GetCustomer(name,pass);
                      Console.WriteLine("Welcome Back " + SingletonUser.currentuser._name + "\n enter to continue");
                      
+                     
                      Console.ReadLine();
                 }
                 catch (System.Exception)

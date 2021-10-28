@@ -74,7 +74,7 @@ Console.WriteLine("[12] - input orders for list");
                     string cancel;
                     try
                     {
-                     _lines=_restBL.VerifyStock(productsname,store);    
+                     //_lines=_restBL.VerifyStock(productsname,store);    
                     //_prods=_restBL.VerifyProduct(productsname,store);
                     loop=false;
                     }

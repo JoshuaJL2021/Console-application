@@ -43,7 +43,7 @@ namespace UserInterface
             {
                 case "3":
                     Orders _details = new Orders();
-                    StoreFront store = _restBL.GetStore(SingletonUser.currentstore._name,SingletonUser.currentstore._address);
+                    StoreFront store = _restBL.GetStoreByID(SingletonUser.currentstore.Id);
                     _details._location = store;
                     decimal total = 0;
                     decimal cost = 0;
@@ -60,8 +60,10 @@ namespace UserInterface
                         while (loop == true)
                         {
                             Console.ForegroundColor = ConsoleColor.DarkYellow;
-                            Console.WriteLine("Enter the name of the product from the store to add to your cart");
-                            string productsname = Console.ReadLine();
+
+                           
+                            Console.WriteLine("Enter the Id of the product from the store to add to your cart");
+                            int productsname = Convert.ToInt32(Console.ReadLine());
                             string cancel;
                             try
                             {
@@ -139,8 +141,6 @@ namespace UserInterface
                         cartResult.Add(temp);
                         cost = 0;
                         linecost = 0;
-                        SingletonUser.currentstore._itemslist.RemoveAll(x => x._product._name == obj._product._name);
-                        SingletonUser.currentstore._itemslist.Add(obj);
                     }
 
 
@@ -151,16 +151,21 @@ namespace UserInterface
 
 
                     string confirmation;
+                    total=decimal.Round(total,2,MidpointRounding.AwayFromZero);
+                    Console.WriteLine("Total of cart is $"+total);
                     Console.WriteLine("Confirm Purchase enter yes or no\nif you enter no you must restart the order");
                     confirmation = Console.ReadLine();
                     if (confirmation == "yes" || confirmation == "Yes" || confirmation == "YES")
-                    {
+                    { 
+                        Orders Test=new Orders();
                         _details._totalprice = total;
 
                         _restBL.AddOrdersBL(_details);
-                        SingletonUser.currentuser.customerOrders.Add(_details);
-                        _restBL.ModifyCustomerRecord(SingletonUser.currentuser);
-                        _restBL.ModifyStoreRecordBL(SingletonUser.currentstore);
+                         Test=_restBL.GetOrderByID(Test);
+                        foreach(LineItems s in _details.itemslist)
+                        {
+                            _restBL.InsertHistory(store.Id,s._product.Id,Test.Id,SingletonUser.currentuser.Id);
+                        }
                         Console.WriteLine("\nReceite:");
                         Console.WriteLine("Store: " + _details._location._name + "\n Address: " + _details._location._address);
                         foreach (String s in cartResult)
