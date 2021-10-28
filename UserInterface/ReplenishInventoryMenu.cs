@@ -55,7 +55,7 @@ namespace UserInterface
                 try
                 {
 
-                    _lines = _restBL.VerifyStock(productsname, test);
+                    //_lines = _restBL.VerifyStock(productsname, test);
                     loop = false;
                     if (_details.itemslist.Exists(x => x._product._name == _lines._product._name))
                     {

@@ -199,21 +199,47 @@ namespace DataAccessLogic
             throw new System.NotImplementedException();
         }
 
-        public LineItems DLVerifyStock(string product, StoreFront chosen)
+        public LineItems DLVerifyStock(int productnum, StoreFront chosen)
         {
-            throw new System.NotImplementedException();
+            LineItems obj = new LineItems();
+            List<LineItems> listofline = new List<LineItems>();
+            listofline = GetInventory(chosen.Id);
+            bool result = listofline.Exists(x => x._product.Id == productnum);
+            if (result == false)
+            {
+                throw new Exception("Product Not found in store");
+            }
+            obj = listofline.FirstOrDefault(rest => rest._product.Id == productnum);
+            return obj;
         }
 
 
         public Orders AddOrdersDL(Orders p_rest)
         {
-            throw new System.NotImplementedException();
+            _context.OrdersRecords.Add
+            (
+                new Entity.OrdersRecord()
+                {
+                    Total = p_rest._totalprice
+
+
+                });
+                 _context.SaveChanges();
+            return p_rest;
         }
 
 
         public List<Orders> GetAllOrdersDL()
         {
-            throw new System.NotImplementedException();
+            List<Orders> test = _context.OrdersRecords.Select(rest =>
+                   new Model.Orders()
+                   {
+
+                       Id = rest.OrderId,
+                       _totalprice = rest.Total,
+                   }
+            ).ToList();
+            return test;
         }
 
         // public List<Model.Restaurant> GetAllRestaurant()
@@ -432,5 +458,33 @@ namespace DataAccessLogic
 
         }
 
+        public void InsertHistory(int store, int prod, int order, int customer)
+        {
+             _context.OrderHistories.Add
+            (
+                new Entity.OrderHistory()
+                {
+                    StoreId=store,
+                    ProductId=prod,
+                    OrderId=order,
+                    CustomerId=customer
+
+
+                }
+            );
+
+            //This method will save the changes made to the database
+            _context.SaveChanges();
+        }
+
+        public Orders GetOrderID(Orders obj)
+        {
+             List<Model.Orders> test= new List<Model.Orders>();
+                test= GetAllOrdersDL();
+                IEnumerable<Orders> query = test.OrderBy(x => x.Id);
+               Models.Orders temp=query.Last();
+               obj.Id=temp.Id;
+               return obj;
+        }
     }
 }
