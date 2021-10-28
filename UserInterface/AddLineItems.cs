@@ -73,18 +73,25 @@ namespace UserInterface
                     _rest._quantity = Convert.ToInt32(Console.ReadLine());
                     return MenuType.AddLineItem;
                 case "1":
+
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("Enter store you want to enter");
-                string storename=Console.ReadLine();
+                 List<StoreFront> listofstores = _restBL.GetAllStoreFrontsBL();
 
+            foreach (StoreFront rest in listofstores)
+            {
+                Console.WriteLine("====================");
+                Console.WriteLine(rest);
+                Console.WriteLine("====================");
+            }
+                
 
-                Console.WriteLine("Enter store address you want to enter");
-                string storeaddress=Console.ReadLine();
+                Console.WriteLine("Enter store  you want to enter");
+                int number=Convert.ToInt32(Console.ReadLine());
                 
                 try
                 {
 
-                     SingletonUser.currentstore=_restBL.GetStore(storename,storeaddress);
+                     SingletonUser.currentstore=_restBL.GetStoreByID(number);
                      Console.WriteLine("Welcome to " + SingletonUser.currentstore + "\n enter to continue");
                      Console.ReadLine();
                 }

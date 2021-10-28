@@ -15,6 +15,15 @@ namespace UserInterface
         }
         public void Menu()
         {
+             List<StoreFront> listofstores = _restBL.GetAllStoreFrontsBL();
+
+            foreach (StoreFront rest in listofstores)
+            {
+                Console.WriteLine("====================");
+                Console.WriteLine(rest);
+                Console.WriteLine("====================");
+            }
+
             Console.WriteLine("Enter the Store Id number you want to see inventory for");
             int num=Convert.ToInt32(Console.ReadLine());
             List<LineItems> listOfRestaurants = _restBL.GetInventory(num);

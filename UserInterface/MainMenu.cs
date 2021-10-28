@@ -42,6 +42,7 @@ namespace UserInterface
                 Console.WriteLine("What do you want to do?");
                 Console.WriteLine("[1] - Go Browsing");
                 Console.WriteLine("[0] - Exit the store");
+                 Console.WriteLine("[B] - MyProfile");
 
             }
             }
@@ -60,6 +61,9 @@ namespace UserInterface
             string userChoice = Console.ReadLine();
             switch (userChoice)
             {
+                case "B":
+                case "b":
+                    return MenuType.MyProfile;
                 case "x":
                     return MenuType.FunctionMenu;
                 case "1":

@@ -49,10 +49,10 @@ namespace UserInterface
                      
                         case MenuType.ProductDisplayMenu:
                         
-                        return new ProductMenuDisplay(new BL(new Repository()));
+                        return new ProductMenuDisplay(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
                     
                         case MenuType.ProductBuyMenu:
-                        return new ProductBuyMenu(new BL(new Repository()));
+                        return new ProductBuyMenu(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
                      
                         case MenuType.ReplenishMenu:
                         return new ReplenishInventoryMenu(new BL(new Repository()));

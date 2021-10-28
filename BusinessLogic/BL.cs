@@ -169,5 +169,15 @@ namespace BusinessLogic
         {
            return _repo.GetInventory(obj);
         }
+
+        public StoreFront GetStoreByID(int number)
+        {
+            return _repo.GetStoreByID(number);
+        }
+
+        public bool VerifyStorebyID(int number)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

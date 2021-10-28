@@ -366,32 +366,70 @@ namespace DataAccessLogic
             //                                 StockItemPrice=st.Product.Price,
             // 								storequantity = st.InStock 
             // 							};
-            
+
 
             var innerJoinResult2 = from compl in _context.Stocks
                                    where compl.StoreId == obj
-                                   select new {compl.Product, compl.InStock};
+                                   select new { compl.Product, compl.InStock };
 
 
             //Mapping the Queryable<Entity.Review> into a list<Model.Review>
             List<Model.LineItems> listOfReview = new List<Model.LineItems>();
-            
+
             foreach (var rev in innerJoinResult2)
-            {LineItems test=new LineItems();
-                test._product=new Model.Products(){
-                    _price=rev.Product.Price,
-                    _name=rev.Product.Name,
-                    Id=rev.Product.ProductId,
-                    Description=rev.Product.Description,
-                    Category=rev.Product.Category
+            {
+                LineItems test = new LineItems();
+                test._product = new Model.Products()
+                {
+                    _price = rev.Product.Price,
+                    _name = rev.Product.Name,
+                    Id = rev.Product.ProductId,
+                    Description = rev.Product.Description,
+                    Category = rev.Product.Category
 
                 };
-                test._quantity=rev.InStock;
+                test._quantity = rev.InStock;
 
                 listOfReview.Add(test);
             }
 
             return listOfReview;
+        }
+
+        public StoreFront GetStoreByID(int number)
+        {
+            Models.StoreFront test = new Models.StoreFront();
+            bool result = VerifyStorebyID(number);
+            if (result == false)
+            {
+                throw new Exception("Product Was not found with entered ID number");
+            }
+            else
+            {
+                Entity.StoreFront restToFind = _context.StoreFronts.Find(number);
+                test._name = restToFind.StoreName;
+                test.Id = restToFind.StoreId;
+                test._address = restToFind.Location;
+                return test;
+            }
+
+        }
+        public bool VerifyStorebyID(int number)
+        {
+            Entity.StoreFront restToFind = _context.StoreFronts.Find(number);
+            // Model.Products test=new Model.Products();
+            // test._name=restToFind.Name;
+            // test.Id=restToFind.ProductId;
+            // test._price=restToFind.Price;
+            // test.Category=restToFind.Category;
+            // test.Description=restToFind.Description;
+            bool result = true;
+            if (restToFind == null)
+            {
+                result = false;
+            }
+            return result;
+
         }
 
     }

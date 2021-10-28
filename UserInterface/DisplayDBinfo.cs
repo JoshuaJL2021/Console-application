@@ -45,7 +45,6 @@ namespace UserInterface
             {
                 Console.WriteLine("====================");
                 Console.WriteLine(rest);
-                Console.WriteLine("ID:"+rest.Id);
                 Console.WriteLine("Description: " +rest.Description);
                 Console.WriteLine("Category: " +rest.Category);
                 Console.WriteLine("====================");

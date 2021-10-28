@@ -124,6 +124,8 @@ namespace DataAccessLogic
          Products GetProduct(int obj);
 
          List<LineItems> GetInventory(int obj);
+         StoreFront GetStoreByID(int number);
+          bool VerifyStorebyID(int number);
 
     }
 }

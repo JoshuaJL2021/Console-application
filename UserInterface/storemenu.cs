@@ -66,7 +66,6 @@ namespace UserInterface
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                      foreach(StoreFront s in _restBL.SearchStores(storen))
                     {
-                        Console.WriteLine(s);
                         test.Add(s);
 
                     }
@@ -91,18 +90,14 @@ namespace UserInterface
 
                 case "2":
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("Enter store you want to enter");
-                string storename=Console.ReadLine();
-                StoreFront.selectedStore=storename;
-
-                Console.WriteLine("Enter store address you want to enter");
-                string storeaddress=Console.ReadLine();
-                StoreFront.selectedAddress=storeaddress;
+                Console.WriteLine("Enter the id number of store you want to enter");
+            int num=Convert.ToInt32(Console.ReadLine());
+               
                 try
                 {
 
-                     SingletonUser.currentstore=_restBL.GetStore(storename,storeaddress);
-                     Console.WriteLine("Welcome to " + StoreFront.selectedStore + "\n enter to continue");
+                     SingletonUser.currentstore=_restBL.GetStoreByID(num);
+                     Console.WriteLine("Welcome to " + SingletonUser.currentstore._name + "\n enter to continue");
                      
                      Console.ReadLine();
                 }
@@ -110,8 +105,6 @@ namespace UserInterface
                 {
                     Console.ForegroundColor = ConsoleColor.White;
                     SingletonUser.currentstore=null;
-                    StoreFront.selectedStore=null;
-                    StoreFront.selectedAddress=null;
                     Console.WriteLine("Store was unfortunately not found please enter name as shown in list above");
                     Console.WriteLine("You will be sent to Store display again ");
                     Console.WriteLine("Press Enter to continue");

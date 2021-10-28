@@ -18,10 +18,10 @@ namespace UserInterface
             Console.WriteLine("Welcome to the " + SingletonUser.currentstore._name + " products menu");
             Console.WriteLine("below is a list of products");
 
-            Console.WriteLine("\n\nList of Products in " + SingletonUser.currentstore);
-            StoreFront test=_restBL.GetStore(SingletonUser.currentstore._name,SingletonUser.currentstore._address);
+            Console.WriteLine("\n\nList of Products in " + SingletonUser.currentstore._name);
+            StoreFront test=_restBL.GetStoreByID(SingletonUser.currentstore.Id);
             Console.ForegroundColor = ConsoleColor.White;
-            foreach (LineItems rest in _restBL.ShowStock(test))
+            foreach (LineItems rest in _restBL.GetInventory(SingletonUser.currentstore.Id))
             {
                 Console.WriteLine("====================");
                 Console.WriteLine(rest._product);

@@ -306,6 +306,14 @@ public StoreFront DLGetStore(string name,string address)
             throw new NotImplementedException();
         }
 
-    
+        public StoreFront GetStoreByID(int number)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool VerifyStorebyID(int number)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
