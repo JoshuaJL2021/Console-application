@@ -137,7 +137,7 @@ namespace UserInterface
 
                         total = total + payment;
                         string temp;
-                        temp = "\n" + obj._product.Name + "\t$" + obj._product.Price + " selecting " + selectedamount + " = $" + linecost;
+                        temp = "\n" + obj._product.Name + "======$" + obj._product.Price + "=========selecting " + selectedamount + " = $" + linecost;
                         cartResult.Add(temp);
                         cost = 0;
                         linecost = 0;
