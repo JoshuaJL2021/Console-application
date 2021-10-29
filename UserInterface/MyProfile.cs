@@ -28,6 +28,8 @@ namespace UserInterface
             Console.WriteLine("Position - "+ SingletonUser.currentuser.Position);
             Console.WriteLine("Account number - "+ SingletonUser.currentuser.Id);
             List<Orders> listofOrders = _restBL.GetMyOrderHistory(SingletonUser.currentuser.Id);
+           
+             
   
 
             foreach (Orders history in listofOrders)

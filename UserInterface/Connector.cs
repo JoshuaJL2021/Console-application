@@ -31,6 +31,7 @@
         AddStore,
         FunctionMenu,
         DisplayDB,
+        ShowStoreOrders
         
 
     }

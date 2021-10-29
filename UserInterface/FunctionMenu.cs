@@ -57,8 +57,10 @@ namespace UserInterface
                     return MenuType.loginconfirm;
                     case "g":
                     return MenuType.AddLineItem;
-                      case "h":
+                      case "i":
                     return MenuType.ShowCustomers;
+                    case "h":
+                    return MenuType.ShowStoreOrders;
                 
                 default:
                     Console.WriteLine("Please input a valid response!");

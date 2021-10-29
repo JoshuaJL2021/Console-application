@@ -180,6 +180,7 @@ namespace DataAccessLogic
         void ModifyStockTable(int storenumber, int productnumber, int quantity);
 
         List<Orders> GetMyOrderHistory(int objId);
+        List<Orders> GetStoreOrderHistory(int objId);
 
     }
 }

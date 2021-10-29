@@ -321,7 +321,7 @@ namespace DataAccessLogic
             // 							};
 
 
-            var innerJoinResult2 = from compl in _context.Stocks
+            var result = from compl in _context.Stocks
                                    where compl.StoreId == obj
                                    select new { compl.Product, compl.InStock };
 
@@ -329,19 +329,19 @@ namespace DataAccessLogic
             //Mapping the Queryable<Entity.Review> into a list<Model.Review>
             List<Model.LineItems> listofItems = new List<Model.LineItems>();
 
-            foreach (var rev in innerJoinResult2)
+            foreach (var row in result)
             {
                 LineItems test = new LineItems();
                 test._product = new Model.Products()
                 {
-                    _price = rev.Product.Price,
-                    _name = rev.Product.Name,
-                    Id = rev.Product.ProductId,
-                    Description = rev.Product.Description,
-                    Category = rev.Product.Category
+                    _price = row.Product.Price,
+                    _name = row.Product.Name,
+                    Id = row.Product.ProductId,
+                    Description = row.Product.Description,
+                    Category = row.Product.Category
 
                 };
-                test._quantity = rev.InStock;
+                test._quantity = row.InStock;
 
                 listofItems.Add(test);
             }
@@ -432,13 +432,53 @@ namespace DataAccessLogic
             var innerJoinResult2 = from compl in _context.OrderHistories
                                    where compl.CustomerId == objId
                                    select new { compl.Order, compl.Product, compl.Store };
-                                   Console.WriteLine(innerJoinResult2.Count());
+
+
+            //Mapping the Queryable<Entity.rowiew> into a list<Model.Review>
+            List<Model.Orders> listofItems = new List<Model.Orders>();
+
+            foreach (var row in innerJoinResult2)
+            {
+                LineItems test = new LineItems();
+                Model.Orders mine = new Orders();
+                
+                test._product = new Model.Products()
+                {
+                    _price = row.Product.Price,
+                    _name = row.Product.Name,
+                    Id = row.Product.ProductId,
+                    Description = row.Product.Description,
+                    Category = row.Product.Category
+
+                };
+                mine.Id = row.Order.OrderId;
+                mine.TotalPrice = row.Order.Total;
+                mine.itemslist.Add(test);
+                mine._location = new Model.StoreFront()
+                {
+                    _name = row.Store.StoreName,
+                    _address = row.Store.Location,
+                    Id = row.Store.StoreId
+                };
+
+                listofItems.Add(mine);
+            }
+           
+
+            return listofItems;
+        }
+
+        public List<Orders> GetStoreOrderHistory(int objId)
+        {
+            var result = from compl in _context.OrderHistories
+                                   where compl.StoreId == objId
+                                   select new { compl.Order, compl.Product, compl.Store };
 
 
             //Mapping the Queryable<Entity.Review> into a list<Model.Review>
             List<Model.Orders> listofItems = new List<Model.Orders>();
 
-            foreach (var rev in innerJoinResult2)
+            foreach (var rev in result)
             {
                 LineItems test = new LineItems();
                 Model.Orders mine = new Orders();
@@ -464,9 +504,9 @@ namespace DataAccessLogic
 
                 listofItems.Add(mine);
             }
+           
 
             return listofItems;
         }
-      
     }
 }

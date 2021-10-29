@@ -340,5 +340,10 @@ public StoreFront DLGetStore(string name,string address)
         {
             throw new NotImplementedException();
         }
+
+        public List<Orders> GetStoreOrderHistory(int objId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

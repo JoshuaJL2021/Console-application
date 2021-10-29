@@ -163,6 +163,9 @@ namespace BusinessLogic
             return _repo.GetMyOrderHistory(objId);
         }
 
-       
+        public List<Orders> GetStoreOrderHistory(int objId)
+        {
+            return _repo.GetStoreOrderHistory(objId);
+        }
     }
 }
