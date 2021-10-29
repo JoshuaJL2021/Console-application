@@ -11,147 +11,161 @@ namespace UserInterface
         {
             parameterInter = parameterobj;
         }
-    
+
         public void Menu()
         {
-        Console.ForegroundColor = ConsoleColor.DarkYellow;
-            if(SingletonUser.currentuser==null)
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("##################################################################################\n");
+            if (SingletonUser.currentuser == null)
             {
-               Console.WriteLine("Welcome to the Shopping Menu!");
-               Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Are you a new customer or a Returning customer?");
-            Console.WriteLine("[2] - New Customer");
-            Console.WriteLine("[1] - Login");
-            Console.WriteLine("[0] - Return to main menu"); 
+                Console.WriteLine("\tWelcome to the Shopping Menu!");
+                Console.WriteLine("\tPlease Log in or create account?");
+                Console.WriteLine("---------------------------------------------------------------------\n");
+                Console.ForegroundColor = ConsoleColor.Green;
+
+                Console.WriteLine("\t[2] - create account");
+                Console.WriteLine("\t[1] - Login");
+                Console.WriteLine("\t[0] - Return to main menu");
 
             }
             else
             {
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("Welcome to the Shopping Menu!");
-            Console.ForegroundColor = ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("\tWelcome to the Shopping Menu!");
+                Console.WriteLine("---------------------------------------------------------------------\n");
+                Console.ForegroundColor = ConsoleColor.Green;
 
-            Console.WriteLine("[3] - View stores");
-            Console.WriteLine("[2] - New Customer");
-            Console.WriteLine("[1] - Login as different user");
-            Console.WriteLine("[0] - Return to main menu"); 
+                Console.WriteLine("\t[3] - View stores");
+                Console.WriteLine("\t[2] - create account");
+                Console.WriteLine("\t[1] - Login as different user");
+                Console.WriteLine("\t[0] - Return to main menu");
 
             }
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("\n##################################################################################\n");
 
-            
-            
-            
-      
+
+
+
+
         }
 
         public MenuType YourChoice()
         {
             string userChoice = Console.ReadLine();
-           if(SingletonUser.currentuser==null)
-           {
+            if (SingletonUser.currentuser == null)
+            {
                 switch (userChoice)
-            {
-                case "2":
-                
-                    return MenuType.AddCustomers;
-
-                case "1":
-               Console.ForegroundColor = ConsoleColor.DarkYellow;
-        
-            
-                Console.WriteLine("Enter username");
-                string name=Console.ReadLine();
-                Console.WriteLine("Enter Pass");
-                string pass=Console.ReadLine();
-                try
                 {
+                    case "2":
 
-                     SingletonUser.currentuser=parameterInter.GetCustomer(name,pass);
-                     Console.WriteLine("Welcome Back " + SingletonUser.currentuser._name + "\nenter to continue");
-                     
-                     Console.ReadLine();
-                }
-                catch (System.Exception)
-                {
-                    Console.ForegroundColor = ConsoleColor.White;
-        
-                    SingletonUser.currentuser=null;
-                    Console.WriteLine("User was unfortunately not found");
-                Console.WriteLine("You will be sent to the Login Menu again");
-                Console.WriteLine("Press Enter to continue");
-                Console.ReadLine();
-                    return MenuType.LoginMenu;
-                }
-                
-                
-                    return MenuType.StoreMenu;
-                case "0":
-                    return MenuType.MainMenu;
+                        return MenuType.AddCustomers;
 
-                default:
-                    Console.WriteLine("Please input a valid response!");
-                    Console.WriteLine("Press Enter to continue");
-                    Console.ReadLine();
-                    return MenuType.MainMenu;
+                    case "1":
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+
+
+                        Console.WriteLine("\tEnter username");
+                        string name = Console.ReadLine();
+                        Console.WriteLine("\tEnter Password");
+                        string pass = Console.ReadLine();
+                        try
+                        {
+
+                            SingletonUser.currentuser = parameterInter.GetCustomer(name, pass);
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("************************************************\n");
+                            Console.WriteLine("\tWelcome Back " + SingletonUser.currentuser._name + "\t press enter to continue\n");
+                            Console.WriteLine("************************************************\n");
+                            Console.ReadLine();
+                        }
+                        catch (System.Exception)
+                        {
+                            Console.ForegroundColor = ConsoleColor.White;
+
+                            SingletonUser.currentuser = null;
+                            Console.WriteLine("************************************************\n");
+                            Console.WriteLine("User was unfortunately not found");
+                            Console.WriteLine("You will be sent to the Login Menu again");
+                            Console.WriteLine("Press Enter to continue");
+                            Console.WriteLine("\n************************************************\n");
+                            Console.ReadLine();
+                            return MenuType.LoginMenu;
+                        }
+
+
+                        return MenuType.StoreMenu;
+                    case "0":
+                        return MenuType.MainMenu;
+
+                    default:
+                        Console.WriteLine("Please input a valid response!");
+                        Console.WriteLine("Press Enter to continue");
+                        Console.ReadLine();
+                        return MenuType.MainMenu;
+                }
+
+
+
             }
-         
-
-           
-        }
-        else
-        {
-             switch (userChoice)
+            else
             {
-                case "3":
-                return MenuType.StoreMenu;
-
-                case "2":
-                
-                    return MenuType.AddCustomers;
-
-                case "1":
-               
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("Enter username");
-                string name=Console.ReadLine();
-                Console.WriteLine("Enter Pass");
-                string pass=Console.ReadLine();
-
-                try
+                switch (userChoice)
                 {
-                    //List<Customer> listOfCustomers = parameterInter.GetAllCustomersBL();
-                    
-                    SingletonUser.currentuser=parameterInter.GetCustomer(name,pass);
-                     Console.WriteLine("Welcome Back " + SingletonUser.currentuser._name + "\n enter to continue");
-                     
-                     
-                     Console.ReadLine();
-                }
-                catch (System.Exception)
-                {
-                    Console.ForegroundColor = ConsoleColor.White;
-                    SingletonUser.currentuser=null;
-                    Console.WriteLine("User was unfortunately not found");
-                Console.WriteLine("You will be sent to the Login Menu again");
-                Console.WriteLine("Press Enter to continue");
-                Console.ReadLine();
-                    return MenuType.LoginMenu;
-                }
-                
-                
-                    return MenuType.StoreMenu;
-                case "0":
-                    return MenuType.MainMenu;
+                    case "3":
+                        return MenuType.StoreMenu;
+
+                    case "2":
+
+                        return MenuType.AddCustomers;
+
+                    case "1":
+
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine("Enter username");
+                        string name = Console.ReadLine();
+                        Console.WriteLine("Enter Pass");
+                        string pass = Console.ReadLine();
+
+                        try
+                        {
+
+                            SingletonUser.currentuser = parameterInter.GetCustomer(name, pass);
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("************************************************\n");
+                            Console.WriteLine("Welcome Back " + SingletonUser.currentuser._name + "\t press enter to continue\n");
+                            Console.WriteLine("************************************************\n");
+
+                            Console.ReadLine();
+                        }
+                        catch (System.Exception)
+                        {
+                            Console.ForegroundColor = ConsoleColor.White;
+                            SingletonUser.currentuser = null;
+                            Console.WriteLine("************************************************\n");
+                            Console.WriteLine("User was unfortunately not found");
+                            Console.WriteLine("You will be sent to the Login Menu again");
+                            Console.WriteLine("Press Enter to continue");
+                            Console.WriteLine("\n************************************************\n");
+                            Console.ReadLine();
+
+                            return MenuType.LoginMenu;
+                        }
 
 
-                default:
-                    Console.WriteLine("Please input a valid response!");
-                    Console.WriteLine("Press Enter to continue");
-                    Console.ReadLine();
-                    return MenuType.MainMenu;
+                        return MenuType.StoreMenu;
+                    case "0":
+                        return MenuType.MainMenu;
+
+
+                    default:
+                        Console.WriteLine("Please input a valid response!");
+                        Console.WriteLine("Press Enter to continue");
+                        Console.ReadLine();
+                        return MenuType.MainMenu;
+                }
+
             }
-
         }
     }
-}
 }

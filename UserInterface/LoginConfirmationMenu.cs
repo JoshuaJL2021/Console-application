@@ -7,6 +7,13 @@ namespace UserInterface
 {
     public class LoginConfirmationMenu : IMenu
     {
+        private static Orders _details = new Orders();
+        static decimal total;
+        decimal cost;
+        int selectedamount;
+        decimal payment;
+        decimal linecost;
+        List<string> cartResult = new List<string>();
         private InterfaceBL parameterInter;
 
         public LoginConfirmationMenu(InterfaceBL parameterobj)
@@ -15,312 +22,358 @@ namespace UserInterface
         }
         public void Menu()
         {
-//             Orders _details = new Orders();
-// List<StoreFront> listofstores = parameterInter.GetAllStoreFrontsBL();
-
-//             foreach (StoreFront rest in listofstores)
-//             {
-//                 Console.WriteLine("====================");
-//                 Console.WriteLine(rest);
-//                 Console.WriteLine("====================");
-//             }
-
-//             Console.WriteLine("Enter the Store Id number you want to see inventory for");
-//             int num=Convert.ToInt32(Console.ReadLine());
-//                     StoreFront store = parameterInter.GetStoreByID(num);
-//                     _details._location = store;
-//                     decimal total = 0;
-//                     decimal cost = 0;
-//                     int selectedamount = 0;
-//                     decimal payment = 0;
-//                     List<string> cartResult = new List<string>();
-//                     bool decision = true;
-//                     do
-//                     {
-
-//                         LineItems _lines = new LineItems();
-
-//                         bool loop = true;
-//                         while (loop == true)
-//                         {
-//                             List<LineItems> listOfRestaurants = parameterInter.GetInventory(num);
-
-//             foreach (LineItems rest in listOfRestaurants)
-//             {
-//                 Console.WriteLine("====================");
-//                 Console.WriteLine(rest);
-//                 Console.WriteLine("====================");
-//             }
-//                             Console.ForegroundColor = ConsoleColor.DarkYellow;
-//                             Console.WriteLine("Enter the Id of the product from the store to add to your cart");
-//                             int productsname = Convert.ToInt32(Console.ReadLine());
-//                             string cancel;
-//                             try
-//                             {
-
-//                                 _lines = parameterInter.VerifyStock(productsname, store);
-//                                 loop = false;
-//                                 if (_details.itemslist.Exists(x => x._product._name == _lines._product._name))
-//                                 {
-//                                     Console.WriteLine("This item is already in the cart");
-
-//                                 }
-//                                 else
-//                                 {
-
-//                                     _details.itemslist.Add(_lines);
-//                                 }
-
-//                             }
-//                             catch (System.Exception)
-//                             {
-//                                 Console.ForegroundColor = ConsoleColor.White;
-//                                 Console.WriteLine("please try again you have entered the information wrong");
-//                                 loop = true;
-//                                 Console.WriteLine("Would you like to cancel the item? \ntype yes or no\n?");
-//                                 cancel = Console.ReadLine();
-
-
-//                                 if (cancel == "yes" || cancel == "Yes" || cancel == "YES")
-//                                 {
-//                                     loop = false;
-//                                 }
-//                                 else
-//                                 {
-
-//                                     loop = true; ;
-
-//                                 }
-//                             }//end of catch
-//                         }//end of while
-//                         Console.ForegroundColor = ConsoleColor.DarkYellow;
-
-
-
-//                         string checkout;
-//                         Console.WriteLine("\nDo you wish to add more items to check out? \ntype yes or no\n");
-//                         checkout = Console.ReadLine();
-
-
-//                         if (checkout == "yes" || checkout == "Yes" || checkout == "YES")
-//                         {
-//                             decision = true;
-//                         }
-//                         else
-//                         {
-
-//                             decision = false;
-
-//                         }
-//                     } while (decision);
-
-//                     decimal linecost = 0;
-//                     foreach (LineItems obj in _details.itemslist)
-//                     {
-//                         Console.WriteLine(obj);
-//                         Console.WriteLine("\nType in the line item quantity you want to buy\n");
-//                         selectedamount = Convert.ToInt32(Console.ReadLine());
-//                         obj._quantity = obj._quantity - selectedamount;
-//                         cost = obj._product.PriceGrab();
-//                         payment = (cost * selectedamount);
-//                         linecost = payment;
-
-//                         total = total + payment;
-//                         string temp;
-//                         temp = "\n" + obj._product.Name + "\t$" + obj._product.Price + " selecting " + selectedamount + " = $" + linecost;
-//                         cartResult.Add(temp);
-//                         cost = 0;
-//                         linecost = 0;
-//                         // SingletonUser.currentstore._itemslist.RemoveAll(x => x._product._name == obj._product._name);
-//                         // SingletonUser.currentstore._itemslist.Add(obj);
-//                     }
-
-
-
-
-
-
-
-
-//                     string confirmation;
-//                     Console.WriteLine("Total of cart is $"+total);
-//                     Console.WriteLine("Confirm Purchase enter yes or no\nif you enter no you must restart the order");
-//                     confirmation = Console.ReadLine();
-//                     if (confirmation == "yes" || confirmation == "Yes" || confirmation == "YES")
-//                     {
-//                         Orders Test=new Orders();
-
-//                         _details._totalprice = total;
-
-//                         parameterInter.AddOrdersBL(_details);
-//                         Test=parameterInter.GetOrderByID(Test);
-//                         Console.WriteLine("Id for order:" +Test.Id);
-//                         foreach(LineItems s in _details.itemslist)
-//                         {
-//                             parameterInter.InsertHistory(store.Id,s._product.Id,Test.Id,SingletonUser.currentuser.Id);
-//                         }
-                        
-                        
-//                         //SingletonUser.currentuser.customerOrders.Add(_details);
-//                         //parameterInter.ModifyCustomerRecord(SingletonUser.currentuser);
-//                         //parameterInter.ModifyStoreRecordBL(SingletonUser.currentstore);
-//                         Console.WriteLine("\nReceite:");
-//                         Console.WriteLine("Store: " + _details._location._name + "\n Address: " + _details._location._address);
-//                         foreach (String s in cartResult)
-//                         {
-//                             Console.WriteLine(s);
-//                         }
-
-//                         Console.WriteLine("Total cost $" + _details.TotalPrice);
-
-//                         Console.ReadLine();
-                        
-//                     }
-//                     else
-//                     {
-//                         _details.itemslist = null;
-//                         _details._totalprice = 0;
-                       
-//                     }
-
-
-
-
-/// <summary>
-            /// Show list of stores and afterwards get the products from the stock table
-            /// </summary>
-            /// <returns></returns>
-            //  List<StoreFront> listofstores = parameterInter.GetAllStoreFrontsBL();
-
-            // foreach (StoreFront rest in listofstores)
-            // {
-            //     Console.WriteLine("====================");
-            //     Console.WriteLine(rest);
-            //     Console.WriteLine("====================");
-            // }
-
-        
-            List<Orders> listOfRestaurants = parameterInter.GetMyOrderHistory(SingletonUser.currentuser.Id);
-  
-
-            foreach (Orders rest in listOfRestaurants)
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("##################################################################################\n");
+            Console.WriteLine("\tWelcome to the " + SingletonUser.currentstore._name + " products menu");
+            Console.WriteLine("\tBelow is a list of products");
+            Console.WriteLine("---------------------------------------------------------------------\n");
+            Console.WriteLine("\nList of Products in " + SingletonUser.currentstore._name);
+            StoreFront test = parameterInter.GetStoreByID(SingletonUser.currentstore.Id);
+            Console.ForegroundColor = ConsoleColor.White;
+            foreach (LineItems rest in parameterInter.GetInventory(SingletonUser.currentstore.Id))
             {
                 Console.WriteLine("====================");
-                Console.WriteLine("Order Id number: "+ rest.Id);
-                Console.WriteLine("Bought from the store: "+ rest._location.Name+ " located in " + rest._location.Address);
-                Console.WriteLine("Purchase the following:");
-                foreach(LineItems s in rest.itemslist)
-                {
-                    Console.WriteLine(s._product._name);
-                }
-                Console.WriteLine("Total cost of order was: "+rest._totalprice);
+                Console.WriteLine("\t" + rest._product);
                 Console.WriteLine("====================");
             }
 
+            Console.WriteLine("\n##################################################################################\n");
+            Console.WriteLine("Currently in cart");
+            foreach (LineItems x in _details.itemslist)
+            {
+                Console.WriteLine(x);
 
+            }
+            Console.WriteLine("\tTotal of cart is $" + _details.TotalPrice);
+            Console.WriteLine("\n##################################################################################\n");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\t[6] - Add Items to cart");
+            Console.WriteLine("\t[5] - Modify items from cart");
+            Console.WriteLine("\t[4] - remove items from cart");
+            Console.WriteLine("\t[3] - calculate total of order");
+            Console.WriteLine("\t[2] - goes to exit");
+            Console.WriteLine("\t[1] - goes to exit");
 
+            Console.WriteLine("\t[0] - goes to login");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
 
-
-
-
-
-
-
-
-
-
-
-
-            // /// <summary>
-            // /// Show list of stores and afterwards get the products from the stock table
-            // /// </summary>
-            // /// <returns></returns>
-            //  List<StoreFront> listofstores = parameterInter.GetAllStoreFrontsBL();
-
-            // foreach (StoreFront rest in listofstores)
-            // {
-            //     Console.WriteLine("====================");
-            //     Console.WriteLine(rest);
-            //     Console.WriteLine("====================");
-            // }
-
-            // Console.WriteLine("Enter the Store Id number you want to see inventory for");
-            // int num=Convert.ToInt32(Console.ReadLine());
-            // List<LineItems> listOfRestaurants = parameterInter.GetInventory(num);
-
-            // foreach (LineItems rest in listOfRestaurants)
-            // {
-            //     Console.WriteLine("====================");
-            //     Console.WriteLine(rest);
-            //     Console.WriteLine("====================");
-            // }
-
-            
-
-
-
-
-
-
-
-            //checks if product is in db by integer
-            // List<Products> listOfRestaurants = parameterInter.GetAllProductsBL();
-
-            // foreach (Products rest in listOfRestaurants)
-            // {
-            //     Console.WriteLine("====================");
-            //     Console.WriteLine(rest);
-            //     Console.WriteLine("====================");
-            // }
-            // Console.WriteLine("Enter Product Id");
-            // int num = Convert.ToInt32(Console.ReadLine());
-            // bool result;
-            // try
-            // {
-            //     Console.ForegroundColor = ConsoleColor.DarkYellow;
-            //     result=parameterInter.VerifyProduct(num);
-            //     Console.WriteLine(result);
-            // }
-            // catch (System.Exception)
-            // {
-            //     Console.ForegroundColor = ConsoleColor.White;
-
-                
-            //     Console.WriteLine("product was unfortunately not found please enter name as shown in list above");
-            //     Console.WriteLine("You will be sent to Store display again ");
-            //     Console.WriteLine("Press Enter to continue");
-            //     Console.ReadLine();
-            // }
-            // Console.WriteLine("Enter username");
-            //     string name=Console.ReadLine();
-            //     Console.WriteLine("Enter Pass");
-            //     string pass=Console.ReadLine();
-            // Customer test = parameterInter.GetCustomer(name,pass);//verifies it received the store
-            // Console.WriteLine("Your Name is : " + test + "\n ");
-            // Console.WriteLine("age - "+ test._age);
-            // Console.WriteLine("position - "+ test.Position);
-            // Console.WriteLine("username - "+ test._username);
-            // Console.WriteLine("id - "+ test.Id);
-            Console.WriteLine("Congrats it went through");
-            Console.WriteLine("[0] - to continue to store selection");
-
+            Console.WriteLine("\n##################################################################################\n");
 
         }
 
         public MenuType YourChoice()
         {
             string userChoice = Console.ReadLine();
-            
             switch (userChoice)
             {
+                case "6":
+                    StoreFront store = parameterInter.GetStoreByID(SingletonUser.currentstore.Id);
+                    _details._location = store;
+                    total = 0;
+                    cost = 0;
+                    selectedamount = 0;
+                    payment = 0;
+                    List<string> cartResult = new List<string>();
+                    List<LineItems> temper = new List<LineItems>();
+                    bool decision = true;
+                    do
+                    {
+
+                        LineItems _lines = new LineItems();
+
+                        bool loop = true;
+                        while (loop == true)
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+
+                            Console.WriteLine("##################################################################################\n");
+                            Console.WriteLine("\tEnter the Id of the product from the store to add to your cart");
+                            int productsname = Convert.ToInt32(Console.ReadLine());
+                            string cancel;
+                            try
+                            {
+
+                                _lines = parameterInter.VerifyStock(productsname, store);
+                                loop = false;
+
+                                if (_details.itemslist.Exists(x => x._product._name == _lines._product._name))
+                                {
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Console.WriteLine("\n************************************************\n");
+                                    Console.WriteLine("\tThis item is already in the cart");
+                                    Console.WriteLine("\n************************************************\n");
+                                    Console.ReadLine();
+
+                                }
+                                else
+                                {
+
+                                    _details.itemslist.Add(_lines);
+                                }
+                            }
+                            catch (System.Exception)
+                            {
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("\n************************************************\n");
+                                Console.WriteLine("\tplease try again you have entered the information wrong");
+                                loop = true;
+                                Console.WriteLine("\tWould you like to cancel the item? \n\ttype yes or no?\n");
+                                Console.WriteLine("\n************************************************\n");
+                                cancel = Console.ReadLine();
+
+
+                                if (cancel == "yes" || cancel == "Yes" || cancel == "YES")
+                                {
+                                    loop = false;
+                                }
+                                else
+                                {
+
+                                    loop = true; ;
+
+                                }
+                            }//end of catch
+                        }//end of while
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine("\n##################################################################################\n");
+
+
+
+                        decision = false;
+
+                    } while (decision);
+
+
+                    return MenuType.loginconfirm;
+
+
+
+
+                case "5":
+                    total = 0;
+                    cost = 0;
+                    selectedamount = 0;
+                    payment = 0;
+                    cartResult = new List<string>();
+                    List<LineItems> temper2 = new List<LineItems>();
+                    bool decision2 = true;
+                    do
+                    {
+
+                        LineItems _lines = new LineItems();
+
+                        bool loop = true;
+                        while (loop == true)
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+
+                            Console.WriteLine("##################################################################################\n");
+                            Console.WriteLine("\tEnter the Id of the product from the store to add to your cart");
+                            int productsname = Convert.ToInt32(Console.ReadLine());
+                            string cancel;
+                            try
+                            {
+
+                                _lines = parameterInter.VerifyStock(productsname, SingletonUser.currentstore);
+                                if (_details.ItemsList.Exists(x => x._product._name == _lines._product._name))
+                                {
+
+                                    _details.ItemsList.RemoveAll(x => x._product._name == _lines._product._name);
+
+                                }
+                                loop = false;
+                                temper2.Add(_lines);
+                            }
+                            catch (System.Exception)
+                            {
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("\n************************************************\n");
+                                Console.WriteLine("\tplease try again you have entered the information wrong");
+                                loop = true;
+                                Console.WriteLine("\tWould you like to cancel the item? \n\ttype yes or no?\n");
+                                Console.WriteLine("\n************************************************\n");
+                                cancel = Console.ReadLine();
+
+
+                                if (cancel == "yes" || cancel == "Yes" || cancel == "YES")
+                                {
+                                    loop = false;
+                                }
+                                else
+                                {
+
+                                    loop = true; ;
+
+                                }
+                            }//end of catch
+                        }//end of while
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine("\n##################################################################################\n");
+
+
+
+                        decision2 = false;
+                    } while (decision2);
+
+                    Console.WriteLine("\n##################################################################################\n");
+
+                    linecost = 0;
+                    total = 0;
+
+                    foreach (LineItems x in temper2)
+                    {
+                        _details.itemslist.Add(x);
+                    }
+                    return MenuType.loginconfirm;
+
+                case "4":
+                    total = 0;
+                    cost = 0;
+                    selectedamount = 0;
+                    payment = 0;
+                    cartResult = new List<string>();
+                    List<LineItems> temper3 = new List<LineItems>();
+                    bool decision3 = true;
+                    do
+                    {
+
+                        LineItems _lines = new LineItems();
+
+                        bool loop = true;
+                        while (loop == true)
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+
+                            Console.WriteLine("##################################################################################\n");
+                            Console.WriteLine("\tEnter the Id of the product from the store to add to your cart");
+                            int productsname = Convert.ToInt32(Console.ReadLine());
+                            string cancel;
+                            try
+                            {
+
+                                _lines = parameterInter.VerifyStock(productsname, SingletonUser.currentstore);
+                                if (_details.ItemsList.Exists(x => x._product._name == _lines._product._name))
+                                {
+
+                                    _details.ItemsList.RemoveAll(x => x._product._name == _lines._product._name);
+
+                                }
+                                loop = false;
+                                temper3.Add(_lines);
+                            }
+                            catch (System.Exception)
+                            {
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("\n************************************************\n");
+                                Console.WriteLine("\tplease try again you have entered the information wrong");
+                                loop = true;
+                                Console.WriteLine("\tWould you like to cancel the item? \n\ttype yes or no?\n");
+                                Console.WriteLine("\n************************************************\n");
+                                cancel = Console.ReadLine();
+
+
+                                if (cancel == "yes" || cancel == "Yes" || cancel == "YES")
+                                {
+                                    loop = false;
+                                }
+                                else
+                                {
+
+                                    loop = true; ;
+
+                                }
+                            }//end of catch
+                        }//end of while
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine("\n##################################################################################\n");
+
+
+
+                        decision3 = false;
+                    } while (decision3);
+
+                    Console.WriteLine("\n##################################################################################\n");
+
+                    return MenuType.loginconfirm;
+
+                case "3":
+                    total = 0;
+                    cost = 0;
+                    selectedamount = 0;
+                    payment = 0;
+                    cartResult = new List<string>();
+
+                    Console.WriteLine("\n##################################################################################\n");
+
+                    linecost = 0;
+
+
+                    foreach (LineItems obj in _details.itemslist)
+                    {
+
+                        Console.WriteLine(obj);
+                        Console.WriteLine("\n\tType in the line item quantity you want to buy\n");
+                        selectedamount = Convert.ToInt32(Console.ReadLine());
+                        obj._quantity = obj._quantity - selectedamount;
+                        cost = obj._product.PriceGrab();
+                        payment = (cost * selectedamount);
+                        linecost = payment;
+
+                        total = total + payment;
+                        string temp;
+                        temp = "\n\t" + obj._product.Name + "======$" + obj._product.Price + "=========selecting " + selectedamount + " = $" + linecost;
+                        cartResult.Add(temp);
+                        cost = 0;
+                        linecost = 0;
+
+                    }
+                    total = decimal.Round(total, 2, MidpointRounding.AwayFromZero);
+                    _details._totalprice = total;
+                    Console.WriteLine("\tTotal of cart is $" + total);
+                    return MenuType.loginconfirm;
+
+
                 case "2":
-                   
-                    return MenuType.StoreMenu;
+                    string confirmation;
+                    Console.WriteLine("\tConfirm Purchase enter yes or no\n\tif you enter no you must restart the order");
+                    confirmation = Console.ReadLine();
+                    if (confirmation == "yes" || confirmation == "Yes" || confirmation == "YES")
+                    {
+                        Orders Test = new Orders();
+                        _details._totalprice = total;
+
+                        parameterInter.AddOrdersBL(_details);
+                        Test = parameterInter.GetOrderByID(Test);
+                        foreach (LineItems s in _details.itemslist)
+                        {
+                            parameterInter.InsertHistory(SingletonUser.currentstore.Id, s._product.Id, Test.Id, SingletonUser.currentuser.Id);
+                            parameterInter.ModifyStockTable(SingletonUser.currentstore.Id, s._product.Id, s._quantity);
+                        }
+                        Console.WriteLine("\nReceite:");
+                        Console.WriteLine("\tStore: " + _details._location._name + "\n\t Address: " + _details._location._address);
+                        // foreach (String s in cartResult)
+                        // {
+                        //     Console.WriteLine(s);
+                        // }
+
+                        Console.WriteLine("\tTotal cost $" + _details.TotalPrice);
+                        Console.WriteLine("\n##################################################################################\n");
+
+                        Console.ReadLine();
+                        return MenuType.ProductBuyMenu;
+                    }
+                    else
+                    {
+                        _details.itemslist = null;
+                        _details._totalprice = 0;
+                        return MenuType.ProductBuyMenu;
+                    }
+
 
                 case "1":
-                    return MenuType.LoginMenu;
-                case "0":
                     return MenuType.MainMenu;
+                case "0":
+                    return MenuType.LoginMenu;
                 default:
                     Console.WriteLine("Please input a valid response!");
                     Console.WriteLine("Press Enter to continue");

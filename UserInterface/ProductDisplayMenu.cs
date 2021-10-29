@@ -14,24 +14,30 @@ namespace UserInterface
         }
         public void Menu()
         {
-           Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("Welcome to the " + SingletonUser.currentstore._name + " products menu");
-            Console.WriteLine("below is a list of products");
-
-            Console.WriteLine("\n\nList of Products in " + SingletonUser.currentstore._name);
-            StoreFront test=parameterInter.GetStoreByID(SingletonUser.currentstore.Id);
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("##################################################################################\n");
+            Console.WriteLine("\tWelcome to the " + SingletonUser.currentstore._name + " products menu");
+            Console.WriteLine("\tBelow is a list of products");
+            Console.WriteLine("---------------------------------------------------------------------\n");
+            Console.WriteLine("\tList of Products in " + SingletonUser.currentstore._name);
+            StoreFront test = parameterInter.GetStoreByID(SingletonUser.currentstore.Id);
             Console.ForegroundColor = ConsoleColor.White;
             foreach (LineItems rest in parameterInter.GetInventory(SingletonUser.currentstore.Id))
             {
                 Console.WriteLine("====================");
-                Console.WriteLine(rest._product);
+                Console.WriteLine("\t" + rest);
                 Console.WriteLine("====================");
-            } 
-            
-            Console.WriteLine("[2] - Begin to Place an Order");
-            Console.WriteLine("[1] - Back to store select");
-            Console.WriteLine("[0] - exit");
-            
+            }
+            Console.ForegroundColor = ConsoleColor.Green;
+
+            Console.WriteLine("\t[2] - Begin to Place an Order");
+            Console.WriteLine("\t[1] - Back to store select");
+            Console.WriteLine("\t[0] - exit");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+
+            Console.WriteLine("\n##################################################################################\n");
+
+
         }
 
         public MenuType YourChoice()
