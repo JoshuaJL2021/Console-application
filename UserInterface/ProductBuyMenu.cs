@@ -8,10 +8,10 @@ namespace UserInterface
     public class ProductBuyMenu : IMenu
     {
         private static Orders _details = new Orders();
-        private InterfaceBL _restBL;
-        public ProductBuyMenu(InterfaceBL p_restBL)
+        private InterfaceBL parameterInter;
+        public ProductBuyMenu(InterfaceBL parameterobj)
         {
-            _restBL = p_restBL;
+            parameterInter = parameterobj;
         }
         public void Menu()
         {
@@ -20,9 +20,9 @@ namespace UserInterface
             Console.WriteLine("below is a list of products");
 
             Console.WriteLine("\n\nList of Products in " + SingletonUser.currentstore._name);
-            StoreFront test=_restBL.GetStoreByID(SingletonUser.currentstore.Id);
+            StoreFront test=parameterInter.GetStoreByID(SingletonUser.currentstore.Id);
             Console.ForegroundColor = ConsoleColor.White;
-            foreach (LineItems rest in _restBL.GetInventory(SingletonUser.currentstore.Id))
+            foreach (LineItems rest in parameterInter.GetInventory(SingletonUser.currentstore.Id))
             {
                 Console.WriteLine("====================");
                 Console.WriteLine(rest);
@@ -43,7 +43,7 @@ namespace UserInterface
             {
                 case "3":
                     Orders _details = new Orders();
-                    StoreFront store = _restBL.GetStoreByID(SingletonUser.currentstore.Id);
+                    StoreFront store = parameterInter.GetStoreByID(SingletonUser.currentstore.Id);
                     _details._location = store;
                     decimal total = 0;
                     decimal cost = 0;
@@ -68,7 +68,7 @@ namespace UserInterface
                             try
                             {
 
-                                _lines = _restBL.VerifyStock(productsname, store);
+                                _lines = parameterInter.VerifyStock(productsname, store);
                                 loop = false;
                                 if (_details.itemslist.Exists(x => x._product._name == _lines._product._name))
                                 {
@@ -160,12 +160,12 @@ namespace UserInterface
                         Orders Test=new Orders();
                         _details._totalprice = total;
 
-                        _restBL.AddOrdersBL(_details);
-                         Test=_restBL.GetOrderByID(Test);
+                        parameterInter.AddOrdersBL(_details);
+                         Test=parameterInter.GetOrderByID(Test);
                         foreach(LineItems s in _details.itemslist)
                         {
-                            _restBL.InsertHistory(store.Id,s._product.Id,Test.Id,SingletonUser.currentuser.Id);
-                            _restBL.ModifyStockTable(store.Id,s._product.Id,s._quantity);
+                            parameterInter.InsertHistory(store.Id,s._product.Id,Test.Id,SingletonUser.currentuser.Id);
+                            parameterInter.ModifyStockTable(store.Id,s._product.Id,s._quantity);
                         }
                         Console.WriteLine("\nReceite:");
                         Console.WriteLine("Store: " + _details._location._name + "\n Address: " + _details._location._address);

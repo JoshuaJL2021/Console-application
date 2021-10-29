@@ -10,7 +10,7 @@ namespace DataAccessLogic
         /// </summary>
         /// <param name="p_rest">This is the customer we will be adding to the database</param>
         /// <returns>It will just return the customer we are adding</returns>
-        Customer AddCustomersDL(Customer p_rest);
+        Customer AddCustomersDL(Customer parameterobj);
 
         /// <summary>
         /// This will return a list of customers stored in the database
@@ -24,7 +24,7 @@ namespace DataAccessLogic
         /// </summary>
         /// <param name="p_rest">This is the store front we will be adding to the database</param>
         /// <returns>It will just return the store front we are adding</returns>
-        StoreFront AddStoreFrontDL(StoreFront p_rest);
+        StoreFront AddStoreFrontDL(StoreFront parameterobj);
 
         /// <summary>
         /// This will return a list of store front stored in the database
@@ -37,7 +37,7 @@ namespace DataAccessLogic
         /// </summary>
         /// <param name="p_rest">This is the store front we will be adding to the database</param>
         /// <returns>It will just return the store front we are adding</returns>
-        Orders AddOrdersDL(Orders p_rest);
+        Orders AddOrdersDL(Orders parameterobj);
 
         /// <summary>
         /// This will return a list of orders stored in the database
@@ -46,20 +46,6 @@ namespace DataAccessLogic
         List<Orders> GetAllOrdersDL();
 
 
-        /// <summary>
-        /// Verifies in the database if the entered store name and address is located in the database
-        /// used for the search and modify store front methods.
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns>true or false </returns>
-        bool DLVerifyStore(string name,string address);
-        /// <summary>
-        /// Verifies in the database if the entered store name and address is located in the database
-        /// and retrieves the found store or an exception
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns>returns the retrieved store information from the db </returns>
-        StoreFront DLGetStore(string name,string address);
         /// <summary>
         /// Verifies in the database if the entered store name and address is located in the database
         /// and retrieves the found store or an exception
@@ -74,35 +60,21 @@ namespace DataAccessLogic
         /// <param name="chosen"></param>
         /// <returns>returns the line item from the db that matches</returns>
         LineItems DLVerifyStock(int productnum, StoreFront chosen);
-        /// <summary>
-        /// This method receives all the line items from the specified store
-        /// </summary>
-        /// <param name="chosen"></param>
-        /// <returns></returns>
-        List<LineItems> DLShowStock(StoreFront chosen);
 
-        /// <summary>
-        /// this method takes the selected store , erases the previous information from the json file
-        /// enters the new information into the json file
-        /// also organizes in alphabetical order.
-        /// </summary>
-        /// <param name="currentSelection"></param>
-        /// <returns></returns>
-        StoreFront DLModifyStoreRecord(StoreFront currentSelection);
         /// <summary>
         /// Verifies in the database if the entered client user name is located in the database
         /// used for the search and modify Customer front methods.
         /// </summary>
         /// <param name="name"></param>
         /// <returns>returns true or false </returns>
-        bool VerifyCredentials(string name,string password);
+        bool VerifyCredentials(string name, string password);
         /// <summary>
         /// Verifies in the database if the entered information is located in the database
         /// and retrieves the found store or an exception
         /// </summary>
         /// <param name="name"></param>
         /// <returns>returns the retrieved Customer information from the db </returns>
-        Customer DLGetCustomer(string name,string password);
+        Customer DLGetCustomer(string name, string password);
 
         /// <summary>
         /// this method takes the Customer  , erases the previous information from the json file
@@ -114,21 +86,101 @@ namespace DataAccessLogic
         /// <returns></returns>
         Customer DLModifyCustomerRecord(Customer currentSelection);
 
+        /// <summary>
+        /// Adds a Line Item essentially into the stock db table
+        /// It receives a storefront which will utilize only its ID 
+        /// It recieves a product will utilize only the ID
+        /// Receives a integer to represent the amount of items
+        /// </summary>
+        /// <param name="store"></param>
+        /// <param name="prod"></param>
+        /// <param name="quantity"></param>
+        /// <returns></returns>
         LineItems AddStockToDB(StoreFront store, Products prod, int quantity);
 
+        /// <summary>
+        /// Returns A list of all products currently in the Database
+        /// </summary>
+        /// <returns>List of products</returns>
         List<Products> GetAllProductsDL();
 
-         Products AddProductsDL(Products parameterObj);
+        /// <summary>
+        /// Receives a created Product object and will insert it into the database.
+        /// No information is changed
+        /// </summary>
+        /// <param name="parameterObj"></param>
+        /// <returns>created product object that was sent in</returns>
+        Products AddProductsDL(Products parameterObj);
 
-         bool VerifyProduct(int identification);
-         Products GetProduct(int obj);
+        /// <summary>
+        /// Verifies product is in db
+        /// searches by the product id number that is sent
+        /// </summary>
+        /// <param name="productidentification"></param>
+        /// <returns></returns>
+        bool VerifyProduct(int productidentification);
 
-         List<LineItems> GetInventory(int obj);
-         StoreFront GetStoreByID(int number);
-          bool VerifyStorebyID(int number);
+        /// <summary>
+        /// Returns a Product with information retrieved from the db
+        /// </summary>
+        /// <param name="productid"></param>
+        /// <returns>Product if not an exception</returns>
+        Products GetProduct(int productid);
 
-          void InsertHistory(int store, int prod, int order, int customer);
+        /// <summary>
+        /// Returns a list of Line Items which contain all products related to the specified store
+        /// </summary>
+        /// <param name="storeid"></param>
+        /// <returns>a list of </returns>
+
+        List<LineItems> GetInventory(int storeid);
+
+        /// <summary>
+        /// Sends an id number to be searched for and retrieves the stores saved information
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns>Returns the store that matches the Id if not an exception</returns>
+        StoreFront GetStoreByID(int number);
+
+        /// <summary>
+        /// Used in other methods it returns a bool value in order to verify if true or false
+        /// it will be used to catch exceptions
+        /// it verifies the entered store Id number is in the db
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns>true or false</returns>
+        bool VerifyStorebyID(int number);
+
+        /// <summary>
+        /// insert into the database table Order History
+        /// Sends the store id, product id (essentially line item)
+        /// sends the recently created Order Id and customer Id
+        /// </summary>
+        /// <param name="store"></param>
+        /// <param name="prod"></param>
+        /// <param name="order"></param>
+        /// <param name="customer"></param>
+        void InsertHistory(int store, int prod, int order, int customer);
+
+        /// <summary>
+        /// Used after the insert into purchases table
+        /// it will return the order object with the LAST id in the table
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns>obj.Id</returns>
         Orders GetOrderID(Orders obj);
-         void ModifyStockTable(int storenumber, int productnumber,int quantity);
+
+        /// <summary>
+        /// This method occurs in replenish inventory and purchasing
+        /// essentially takes the selected store id number and line item and send that info to data logic method
+        /// </summary>
+        /// <param name="storenumber"></param>
+        /// <param name="productnumber"></param>
+        /// <param name="quantity"></param>
+        void ModifyStockTable(int storenumber, int productnumber, int quantity);
+
+        List<Orders> GetMyOrderHistory(int objId);
+        List<Orders> GetStoreOrderHistory(int objId);
+
     }
 }

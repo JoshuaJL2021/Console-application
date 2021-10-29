@@ -8,11 +8,11 @@ namespace UserInterface
     public class MyProfile : IMenu
     {
         private static Customer _rest = SingletonUser.currentuser;
-        private InterfaceBL _restBL;
+        private InterfaceBL parameterInter;
          
-        public MyProfile(InterfaceBL p_restBL)
+        public MyProfile(InterfaceBL parameterobj)
         {
-            _restBL = p_restBL;
+            parameterInter = parameterobj;
         }
 
         public void Menu()
@@ -24,9 +24,26 @@ namespace UserInterface
             Console.WriteLine("Address - "+ SingletonUser.currentuser._address);
             Console.WriteLine("Contact - "+ SingletonUser.currentuser._contact);
             Console.WriteLine("username - "+ SingletonUser.currentuser._username);
-            foreach (Orders i in SingletonUser.currentuser.customerOrders)
+             Console.WriteLine("Age - "+ SingletonUser.currentuser._age);
+            Console.WriteLine("Position - "+ SingletonUser.currentuser.Position);
+            Console.WriteLine("Account number - "+ SingletonUser.currentuser.Id);
+            List<Orders> listofOrders = parameterInter.GetMyOrderHistory(SingletonUser.currentuser.Id);
+           
+             
+  
+
+            foreach (Orders history in listofOrders)
             {
-                Console.WriteLine(i);
+                Console.WriteLine("====================");
+                Console.WriteLine("Order Id number: "+ history.Id);
+                Console.WriteLine("Bought from the store: "+ history._location.Name+ " located in " + history._location.Address);
+                Console.WriteLine("Purchase the following:");
+                foreach(LineItems s in history.itemslist)
+                {
+                    Console.WriteLine(s._product._name);
+                }
+                Console.WriteLine("Total cost of order was: "+history._totalprice);
+                Console.WriteLine("====================");
             }
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("[x] - Save Changes");
@@ -51,7 +68,7 @@ namespace UserInterface
             {
                 case "x":
                     
-                    _restBL.ModifyCustomerRecord(SingletonUser.currentuser);
+                    parameterInter.ModifyCustomerRecord(SingletonUser.currentuser);
                    
                     return MenuType.LoginMenu;
                 case "1":

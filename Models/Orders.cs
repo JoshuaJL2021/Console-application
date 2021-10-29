@@ -24,14 +24,14 @@ namespace Models
         public decimal _totalprice;
         public decimal TotalPrice
         {
-            get { return _totalprice; }
-            set { _totalprice = value; }
+            get { return decimal.Round(_totalprice,2); }
+            set { _totalprice = decimal.Round(value,2); }
         }
 
 
 public override string ToString()
         {
-            string text=$"Order is from location : {_location}\tTotal Price :${_totalprice}";
+            string text=$"Order is from location : {_location}\tTotal Price :${decimal.Round(_totalprice,2)}";
             return text;
         }
         

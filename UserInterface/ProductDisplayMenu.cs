@@ -7,10 +7,10 @@ namespace UserInterface
 {
     public class ProductMenuDisplay : IMenu
     {
-        private InterfaceBL _restBL;
-        public ProductMenuDisplay(BL p_restBL)
+        private InterfaceBL parameterInter;
+        public ProductMenuDisplay(BL parameterobj)
         {
-            _restBL = p_restBL;
+            parameterInter = parameterobj;
         }
         public void Menu()
         {
@@ -19,9 +19,9 @@ namespace UserInterface
             Console.WriteLine("below is a list of products");
 
             Console.WriteLine("\n\nList of Products in " + SingletonUser.currentstore._name);
-            StoreFront test=_restBL.GetStoreByID(SingletonUser.currentstore.Id);
+            StoreFront test=parameterInter.GetStoreByID(SingletonUser.currentstore.Id);
             Console.ForegroundColor = ConsoleColor.White;
-            foreach (LineItems rest in _restBL.GetInventory(SingletonUser.currentstore.Id))
+            foreach (LineItems rest in parameterInter.GetInventory(SingletonUser.currentstore.Id))
             {
                 Console.WriteLine("====================");
                 Console.WriteLine(rest._product);

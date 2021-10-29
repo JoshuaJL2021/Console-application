@@ -30,6 +30,8 @@
         AddProduct,
         AddStore,
         FunctionMenu,
+        DisplayDB,
+        ShowStoreOrders
         
 
     }

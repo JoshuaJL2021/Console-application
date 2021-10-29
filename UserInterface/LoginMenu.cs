@@ -6,10 +6,10 @@ namespace UserInterface
 {
     public class LoginMenu : IMenu
     {
-        private InterfaceBL _restBL;
-        public LoginMenu(InterfaceBL p_restBL)
+        private InterfaceBL parameterInter;
+        public LoginMenu(InterfaceBL parameterobj)
         {
-            _restBL = p_restBL;
+            parameterInter = parameterobj;
         }
     
         public void Menu()
@@ -61,12 +61,12 @@ namespace UserInterface
             
                 Console.WriteLine("Enter username");
                 string name=Console.ReadLine();
-                Console.WriteLine("Enter Pass");
+                Console.WriteLine("Enter Password");
                 string pass=Console.ReadLine();
                 try
                 {
 
-                     SingletonUser.currentuser=_restBL.GetCustomer(name,pass);
+                     SingletonUser.currentuser=parameterInter.GetCustomer(name,pass);
                      Console.WriteLine("Welcome Back " + SingletonUser.currentuser._name + "\nenter to continue");
                      
                      Console.ReadLine();
@@ -119,10 +119,11 @@ namespace UserInterface
 
                 try
                 {
-                    //List<Customer> listOfCustomers = _restBL.GetAllCustomersBL();
+                    //List<Customer> listOfCustomers = parameterInter.GetAllCustomersBL();
                     
-                    SingletonUser.currentuser=_restBL.GetCustomer(name,pass);
+                    SingletonUser.currentuser=parameterInter.GetCustomer(name,pass);
                      Console.WriteLine("Welcome Back " + SingletonUser.currentuser._name + "\n enter to continue");
+                     
                      
                      Console.ReadLine();
                 }
