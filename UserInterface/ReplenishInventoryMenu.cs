@@ -9,11 +9,11 @@ namespace UserInterface
     {
         private Orders _details = new Orders();
 
-        private InterfaceBL _restBL;
+        private InterfaceBL parameterInter;
 
-        public ReplenishInventoryMenu(InterfaceBL p_restBL)
+        public ReplenishInventoryMenu(InterfaceBL parameterobj)
         {
-            _restBL = p_restBL;
+            parameterInter = parameterobj;
         }
 
         public void Menu()
@@ -21,7 +21,7 @@ namespace UserInterface
 
             Console.WriteLine("==========Store Replenish Menu=========");
             Console.WriteLine("List of stores");
-            List<StoreFront> listOfstores = _restBL.GetAllStoreFrontsBL();
+            List<StoreFront> listOfstores = parameterInter.GetAllStoreFrontsBL();
             foreach (StoreFront s in listOfstores)
             {
                 Console.WriteLine("\t\t\t\t" + s);
@@ -29,11 +29,11 @@ namespace UserInterface
 
             Console.WriteLine("Enter the Store Id number you want to see inventory for");
             int num = Convert.ToInt32(Console.ReadLine());
-            StoreFront store = _restBL.GetStoreByID(num);
+            StoreFront store = parameterInter.GetStoreByID(num);
             Console.WriteLine("Your store is : " + store + "\n ");
             Console.WriteLine("----------------------------------");
             Console.WriteLine("Your store current Line Products :\n ");
-            foreach (LineItems p in _restBL.GetInventory(store.Id))
+            foreach (LineItems p in parameterInter.GetInventory(store.Id))
             {
                 Console.WriteLine(p);
             }
@@ -52,7 +52,7 @@ namespace UserInterface
                 try
                 {
 
-                    _lines = _restBL.VerifyStock(productsname, store);
+                    _lines = parameterInter.VerifyStock(productsname, store);
                     loop = false;
                     if (_details.itemslist.Exists(x => x._product._name == _lines._product._name))
                     {
@@ -108,7 +108,7 @@ namespace UserInterface
             }//end of while
             foreach (LineItems s in _details.itemslist)
             {
-                _restBL.ModifyStockTable(store.Id, s._product.Id, s._quantity);
+                parameterInter.ModifyStockTable(store.Id, s._product.Id, s._quantity);
             }
 
 

@@ -9,11 +9,11 @@ namespace UserInterface
 {
     public class ShowCustomers : IMenu
     {
-        private InterfaceBL _restBL;
+        private InterfaceBL parameterInter;
         public static List<StoreFront> searchresult;
-        public ShowCustomers(InterfaceBL p_restBL)
+        public ShowCustomers(InterfaceBL parameterobj)
         {
-            _restBL = p_restBL;
+            parameterInter = parameterobj;
         }
         public void Menu()
         {
@@ -25,7 +25,7 @@ namespace UserInterface
             //     StoreFront test=new StoreFront();
             //     test._name=name;
             //     test._address=address;
-            //     _restBL.AddStoreFrontBL(test);
+            //     parameterInter.AddStoreFrontBL(test);
 
             //Print all store fr
 
@@ -45,7 +45,7 @@ namespace UserInterface
             //     try
             //     {
             //     Console.ForegroundColor = ConsoleColor.DarkYellow;
-            //          foreach(StoreFront s in _restBL.SearchStores(name))
+            //          foreach(StoreFront s in parameterInter.SearchStores(name))
             //         {
             //             Console.WriteLine(s);
             //             test.Add(s);

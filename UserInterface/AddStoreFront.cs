@@ -9,11 +9,11 @@ namespace UserInterface
         private static StoreFront _rest = new StoreFront();
         private static Orders _details=new Orders();
         
-        private InterfaceBL _restBL;
+        private InterfaceBL parameterInter;
          
-        public AddStoreFront(InterfaceBL p_restBL)
+        public AddStoreFront(InterfaceBL parameterobj)
         {
-            _restBL = p_restBL;
+            parameterInter = parameterobj;
         }
 
         public void Menu()
@@ -53,7 +53,7 @@ Console.WriteLine("[12] - input orders for list");
             switch (userChoice)
             {
                 case "5":
-                // StoreFront store=_restBL.GetStore(_rest._name,_rest._address);
+                // StoreFront store=parameterInter.GetStore(_rest._name,_rest._address);
                 //             _details._location=store;
                     decimal total=0;
                     Decimal cost=0;
@@ -74,8 +74,8 @@ Console.WriteLine("[12] - input orders for list");
                     string cancel;
                     try
                     {
-                     //_lines=_restBL.VerifyStock(productsname,store);    
-                    //_prods=_restBL.VerifyProduct(productsname,store);
+                     //_lines=parameterInter.VerifyStock(productsname,store);    
+                    //_prods=parameterInter.VerifyProduct(productsname,store);
                     loop=false;
                     }
                     catch (System.Exception)
@@ -143,7 +143,7 @@ Console.WriteLine("[12] - input orders for list");
 
 
 
-                _restBL.AddOrdersBL(_details);
+                parameterInter.AddOrdersBL(_details);
                 _details._location.orderslist.Add(_details);
                 Console.WriteLine("Receite:");
                 Console.WriteLine("Store: "+ _details._location._name + " Address: "+ _details._location._address  );
@@ -159,7 +159,7 @@ Console.WriteLine("[12] - input orders for list");
 
                 case "4":
                     //Add implementation to talk to the repository method to add a restaurant
-                    _restBL.AddStoreFrontBL(_rest);
+                    parameterInter.AddStoreFrontBL(_rest);
                    
                     return MenuType.MainMenu;
                 case "3":
@@ -194,7 +194,7 @@ Console.WriteLine("[12] - input orders for list");
                         
                     LineItems _lines=new LineItems();
 
-                    Products _prods=_restBL.CreateProduct();
+                    Products _prods=parameterInter.CreateProduct();
                      _rest.productslist.Add(_prods);
                        
 

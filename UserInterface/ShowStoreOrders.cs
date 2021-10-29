@@ -8,11 +8,11 @@ namespace UserInterface
     public class ShowStoreOrders : IMenu
     {
         private static Customer _rest = SingletonUser.currentuser;
-        private InterfaceBL _restBL;
+        private InterfaceBL parameterInter;
          
-        public ShowStoreOrders(InterfaceBL p_restBL)
+        public ShowStoreOrders(InterfaceBL parameterobj)
         {
-            _restBL = p_restBL;
+            parameterInter = parameterobj;
         }
 
         public void Menu()
@@ -20,7 +20,7 @@ namespace UserInterface
            Console.WriteLine("Enter the Store Id number you want to see inventory for");
             int num=Convert.ToInt32(Console.ReadLine());
 
-            List<Orders> listOfRestaurants = _restBL.GetMyOrderHistory(num);
+            List<Orders> listOfRestaurants = parameterInter.GetMyOrderHistory(num);
   
 
             foreach (Orders rest in listOfRestaurants)

@@ -9,18 +9,18 @@ namespace UserInterface
 {
     public class DisplayDBinfo : IMenu
     {
-        private InterfaceBL _restBL;
+        private InterfaceBL parameterInter;
         public static List<StoreFront> searchresult;
-        public DisplayDBinfo(InterfaceBL p_restBL)
+        public DisplayDBinfo(InterfaceBL parameterobj)
         {
-            _restBL = p_restBL;
+            parameterInter = parameterobj;
         }
         public void Menu()
         {
             
 
             //Print all store fr
-            List<StoreFront> listOfRestaurants = _restBL.GetAllStoreFrontsBL();
+            List<StoreFront> listOfRestaurants = parameterInter.GetAllStoreFrontsBL();
 
             foreach (StoreFront rest in listOfRestaurants)
             {
@@ -30,7 +30,7 @@ namespace UserInterface
             }
 
             //Print all Customer fr
-            List<Customer> listOfCustomer = _restBL.GetAllCustomersBL();
+            List<Customer> listOfCustomer = parameterInter.GetAllCustomersBL();
 
             foreach (Customer rest in listOfCustomer)
             {
@@ -39,7 +39,7 @@ namespace UserInterface
                 Console.WriteLine(rest.Id);
                 Console.WriteLine("====================");
             }
-            List<Products> listOfProduct = _restBL.GetAllProductsBL();
+            List<Products> listOfProduct = parameterInter.GetAllProductsBL();
 
             foreach (Products rest in listOfProduct)
             {

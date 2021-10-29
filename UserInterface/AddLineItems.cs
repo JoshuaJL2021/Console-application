@@ -7,12 +7,12 @@ namespace UserInterface
 {
     public class AddLineItem : IMenu
     {
-        private static LineItems _rest = new LineItems();
-        private InterfaceBL _restBL;
+        private static LineItems items = new LineItems();
+        private InterfaceBL parameterInter;
          
-        public AddLineItem(InterfaceBL p_restBL)
+        public AddLineItem(InterfaceBL parameterobj)
         {
-            _restBL = p_restBL;
+            parameterInter = parameterobj;
         }
 
         public void Menu()
@@ -21,7 +21,7 @@ namespace UserInterface
 
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine(SingletonUser.currentstore);
-            Console.WriteLine(_rest._product);
+            Console.WriteLine(items._product);
                 
                 
 
@@ -44,11 +44,11 @@ namespace UserInterface
             {
                 case "4":
                     //Add implementation to talk to the repository method to add a restaurant
-                    _restBL.AddStock(SingletonUser.currentstore, _rest._product, _rest._quantity);
+                    parameterInter.AddStock(SingletonUser.currentstore, items._product, items._quantity);
                    
                     return MenuType.MainMenu;
                 case "3":
-                List<Products> listOfRestaurants = _restBL.GetAllProductsBL();
+                List<Products> listOfRestaurants = parameterInter.GetAllProductsBL();
 
             foreach (Products rest in listOfRestaurants)
             {
@@ -60,7 +60,7 @@ namespace UserInterface
                 int num = Convert.ToInt32(Console.ReadLine());
                    try
                    {
-                        _rest._product=_restBL.GetProduct(num);
+                        items._product=parameterInter.GetProduct(num);
                    }
                    catch (System.Exception)
                    {
@@ -70,12 +70,12 @@ namespace UserInterface
                     return MenuType.AddLineItem;
                 case "2":
                     Console.WriteLine("Type in the value for the quantity");
-                    _rest._quantity = Convert.ToInt32(Console.ReadLine());
+                    items._quantity = Convert.ToInt32(Console.ReadLine());
                     return MenuType.AddLineItem;
                 case "1":
 
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                 List<StoreFront> listofstores = _restBL.GetAllStoreFrontsBL();
+                 List<StoreFront> listofstores = parameterInter.GetAllStoreFrontsBL();
 
             foreach (StoreFront rest in listofstores)
             {
@@ -91,7 +91,7 @@ namespace UserInterface
                 try
                 {
 
-                     SingletonUser.currentstore=_restBL.GetStoreByID(number);
+                     SingletonUser.currentstore=parameterInter.GetStoreByID(number);
                      Console.WriteLine("Welcome to " + SingletonUser.currentstore + "\n enter to continue");
                      Console.ReadLine();
                 }

@@ -7,11 +7,11 @@ namespace UserInterface
 {
     public class StoreMenu : IMenu
     {
-        private InterfaceBL _restBL;
+        private InterfaceBL parameterInter;
         public static List<StoreFront> searchresult;
-        public StoreMenu(InterfaceBL p_restBL)
+        public StoreMenu(InterfaceBL parameterobj)
         {
-            _restBL = p_restBL;
+            parameterInter = parameterobj;
         }
         public void Menu()
         {
@@ -20,7 +20,7 @@ namespace UserInterface
             Console.WriteLine("Please select the store");
 
             Console.WriteLine("\n\n List of StoreFronts");
-            List<StoreFront> listOfStoreFront = _restBL.GetAllStoreFrontsBL();
+            List<StoreFront> listOfStoreFront = parameterInter.GetAllStoreFrontsBL();
             Console.ForegroundColor = ConsoleColor.White;
             if(searchresult!= null)
             {
@@ -64,7 +64,7 @@ namespace UserInterface
                 try
                 {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                     foreach(StoreFront s in _restBL.SearchStores(storen))
+                     foreach(StoreFront s in parameterInter.SearchStores(storen))
                     {
                         test.Add(s);
 
@@ -96,7 +96,7 @@ namespace UserInterface
                 try
                 {
 
-                     SingletonUser.currentstore=_restBL.GetStoreByID(num);
+                     SingletonUser.currentstore=parameterInter.GetStoreByID(num);
                      Console.WriteLine("Welcome to " + SingletonUser.currentstore._name + "\n enter to continue");
                      
                      Console.ReadLine();

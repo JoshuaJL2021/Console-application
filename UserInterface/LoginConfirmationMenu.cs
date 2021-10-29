@@ -7,16 +7,16 @@ namespace UserInterface
 {
     public class LoginConfirmationMenu : IMenu
     {
-        private InterfaceBL _restBL;
+        private InterfaceBL parameterInter;
 
-        public LoginConfirmationMenu(InterfaceBL p_restBL)
+        public LoginConfirmationMenu(InterfaceBL parameterobj)
         {
-            _restBL = p_restBL;
+            parameterInter = parameterobj;
         }
         public void Menu()
         {
 //             Orders _details = new Orders();
-// List<StoreFront> listofstores = _restBL.GetAllStoreFrontsBL();
+// List<StoreFront> listofstores = parameterInter.GetAllStoreFrontsBL();
 
 //             foreach (StoreFront rest in listofstores)
 //             {
@@ -27,7 +27,7 @@ namespace UserInterface
 
 //             Console.WriteLine("Enter the Store Id number you want to see inventory for");
 //             int num=Convert.ToInt32(Console.ReadLine());
-//                     StoreFront store = _restBL.GetStoreByID(num);
+//                     StoreFront store = parameterInter.GetStoreByID(num);
 //                     _details._location = store;
 //                     decimal total = 0;
 //                     decimal cost = 0;
@@ -43,7 +43,7 @@ namespace UserInterface
 //                         bool loop = true;
 //                         while (loop == true)
 //                         {
-//                             List<LineItems> listOfRestaurants = _restBL.GetInventory(num);
+//                             List<LineItems> listOfRestaurants = parameterInter.GetInventory(num);
 
 //             foreach (LineItems rest in listOfRestaurants)
 //             {
@@ -58,7 +58,7 @@ namespace UserInterface
 //                             try
 //                             {
 
-//                                 _lines = _restBL.VerifyStock(productsname, store);
+//                                 _lines = parameterInter.VerifyStock(productsname, store);
 //                                 loop = false;
 //                                 if (_details.itemslist.Exists(x => x._product._name == _lines._product._name))
 //                                 {
@@ -152,18 +152,18 @@ namespace UserInterface
 
 //                         _details._totalprice = total;
 
-//                         _restBL.AddOrdersBL(_details);
-//                         Test=_restBL.GetOrderByID(Test);
+//                         parameterInter.AddOrdersBL(_details);
+//                         Test=parameterInter.GetOrderByID(Test);
 //                         Console.WriteLine("Id for order:" +Test.Id);
 //                         foreach(LineItems s in _details.itemslist)
 //                         {
-//                             _restBL.InsertHistory(store.Id,s._product.Id,Test.Id,SingletonUser.currentuser.Id);
+//                             parameterInter.InsertHistory(store.Id,s._product.Id,Test.Id,SingletonUser.currentuser.Id);
 //                         }
                         
                         
 //                         //SingletonUser.currentuser.customerOrders.Add(_details);
-//                         //_restBL.ModifyCustomerRecord(SingletonUser.currentuser);
-//                         //_restBL.ModifyStoreRecordBL(SingletonUser.currentstore);
+//                         //parameterInter.ModifyCustomerRecord(SingletonUser.currentuser);
+//                         //parameterInter.ModifyStoreRecordBL(SingletonUser.currentstore);
 //                         Console.WriteLine("\nReceite:");
 //                         Console.WriteLine("Store: " + _details._location._name + "\n Address: " + _details._location._address);
 //                         foreach (String s in cartResult)
@@ -190,7 +190,7 @@ namespace UserInterface
             /// Show list of stores and afterwards get the products from the stock table
             /// </summary>
             /// <returns></returns>
-            //  List<StoreFront> listofstores = _restBL.GetAllStoreFrontsBL();
+            //  List<StoreFront> listofstores = parameterInter.GetAllStoreFrontsBL();
 
             // foreach (StoreFront rest in listofstores)
             // {
@@ -200,7 +200,7 @@ namespace UserInterface
             // }
 
         
-            List<Orders> listOfRestaurants = _restBL.GetMyOrderHistory(SingletonUser.currentuser.Id);
+            List<Orders> listOfRestaurants = parameterInter.GetMyOrderHistory(SingletonUser.currentuser.Id);
   
 
             foreach (Orders rest in listOfRestaurants)
@@ -235,7 +235,7 @@ namespace UserInterface
             // /// Show list of stores and afterwards get the products from the stock table
             // /// </summary>
             // /// <returns></returns>
-            //  List<StoreFront> listofstores = _restBL.GetAllStoreFrontsBL();
+            //  List<StoreFront> listofstores = parameterInter.GetAllStoreFrontsBL();
 
             // foreach (StoreFront rest in listofstores)
             // {
@@ -246,7 +246,7 @@ namespace UserInterface
 
             // Console.WriteLine("Enter the Store Id number you want to see inventory for");
             // int num=Convert.ToInt32(Console.ReadLine());
-            // List<LineItems> listOfRestaurants = _restBL.GetInventory(num);
+            // List<LineItems> listOfRestaurants = parameterInter.GetInventory(num);
 
             // foreach (LineItems rest in listOfRestaurants)
             // {
@@ -264,7 +264,7 @@ namespace UserInterface
 
 
             //checks if product is in db by integer
-            // List<Products> listOfRestaurants = _restBL.GetAllProductsBL();
+            // List<Products> listOfRestaurants = parameterInter.GetAllProductsBL();
 
             // foreach (Products rest in listOfRestaurants)
             // {
@@ -278,7 +278,7 @@ namespace UserInterface
             // try
             // {
             //     Console.ForegroundColor = ConsoleColor.DarkYellow;
-            //     result=_restBL.VerifyProduct(num);
+            //     result=parameterInter.VerifyProduct(num);
             //     Console.WriteLine(result);
             // }
             // catch (System.Exception)
@@ -295,7 +295,7 @@ namespace UserInterface
             //     string name=Console.ReadLine();
             //     Console.WriteLine("Enter Pass");
             //     string pass=Console.ReadLine();
-            // Customer test = _restBL.GetCustomer(name,pass);//verifies it received the store
+            // Customer test = parameterInter.GetCustomer(name,pass);//verifies it received the store
             // Console.WriteLine("Your Name is : " + test + "\n ");
             // Console.WriteLine("age - "+ test._age);
             // Console.WriteLine("position - "+ test.Position);

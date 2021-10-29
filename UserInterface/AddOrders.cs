@@ -6,14 +6,14 @@ namespace UserInterface
 {
     public class AddOrders : IMenu
     {
-        private static Orders _rest = new Orders();
+        private static Orders temp = new Orders();
 
         private static StoreFront _value=new StoreFront();
-        private InterfaceBL _restBL;
+        private InterfaceBL parameterInter;
          
-        public AddOrders(InterfaceBL p_restBL)
+        public AddOrders(InterfaceBL parameterobj)
         {
-            _restBL = p_restBL;
+            parameterInter = parameterobj;
         }
 
         public void Menu()
@@ -21,10 +21,10 @@ namespace UserInterface
             Console.WriteLine("Adding a new Order");
             Console.WriteLine("Location - " + _value._name);
             Console.WriteLine("Location address - " + _value._address);
-            Console.WriteLine("Total cost of order - "+ _rest._totalprice);
+            Console.WriteLine("Total cost of order - "+ temp._totalprice);
             Console.WriteLine(_value);
-            _rest._location=_value;
-            foreach (LineItems obj in _rest.itemslist)
+            temp._location=_value;
+            foreach (LineItems obj in temp.itemslist)
             {
                 Console.WriteLine(obj);
             }
@@ -43,7 +43,7 @@ namespace UserInterface
             {
                 case "4":
                     //Add implementation to talk to the repository method to add a restaurant
-                    _restBL.AddOrdersBL(_rest);
+                    parameterInter.AddOrdersBL(temp);
                    
                     return MenuType.loginconfirm;
                 case "3":
@@ -56,7 +56,7 @@ namespace UserInterface
                     return MenuType.AddOrder;
                 case "1":
                     Console.WriteLine("Type in the value for the total quantity");
-                    _rest._totalprice = Convert.ToDecimal(Console.ReadLine());
+                    temp._totalprice = Convert.ToDecimal(Console.ReadLine());
                     return MenuType.AddOrder;
 
                     case "11":
@@ -70,7 +70,7 @@ namespace UserInterface
                     Console.WriteLine("Type in the line item quantity");
                     _items._quantity=Convert.ToInt32(Console.ReadLine());
 
-                    _rest.itemslist.Add(_items);
+                    temp.itemslist.Add(_items);
                    
                     return MenuType.AddOrder;
                 case "0":

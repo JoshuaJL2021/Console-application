@@ -8,7 +8,7 @@ namespace UserInterface
         {
             Console.WriteLine("Here is your total purchase:");
             Console.WriteLine("Below is our current list of products");
-           /* List<Customer> listOfCustomers = _restBL.GetAllCustomersBL();
+           /* List<Customer> listOfCustomers = parameterInter.GetAllCustomersBL();
 
             foreach (Customer rest in listOfCustomers)
             {

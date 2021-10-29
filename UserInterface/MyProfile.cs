@@ -8,11 +8,11 @@ namespace UserInterface
     public class MyProfile : IMenu
     {
         private static Customer _rest = SingletonUser.currentuser;
-        private InterfaceBL _restBL;
+        private InterfaceBL parameterInter;
          
-        public MyProfile(InterfaceBL p_restBL)
+        public MyProfile(InterfaceBL parameterobj)
         {
-            _restBL = p_restBL;
+            parameterInter = parameterobj;
         }
 
         public void Menu()
@@ -27,7 +27,7 @@ namespace UserInterface
              Console.WriteLine("Age - "+ SingletonUser.currentuser._age);
             Console.WriteLine("Position - "+ SingletonUser.currentuser.Position);
             Console.WriteLine("Account number - "+ SingletonUser.currentuser.Id);
-            List<Orders> listofOrders = _restBL.GetMyOrderHistory(SingletonUser.currentuser.Id);
+            List<Orders> listofOrders = parameterInter.GetMyOrderHistory(SingletonUser.currentuser.Id);
            
              
   
@@ -68,7 +68,7 @@ namespace UserInterface
             {
                 case "x":
                     
-                    _restBL.ModifyCustomerRecord(SingletonUser.currentuser);
+                    parameterInter.ModifyCustomerRecord(SingletonUser.currentuser);
                    
                     return MenuType.LoginMenu;
                 case "1":
