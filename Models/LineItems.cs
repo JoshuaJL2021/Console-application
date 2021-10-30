@@ -4,6 +4,7 @@ namespace Models
 {
     public class LineItems
     {
+        
         public Products _product;
         public Products ProductEstablish
         {
@@ -21,7 +22,7 @@ namespace Models
 
         public override string ToString()
         {
-            return $"{_product}\nquantity available : {_quantity}\n";
+            return $"{_product}\tquantity available : {_quantity}\n";
         }
         
         public int AmountGrab(){
