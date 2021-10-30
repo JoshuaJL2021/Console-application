@@ -7,9 +7,10 @@ namespace UserInterface
     public class AddStoreFront : IMenu
     {
         private static StoreFront _rest = new StoreFront();
-        
+        private static Orders _details = new Orders();
+
         private InterfaceBL parameterInter;
-         
+
         public AddStoreFront(InterfaceBL parameterobj)
         {
             parameterInter = parameterobj;
@@ -19,7 +20,8 @@ namespace UserInterface
         {
             Console.WriteLine("Adding a new Store Front");
             Console.WriteLine("Name of store- " + _rest._name);
-            Console.WriteLine("Address of store - "+ _rest._address);
+            Console.WriteLine("Address of store - " + _rest._address);
+
             Console.WriteLine("order history");
             foreach (Orders obj in _rest.orderslist)
             {
@@ -29,6 +31,7 @@ namespace UserInterface
             Console.WriteLine("[4] - Add StoreFront");
             Console.WriteLine("[3] - Input value for Name");
             Console.WriteLine("[2] - Input value for Address");
+
             Console.WriteLine("[0] - Go Back");
         }
 
@@ -41,7 +44,8 @@ namespace UserInterface
                 case "4":
                     //Add implementation to talk to the repository method to add a restaurant
                     parameterInter.AddStoreFrontBL(_rest);
-                   
+                    
+
                     return MenuType.MainMenu;
                 case "3":
                     Console.WriteLine("Type in the value for the Name");
@@ -51,6 +55,8 @@ namespace UserInterface
                     Console.WriteLine("Type in the value for the Address");
                     _rest._address = Console.ReadLine();
                     return MenuType.AddStore;
+
+
                 case "0":
                     return MenuType.MainMenu;
                 default:

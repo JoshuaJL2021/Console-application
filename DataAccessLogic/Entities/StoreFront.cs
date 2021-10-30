@@ -10,6 +10,7 @@ namespace DataAccessLogic.Entities
         public StoreFront()
         {
             OrderHistories = new HashSet<OrderHistory>();
+            OrdersRecords = new HashSet<OrdersRecord>();
             Stocks = new HashSet<Stock>();
         }
 
@@ -18,6 +19,7 @@ namespace DataAccessLogic.Entities
         public string Location { get; set; }
 
         public virtual ICollection<OrderHistory> OrderHistories { get; set; }
+        public virtual ICollection<OrdersRecord> OrdersRecords { get; set; }
         public virtual ICollection<Stock> Stocks { get; set; }
     }
 }

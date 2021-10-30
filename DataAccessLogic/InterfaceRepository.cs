@@ -37,7 +37,7 @@ namespace DataAccessLogic
         /// </summary>
         /// <param name="p_rest">This is the store front we will be adding to the database</param>
         /// <returns>It will just return the store front we are adding</returns>
-        Orders AddOrdersDL(Orders parameterobj);
+        Orders AddOrdersDL(Orders parameterobj,StoreFront store,Customer client);
 
         /// <summary>
         /// This will return a list of orders stored in the database
@@ -160,7 +160,7 @@ namespace DataAccessLogic
         /// <param name="prod"></param>
         /// <param name="order"></param>
         /// <param name="customer"></param>
-        void InsertHistory(int store, int prod, int order, int customer);
+        void InsertHistory(int store, int prod, int order, int customer,int quantity);
 
         /// <summary>
         /// Used after the insert into purchases table

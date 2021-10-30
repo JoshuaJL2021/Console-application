@@ -32,6 +32,9 @@ namespace DataAccessLogic.Entities
             {
                 entity.ToTable("Customer");
 
+                entity.HasIndex(e => e.UserName, "Customer_UN")
+                    .IsUnique();
+
                 entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
 
                 entity.Property(e => e.Address)
@@ -43,6 +46,10 @@ namespace DataAccessLogic.Entities
                     .IsRequired()
                     .HasMaxLength(255)
                     .IsUnicode(false);
+
+                entity.Property(e => e.CurrentCurrency)
+                    .HasColumnType("money")
+                    .HasDefaultValueSql("((0.00))");
 
                 entity.Property(e => e.Email)
                     .IsRequired()
@@ -68,13 +75,15 @@ namespace DataAccessLogic.Entities
             modelBuilder.Entity<OrderHistory>(entity =>
             {
                 entity.HasKey(e => e.ReferenceId)
-                    .HasName("PK__OrderHis__E1A99A798589480E");
+                    .HasName("PK__OrderHis__E1A99A79D614F7ED");
 
                 entity.ToTable("OrderHistory");
 
                 entity.Property(e => e.ReferenceId).HasColumnName("ReferenceID");
 
                 entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
+
+                entity.Property(e => e.LineQuantity).HasColumnName("line_quantity");
 
                 entity.Property(e => e.ProductId).HasColumnName("ProductID");
 
@@ -83,30 +92,50 @@ namespace DataAccessLogic.Entities
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.OrderHistories)
                     .HasForeignKey(d => d.CustomerId)
-                    .HasConstraintName("FK__OrderHist__Custo__07C12930");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__OrderHist__Custo__1AD3FDA4");
 
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.OrderHistories)
                     .HasForeignKey(d => d.OrderId)
-                    .HasConstraintName("FK__OrderHist__Order__06CD04F7");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__OrderHist__Order__19DFD96B");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.OrderHistories)
                     .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK__OrderHist__Produ__09A971A2");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__OrderHist__Produ__1CBC4616");
 
                 entity.HasOne(d => d.Store)
                     .WithMany(p => p.OrderHistories)
                     .HasForeignKey(d => d.StoreId)
-                    .HasConstraintName("FK__OrderHist__Store__08B54D69");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__OrderHist__Store__1BC821DD");
             });
 
             modelBuilder.Entity<OrdersRecord>(entity =>
             {
                 entity.HasKey(e => e.OrderId)
-                    .HasName("PK__OrdersRe__C3905BCF2432D13D");
+                    .HasName("PK__OrdersRe__C3905BCF362EFFB7");
+
+                entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
+
+                entity.Property(e => e.StoreId).HasColumnName("StoreID");
 
                 entity.Property(e => e.Total).HasColumnType("money");
+
+                entity.HasOne(d => d.Customer)
+                    .WithMany(p => p.OrdersRecords)
+                    .HasForeignKey(d => d.CustomerId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__OrdersRec__Custo__160F4887");
+
+                entity.HasOne(d => d.Store)
+                    .WithMany(p => p.OrdersRecords)
+                    .HasForeignKey(d => d.StoreId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__OrdersRec__Store__17036CC0");
             });
 
             modelBuilder.Entity<Product>(entity =>
