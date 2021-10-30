@@ -12,19 +12,24 @@ namespace UserInterface
         */
         public void Menu()
         {
-            Console.WriteLine("This is the function Menu");
-            Console.WriteLine("What do you want to do?");
+            Console.WriteLine("\n##################################################################################\n");
+                    
+            Console.WriteLine("\tThis is the function Menu");
+            Console.WriteLine("\tWhat do you want to do?");
 
-            Console.WriteLine("[1] - Go Browsing");
-            Console.WriteLine("[0] - Exit the store");
-            Console.WriteLine("[a] - replenish inventory");
-            Console.WriteLine("[b] - MyProfile");
-            Console.WriteLine("[c] add Products");
-            Console.WriteLine("[d] add StoreFront");
-            Console.WriteLine("[e] - show me info");
-            Console.WriteLine("[f] -test");
-            Console.WriteLine("[g] -add line item/stock table");
-            Console.WriteLine("[h] -Show Store Order History");
+            Console.WriteLine("\t[1] - Go Browsing");
+            Console.WriteLine("\t[0] - Exit the store");
+            Console.WriteLine("\t[a] - replenish inventory");
+            Console.WriteLine("\t[b] - MyProfile");
+            Console.WriteLine("\t[c] add Products");
+            Console.WriteLine("\t[d] add StoreFront");
+            Console.WriteLine("\t[e] - show me info");
+            Console.WriteLine("\t[f] -test");
+            Console.WriteLine("\t[g] -add line item/stock table");
+            Console.WriteLine("\t[h] -Show Store Order History");
+
+            Console.WriteLine("\n##################################################################################\n");
+                    
 
         }
 

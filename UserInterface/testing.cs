@@ -39,14 +39,14 @@ namespace UserInterface
             // }
 
             Console.WriteLine("\n##################################################################################\n");
-            Console.WriteLine("Currently in cart");
+            Console.WriteLine("\tCurrently in cart");
             foreach (LineItems x in _details.ItemsList)
             {
                 Console.WriteLine(x);
 
             }
             Console.WriteLine("\tTotal of cart is $" + _details.TotalPrice);
-            Console.WriteLine("Information headed to db tables");
+            Console.WriteLine("\tInformation headed to db tables");
             foreach (LineItems x in tempdb)
             {
                 Console.WriteLine(x);

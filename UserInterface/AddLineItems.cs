@@ -25,10 +25,10 @@ namespace UserInterface
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(SingletonUser.currentstore);
             Console.WriteLine(items.ProductEstablish);
-            Console.WriteLine("Ammount of Item : "+items.Quantity);
+            Console.WriteLine("Ammount of Item : " + items.Quantity);
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("\n##################################################################################\n");
-
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("[4] - Add LineItem/Stock");
             Console.WriteLine("[3] - Input value for products name");
             Console.WriteLine("[2] - Input value for products quantity");
@@ -46,8 +46,8 @@ namespace UserInterface
                 case "4":
                     //Add implementation to talk to the repository method to add a restaurant
                     parameterInter.AddStock(SingletonUser.currentstore, items.ProductEstablish, items.Quantity);
-                    items=null;
-                    SingletonUser.currentstore=null;
+                    items = null;
+                    SingletonUser.currentstore = null;
 
                     return MenuType.MainMenu;
                 case "3":
@@ -62,8 +62,10 @@ namespace UserInterface
                         Console.WriteLine(rest);
                         Console.WriteLine("====================");
                     }
+                    Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the product Id u want");
                     int num = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("\n##################################################################################\n");
                     try
                     {
                         items.ProductEstablish = parameterInter.GetProduct(num);
@@ -77,9 +79,10 @@ namespace UserInterface
                 case "2":
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine("\n##################################################################################\n");
-
                     Console.WriteLine("\tType in the value for the quantity");
                     items.Quantity = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("\n##################################################################################\n");
+
                     return MenuType.AddLineItem;
                 case "1":
 
@@ -97,8 +100,10 @@ namespace UserInterface
                     }
 
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tEnter store you want to enter");
                     int number = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("\n##################################################################################\n");
 
                     try
                     {
@@ -111,9 +116,9 @@ namespace UserInterface
                     {
                         Console.ForegroundColor = ConsoleColor.White;
                         SingletonUser.currentstore = null;
-                        Console.WriteLine("Store was unfortunately not found please enter name as shown in list above");
-                        Console.WriteLine("You will be sent to Store display again ");
-                        Console.WriteLine("Press Enter to continue");
+                        Console.WriteLine("\tStore was unfortunately not found please enter name as shown in list above");
+                        Console.WriteLine("\tYou will be sent to Store display again ");
+                        Console.WriteLine("\tPress Enter to continue");
                         Console.ReadLine();
                     }
                     return MenuType.AddLineItem;

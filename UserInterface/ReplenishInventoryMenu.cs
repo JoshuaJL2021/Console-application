@@ -7,7 +7,6 @@ namespace UserInterface
 {
     public class ReplenishInventoryMenu : IMenu
     {
-        private Orders _details = new Orders();
 
         private InterfaceBL parameterInter;
 
@@ -42,6 +41,7 @@ namespace UserInterface
             Console.WriteLine("----------------------------------");
             int amount = 0;
             LineItems _lines = new LineItems();
+            List<LineItems> mod=new List<LineItems>();
             bool loop = true;
             while (loop == true)
             {
@@ -55,7 +55,7 @@ namespace UserInterface
 
                     _lines = parameterInter.VerifyStock(productsname, store);
                     loop = false;
-                    if (_details.ItemsList.Exists(x => x.ProductEstablish.Name == _lines.ProductEstablish.Name))
+                    if (mod.Exists(x => x.ProductEstablish.Name == _lines.ProductEstablish.Name))
                     {
                         Console.WriteLine("\tThis item is already in the queue to restock");
 
@@ -66,7 +66,7 @@ namespace UserInterface
                         Console.WriteLine("\tEnter the amount of the product you want to add to your inventory");
                         amount = Convert.ToInt32(Console.ReadLine());
                         _lines.Quantity = _lines.Quantity + amount;
-                        _details.ItemsList.Add(_lines);
+                        mod.Add(_lines);
 
                     }
 
@@ -109,7 +109,7 @@ namespace UserInterface
 
                 }
             }//end of while
-            foreach (LineItems s in _details.ItemsList)
+            foreach (LineItems s in mod)
             {
                 parameterInter.ModifyStockTable(store.Id, s.ProductEstablish.Id, s.Quantity);
             }

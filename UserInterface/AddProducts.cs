@@ -17,21 +17,20 @@ namespace UserInterface
         public void Menu()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.BackgroundColor = ConsoleColor.DarkBlue;
-            Console.WriteLine("Adding a new Product");
+            Console.WriteLine("\tAdding a new Product");
 
 
-            Console.WriteLine("Name - " + temp.Name);
-            Console.WriteLine("Price - " + temp.Price);
-            Console.WriteLine("Description - " + temp.Description);
-            Console.WriteLine("Category - " + temp.Category);
+            Console.WriteLine("\tName - " + temp.Name);
+            Console.WriteLine("\tPrice - " + temp.Price);
+            Console.WriteLine("\tDescription - " + temp.Description);
+            Console.WriteLine("\tCategory - " + temp.Category);
 
-            Console.WriteLine("[5] - Add Product");
-            Console.WriteLine("[4] - Input value for Name");
-            Console.WriteLine("[3] - Input value for Price");
-            Console.WriteLine("[2] - Input value for Description");
-            Console.WriteLine("[1] - Input value for Category");
-            Console.WriteLine("[0] - Go Back");
+            Console.WriteLine("\t[5] - Add Product");
+            Console.WriteLine("\t[4] - Input value for Name");
+            Console.WriteLine("\t[3] - Input value for Price");
+            Console.WriteLine("\t[2] - Input value for Description");
+            Console.WriteLine("\t[1] - Input value for Category");
+            Console.WriteLine("\t[0] - Go Back");
         }
 
         public MenuType YourChoice()
@@ -42,23 +41,38 @@ namespace UserInterface
                 case "5":
                     //Add implementation to talk to the repository method to add a restaurant
                     parameterInter.AddProductsBL(temp);
-
+                    temp=null;
                     return MenuType.MainMenu;
                 case "4":
-                    Console.WriteLine("Type in the value for the productName");
+                    Console.WriteLine("\n##################################################################################\n");
+                    Console.WriteLine("\tType in the value for the productName");
                     temp.Name = Console.ReadLine();
+                    Console.WriteLine("\n##################################################################################\n");
+
                     return MenuType.AddProduct;
                 case "3":
-                    Console.WriteLine("Type in the value for the product");
+                    Console.WriteLine("\n##################################################################################\n");
+
+                    Console.WriteLine("\tType in the value for the product");
                     temp.Price = Convert.ToDecimal(Console.ReadLine());
+                    Console.WriteLine("\n##################################################################################\n");
+
                     return MenuType.AddProduct;
                 case "2":
-                    Console.WriteLine("Type in the value for the Description");
+                    Console.WriteLine("\n##################################################################################\n");
+
+                    Console.WriteLine("\tType in the value for the Description");
                     temp.Description = Console.ReadLine();
+                    Console.WriteLine("\n##################################################################################\n");
+
                     return MenuType.AddProduct;
                 case "1":
-                    Console.WriteLine("Type in the value for the Category");
+                    Console.WriteLine("\n##################################################################################\n");
+
+                    Console.WriteLine("\tType in the value for the Category");
                     temp.Category = Console.ReadLine();
+                    Console.WriteLine("\n##################################################################################\n");
+
                     return MenuType.AddProduct;
                 case "0":
                     return MenuType.MainMenu;
