@@ -8,10 +8,8 @@ namespace Models
     public class StoreFront
     {
 
-public static string selectedStore;
-public static string selectedAddress;
 public int Id { get; set; }
-        public string _name;
+        private string _name;
         public string Name
         {
             get { return _name; }
@@ -19,7 +17,7 @@ public int Id { get; set; }
         }
         
 
-        public string _address;
+        private string _address;
         public string Address
         {
             get { return _address; }
@@ -27,7 +25,7 @@ public int Id { get; set; }
         }
         
 
-        public List<Orders> orderslist= new List<Orders>();
+        private List<Orders> orderslist= new List<Orders>();
         public List<Orders> EstablishOrders
             {
                 set { orderslist = value; }
@@ -40,7 +38,7 @@ public int Id { get; set; }
         //         get { return productslist; }
         //     }
 
-        public List<LineItems> _itemslist = new List<LineItems>();
+        private List<LineItems> _itemslist = new List<LineItems>();
         public List<LineItems> Stock
             {
                 set { _itemslist= value; }

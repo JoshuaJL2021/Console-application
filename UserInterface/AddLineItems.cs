@@ -24,8 +24,8 @@ namespace UserInterface
             Console.WriteLine("---------------------------------------------------------------------\n");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(SingletonUser.currentstore);
-            Console.WriteLine(items._product);
-            Console.WriteLine("Ammount of Item : "+items._quantity);
+            Console.WriteLine(items.ProductEstablish);
+            Console.WriteLine("Ammount of Item : "+items.Quantity);
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("\n##################################################################################\n");
 
@@ -45,7 +45,9 @@ namespace UserInterface
             {
                 case "4":
                     //Add implementation to talk to the repository method to add a restaurant
-                    parameterInter.AddStock(SingletonUser.currentstore, items._product, items._quantity);
+                    parameterInter.AddStock(SingletonUser.currentstore, items.ProductEstablish, items.Quantity);
+                    items=null;
+                    SingletonUser.currentstore=null;
 
                     return MenuType.MainMenu;
                 case "3":
@@ -64,7 +66,7 @@ namespace UserInterface
                     int num = Convert.ToInt32(Console.ReadLine());
                     try
                     {
-                        items._product = parameterInter.GetProduct(num);
+                        items.ProductEstablish = parameterInter.GetProduct(num);
                     }
                     catch (System.Exception)
                     {
@@ -77,7 +79,7 @@ namespace UserInterface
                     Console.WriteLine("\n##################################################################################\n");
 
                     Console.WriteLine("\tType in the value for the quantity");
-                    items._quantity = Convert.ToInt32(Console.ReadLine());
+                    items.Quantity = Convert.ToInt32(Console.ReadLine());
                     return MenuType.AddLineItem;
                 case "1":
 

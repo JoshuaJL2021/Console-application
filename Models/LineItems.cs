@@ -5,7 +5,7 @@ namespace Models
     public class LineItems
     {
         
-        public Products _product;
+        private Products _product;
         public Products ProductEstablish
         {
             get { return _product; }
@@ -13,7 +13,7 @@ namespace Models
         }
         
 
-        public int _quantity;
+        private int _quantity;
         public int Quantity
         {
             get { return _quantity; }

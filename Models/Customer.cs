@@ -10,15 +10,15 @@ namespace Models
 
         //fields
 
-         public string _name;
-         public string _address;
-         public string _contact;
-        public List<Orders> customerOrders = new List<Orders>();
+         private string _name;
+         private string _address;
+         private string _contact;
+        private List<Orders> customerOrders = new List<Orders>();
 
-        public string _username;
-        public string _password;
+        private string _username;
+        private string _password;
         public int _age { get; set; }
-        public decimal _currency;
+        private decimal _currency;
         public int Id { get; set; }
         public string Position { get; set; }
         public decimal Currency

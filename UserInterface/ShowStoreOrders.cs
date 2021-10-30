@@ -27,13 +27,13 @@ namespace UserInterface
             {
                 Console.WriteLine("====================");
                 Console.WriteLine("Order Id number: "+ rest.Id);
-                Console.WriteLine("Bought from the store: "+ rest._location.Name+ " located in " + rest._location.Address);
+                Console.WriteLine("Bought from the store: "+ rest.Location.Name+ " located in " + rest.Location.Address);
                 Console.WriteLine("Purchase the following:");
-                foreach(LineItems s in rest.itemslist)
+                foreach(LineItems s in rest.ItemsList)
                 {
-                    Console.WriteLine(s._product._name);
+                    Console.WriteLine(s.ProductEstablish.Name);
                 }
-                Console.WriteLine("Total cost of order was: "+rest._totalprice);
+                Console.WriteLine("Total cost of order was: "+rest.TotalPrice);
                 Console.WriteLine("====================");
             }
             Console.WriteLine("[0] - Go Back");

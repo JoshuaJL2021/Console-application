@@ -75,7 +75,7 @@ namespace UserInterface
                             SingletonUser.currentuser = parameterInter.GetCustomer(name, pass);
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.WriteLine("************************************************\n");
-                            Console.WriteLine("\tWelcome Back " + SingletonUser.currentuser._name + "\t press enter to continue\n");
+                            Console.WriteLine("\tWelcome Back " + SingletonUser.currentuser.CustomerName + "\t press enter to continue\n");
                             Console.WriteLine("************************************************\n");
                             Console.ReadLine();
                         }
@@ -122,9 +122,9 @@ namespace UserInterface
                     case "1":
 
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
-                        Console.WriteLine("Enter username");
+                        Console.WriteLine("\tEnter username");
                         string name = Console.ReadLine();
-                        Console.WriteLine("Enter Pass");
+                        Console.WriteLine("\tEnter Pass");
                         string pass = Console.ReadLine();
 
                         try
@@ -133,7 +133,7 @@ namespace UserInterface
                             SingletonUser.currentuser = parameterInter.GetCustomer(name, pass);
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.WriteLine("************************************************\n");
-                            Console.WriteLine("Welcome Back " + SingletonUser.currentuser._name + "\t press enter to continue\n");
+                            Console.WriteLine("\tWelcome Back " + SingletonUser.currentuser.CustomerName + "\t press enter to continue\n");
                             Console.WriteLine("************************************************\n");
 
                             Console.ReadLine();

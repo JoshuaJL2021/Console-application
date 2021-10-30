@@ -16,10 +16,10 @@ namespace UserInterface
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("##################################################################################\n");
-            Console.WriteLine("\tWelcome to the " + SingletonUser.currentstore._name + " products menu");
+            Console.WriteLine("\tWelcome to the " + SingletonUser.currentstore.Name + " products menu");
             Console.WriteLine("\tBelow is a list of products");
             Console.WriteLine("---------------------------------------------------------------------\n");
-            Console.WriteLine("\tList of Products in " + SingletonUser.currentstore._name);
+            Console.WriteLine("\tList of Products in " + SingletonUser.currentstore.Name);
             StoreFront test = parameterInter.GetStoreByID(SingletonUser.currentstore.Id);
             Console.ForegroundColor = ConsoleColor.White;
             foreach (LineItems rest in parameterInter.GetInventory(SingletonUser.currentstore.Id))

@@ -21,14 +21,14 @@ namespace DataAccessLogic
             (
                 new Entity.Customer()
                 {
-                    FirstName = parameterobj._name,
-                    Email = parameterobj._contact,
-                    UserName = parameterobj._username,
-                    Password = parameterobj._password,
+                    FirstName = parameterobj.CustomerName,
+                    Email = parameterobj.Contact,
+                    UserName = parameterobj.UserName,
+                    Password = parameterobj.Password,
                     Category = parameterobj.Position,
                     Age = parameterobj._age,
-                    Address = parameterobj._address,
-                    CurrentCurrency=parameterobj._currency
+                    Address = parameterobj.Address,
+                    CurrentCurrency=parameterobj.Currency
 
                 }
             );
@@ -52,7 +52,7 @@ namespace DataAccessLogic
                        Position = client.Category,
                        Address = client.Address,
                        _age = client.Age,
-                       _currency=client.CurrentCurrency
+                       Currency=client.CurrentCurrency
                    }
             ).ToList();
             return test;
@@ -67,28 +67,28 @@ namespace DataAccessLogic
                 throw new Exception("Customer Not found");
             }
 
-            obj = listOfStores.FirstOrDefault(rest => rest._username == name && rest._password == password);
+            obj = listOfStores.FirstOrDefault(rest => rest.UserName == name && rest.Password == password);
 
 
             return obj;
         }
         public Models.Customer DLModifyCustomerRecord(Models.Customer currentSelection)
         {
-            Models.Customer test = DLGetCustomer(currentSelection._username, currentSelection._password);
+            Models.Customer test = DLGetCustomer(currentSelection.UserName, currentSelection.Password);
 
             _context.Customers.Update
             (
                 new Entity.Customer()
                 {
-                    FirstName = currentSelection._name,
-                    Email = currentSelection._contact,
-                    UserName = currentSelection._username,
-                    Password = currentSelection._password,
+                    FirstName = currentSelection.CustomerName,
+                    Email = currentSelection.Contact,
+                    UserName = currentSelection.UserName,
+                    Password = currentSelection.Password,
                     Category = currentSelection.Position,
                     Age = currentSelection._age,
-                    Address = currentSelection._address,
+                    Address = currentSelection.Address,
                     CustomerId = currentSelection.Id,
-                    CurrentCurrency=currentSelection._currency
+                    CurrentCurrency=currentSelection.Currency
                 }
             );
 
@@ -103,7 +103,7 @@ namespace DataAccessLogic
         {
             List<Customer> listOfCustomers = GetAllCustomersDL();
             bool result = true;
-            Customer obj = listOfCustomers.FirstOrDefault(client => client._username == name && client._password == password);
+            Customer obj = listOfCustomers.FirstOrDefault(client => client.UserName == name && client.Password == password);
             if (obj == null)
             {
                 result = false;
@@ -121,8 +121,8 @@ namespace DataAccessLogic
            (
                new Entity.StoreFront()
                {
-                   StoreName = parameterobj._name,
-                   Location = parameterobj._address
+                   StoreName = parameterobj.Name,
+                   Location = parameterobj.Address
 
 
                }
@@ -146,7 +146,7 @@ namespace DataAccessLogic
             //Where method will give the actual element itself based on some condition
             //ToList method will convert into List that our method currently needs to return.
             //ToLower will lowercase the string to make it not case sensitive
-            listofstores = listofstores.Where(store => store._name.ToLower().Contains(name.ToLower())).ToList();
+            listofstores = listofstores.Where(store => store.Name.ToLower().Contains(name.ToLower())).ToList();
             if (listofstores.Count < 1)
             {
                 throw new Exception("Store Not found");
@@ -161,8 +161,8 @@ namespace DataAccessLogic
                    {
 
                        Id = storeobj.StoreId,
-                       _name = storeobj.StoreName,
-                       _address = storeobj.Location
+                       Name = storeobj.StoreName,
+                       Address = storeobj.Location
                    }
             ).ToList();
             return test;
@@ -173,12 +173,12 @@ namespace DataAccessLogic
             LineItems obj = new LineItems();
             List<LineItems> listofline = new List<LineItems>();
             listofline = GetInventory(chosen.Id);
-            bool result = listofline.Exists(x => x._product.Id == productnum);
+            bool result = listofline.Exists(x => x.ProductEstablish.Id == productnum);
             if (result == false)
             {
                 throw new Exception("Product Not found in store");
             }
-            obj = listofline.FirstOrDefault(prodobj => prodobj._product.Id == productnum);
+            obj = listofline.FirstOrDefault(prodobj => prodobj.ProductEstablish.Id == productnum);
             return obj;
         }
 
@@ -189,7 +189,7 @@ namespace DataAccessLogic
             (
                 new Entity.OrdersRecord()
                 {
-                    Total = parameterobj._totalprice,
+                    Total = parameterobj.TotalPrice,
                     CustomerId=client.Id,
                     StoreId=store.Id
 
@@ -207,7 +207,7 @@ namespace DataAccessLogic
                    {
 
                        Id = rest.OrderId,
-                       _totalprice = rest.Total,
+                       TotalPrice = rest.Total,
                    }
             ).ToList();
             return test;
@@ -246,8 +246,8 @@ namespace DataAccessLogic
                    {
 
                        Id = prodobj.ProductId,
-                       _name = prodobj.Name,
-                       _price = prodobj.Price,
+                       Name = prodobj.Name,
+                       Price = prodobj.Price,
                        Description = prodobj.Description,
                        Category = prodobj.Category
 
@@ -262,8 +262,8 @@ namespace DataAccessLogic
             (
                 new Entity.Product()
                 {
-                    Name = parameterObj._name,
-                    Price = parameterObj._price,
+                    Name = parameterObj.Name,
+                    Price = parameterObj.Price,
                     Description = parameterObj.Description,
                     Category = parameterObj.Category,
 
@@ -299,9 +299,9 @@ namespace DataAccessLogic
             else
             {
                 Entity.Product looking = _context.Products.Find(obj);
-                test._name = looking.Name;
+                test.Name = looking.Name;
                 test.Id = looking.ProductId;
-                test._price = looking.Price;
+                test.Price = looking.Price;
                 test.Category = looking.Category;
                 test.Description = looking.Description;
                 return test;
@@ -337,16 +337,16 @@ namespace DataAccessLogic
             foreach (var row in result)
             {
                 LineItems test = new LineItems();
-                test._product = new Model.Products()
+                test.ProductEstablish = new Model.Products()
                 {
-                    _price = row.Product.Price,
-                    _name = row.Product.Name,
+                    Price = row.Product.Price,
+                    Name = row.Product.Name,
                     Id = row.Product.ProductId,
                     Description = row.Product.Description,
                     Category = row.Product.Category
 
                 };
-                test._quantity = row.InStock;
+                test.Quantity = row.InStock;
 
                 listofItems.Add(test);
             }
@@ -365,9 +365,9 @@ namespace DataAccessLogic
             else
             {
                 Entity.StoreFront looking = _context.StoreFronts.Find(number);
-                test._name = looking.StoreName;
+                test.Name = looking.StoreName;
                 test.Id = looking.StoreId;
-                test._address = looking.Location;
+                test.Name = looking.Location;
                 return test;
             }
 
@@ -450,10 +450,10 @@ namespace DataAccessLogic
                 LineItems test = new LineItems();
                 Model.Orders mine = new Orders();
                 
-                test._product = new Model.Products()
+                test.ProductEstablish = new Model.Products()
                 {
-                    _price = row.Product.Price,
-                    _name = row.Product.Name,
+                    Price = row.Product.Price,
+                    Name = row.Product.Name,
                     Id = row.Product.ProductId,
                     Description = row.Product.Description,
                     Category = row.Product.Category
@@ -461,11 +461,11 @@ namespace DataAccessLogic
                 };
                 mine.Id = row.Order.OrderId;
                 mine.TotalPrice = row.Order.Total;
-                mine.itemslist.Add(test);
-                mine._location = new Model.StoreFront()
+                mine.ItemsList.Add(test);
+                mine.Location = new Model.StoreFront()
                 {
-                    _name = row.Store.StoreName,
-                    _address = row.Store.Location,
+                    Name = row.Store.StoreName,
+                    Address = row.Store.Location,
                     Id = row.Store.StoreId
                 };
 
@@ -491,10 +491,10 @@ namespace DataAccessLogic
                 LineItems test = new LineItems();
                 Model.Orders mine = new Orders();
                 
-                test._product = new Model.Products()
+                test.ProductEstablish = new Model.Products()
                 {
-                    _price = rev.Product.Price,
-                    _name = rev.Product.Name,
+                    Price = rev.Product.Price,
+                    Name = rev.Product.Name,
                     Id = rev.Product.ProductId,
                     Description = rev.Product.Description,
                     Category = rev.Product.Category
@@ -502,11 +502,11 @@ namespace DataAccessLogic
                 };
                 mine.Id = rev.Order.OrderId;
                 mine.TotalPrice = rev.Order.Total;
-                mine.itemslist.Add(test);
-                mine._location = new Model.StoreFront()
+                mine.ItemsList.Add(test);
+                mine.Location = new Model.StoreFront()
                 {
-                    _name = rev.Store.StoreName,
-                    _address = rev.Store.Location,
+                    Name = rev.Store.StoreName,
+                    Address = rev.Store.Location,
                     Id = rev.Store.StoreId
                 };
 

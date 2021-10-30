@@ -5,7 +5,7 @@ namespace Models
     public class Products
     {
         public int Id { get; set; }
-        public string _name;
+        private string _name;
         public string Name
         {
             get { return _name; }
@@ -13,7 +13,7 @@ namespace Models
         }
         
 
-        public decimal _price;
+        private decimal _price;
         public decimal Price
         {
             get { return _price; }

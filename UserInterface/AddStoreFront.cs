@@ -19,11 +19,11 @@ namespace UserInterface
         public void Menu()
         {
             Console.WriteLine("Adding a new Store Front");
-            Console.WriteLine("Name of store- " + _rest._name);
-            Console.WriteLine("Address of store - " + _rest._address);
+            Console.WriteLine("Name of store- " + _rest.Name);
+            Console.WriteLine("Address of store - " + _rest.Address);
 
             Console.WriteLine("order history");
-            foreach (Orders obj in _rest.orderslist)
+            foreach (Orders obj in _rest.EstablishOrders)
             {
                 Console.WriteLine(obj);
             }
@@ -48,11 +48,11 @@ namespace UserInterface
                     return MenuType.MainMenu;
                 case "3":
                     Console.WriteLine("Type in the value for the Name");
-                    _rest._name = Console.ReadLine();
+                    _rest.Name = Console.ReadLine();
                     return MenuType.AddStore;
                 case "2":
                     Console.WriteLine("Type in the value for the Address");
-                    _rest._address = Console.ReadLine();
+                    _rest.Address = Console.ReadLine();
                     return MenuType.AddStore;
                 /*case "11":
                        Products _items=new Products();

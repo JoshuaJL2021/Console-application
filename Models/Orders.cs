@@ -8,20 +8,20 @@ namespace Models
     public class Orders
     {
         public int Id { get; set; }
-        public List<LineItems> itemslist = new List<LineItems>();
+        private List<LineItems> itemslist = new List<LineItems>();
         public List<LineItems> ItemsList
             {
                 set { itemslist = value; }
                 get { return itemslist; }
             }
-        public StoreFront _location;
+        private StoreFront _location;
         public StoreFront Location
         {
             get { return _location; }
             set { _location = value; }
         }
 
-        public decimal _totalprice;
+        private decimal _totalprice;
         public decimal TotalPrice
         {
             get { return decimal.Round(_totalprice,2); }

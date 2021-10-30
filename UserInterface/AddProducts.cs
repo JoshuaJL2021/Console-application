@@ -21,8 +21,8 @@ namespace UserInterface
             Console.WriteLine("Adding a new Product");
 
 
-            Console.WriteLine("Name - " + temp._name);
-            Console.WriteLine("Price - " + temp._price);
+            Console.WriteLine("Name - " + temp.Name);
+            Console.WriteLine("Price - " + temp.Price);
             Console.WriteLine("Description - " + temp.Description);
             Console.WriteLine("Category - " + temp.Category);
 
@@ -46,11 +46,11 @@ namespace UserInterface
                     return MenuType.MainMenu;
                 case "4":
                     Console.WriteLine("Type in the value for the productName");
-                    temp._name = Console.ReadLine();
+                    temp.Name = Console.ReadLine();
                     return MenuType.AddProduct;
                 case "3":
                     Console.WriteLine("Type in the value for the product");
-                    temp._price = Convert.ToDecimal(Console.ReadLine());
+                    temp.Price = Convert.ToDecimal(Console.ReadLine());
                     return MenuType.AddProduct;
                 case "2":
                     Console.WriteLine("Type in the value for the Description");

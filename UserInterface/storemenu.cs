@@ -17,7 +17,7 @@ namespace UserInterface
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("##################################################################################\n");
-            Console.WriteLine("\tWelcome to the store select menu " + SingletonUser.currentuser._name.ToUpper());
+            Console.WriteLine("\tWelcome to the store select menu " + SingletonUser.currentuser.CustomerName.ToUpper());
             Console.WriteLine("\tPlease select the store");
             Console.WriteLine("---------------------------------------------------------------------\n");
 
@@ -102,7 +102,7 @@ namespace UserInterface
                     {
 
                         SingletonUser.currentstore = parameterInter.GetStoreByID(num);
-                        Console.WriteLine("Welcome to " + SingletonUser.currentstore._name + "\n enter to continue");
+                        Console.WriteLine("Welcome to " + SingletonUser.currentstore.Name + "\n enter to continue");
 
                         Console.ReadLine();
                     }

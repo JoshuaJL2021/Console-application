@@ -21,15 +21,15 @@ namespace UserInterface
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("\n##################################################################################\n");
             Console.WriteLine("Editing current user");
-            Console.WriteLine("Name - " + SingletonUser.currentuser._name);
-            Console.WriteLine("Address - " + SingletonUser.currentuser._address);
-            Console.WriteLine("Contact - " + SingletonUser.currentuser._contact);
-            Console.WriteLine("username - " + SingletonUser.currentuser._username);
+            Console.WriteLine("Name - " + SingletonUser.currentuser.CustomerName);
+            Console.WriteLine("Address - " + SingletonUser.currentuser.Address);
+            Console.WriteLine("Contact - " + SingletonUser.currentuser.Contact);
+            Console.WriteLine("username - " + SingletonUser.currentuser.UserName);
             Console.WriteLine("Age - " + SingletonUser.currentuser._age);
             Console.WriteLine("Position - " + SingletonUser.currentuser.Position);
             Console.WriteLine("Account number - " + SingletonUser.currentuser.Id);
             Console.WriteLine("Current Balance: $" + SingletonUser.currentuser.Currency);
-            SingletonUser.currentuser.customerOrders = parameterInter.GetMyOrderHistory(SingletonUser.currentuser.Id);
+            SingletonUser.currentuser.MyOrders = parameterInter.GetMyOrderHistory(SingletonUser.currentuser.Id);
 
             Console.WriteLine("\n##################################################################################\n");
 
@@ -64,16 +64,16 @@ namespace UserInterface
                     return MenuType.LoginMenu;
                 case "1":
                     Console.WriteLine("\tType in the value for the Name");
-                    _rest._name = Console.ReadLine();
+                    _rest.CustomerName = Console.ReadLine();
                     return MenuType.MyProfile;
                 case "2":
                     Console.WriteLine("\tType in the value for the Address");
-                    _rest._address = Console.ReadLine();
+                    _rest.Address = Console.ReadLine();
 
                     return MenuType.MyProfile;
                 case "3":
                     Console.WriteLine("\tType in the value for the Contact");
-                    _rest._contact = Console.ReadLine();
+                    _rest.Contact = Console.ReadLine();
                     return MenuType.MyProfile;
                 case "4":
                     Console.WriteLine("\tType in the value for the age");
@@ -81,27 +81,27 @@ namespace UserInterface
                     return MenuType.MyProfile;
                 case "5":
                     Console.WriteLine("\tType in the value for the username");
-                    _rest._username = Console.ReadLine();
+                    _rest.UserName = Console.ReadLine();
                     return MenuType.MyProfile;
                 case "6":
                     Console.WriteLine("\tType in the value for the password");
 
-                    _rest._password = Console.ReadLine();
+                    _rest.Password = Console.ReadLine();
                     return MenuType.MyProfile;
 
                 case "7":
                 Console.ForegroundColor = ConsoleColor.White;
-                    foreach (Orders history in SingletonUser.currentuser.customerOrders)
+                    foreach (Orders history in SingletonUser.currentuser.MyOrders)
                     {
                         Console.WriteLine("====================");
                         Console.WriteLine("\tOrder Id number: " + history.Id);
-                        Console.WriteLine("\tBought from the store: " + history._location.Name + " located in " + history._location.Address);
+                        Console.WriteLine("\tBought from the store: " + history.Location.Name + " located in " + history.Location.Address);
                         Console.WriteLine("\tPurchase the following:");
-                        foreach (LineItems s in history.itemslist)
+                        foreach (LineItems s in history.ItemsList)
                         {
-                            Console.WriteLine("\t" + s._product._name);
+                            Console.WriteLine("\t" + s.ProductEstablish.Name);
                         }
-                        Console.WriteLine("\tTotal cost of order was: " + history._totalprice);
+                        Console.WriteLine("\tTotal cost of order was: " + history.TotalPrice);
                         Console.WriteLine("====================");
                     }
                     Console.WriteLine("\tpress enter to continue");

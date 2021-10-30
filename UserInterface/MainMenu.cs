@@ -31,7 +31,7 @@ namespace UserInterface
             else{
                 if (SingletonUser.currentuser.Position == "Manager")
             {
-                Console.WriteLine("\tWelcome " + SingletonUser.currentuser._name + " to the Main Menu for Lopez Shopping Center");
+                Console.WriteLine("\tWelcome " + SingletonUser.currentuser.CustomerName + " to the Main Menu for Lopez Shopping Center");
                 Console.WriteLine("\tWhat do you want to do?");
                 Console.WriteLine("---------------------------------------------------------------------\n");
                 Console.WriteLine("\t[1] - Go Browsing");

@@ -22,14 +22,14 @@ namespace UserInterface
             Console.WriteLine("Adding a new Account");
             Console.WriteLine("---------------------------------------------------------------------\n");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Name - " + client._name);
-            Console.WriteLine("Address - " + client._address);
-            Console.WriteLine("Contact - " + client._contact);
-            Console.WriteLine("username - " + client._username);
-            Console.WriteLine("password - " + client._password);
+            Console.WriteLine("Name - " + client.CustomerName);
+            Console.WriteLine("Address - " + client.Address);
+            Console.WriteLine("Contact - " + client.Contact);
+            Console.WriteLine("username - " + client.UserName);
+            Console.WriteLine("password - " + client.Password);
             Console.WriteLine("Age - " + client._age);
             Console.WriteLine("Type: - " + client.Position);
-            Console.WriteLine("Added Balance: - $" + client._currency);
+            Console.WriteLine("Added Balance: - $" + client.Currency);
             Console.ForegroundColor = ConsoleColor.Green;
 
             Console.WriteLine("\n##################################################################################\n");
@@ -66,17 +66,17 @@ namespace UserInterface
                     return MenuType.LoginMenu;
                 case "1":
                     Console.WriteLine("\tType in the value for the Name");
-                    client._name = Console.ReadLine();
+                    client.CustomerName = Console.ReadLine();
                     Console.WriteLine("\n##################################################################################\n");
                     return MenuType.AddCustomers;
                 case "2":
                     Console.WriteLine("\tType in the value for the Address");
-                    client._address = Console.ReadLine();
+                    client.Address = Console.ReadLine();
                     Console.WriteLine("\n##################################################################################\n");
                     return MenuType.AddCustomers;
                 case "3":
                     Console.WriteLine("\tType in the value for the Contact");
-                    client._contact = Console.ReadLine();
+                    client.Contact = Console.ReadLine();
                     Console.WriteLine("\n##################################################################################\n");
                     return MenuType.AddCustomers;
                 case "4":
@@ -86,12 +86,12 @@ namespace UserInterface
                     return MenuType.AddCustomers;
                 case "5":
                     Console.WriteLine("\tType in the value for the username");
-                    client._username = Console.ReadLine();
+                    client.UserName = Console.ReadLine();
                     Console.WriteLine("\n##################################################################################\n");
                     return MenuType.AddCustomers;
                 case "6":
                     Console.WriteLine("\tType in the value for the password");
-                    client._password = Console.ReadLine();
+                    client.Password = Console.ReadLine();
                     Console.WriteLine("\n##################################################################################\n");
                     return MenuType.AddCustomers;
                 case "7":
@@ -102,7 +102,7 @@ namespace UserInterface
 
                     case "8":
                     Console.WriteLine("\tType in the value for the Currency");
-                    client._currency = Convert.ToDecimal(Console.ReadLine());
+                    client.Currency = Convert.ToDecimal(Console.ReadLine());
                     return MenuType.AddCustomers;
                 case "0":
                     return MenuType.MainMenu;

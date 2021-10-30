@@ -19,12 +19,12 @@ namespace UserInterface
         public void Menu()
         {
             Console.WriteLine("Adding a new Order");
-            Console.WriteLine("Location - " + _value._name);
-            Console.WriteLine("Location address - " + _value._address);
-            Console.WriteLine("Total cost of order - "+ temp._totalprice);
+            Console.WriteLine("Location - " + _value.Name);
+            Console.WriteLine("Location address - " + _value.Address);
+            Console.WriteLine("Total cost of order - "+ temp.TotalPrice);
             Console.WriteLine(_value);
-            temp._location=_value;
-            foreach (LineItems obj in temp.itemslist)
+            temp.Location=_value;
+            foreach (LineItems obj in temp.ItemsList)
             {
                 Console.WriteLine(obj);
             }
@@ -48,15 +48,15 @@ namespace UserInterface
                     return MenuType.loginconfirm;
                 case "3":
                     Console.WriteLine("Type in the value for the Name");
-                    _value._name = Console.ReadLine();
+                    _value.Name = Console.ReadLine();
                     return MenuType.AddOrder;
                 case "2":
                     Console.WriteLine("Type in the value for the Address");
-                    _value._address = Console.ReadLine();
+                    _value.Address = Console.ReadLine();
                     return MenuType.AddOrder;
                 case "1":
                     Console.WriteLine("Type in the value for the total quantity");
-                    temp._totalprice = Convert.ToDecimal(Console.ReadLine());
+                    temp.TotalPrice = Convert.ToDecimal(Console.ReadLine());
                     return MenuType.AddOrder;
 
                     case "11":
@@ -64,13 +64,13 @@ namespace UserInterface
                     Console.WriteLine("Type in the line item product name");
                     Products _prods=new Products();
                         Console.WriteLine("Type in the line item product name");
-                        _prods._name =Console.ReadLine();
+                        _prods.Name =Console.ReadLine();
                         Console.WriteLine("Type in the line item price");
-                        _prods._price=Convert.ToDecimal(Console.ReadLine());
+                        _prods.Price=Convert.ToDecimal(Console.ReadLine());
                     Console.WriteLine("Type in the line item quantity");
-                    _items._quantity=Convert.ToInt32(Console.ReadLine());
+                    _items.Quantity=Convert.ToInt32(Console.ReadLine());
 
-                    temp.itemslist.Add(_items);
+                    temp.ItemsList.Add(_items);
                    
                     return MenuType.AddOrder;
                 case "0":
