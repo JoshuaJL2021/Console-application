@@ -345,5 +345,15 @@ public StoreFront DLGetStore(string name,string address)
         {
             throw new NotImplementedException();
         }
+
+        public Orders AddOrdersDL(Orders parameterobj, StoreFront store, Customer client)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void InsertHistory(int store, int prod, int order, int customer, int quantity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -28,7 +28,8 @@ namespace UserInterface
             Console.WriteLine("username - " + client._username);
             Console.WriteLine("password - " + client._password);
             Console.WriteLine("Age - " + client._age);
-            Console.WriteLine("Position - " + client.Position);
+            Console.WriteLine("Type: - " + client.Position);
+            Console.WriteLine("Added Balance: - $" + client._currency);
             Console.ForegroundColor = ConsoleColor.Green;
 
             Console.WriteLine("\n##################################################################################\n");
@@ -39,7 +40,8 @@ namespace UserInterface
             Console.WriteLine("\t[4] - Input value for age");
             Console.WriteLine("\t[5] - Enter username");
             Console.WriteLine("\t[6] - Enter password");
-            Console.WriteLine("\t[7] - Enter Position");
+            Console.WriteLine("\t[7] - Enter Type");
+            Console.WriteLine("\t[8] - Enter Currency");
             Console.WriteLine("\t[0] - Go Back");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("\n##################################################################################\n");
@@ -58,6 +60,8 @@ namespace UserInterface
                 case "x":
                     //Add implementation to talk to the repository method to add a restaurant
                     parameterInter.AddCustomersBL(client);
+                    Console.WriteLine("\tAccount created");
+                    Console.WriteLine("\tPress enter to continue");
 
                     return MenuType.LoginMenu;
                 case "1":
@@ -95,13 +99,18 @@ namespace UserInterface
                     client.Position = Console.ReadLine();
                     Console.WriteLine("\n##################################################################################\n");
                     return MenuType.AddCustomers;
+
+                    case "8":
+                    Console.WriteLine("\tType in the value for the Currency");
+                    client._currency = Convert.ToDecimal(Console.ReadLine());
+                    return MenuType.AddCustomers;
                 case "0":
                     return MenuType.MainMenu;
                 default:
                     Console.WriteLine("Please input a valid response!");
                     Console.WriteLine("Press Enter to continue");
                     Console.ReadLine();
-                    return MenuType.LoginMenu;
+                    return MenuType.AddCustomers;
             }
         }
     }

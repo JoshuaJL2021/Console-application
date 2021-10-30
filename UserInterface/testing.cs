@@ -8,15 +8,12 @@ namespace UserInterface
     public class LoginConfirmationMenu : IMenu
     {
         private static Orders _details = new Orders();
-        static decimal total;
-        decimal cost;
-        int selectedamount;
-        decimal payment;
-        decimal linecost;
+
+
         static List<string> cartResult = new List<string>();
         static List<LineItems> tempdb = new List<LineItems>();
-        
-        
+
+
         private InterfaceBL parameterInter;
 
         public LoginConfirmationMenu(InterfaceBL parameterobj)
@@ -26,6 +23,7 @@ namespace UserInterface
         public void Menu()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
+            _details.Location = SingletonUser.currentstore;
             Console.WriteLine("##################################################################################\n");
             Console.WriteLine("\tWelcome to the " + SingletonUser.currentstore._name + " products menu");
             Console.WriteLine("\tBelow is a list of products");
@@ -58,10 +56,9 @@ namespace UserInterface
             Console.WriteLine("\tTotal of cart is $" + _details.TotalPrice);
             Console.WriteLine("\n##################################################################################\n");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\t[6] - Add Items to cart");
-            Console.WriteLine("\t[5] - Modify items from cart");
+            Console.WriteLine("\t[5] - Add Items to cart");
             Console.WriteLine("\t[4] - remove items from cart");
-            Console.WriteLine("\t[3] - calculate total of order");
+            Console.WriteLine("\t[3] - Modify/calculate total of order");
             Console.WriteLine("\t[2] - confirm");
             Console.WriteLine("\t[1] - goes to exit");
 
@@ -77,14 +74,8 @@ namespace UserInterface
             string userChoice = Console.ReadLine();
             switch (userChoice)
             {
-                case "6":
-                    StoreFront store = parameterInter.GetStoreByID(SingletonUser.currentstore.Id);
-                    _details._location = store;
-                    total = 0;
-                    cost = 0;
-                    selectedamount = 0;
-                    payment = 0;
-                    List<string> cartResult = new List<string>();
+                case "5":
+
                     List<LineItems> temper = new List<LineItems>();
                     bool decision = true;
                     do
@@ -104,7 +95,7 @@ namespace UserInterface
                             try
                             {
 
-                                _lines = parameterInter.VerifyStock(productsname, store);
+                                _lines = parameterInter.VerifyStock(productsname, SingletonUser.currentstore);
                                 loop = false;
 
                                 if (tempdb.Exists(x => x._product._name == _lines._product._name))
@@ -158,89 +149,8 @@ namespace UserInterface
                     return MenuType.loginconfirm;
 
 
-
-
-                case "5":
-                    total = 0;
-                    cost = 0;
-                    selectedamount = 0;
-                    payment = 0;
-                    cartResult = new List<string>();
-                    List<LineItems> temper2 = new List<LineItems>();
-                    bool decision2 = true;
-                    do
-                    {
-
-                        LineItems _lines = new LineItems();
-
-                        bool loop = true;
-                        while (loop == true)
-                        {
-                            Console.ForegroundColor = ConsoleColor.DarkYellow;
-
-                            Console.WriteLine("##################################################################################\n");
-                            Console.WriteLine("\tEnter the Id of the product from the store to add to your cart");
-                            int productsname = Convert.ToInt32(Console.ReadLine());
-                            string cancel;
-                            try
-                            {
-
-                                _lines = parameterInter.VerifyStock(productsname, SingletonUser.currentstore);
-                                if (tempdb.Exists(x => x._product._name == _lines._product._name))
-                                {
-
-                                    tempdb.RemoveAll(x => x._product._name == _lines._product._name);
-
-                                }
-                                loop = false;
-                                temper2.Add(_lines);
-                            }
-                            catch (System.Exception)
-                            {
-                                Console.ForegroundColor = ConsoleColor.White;
-                                Console.WriteLine("\n************************************************\n");
-                                Console.WriteLine("\tplease try again you have entered the information wrong");
-                                loop = true;
-                                Console.WriteLine("\tWould you like to cancel the item? \n\ttype yes or no?\n");
-                                Console.WriteLine("\n************************************************\n");
-                                cancel = Console.ReadLine();
-
-
-                                if (cancel == "yes" || cancel == "Yes" || cancel == "YES")
-                                {
-                                    loop = false;
-                                }
-                                else
-                                {
-
-                                    loop = true; ;
-
-                                }
-                            }//end of catch
-                        }//end of while
-                        Console.ForegroundColor = ConsoleColor.DarkYellow;
-                        Console.WriteLine("\n##################################################################################\n");
-
-
-
-                        decision2 = false;
-                    } while (decision2);
-
-                    Console.WriteLine("\n##################################################################################\n");
-
-
-                    foreach (LineItems x in temper2)
-                    {
-                        tempdb.Add(x);
-                    }
-                    return MenuType.loginconfirm;
-
                 case "4":
-                    total = 0;
-                    cost = 0;
-                    selectedamount = 0;
-                    payment = 0;
-                    cartResult = new List<string>();
+
                     List<LineItems> temper3 = new List<LineItems>();
                     bool decision3 = true;
                     do
@@ -307,18 +217,20 @@ namespace UserInterface
                     return MenuType.loginconfirm;
 
                 case "3":
-                    total = 0;
-                    cost = 0;
-                    selectedamount = 0;
-                    payment = 0;
-                    
+                    decimal cost = 0;
+                    int selectedamount = 0;
+                    decimal payment = 0;
+                    decimal linecost = 0;
+                    decimal total = 0;
+
                     Console.WriteLine("\n##################################################################################\n");
 
                     linecost = 0;
                     List<LineItems> original = new List<LineItems>();
-                   
-                    
-                    
+                    cartResult.Clear();
+
+
+
 
                     _details.itemslist.Clear();
 
@@ -342,7 +254,7 @@ namespace UserInterface
                         total = total + payment;
                         string temp;
                         temp = "\n\t" + obj._product.Name + "======$" + obj._product.Price + "=========selecting " + selectedamount + " = $" + linecost;
-                      //  cartResult.Add(temp);
+                        cartResult.Add(temp);
                         cost = 0;
                         linecost = 0;
                         _details.itemslist.Add(filler);
@@ -351,11 +263,11 @@ namespace UserInterface
                     total = decimal.Round(total, 2, MidpointRounding.AwayFromZero);
                     _details._totalprice = total;
                     Console.WriteLine("\tTotal of cart is $" + total);
-                    List<LineItems> values =_details.itemslist;
-                    for(int i=0;i<_details.itemslist.Count;i++)
+                    List<LineItems> values = _details.itemslist;
+                    for (int i = 0; i < _details.itemslist.Count; i++)
                     {
-                        tempdb[i]._quantity=tempdb[i]._quantity+values[i]._quantity;
-                    
+                        tempdb[i]._quantity = tempdb[i]._quantity + values[i]._quantity;
+
                     }
                     Console.ReadLine();
                     return MenuType.loginconfirm;
@@ -368,25 +280,24 @@ namespace UserInterface
                     if (confirmation == "yes" || confirmation == "Yes" || confirmation == "YES")
                     {
                         Orders Test = new Orders();
-                        _details._totalprice = total;
 
-                        parameterInter.AddOrdersBL(_details);
+                        parameterInter.AddOrdersBL(_details, SingletonUser.currentstore, SingletonUser.currentuser);
                         Test = parameterInter.GetOrderByID(Test);
-                         List<LineItems> valuesfinal =_details.itemslist;
-                        for(int i=0;i<_details.itemslist.Count;i++)
-                    {
-                        tempdb[i]._quantity=tempdb[i]._quantity-valuesfinal[i]._quantity;
-                    
-                    }
-                        
+                        List<LineItems> valuesfinal = _details.itemslist;
+                        for (int i = 0; i < _details.itemslist.Count; i++)
+                        {
+                            tempdb[i]._quantity = tempdb[i]._quantity - valuesfinal[i]._quantity;
+
+                        }
+
                         foreach (LineItems s in tempdb)
                         {
-                            parameterInter.InsertHistory(SingletonUser.currentstore.Id, s._product.Id, Test.Id, SingletonUser.currentuser.Id);
+                            parameterInter.InsertHistory(SingletonUser.currentstore.Id, s._product.Id, Test.Id, SingletonUser.currentuser.Id, s._quantity);
                             parameterInter.ModifyStockTable(SingletonUser.currentstore.Id, s._product.Id, s._quantity);
                         }
                         Console.WriteLine("\nReceite:");
                         Console.WriteLine("\tStore: " + _details._location._name + "\n\t Address: " + _details._location._address);
-                        foreach (LineItems s in _details.itemslist)
+                        foreach (string s in cartResult)
                         {
                             Console.WriteLine(s);
                         }
@@ -395,6 +306,9 @@ namespace UserInterface
                         Console.WriteLine("\n##################################################################################\n");
 
                         Console.ReadLine();
+                        _details.itemslist.Clear();
+                        tempdb.Clear();
+                        _details._totalprice = 0;
                         return MenuType.loginconfirm;
                     }
                     else

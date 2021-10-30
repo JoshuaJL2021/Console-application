@@ -20,7 +20,7 @@ namespace UserInterface
            Console.WriteLine("Enter the Store Id number you want to see inventory for");
             int num=Convert.ToInt32(Console.ReadLine());
 
-            List<Orders> listOfRestaurants = parameterInter.GetMyOrderHistory(num);
+            List<Orders> listOfRestaurants = parameterInter.GetStoreOrderHistory(num);
   
 
             foreach (Orders rest in listOfRestaurants)

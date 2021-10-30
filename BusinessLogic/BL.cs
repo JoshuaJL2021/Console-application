@@ -42,9 +42,9 @@ namespace BusinessLogic
         }
 
      
-        public Orders AddOrdersBL(Orders parameterObj)
+        public Orders AddOrdersBL(Orders parameterObj,StoreFront store, Customer client)
         {
-            return _repo.AddOrdersDL(parameterObj);
+            return _repo.AddOrdersDL(parameterObj,store,client);
         }
 
         
@@ -143,9 +143,9 @@ namespace BusinessLogic
             throw new NotImplementedException();
         }
 
-        public void InsertHistory(int store, int prod, int order, int customer)
+        public void InsertHistory(int store, int prod, int order, int customer,int quantity)
         {
-            _repo.InsertHistory(store,prod,order,customer);
+            _repo.InsertHistory(store,prod,order,customer,quantity);
         }
 
         public Orders GetOrderByID(Orders obj)

@@ -43,7 +43,7 @@ namespace UserInterface
             {
                 case "4":
                     //Add implementation to talk to the repository method to add a restaurant
-                    parameterInter.AddOrdersBL(temp);
+                   // parameterInter.AddOrdersBL(temp);
                    
                     return MenuType.loginconfirm;
                 case "3":

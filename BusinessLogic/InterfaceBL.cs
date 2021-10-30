@@ -39,7 +39,7 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="p_rest">This is the product we are adding</param>
         /// <returns>It returns the product customer</returns>     
-        Orders AddOrdersBL(Orders parameterobj);
+        Orders AddOrdersBL(Orders parameterobj,StoreFront store,Customer client);
 
 
 
@@ -157,7 +157,7 @@ namespace BusinessLogic
         /// <param name="prod"></param>
         /// <param name="order"></param>
         /// <param name="customer"></param>
-        void InsertHistory(int store, int prod, int order, int customer);
+        void InsertHistory(int store, int prod, int order, int customer,int quantity);
 
         /// <summary>
         /// Used after the insert into purchases table

@@ -27,7 +27,8 @@ namespace DataAccessLogic
                     Password = parameterobj._password,
                     Category = parameterobj.Position,
                     Age = parameterobj._age,
-                    Address = parameterobj._address
+                    Address = parameterobj._address,
+                    CurrentCurrency=parameterobj._currency
 
                 }
             );
@@ -51,6 +52,7 @@ namespace DataAccessLogic
                        Position = client.Category,
                        Address = client.Address,
                        _age = client.Age,
+                       _currency=client.CurrentCurrency
                    }
             ).ToList();
             return test;
@@ -85,7 +87,8 @@ namespace DataAccessLogic
                     Category = currentSelection.Position,
                     Age = currentSelection._age,
                     Address = currentSelection._address,
-                    CustomerId = currentSelection.Id
+                    CustomerId = currentSelection.Id,
+                    CurrentCurrency=currentSelection._currency
                 }
             );
 
@@ -180,13 +183,15 @@ namespace DataAccessLogic
         }
 
 
-        public Orders AddOrdersDL(Orders parameterobj)
+        public Orders AddOrdersDL(Orders parameterobj,StoreFront store,Customer client)
         {
             _context.OrdersRecords.Add
             (
                 new Entity.OrdersRecord()
                 {
-                    Total = parameterobj._totalprice
+                    Total = parameterobj._totalprice,
+                    CustomerId=client.Id,
+                    StoreId=store.Id
 
 
                 });
@@ -380,7 +385,7 @@ namespace DataAccessLogic
 
         }
 
-        public void InsertHistory(int store, int prod, int order, int customer)
+        public void InsertHistory(int store, int prod, int order, int customer,int quantity)
         {
             _context.OrderHistories.Add
            (
@@ -389,7 +394,10 @@ namespace DataAccessLogic
                    StoreId = store,
                    ProductId = prod,
                    OrderId = order,
-                   CustomerId = customer
+                   CustomerId = customer,
+                   LineQuantity=quantity
+                   
+
 
 
                }

@@ -18,8 +18,15 @@ namespace Models
         public string _username;
         public string _password;
         public int _age { get; set; }
+        public decimal _currency;
         public int Id { get; set; }
         public string Position { get; set; }
+        public decimal Currency
+        {
+            get { return decimal.Round(_currency,2); }
+            set { _currency = decimal.Round(value,2); }
+        }
+
         //constructors
         public Customer(string name, string address, string contact,string user, string pass){
 
