@@ -13,7 +13,10 @@ namespace UserInterface
         int selectedamount;
         decimal payment;
         decimal linecost;
-        List<string> cartResult = new List<string>();
+        static List<string> cartResult = new List<string>();
+        static List<LineItems> tempdb = new List<LineItems>();
+        
+        
         private InterfaceBL parameterInter;
 
         public LoginConfirmationMenu(InterfaceBL parameterobj)
@@ -30,12 +33,12 @@ namespace UserInterface
             Console.WriteLine("\nList of Products in " + SingletonUser.currentstore._name);
             StoreFront test = parameterInter.GetStoreByID(SingletonUser.currentstore.Id);
             Console.ForegroundColor = ConsoleColor.White;
-            foreach (LineItems rest in parameterInter.GetInventory(SingletonUser.currentstore.Id))
-            {
-                Console.WriteLine("====================");
-                Console.WriteLine("\t" + rest._product);
-                Console.WriteLine("====================");
-            }
+            // foreach (LineItems rest in parameterInter.GetInventory(SingletonUser.currentstore.Id))
+            // {
+            //     Console.WriteLine("====================");
+            //     Console.WriteLine("\t" + rest._product);
+            //     Console.WriteLine("====================");
+            // }
 
             Console.WriteLine("\n##################################################################################\n");
             Console.WriteLine("Currently in cart");
@@ -45,13 +48,21 @@ namespace UserInterface
 
             }
             Console.WriteLine("\tTotal of cart is $" + _details.TotalPrice);
+            Console.WriteLine("Information headed to db tables");
+            foreach (LineItems x in tempdb)
+            {
+                Console.WriteLine(x);
+
+            }
+
+            Console.WriteLine("\tTotal of cart is $" + _details.TotalPrice);
             Console.WriteLine("\n##################################################################################\n");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\t[6] - Add Items to cart");
             Console.WriteLine("\t[5] - Modify items from cart");
             Console.WriteLine("\t[4] - remove items from cart");
             Console.WriteLine("\t[3] - calculate total of order");
-            Console.WriteLine("\t[2] - goes to exit");
+            Console.WriteLine("\t[2] - confirm");
             Console.WriteLine("\t[1] - goes to exit");
 
             Console.WriteLine("\t[0] - goes to login");
@@ -96,7 +107,7 @@ namespace UserInterface
                                 _lines = parameterInter.VerifyStock(productsname, store);
                                 loop = false;
 
-                                if (_details.itemslist.Exists(x => x._product._name == _lines._product._name))
+                                if (tempdb.Exists(x => x._product._name == _lines._product._name))
                                 {
                                     Console.ForegroundColor = ConsoleColor.White;
                                     Console.WriteLine("\n************************************************\n");
@@ -108,7 +119,7 @@ namespace UserInterface
                                 else
                                 {
 
-                                    _details.itemslist.Add(_lines);
+                                    tempdb.Add(_lines);
                                 }
                             }
                             catch (System.Exception)
@@ -175,10 +186,10 @@ namespace UserInterface
                             {
 
                                 _lines = parameterInter.VerifyStock(productsname, SingletonUser.currentstore);
-                                if (_details.ItemsList.Exists(x => x._product._name == _lines._product._name))
+                                if (tempdb.Exists(x => x._product._name == _lines._product._name))
                                 {
 
-                                    _details.ItemsList.RemoveAll(x => x._product._name == _lines._product._name);
+                                    tempdb.RemoveAll(x => x._product._name == _lines._product._name);
 
                                 }
                                 loop = false;
@@ -217,12 +228,10 @@ namespace UserInterface
 
                     Console.WriteLine("\n##################################################################################\n");
 
-                    linecost = 0;
-                    total = 0;
 
                     foreach (LineItems x in temper2)
                     {
-                        _details.itemslist.Add(x);
+                        tempdb.Add(x);
                     }
                     return MenuType.loginconfirm;
 
@@ -252,10 +261,11 @@ namespace UserInterface
                             {
 
                                 _lines = parameterInter.VerifyStock(productsname, SingletonUser.currentstore);
-                                if (_details.ItemsList.Exists(x => x._product._name == _lines._product._name))
+                                if (tempdb.Exists(x => x._product._name == _lines._product._name))
                                 {
 
-                                    _details.ItemsList.RemoveAll(x => x._product._name == _lines._product._name);
+                                    tempdb.RemoveAll(x => x._product._name == _lines._product._name);
+                                    // _details.itemslist.RemoveAll(x => x._product._name == _lines._product._name);
 
                                 }
                                 loop = false;
@@ -301,20 +311,30 @@ namespace UserInterface
                     cost = 0;
                     selectedamount = 0;
                     payment = 0;
-                    cartResult = new List<string>();
-
+                    
                     Console.WriteLine("\n##################################################################################\n");
 
                     linecost = 0;
+                    List<LineItems> original = new List<LineItems>();
+                   
+                    
+                    
 
+                    _details.itemslist.Clear();
 
-                    foreach (LineItems obj in _details.itemslist)
+                    foreach (LineItems obj in tempdb)
                     {
+                        original.Add(obj);
+
+                        LineItems filler = new LineItems();
+
+                        filler._product = obj._product;
 
                         Console.WriteLine(obj);
                         Console.WriteLine("\n\tType in the line item quantity you want to buy\n");
                         selectedamount = Convert.ToInt32(Console.ReadLine());
                         obj._quantity = obj._quantity - selectedamount;
+                        filler._quantity = selectedamount;
                         cost = obj._product.PriceGrab();
                         payment = (cost * selectedamount);
                         linecost = payment;
@@ -322,14 +342,22 @@ namespace UserInterface
                         total = total + payment;
                         string temp;
                         temp = "\n\t" + obj._product.Name + "======$" + obj._product.Price + "=========selecting " + selectedamount + " = $" + linecost;
-                        cartResult.Add(temp);
+                      //  cartResult.Add(temp);
                         cost = 0;
                         linecost = 0;
+                        _details.itemslist.Add(filler);
 
                     }
                     total = decimal.Round(total, 2, MidpointRounding.AwayFromZero);
                     _details._totalprice = total;
                     Console.WriteLine("\tTotal of cart is $" + total);
+                    List<LineItems> values =_details.itemslist;
+                    for(int i=0;i<_details.itemslist.Count;i++)
+                    {
+                        tempdb[i]._quantity=tempdb[i]._quantity+values[i]._quantity;
+                    
+                    }
+                    Console.ReadLine();
                     return MenuType.loginconfirm;
 
 
@@ -344,29 +372,36 @@ namespace UserInterface
 
                         parameterInter.AddOrdersBL(_details);
                         Test = parameterInter.GetOrderByID(Test);
-                        foreach (LineItems s in _details.itemslist)
+                         List<LineItems> valuesfinal =_details.itemslist;
+                        for(int i=0;i<_details.itemslist.Count;i++)
+                    {
+                        tempdb[i]._quantity=tempdb[i]._quantity-valuesfinal[i]._quantity;
+                    
+                    }
+                        
+                        foreach (LineItems s in tempdb)
                         {
                             parameterInter.InsertHistory(SingletonUser.currentstore.Id, s._product.Id, Test.Id, SingletonUser.currentuser.Id);
                             parameterInter.ModifyStockTable(SingletonUser.currentstore.Id, s._product.Id, s._quantity);
                         }
                         Console.WriteLine("\nReceite:");
                         Console.WriteLine("\tStore: " + _details._location._name + "\n\t Address: " + _details._location._address);
-                        // foreach (String s in cartResult)
-                        // {
-                        //     Console.WriteLine(s);
-                        // }
+                        foreach (LineItems s in _details.itemslist)
+                        {
+                            Console.WriteLine(s);
+                        }
 
                         Console.WriteLine("\tTotal cost $" + _details.TotalPrice);
                         Console.WriteLine("\n##################################################################################\n");
 
                         Console.ReadLine();
-                        return MenuType.ProductBuyMenu;
+                        return MenuType.loginconfirm;
                     }
                     else
                     {
                         _details.itemslist = null;
                         _details._totalprice = 0;
-                        return MenuType.ProductBuyMenu;
+                        return MenuType.loginconfirm;
                     }
 
 

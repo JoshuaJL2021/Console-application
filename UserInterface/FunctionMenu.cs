@@ -18,12 +18,13 @@ namespace UserInterface
             Console.WriteLine("[1] - Go Browsing");
             Console.WriteLine("[0] - Exit the store");
             Console.WriteLine("[a] - replenish inventory");
-            Console.WriteLine("[b] - MyProfile\n");
+            Console.WriteLine("[b] - MyProfile");
             Console.WriteLine("[c] add Products");
             Console.WriteLine("[d] add StoreFront");
             Console.WriteLine("[e] - show me info");
             Console.WriteLine("[f] -test");
             Console.WriteLine("[g] -add line item/stock table");
+            Console.WriteLine("[h] -Show Store Order History");
 
         }
 

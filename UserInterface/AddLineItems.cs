@@ -17,18 +17,24 @@ namespace UserInterface
 
         public void Menu()
         {
-            Console.WriteLine("Adding a new LineItem");
-
             Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("##################################################################################\n");
+
+            Console.WriteLine("Adding a new LineItem");
+            Console.WriteLine("---------------------------------------------------------------------\n");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(SingletonUser.currentstore);
             Console.WriteLine(items._product);
-            Console.WriteLine(items._quantity);
+            Console.WriteLine("Ammount of Item : "+items._quantity);
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("\n##################################################################################\n");
 
-            Console.WriteLine("[4] - Add LineItem");
+            Console.WriteLine("[4] - Add LineItem/Stock");
             Console.WriteLine("[3] - Input value for products name");
             Console.WriteLine("[2] - Input value for products quantity");
             Console.WriteLine("[1] - select store");
             Console.WriteLine("[0] - Go Back");
+            Console.WriteLine("\n##################################################################################\n");
 
         }
 
@@ -43,15 +49,18 @@ namespace UserInterface
 
                     return MenuType.MainMenu;
                 case "3":
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("\n##################################################################################\n");
+                    Console.WriteLine("---------------------------------------------------------------------\n");
                     List<Products> listOfRestaurants = parameterInter.GetAllProductsBL();
-
+                    Console.ForegroundColor = ConsoleColor.White;
                     foreach (Products rest in listOfRestaurants)
                     {
                         Console.WriteLine("====================");
                         Console.WriteLine(rest);
                         Console.WriteLine("====================");
                     }
-                    Console.WriteLine("Type in the product Id u want");
+                    Console.WriteLine("\tType in the product Id u want");
                     int num = Convert.ToInt32(Console.ReadLine());
                     try
                     {
@@ -64,12 +73,18 @@ namespace UserInterface
                     }
                     return MenuType.AddLineItem;
                 case "2":
-                    Console.WriteLine("Type in the value for the quantity");
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("\n##################################################################################\n");
+
+                    Console.WriteLine("\tType in the value for the quantity");
                     items._quantity = Convert.ToInt32(Console.ReadLine());
                     return MenuType.AddLineItem;
                 case "1":
 
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("\n##################################################################################\n");
+                    Console.WriteLine("---------------------------------------------------------------------\n");
+                    Console.ForegroundColor = ConsoleColor.White;
                     List<StoreFront> listofstores = parameterInter.GetAllStoreFrontsBL();
 
                     foreach (StoreFront rest in listofstores)
@@ -79,15 +94,15 @@ namespace UserInterface
                         Console.WriteLine("====================");
                     }
 
-
-                    Console.WriteLine("Enter store  you want to enter");
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("\tEnter store you want to enter");
                     int number = Convert.ToInt32(Console.ReadLine());
 
                     try
                     {
 
                         SingletonUser.currentstore = parameterInter.GetStoreByID(number);
-                        Console.WriteLine("Welcome to " + SingletonUser.currentstore + "\n enter to continue");
+                        Console.WriteLine("\tWelcome to " + SingletonUser.currentstore + "\t press enter to continue");
                         Console.ReadLine();
                     }
                     catch (System.Exception)
