@@ -7,7 +7,6 @@ namespace UserInterface
 {
     public class ReplenishInventoryMenu : IMenu
     {
-        private Orders _details = new Orders();
 
         private InterfaceBL parameterInter;
 
@@ -18,9 +17,10 @@ namespace UserInterface
 
         public void Menu()
         {
+            Console.WriteLine("\n##################################################################################\n");
 
             Console.WriteLine("==========Store Replenish Menu=========");
-            Console.WriteLine("List of stores");
+            Console.WriteLine("\tList of stores");
             List<StoreFront> listOfstores = parameterInter.GetAllStoreFrontsBL();
             foreach (StoreFront s in listOfstores)
             {
@@ -30,9 +30,9 @@ namespace UserInterface
             Console.WriteLine("Enter the Store Id number you want to see inventory for");
             int num = Convert.ToInt32(Console.ReadLine());
             StoreFront store = parameterInter.GetStoreByID(num);
-            Console.WriteLine("Your store is : " + store + "\n ");
+            Console.WriteLine("\tYour store is : " + store + "\n ");
             Console.WriteLine("----------------------------------");
-            Console.WriteLine("Your store current Line Products :\n ");
+            Console.WriteLine("\tYour store current Line Products :\n ");
             foreach (LineItems p in parameterInter.GetInventory(store.Id))
             {
                 Console.WriteLine(p);
@@ -41,12 +41,13 @@ namespace UserInterface
             Console.WriteLine("----------------------------------");
             int amount = 0;
             LineItems _lines = new LineItems();
-            LineItems current = new LineItems();
+            List<LineItems> mod=new List<LineItems>();
             bool loop = true;
             while (loop == true)
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("Enter the Id of the product from the store to add to your cart");
+                Console.WriteLine("\n##################################################################################\n");
+                Console.WriteLine("\tEnter the Id of the product from the store to add to your cart");
                 int productsname = Convert.ToInt32(Console.ReadLine());
                 string cancel;
                 try
@@ -54,17 +55,18 @@ namespace UserInterface
 
                     _lines = parameterInter.VerifyStock(productsname, store);
                     loop = false;
-                    if (_details.itemslist.Exists(x => x._product._name == _lines._product._name))
+                    if (mod.Exists(x => x.ProductEstablish.Name == _lines.ProductEstablish.Name))
                     {
-                        Console.WriteLine("This item is already in the cart");
+                        Console.WriteLine("\tThis item is already in the queue to restock");
 
                     }
                     else
                     {
-                        Console.WriteLine("Enter the amount of the product you want to add to your inventory");
+                        Console.WriteLine("\n##################################################################################\n");
+                        Console.WriteLine("\tEnter the amount of the product you want to add to your inventory");
                         amount = Convert.ToInt32(Console.ReadLine());
-                        _lines._quantity = _lines._quantity + amount;
-                        _details.itemslist.Add(_lines);
+                        _lines.Quantity = _lines.Quantity + amount;
+                        mod.Add(_lines);
 
                     }
 
@@ -72,9 +74,10 @@ namespace UserInterface
                 catch (System.Exception)
                 {
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("please try again you have entered the information wrong");
+                    Console.WriteLine("\n##################################################################################\n");
+                    Console.WriteLine("\tplease try again you have entered the information wrong");
                     loop = true;
-                    Console.WriteLine("Would you like to not try again \ntype yes or no\n?");
+                    Console.WriteLine("\tWould you like to not try again \ntype yes or no\n?");
                     cancel = Console.ReadLine();
 
 
@@ -91,7 +94,7 @@ namespace UserInterface
                 }//end of catch
 
                 string checkout;
-                Console.WriteLine("\nDo you wish to add more items to check out? \ntype yes or no\n");
+                Console.WriteLine("\nDo you wish to add more items to check out? \t type yes or no\n");
                 checkout = Console.ReadLine();
 
 
@@ -106,23 +109,20 @@ namespace UserInterface
 
                 }
             }//end of while
-            foreach (LineItems s in _details.itemslist)
+            foreach (LineItems s in mod)
             {
-                parameterInter.ModifyStockTable(store.Id, s._product.Id, s._quantity);
+                parameterInter.ModifyStockTable(store.Id, s.ProductEstablish.Id, s.Quantity);
             }
 
 
 
-
+            Console.WriteLine("\n##################################################################################\n");
             Console.WriteLine("Record has been updated");
 
 
 
 
             Console.WriteLine("[5] - Main Menu");
-
-
-            Console.WriteLine("[0] - Go Back");
         }
 
         public MenuType YourChoice()

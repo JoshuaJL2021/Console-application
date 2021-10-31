@@ -16,8 +16,8 @@ namespace UserInterface
         public void Menu()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("##################################################################################\n");
-            Console.WriteLine("\tWelcome to the store select menu " + SingletonUser.currentuser._name.ToUpper());
+            Console.WriteLine("\n##################################################################################\n");
+            Console.WriteLine("\tWelcome to the store select menu " + SingletonUser.currentuser.CustomerName.ToUpper());
             Console.WriteLine("\tPlease select the store");
             Console.WriteLine("---------------------------------------------------------------------\n");
 
@@ -83,9 +83,9 @@ namespace UserInterface
                         Console.ForegroundColor = ConsoleColor.White;
 
                         searchresult = null;
-                        Console.WriteLine("Store was unfortunately not found please enter name as shown in list above");
-                        Console.WriteLine("You will be sent to Store display again ");
-                        Console.WriteLine("Press Enter to continue");
+                        Console.WriteLine("\tStore was unfortunately not found please enter name as shown in list above");
+                        Console.WriteLine("\tYou will be sent to Store display again ");
+                        Console.WriteLine("\tPress Enter to continue");
                         Console.ReadLine();
                         return MenuType.StoreMenu;
                     }
@@ -95,14 +95,14 @@ namespace UserInterface
 
                 case "2":
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Console.WriteLine("Enter the id number of store you want to enter");
+                    Console.WriteLine("\tEnter the id number of store you want to enter");
                     int num = Convert.ToInt32(Console.ReadLine());
 
                     try
                     {
 
                         SingletonUser.currentstore = parameterInter.GetStoreByID(num);
-                        Console.WriteLine("Welcome to " + SingletonUser.currentstore._name + "\n enter to continue");
+                        Console.WriteLine("\tWelcome to " + SingletonUser.currentstore.Name + "\n enter to continue");
 
                         Console.ReadLine();
                     }
@@ -110,9 +110,9 @@ namespace UserInterface
                     {
                         Console.ForegroundColor = ConsoleColor.White;
                         SingletonUser.currentstore = null;
-                        Console.WriteLine("Store was unfortunately not found please enter name as shown in list above");
-                        Console.WriteLine("You will be sent to Store display again ");
-                        Console.WriteLine("Press Enter to continue");
+                        Console.WriteLine("\tStore was unfortunately not found please enter name as shown in list above");
+                        Console.WriteLine("\tYou will be sent to Store display again ");
+                        Console.WriteLine("\tPress Enter to continue");
                         Console.ReadLine();
                         return MenuType.StoreMenu;
                     }

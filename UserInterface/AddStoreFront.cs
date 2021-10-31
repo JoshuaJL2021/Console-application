@@ -7,7 +7,6 @@ namespace UserInterface
     public class AddStoreFront : IMenu
     {
         private static StoreFront _rest = new StoreFront();
-        private static Orders _details = new Orders();
 
         private InterfaceBL parameterInter;
 
@@ -18,21 +17,20 @@ namespace UserInterface
 
         public void Menu()
         {
-            Console.WriteLine("Adding a new Store Front");
-            Console.WriteLine("Name of store- " + _rest._name);
-            Console.WriteLine("Address of store - " + _rest._address);
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("\n##################################################################################\n");
+            Console.WriteLine("\tAdding a new Store Front");
+            Console.WriteLine("\tName of store- " + _rest.Name);
+            Console.WriteLine("\tAddress of store - " + _rest.Address);
+            Console.WriteLine("\n##################################################################################\n");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\t[4] - Add StoreFront");
+            Console.WriteLine("\t[3] - Input value for Name");
+            Console.WriteLine("\t[2] - Input value for Address");
+            Console.WriteLine("\t[0] - Go Back");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("\n##################################################################################\n");
 
-            Console.WriteLine("order history");
-            foreach (Orders obj in _rest.orderslist)
-            {
-                Console.WriteLine(obj);
-            }
-
-            Console.WriteLine("[4] - Add StoreFront");
-            Console.WriteLine("[3] - Input value for Name");
-            Console.WriteLine("[2] - Input value for Address");
-
-            Console.WriteLine("[0] - Go Back");
         }
 
         public MenuType YourChoice()
@@ -44,16 +42,21 @@ namespace UserInterface
                 case "4":
                     //Add implementation to talk to the repository method to add a restaurant
                     parameterInter.AddStoreFrontBL(_rest);
-                    
+                    Console.WriteLine("\tStore created");
+                    Console.WriteLine("\tPress enter to continue");
+                    Console.ReadLine();
+                    _rest = new StoreFront();
+
 
                     return MenuType.MainMenu;
                 case "3":
-                    Console.WriteLine("Type in the value for the Name");
-                    _rest._name = Console.ReadLine();
+
+                    Console.WriteLine("\tType in the value for the Name");
+                    _rest.Name = Console.ReadLine();
                     return MenuType.AddStore;
                 case "2":
-                    Console.WriteLine("Type in the value for the Address");
-                    _rest._address = Console.ReadLine();
+                    Console.WriteLine("\tType in the value for the Address");
+                    _rest.Address = Console.ReadLine();
                     return MenuType.AddStore;
 
 

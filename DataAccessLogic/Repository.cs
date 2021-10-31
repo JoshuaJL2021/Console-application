@@ -142,7 +142,7 @@ namespace DataAccessLogic
         public bool DLVerifyStore(string name,string address)
         {
             List<StoreFront> listOfStores = GetAllStoreFrontDL();
-            bool result = listOfStores.Exists(x => x._name == name);
+            bool result = listOfStores.Exists(x => x.Name == name);
             return result;
         }
         // 
@@ -155,7 +155,7 @@ namespace DataAccessLogic
             //Where method will give the actual element itself based on some condition
             //ToList method will convert into List that our method currently needs to return.
             //ToLower will lowercase the string to make it not case sensitive
-            listOfRestaurant = listOfRestaurant.Where(rest => rest._name.ToLower().Contains(name.ToLower())).ToList();
+            listOfRestaurant = listOfRestaurant.Where(rest => rest.Name.ToLower().Contains(name.ToLower())).ToList();
             if (listOfRestaurant.Count < 1)
             {
                 throw new Exception("Store Not found");
@@ -182,8 +182,8 @@ namespace DataAccessLogic
         public List<LineItems> DLShowStock(StoreFront chosen)
         {
              List<LineItems> listOfProduct = new List<LineItems>();
-            chosen = DLGetStore(chosen._name,chosen._address);
-            foreach (LineItems p in chosen._itemslist)
+            chosen = DLGetStore(chosen.Name,chosen.Address);
+            foreach (LineItems p in chosen.Stock)
             {
                 listOfProduct.Add(p);
             }
@@ -206,11 +206,11 @@ public StoreFront DLGetStore(string name,string address)
         }
         public StoreFront DLModifyStoreRecord(StoreFront currentSelection)
         {
-            StoreFront test = DLGetStore(currentSelection._name,currentSelection._address);
+            StoreFront test = DLGetStore(currentSelection.Name,currentSelection.Address);
             List<StoreFront> listOfstores = GetAllStoreFrontDL();
-            listOfstores.RemoveAll(x => x._name == test._name);
+            listOfstores.RemoveAll(x => x.Name == test.Name);
             listOfstores.Add(currentSelection);
-            var organized=listOfstores.OrderBy(x => x._name);
+            var organized=listOfstores.OrderBy(x => x.Name);
             _jsonString = JsonSerializer.Serialize(organized, new JsonSerializerOptions{WriteIndented=true});
 
             //This is what adds the stores.json
@@ -223,11 +223,11 @@ public StoreFront DLGetStore(string name,string address)
         }
         public Customer DLModifyCustomerRecord(Customer currentSelection)
         {
-            Customer test = DLGetCustomer(currentSelection._username,currentSelection._password);
+            Customer test = DLGetCustomer(currentSelection.UserName,currentSelection.Password);
             List<Customer> listOfstores = GetAllCustomersDL();
-            listOfstores.RemoveAll(x => x._username == test._username);
+            listOfstores.RemoveAll(x => x.UserName == test.Password);
             listOfstores.Add(currentSelection);
-            var organized=listOfstores.OrderBy(x => x._name);
+            var organized=listOfstores.OrderBy(x => x.CustomerName);
             _jsonString = JsonSerializer.Serialize(organized, new JsonSerializerOptions{WriteIndented=true});
 
             //This is what adds the stores.json
@@ -249,7 +249,7 @@ public StoreFront DLGetStore(string name,string address)
                 throw new Exception("Store Not found");
             }
 
-            obj = listOfStores.FirstOrDefault(rest => rest._username == name);
+            obj = listOfStores.FirstOrDefault(rest => rest.UserName == name);
 
 
             return obj;
@@ -258,7 +258,7 @@ public StoreFront DLGetStore(string name,string address)
         public bool VerifyCredentials(string name,string password)
         {
             List<Customer> listOfCustomers = GetAllCustomersDL();
-            bool result = listOfCustomers.Exists(x => x._username == name);
+            bool result = listOfCustomers.Exists(x => x.UserName == name);
             if (result == false)
             {
                 throw new Exception("User Not found");

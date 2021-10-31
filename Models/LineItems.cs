@@ -4,16 +4,16 @@ namespace Models
 {
     public class LineItems
     {
-        
-        public Products _product;
+
+        private Products _product;
         public Products ProductEstablish
         {
             get { return _product; }
             set { _product = value; }
         }
-        
 
-        public int _quantity;
+
+        private int _quantity;
         public int Quantity
         {
             get { return _quantity; }
@@ -24,9 +24,10 @@ namespace Models
         {
             return $"{_product}\tquantity available : {_quantity}\n";
         }
-        
-        public int AmountGrab(){
-    return _quantity;
-}
+
+        public int AmountGrab()
+        {
+            return _quantity;
+        }
     }
 }
