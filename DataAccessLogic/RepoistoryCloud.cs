@@ -367,7 +367,7 @@ namespace DataAccessLogic
                 Entity.StoreFront looking = _context.StoreFronts.Find(number);
                 test.Name = looking.StoreName;
                 test.Id = looking.StoreId;
-                test.Name = looking.Location;
+                test.Address = looking.Location;
                 return test;
             }
 

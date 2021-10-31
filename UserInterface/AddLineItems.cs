@@ -25,15 +25,16 @@ namespace UserInterface
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(SingletonUser.currentstore);
             Console.WriteLine(items.ProductEstablish);
-            Console.WriteLine("Ammount of Item : " + items.Quantity);
+            Console.WriteLine("\tAmmount of Item : " + items.Quantity);
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("\n##################################################################################\n");
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("[4] - Add LineItem/Stock");
-            Console.WriteLine("[3] - Input value for products name");
-            Console.WriteLine("[2] - Input value for products quantity");
-            Console.WriteLine("[1] - select store");
-            Console.WriteLine("[0] - Go Back");
+            Console.WriteLine("\t[4] - Add LineItem/Stock");
+            Console.WriteLine("\t[3] - Input value for products name");
+            Console.WriteLine("\t[2] - Input value for products quantity");
+            Console.WriteLine("\t[1] - select store");
+            Console.WriteLine("\t[0] - Go Back");
+             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("\n##################################################################################\n");
 
         }
@@ -46,8 +47,12 @@ namespace UserInterface
                 case "4":
                     //Add implementation to talk to the repository method to add a restaurant
                     parameterInter.AddStock(SingletonUser.currentstore, items.ProductEstablish, items.Quantity);
-                    items = null;
+                    Console.WriteLine("\t Product Added to store");
+                    Console.WriteLine("\tPress enter to continue");
+                    Console.ReadLine();
+                    items = new LineItems();
                     SingletonUser.currentstore = null;
+                    
 
                     return MenuType.MainMenu;
                 case "3":

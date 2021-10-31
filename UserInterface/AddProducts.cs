@@ -17,20 +17,22 @@ namespace UserInterface
         public void Menu()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("\n##################################################################################\n");
             Console.WriteLine("\tAdding a new Product");
-
-
             Console.WriteLine("\tName - " + temp.Name);
             Console.WriteLine("\tPrice - " + temp.Price);
             Console.WriteLine("\tDescription - " + temp.Description);
             Console.WriteLine("\tCategory - " + temp.Category);
-
+            Console.WriteLine("\n##################################################################################\n");
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\t[5] - Add Product");
             Console.WriteLine("\t[4] - Input value for Name");
             Console.WriteLine("\t[3] - Input value for Price");
             Console.WriteLine("\t[2] - Input value for Description");
             Console.WriteLine("\t[1] - Input value for Category");
             Console.WriteLine("\t[0] - Go Back");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("\n##################################################################################\n");
         }
 
         public MenuType YourChoice()
@@ -41,7 +43,10 @@ namespace UserInterface
                 case "5":
                     //Add implementation to talk to the repository method to add a restaurant
                     parameterInter.AddProductsBL(temp);
-                    temp=null;
+                    Console.WriteLine("\tProduct created");
+                    Console.WriteLine("\tPress enter to continue");
+                    Console.ReadLine();
+                    temp = new Products();
                     return MenuType.MainMenu;
                 case "4":
                     Console.WriteLine("\n##################################################################################\n");

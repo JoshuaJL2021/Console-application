@@ -30,9 +30,9 @@ namespace UserInterface
             Console.WriteLine("Age - " + client._age);
             Console.WriteLine("Type: - " + client.Position);
             Console.WriteLine("Added Balance: - $" + client.Currency);
-            Console.ForegroundColor = ConsoleColor.Green;
-
             Console.WriteLine("\n##################################################################################\n");
+
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\t[x] - Add Customer");
             Console.WriteLine("\t[1] - Input value for Name");
             Console.WriteLine("\t[2] - Input value for Address");
@@ -62,6 +62,8 @@ namespace UserInterface
                     parameterInter.AddCustomersBL(client);
                     Console.WriteLine("\tAccount created");
                     Console.WriteLine("\tPress enter to continue");
+                    Console.ReadLine();
+                    client=new Customer();
 
                     return MenuType.LoginMenu;
                 case "1":
