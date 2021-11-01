@@ -33,20 +33,22 @@ namespace UserInterface
                 Console.WriteLine("====================");
             }
             Console.WriteLine("\n##################################################################################\n");
-            Console.WriteLine("adding to cart");
+            Console.WriteLine("\tAdding to cart");
             foreach (LineItems x in tempdb)
             {
                 Console.WriteLine(x.ProductEstablish.Name);
 
             }
-            Console.WriteLine("---------------------------------------------------------------");
-            Console.WriteLine("Checkout cart");
+
+            Console.WriteLine("---------------------------------------------------------------\n");
+            Console.WriteLine("\tCheckout cart");
             foreach (LineItems x in _details.ItemsList)
             {
                 Console.WriteLine(x);
 
             }
             Console.WriteLine("\tTotal of cart is $" + _details.TotalPrice);
+            Console.WriteLine("Current Balance in wallet: $" + SingletonUser.currentuser.Currency);
 
             Console.WriteLine("\n##################################################################################\n");
             Console.ForegroundColor = ConsoleColor.Green;
@@ -297,9 +299,10 @@ namespace UserInterface
                             return MenuType.ProductBuyMenu;
 
                         }
-                        else
+                        else if ((SingletonUser.currentuser.Currency - _details.TotalPrice) >= 0)
                         {
-
+                            SingletonUser.currentuser.Currency = SingletonUser.currentuser.Currency - _details.TotalPrice;
+                            parameterInter.ModifyCustomerRecord(SingletonUser.currentuser);
 
                             Orders Test = new Orders();
 
@@ -322,6 +325,7 @@ namespace UserInterface
 
                             }
 
+
                             Console.WriteLine("\nReceite:");
                             Console.WriteLine("\tStore: " + _details.Location.Name + "\n\t Address: " + _details.Location.Address);
                             foreach (string s in cartResult)
@@ -337,6 +341,16 @@ namespace UserInterface
                             Console.ReadLine();
                             return MenuType.ProductBuyMenu;
                         }
+                        else
+                        {
+                            Console.WriteLine("\t We are sorry you currently dont have the sufficiente funds to complete the purchase.");
+                            Console.WriteLine("\t You will need to modify your cart by selecting the option.\tPress enter to continue");
+                            Console.ReadLine();
+                            _details.ItemsList.Clear();
+                            _details.TotalPrice = 0;
+                            return MenuType.ProductBuyMenu;
+
+                        }
                     }
                     else
                     {
@@ -350,8 +364,15 @@ namespace UserInterface
 
 
                 case "1":
+                    tempdb.Clear();
+                    _details.ItemsList.Clear();
+                    _details.TotalPrice=0;
+
                     return MenuType.ProductDisplayMenu;
                 case "0":
+                    tempdb.Clear();
+                    _details.ItemsList.Clear();
+                    _details.TotalPrice=0;
                     return MenuType.MainMenu;
                 default:
                     Console.WriteLine("Please input a valid response!");

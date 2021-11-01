@@ -47,7 +47,7 @@ namespace UserInterface
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("\n##################################################################################\n");
-                Console.WriteLine("\tEnter the Id of the product from the store to add to your cart");
+                Console.WriteLine("\tEnter the Id of the product from the store to add stock");
                 int productsname = Convert.ToInt32(Console.ReadLine());
                 string cancel;
                 try
@@ -75,9 +75,9 @@ namespace UserInterface
                 {
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("\n##################################################################################\n");
-                    Console.WriteLine("\tplease try again you have entered the information wrong");
+                    Console.WriteLine("\tplease try again you have entered the information wrong please enter from the products available");
                     loop = true;
-                    Console.WriteLine("\tWould you like to not try again \ntype yes or no\n?");
+                    Console.WriteLine("\tWould you like to cancel this add? \ttype yes or no\n");
                     cancel = Console.ReadLine();
 
 
