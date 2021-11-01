@@ -120,8 +120,10 @@ namespace UserInterface
 
                     return MenuType.ProductDisplayMenu;
                 case "1":
+                    searchresult = null;
                     return MenuType.LoginMenu;
                 case "0":
+                    searchresult = null;
                     return MenuType.MainMenu;
                 default:
                     Console.WriteLine("Please input a valid response!");
