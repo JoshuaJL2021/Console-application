@@ -33,14 +33,15 @@ namespace UserInterface
                 Console.WriteLine("====================");
             }
             Console.WriteLine("\n##################################################################################\n");
-            Console.WriteLine("adding to cart");
+            Console.WriteLine("\tAdding to cart");
             foreach (LineItems x in tempdb)
             {
                 Console.WriteLine(x.ProductEstablish.Name);
 
             }
-            Console.WriteLine("---------------------------------------------------------------");
-            Console.WriteLine("Checkout cart");
+
+            Console.WriteLine("---------------------------------------------------------------\n");
+            Console.WriteLine("\tCheckout cart");
             foreach (LineItems x in _details.ItemsList)
             {
                 Console.WriteLine(x);
@@ -54,7 +55,7 @@ namespace UserInterface
             Console.WriteLine("\t[4] - remove items from cart");
             Console.WriteLine("\t[3] - Modify/calculate total of order");
             Console.WriteLine("\t[2] - confirm");
-            Console.WriteLine("\t[1] - goes to exit");
+            Console.WriteLine("\t[1] - back");
 
             Console.WriteLine("\t[0] - goes to login");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -91,21 +92,34 @@ namespace UserInterface
 
                                 _lines = parameterInter.VerifyStock(productsname, SingletonUser.currentstore);
                                 loop = false;
-
-                                if (tempdb.Exists(x => x.ProductEstablish.Name == _lines.ProductEstablish.Name))
+                                if (_lines.Quantity > 0)
                                 {
-                                    Console.ForegroundColor = ConsoleColor.White;
-                                    Console.WriteLine("\n************************************************\n");
-                                    Console.WriteLine("\tThis item is already in the cart");
-                                    Console.WriteLine("\n************************************************\n");
-                                    Console.ReadLine();
+                                    if (tempdb.Exists(x => x.ProductEstablish.Name == _lines.ProductEstablish.Name))
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.White;
+                                        Console.WriteLine("\n************************************************\n");
+                                        Console.WriteLine("\tThis item is already in the cart");
+                                        Console.WriteLine("\n************************************************\n");
+                                        Console.ReadLine();
 
+                                    }
+                                    else
+                                    {
+
+                                        tempdb.Add(_lines);
+                                    }
                                 }
                                 else
                                 {
+                                    Console.ForegroundColor = ConsoleColor.White;
 
-                                    tempdb.Add(_lines);
+                                    Console.WriteLine("\n************************************************\n");
+                                    Console.WriteLine("\tItem cannot be added because it is out of stock");
+                                    Console.WriteLine("\n************************************************\n");
+                                    Console.ReadLine();
                                 }
+
+
                             }
                             catch (System.Exception)
                             {
@@ -273,54 +287,73 @@ namespace UserInterface
                     confirmation = Console.ReadLine();
                     if (confirmation == "yes" || confirmation == "Yes" || confirmation == "YES")
                     {
-                        Orders Test = new Orders();
-
-                        parameterInter.AddOrdersBL(_details, SingletonUser.currentstore, SingletonUser.currentuser);
-                        Test = parameterInter.GetOrderByID(Test);
-                        List<LineItems> valuesfinal = _details.ItemsList;
-                        for (int i = 0; i < _details.ItemsList.Count; i++)
+                        if (_details.TotalPrice == 0)
                         {
-                            tempdb[i].Quantity = tempdb[i].Quantity - valuesfinal[i].Quantity;
+                            Console.WriteLine("\tError there is nothing in your cart, you must calculate the price before ordering");
+                            Console.WriteLine("\tthe page and order will be reset. press enter to continue");
+                            Console.ReadLine();
+                            _details.ItemsList.Clear();
+                            tempdb.Clear();
+                            _details.TotalPrice = 0;
+                            return MenuType.ProductBuyMenu;
 
                         }
-
-                        foreach (LineItems s in tempdb)
+                        else
                         {
-                        parameterInter.ModifyStockTable(SingletonUser.currentstore.Id, s.ProductEstablish.Id, s.Quantity);
-                        }
-                        foreach (LineItems s in _details.ItemsList)
-                        {
-                            parameterInter.InsertHistory(SingletonUser.currentstore.Id, s.ProductEstablish.Id, Test.Id, SingletonUser.currentuser.Id, s.Quantity);
-                            
-                        }
 
-                        Console.WriteLine("\nReceite:");
-                        Console.WriteLine("\tStore: " + _details.Location.Name + "\n\t Address: " + _details.Location.Address);
-                        foreach (string s in cartResult)
-                        {
-                            Console.WriteLine(s);
-                        }
 
-                        Console.WriteLine("\tTotal cost $" + _details.TotalPrice);
-                        Console.WriteLine("\n##################################################################################\n");
-                        _details.ItemsList.Clear();
-                        tempdb.Clear();
-                        _details.TotalPrice = 0;
-                        Console.ReadLine();
-                        return MenuType.ProductBuyMenu;
+                            Orders Test = new Orders();
+
+                            parameterInter.AddOrdersBL(_details, SingletonUser.currentstore, SingletonUser.currentuser);
+                            Test = parameterInter.GetOrderByID(Test);
+                            List<LineItems> valuesfinal = _details.ItemsList;
+                            for (int i = 0; i < _details.ItemsList.Count; i++)
+                            {
+                                tempdb[i].Quantity = tempdb[i].Quantity - valuesfinal[i].Quantity;
+
+                            }
+
+                            foreach (LineItems s in tempdb)
+                            {
+                                parameterInter.ModifyStockTable(SingletonUser.currentstore.Id, s.ProductEstablish.Id, s.Quantity);
+                            }
+                            foreach (LineItems s in _details.ItemsList)
+                            {
+                                parameterInter.InsertHistory(SingletonUser.currentstore.Id, s.ProductEstablish.Id, Test.Id, SingletonUser.currentuser.Id, s.Quantity);
+
+                            }
+
+                            Console.WriteLine("\nReceite:");
+                            Console.WriteLine("\tStore: " + _details.Location.Name + "\n\t Address: " + _details.Location.Address);
+                            foreach (string s in cartResult)
+                            {
+                                Console.WriteLine(s);
+                            }
+
+                            Console.WriteLine("\tTotal cost $" + _details.TotalPrice);
+                            Console.WriteLine("\n##################################################################################\n");
+                            _details.ItemsList.Clear();
+                            tempdb.Clear();
+                            _details.TotalPrice = 0;
+                            Console.ReadLine();
+                            return MenuType.ProductBuyMenu;
+                        }
                     }
                     else
                     {
-                        _details.ItemsList = null;
+                        _details.ItemsList.Clear();
+                        tempdb.Clear();
                         _details.TotalPrice = 0;
+                        Console.WriteLine("Order has been canceled because you did not enter yes press enter to continue");
+                        Console.ReadLine();
                         return MenuType.ProductBuyMenu;
                     }
 
 
                 case "1":
-                    return MenuType.MainMenu;
+                    return MenuType.ProductDisplayMenu;
                 case "0":
-                    return MenuType.LoginMenu;
+                    return MenuType.MainMenu;
                 default:
                     Console.WriteLine("Please input a valid response!");
                     Console.WriteLine("Press Enter to continue");

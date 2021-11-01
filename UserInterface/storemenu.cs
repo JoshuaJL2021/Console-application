@@ -102,7 +102,7 @@ namespace UserInterface
                     {
 
                         SingletonUser.currentstore = parameterInter.GetStoreByID(num);
-                        Console.WriteLine("\tWelcome to " + SingletonUser.currentstore.Name + "\n enter to continue");
+                        Console.WriteLine("\tWelcome to " + SingletonUser.currentstore.Name + "\t press enter to continue");
 
                         Console.ReadLine();
                     }
