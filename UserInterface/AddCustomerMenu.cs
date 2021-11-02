@@ -7,6 +7,7 @@ namespace UserInterface
 {
     public class AddCustomerMenu : IMenu
     {
+        //static field in order to be used every time the user returns to this menu
         private static Customer client = new Customer();
         private InterfaceBL parameterInter;
 
@@ -58,12 +59,26 @@ namespace UserInterface
             switch (userChoice)
             {
                 case "x":
-                    //Add implementation to talk to the repository method to add a restaurant
-                    parameterInter.AddCustomersBL(client);
+                    try
+                    {
+                       parameterInter.AddCustomersBL(client);
                     Console.WriteLine("\tAccount created");
                     Console.WriteLine("\tPress enter to continue");
                     Console.ReadLine();
-                    client = new Customer();
+                    client = new Customer();  
+                    }
+                    catch (System.Exception)
+                    {
+
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("************************************************\n");
+                        Console.WriteLine("Information is missing or The username is already in use please change username");
+                        Console.WriteLine("Press Enter to continue");
+                        Console.WriteLine("\n************************************************\n");
+                        Console.ReadLine();
+                        return MenuType.AddCustomers;
+                    }
+                    
 
                     return MenuType.LoginMenu;
                 case "1":
@@ -119,7 +134,7 @@ namespace UserInterface
 
                 case "8":
                     Console.WriteLine("\n##################################################################################\n");
-                    Console.WriteLine("\tType in the value for the Currency");
+                    Console.WriteLine("\tType in the value for the Currency, do not add dollar sign nor commas");
                     try
                     {
                         client.Currency = Convert.ToDecimal(Console.ReadLine());

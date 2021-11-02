@@ -17,8 +17,24 @@ namespace UserInterface
 
         public void Menu()
         {
-            Console.WriteLine("\n##################################################################################\n");
 
+            ///Process
+            /// 1. Displays list of stores
+            /// 2. Asks user for a number
+            /// 3. verifies if number is entered if not then makes entered number equal 0
+            /// 4. checks if number is not 0
+            /// 5. verifies if that store is in the db
+            /// 6. displays list of products in that found store
+            /// 7. user enters the number for the product they want to modify
+            /// 8. verifies if they entered a number
+            /// 9. if numbered not entered then message appears
+            /// 10.if number entered then verifies if it is in store
+            /// 11. if not in store then it advises the user it was not found from the displayed list
+            /// 12. user says if they wish to try again if no then they repeat steps 7 and onward
+            /// 13. user asks if they want to add more to modify
+            /// 14. modifies if said no
+        
+            Console.WriteLine("\n##################################################################################\n");
             Console.WriteLine("==========Store Replenish Menu=========");
             Console.WriteLine("\tList of stores");
             List<StoreFront> listOfstores = parameterInter.GetAllStoreFrontsBL();

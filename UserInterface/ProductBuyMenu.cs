@@ -7,9 +7,13 @@ namespace UserInterface
 {
     public class ProductBuyMenu : IMenu
     {
+        //keep track of the order
         private static Orders _details = new Orders();
+        //used to show at the end of the purchase process
         static List<string> cartResult = new List<string>();
+        //used to keep track for the db and establish the final item list
         static List<LineItems> tempdb = new List<LineItems>();
+
         private InterfaceBL parameterInter;
         public ProductBuyMenu(InterfaceBL parameterobj)
         {
@@ -34,22 +38,22 @@ namespace UserInterface
             }
             Console.WriteLine("\n##################################################################################\n");
             Console.WriteLine("\tAdding to cart");
-            foreach (LineItems x in tempdb)
+            foreach (LineItems x in tempdb)//represents what stock info will be updated in the information
             {
                 Console.WriteLine(x.ProductEstablish.Name);
 
             }
 
             Console.WriteLine("---------------------------------------------------------------\n");
-            Console.WriteLine("\tCheckout cart");
+            Console.WriteLine("\tCheckout cart");//represents the records for the final purchase
             foreach (LineItems x in _details.ItemsList)
             {
                 Console.WriteLine(x);
 
             }
             Console.WriteLine("\tTotal of cart is $" + _details.TotalPrice);
-            Console.WriteLine("Current Balance in wallet: $" + SingletonUser.currentuser.Currency);
-
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("\nCurrent Balance in wallet: $" + SingletonUser.currentuser.Currency);
             Console.WriteLine("\n##################################################################################\n");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\t[5] - Add Items to cart");
@@ -57,7 +61,6 @@ namespace UserInterface
             Console.WriteLine("\t[3] - Modify/calculate total of order");
             Console.WriteLine("\t[2] - confirm");
             Console.WriteLine("\t[1] - back");
-
             Console.WriteLine("\t[0] - goes to login");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
 
@@ -71,8 +74,19 @@ namespace UserInterface
             switch (userChoice)
             {
                 case "5":
+                    /// <summary>
+                    /// the process of this case
+                    /// 1.user enters number
+                    /// 1a.verifies if it is a number
+                    /// 2.verifies if the entered product id is in the selected store
+                    /// 2a.if it is not found it will go to the catch block
+                    /// 2a1.user decideds to cancel or try again
+                    /// 2b.if found verifies if it is in stock
+                    /// 2c.if found verifies if it is already added to the shopping list
+                    /// 3.adds to list
+                    /// 4.ends while loop
+                    /// </summary>
 
-                    List<LineItems> temper = new List<LineItems>();
                     bool decision = true;
                     do
                     {
@@ -165,9 +179,6 @@ namespace UserInterface
                         }//end of while
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine("\n##################################################################################\n");
-
-
-
                         decision = false;
 
                     } while (decision);
@@ -177,8 +188,18 @@ namespace UserInterface
 
 
                 case "4":
+                    /// <summary>
+                    /// the process of this case
+                    /// 1.user enters number
+                    /// 1a.verifies if it is a number
+                    /// 2.verifies if the entered product id is in the selected store
+                    /// 2a.if it is not found it will go to the catch block
+                    /// 2a1.user decideds to cancel or try again
+                    /// 2b.if found removes it from shopping list and order list
+                    /// 3.ends while loop
+                    /// </summary>
 
-                    List<LineItems> temper3 = new List<LineItems>();
+
                     bool decision3 = true;
                     do
                     {
@@ -224,7 +245,7 @@ namespace UserInterface
 
                                 }
                                 loop = false;
-                                temper3.Add(_lines);
+
                             }
                             catch (System.Exception)
                             {
@@ -262,6 +283,15 @@ namespace UserInterface
                     return MenuType.ProductBuyMenu;
 
                 case "3":
+                    /// <summary>
+                    /// establish the values used to calculate
+                    /// 1.clear orders list first to restablish the final list
+                    /// 2.goes into loop in order to modify quantity of each item
+                    /// 2a. verifies if user entered number if not cancels it
+                    /// 2b.after all calculations it adds it to the orders list/final cart
+                    /// 3. calculates total
+                    /// 4. the temperary list adds the stock back to remove them in another case.
+                    /// </summary>
                     decimal cost = 0;
                     int selectedamount = 0;
                     decimal payment = 0;
@@ -272,10 +302,6 @@ namespace UserInterface
 
                     linecost = 0;
                     cartResult.Clear();
-
-
-
-
                     _details.ItemsList.Clear();
 
                     foreach (LineItems obj in tempdb)
@@ -338,6 +364,18 @@ namespace UserInterface
 
 
                 case "2":
+                    /// <summary>
+                    /// 1. Asks the user if they want to complete the purchase
+                    /// 2. if yes then verifies if there is a calculated price
+                    /// 3. if true then verifies if the current balance is sufficient for the purchase
+                    /// 4.if true then modifies customer record
+                    /// 5. creates order
+                    /// 6. gets the order id
+                    /// 7.modifies the stock to be accurate then inserts into the db
+                    /// 8. adds the lineitems to the history table
+                    /// 9.prints the cart result values
+                    /// 10.Clears list and total price values
+                    /// </summary>
                     string confirmation;
                     Console.WriteLine("\tConfirm Purchase enter yes or no\n\tif you enter no or make a mistake, you must restart the order");
                     confirmation = Console.ReadLine();

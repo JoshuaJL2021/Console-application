@@ -19,41 +19,42 @@ namespace UserInterface
 
 
 
-            if(SingletonUser.currentuser==null)
+            if (SingletonUser.currentuser == null)
             {
                 Console.WriteLine("\tWelcome to the Main Menu for Lopez Shopping Center");
                 Console.WriteLine("\tWhat do you want to do?");
                 Console.WriteLine("---------------------------------------------------------------------\n");
                 Console.WriteLine("\t[1] - Go Browsing");
                 Console.WriteLine("\t[0] - Exit the store\n");
-                
-            }
-            else{
-                if (SingletonUser.currentuser.Position == "Manager")
-            {
-                Console.WriteLine("\tWelcome " + SingletonUser.currentuser.CustomerName + " to the Main Menu for Lopez Shopping Center");
-                Console.WriteLine("\tWhat do you want to do?");
-                Console.WriteLine("---------------------------------------------------------------------\n");
-                Console.WriteLine("\t[1] - Go Browsing");
-                Console.WriteLine("\t[0] - Exit the store");
-                Console.WriteLine("\t[x] - Functions\n");
-            
-                
+
             }
             else
             {
-                Console.WriteLine("\tWelcome to the Main Menu for Lopez Shopping Center");
-                Console.WriteLine("\tWhat do you want to do?");
-                Console.WriteLine("--------------------------------------------------------------------\n");
-                Console.WriteLine("\t[1] - Go Browsing");
-                Console.WriteLine("\t[0] - Exit the store");
-                 Console.WriteLine("\t[B] - MyProfile");
+                if (SingletonUser.currentuser.Position == "Manager")
+                {
+                    Console.WriteLine("\tWelcome " + SingletonUser.currentuser.CustomerName + " to the Main Menu for Lopez Shopping Center");
+                    Console.WriteLine("\tWhat do you want to do?");
+                    Console.WriteLine("---------------------------------------------------------------------\n");
+                    Console.WriteLine("\t[1] - Go Browsing");
+                    Console.WriteLine("\t[0] - Exit the store");
+                    Console.WriteLine("\t[x] - Functions\n");
 
-            }
+
+                }
+                else
+                {
+                    Console.WriteLine("\tWelcome to the Main Menu for Lopez Shopping Center");
+                    Console.WriteLine("\tWhat do you want to do?");
+                    Console.WriteLine("--------------------------------------------------------------------\n");
+                    Console.WriteLine("\t[1] - Go Browsing");
+                    Console.WriteLine("\t[0] - Exit the store");
+                    Console.WriteLine("\t[B] - MyProfile");
+
+                }
             }
             Console.WriteLine("\n##################################################################################");
 
-            
+
 
 
 

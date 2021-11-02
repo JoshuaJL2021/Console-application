@@ -41,12 +41,26 @@ namespace UserInterface
             switch (userChoice)
             {
                 case "5":
-                    //Add implementation to talk to the repository method to add a restaurant
-                    parameterInter.AddProductsBL(temp);
-                    Console.WriteLine("\tProduct created");
-                    Console.WriteLine("\tPress enter to continue");
-                    Console.ReadLine();
-                    temp = new Products();
+                    try
+                    {
+                        parameterInter.AddProductsBL(temp);
+                        Console.WriteLine("\tProduct created");
+                        Console.WriteLine("\tPress enter to continue");
+                        Console.ReadLine();
+                        temp = new Products();
+                    }
+                    catch (System.Exception)
+                    {
+
+                         Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("************************************************\n");
+                        Console.WriteLine("Information is missing please make sure all fields are filled in");
+                        Console.WriteLine("Press Enter to continue");
+                        Console.WriteLine("\n************************************************\n");
+                        Console.ReadLine();
+                        return MenuType.AddProduct;
+                    }
+
                     return MenuType.MainMenu;
                 case "4":
                     Console.WriteLine("\n##################################################################################\n");

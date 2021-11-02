@@ -135,7 +135,6 @@ namespace UserInterface
                             Console.WriteLine("************************************************\n");
                             Console.WriteLine("\tWelcome Back " + SingletonUser.currentuser.CustomerName + "\t press enter to continue\n");
                             Console.WriteLine("************************************************\n");
-
                             Console.ReadLine();
                         }
                         catch (System.Exception)

@@ -6,7 +6,7 @@ namespace UserInterface
 {
     public class AddStoreFront : IMenu
     {
-        private static StoreFront _rest = new StoreFront();
+        private static StoreFront store = new StoreFront();
 
         private InterfaceBL parameterInter;
 
@@ -20,8 +20,8 @@ namespace UserInterface
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("\n##################################################################################\n");
             Console.WriteLine("\tAdding a new Store Front");
-            Console.WriteLine("\tName of store- " + _rest.Name);
-            Console.WriteLine("\tAddress of store - " + _rest.Address);
+            Console.WriteLine("\tName of store- " + store.Name);
+            Console.WriteLine("\tAddress of store - " + store.Address);
             Console.WriteLine("\n##################################################################################\n");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\t[4] - Add StoreFront");
@@ -40,24 +40,38 @@ namespace UserInterface
             {
 
                 case "4":
-                    //Add implementation to talk to the repository method to add a restaurant
-                    parameterInter.AddStoreFrontBL(_rest);
-                    Console.WriteLine("\tStore created");
-                    Console.WriteLine("\tPress enter to continue");
-                    Console.ReadLine();
-                    _rest = new StoreFront();
+                    try
+                    {
+                        parameterInter.AddStoreFrontBL(store);
+                        Console.WriteLine("\tStore created");
+                        Console.WriteLine("\tPress enter to continue");
+                        Console.ReadLine();
+                        store = new StoreFront();
+                    }
+                    catch (System.Exception)
+                    {
+
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("************************************************\n");
+                        Console.WriteLine("Information is missing please make sure all fields are filled in");
+                        Console.WriteLine("Press Enter to continue");
+                        Console.WriteLine("\n************************************************\n");
+                        Console.ReadLine();
+                        return MenuType.AddStore;
+                    }
+
 
 
                     return MenuType.MainMenu;
                 case "3":
                     Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value for the Name");
-                    _rest.Name = Console.ReadLine();
+                    store.Name = Console.ReadLine();
                     return MenuType.AddStore;
                 case "2":
                     Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value for the Address");
-                    _rest.Address = Console.ReadLine();
+                    store.Address = Console.ReadLine();
                     return MenuType.AddStore;
 
 

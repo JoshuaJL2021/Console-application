@@ -37,7 +37,7 @@ namespace DataAccessLogic
         /// </summary>
         /// <param name="p_rest">This is the store front we will be adding to the database</param>
         /// <returns>It will just return the store front we are adding</returns>
-        Orders AddOrdersDL(Orders parameterobj,StoreFront store,Customer client);
+        Orders AddOrdersDL(Orders parameterobj, StoreFront store, Customer client);
 
         /// <summary>
         /// This will return a list of orders stored in the database
@@ -52,14 +52,14 @@ namespace DataAccessLogic
         /// </summary>
         /// <param name="name"></param>
         /// <returns>returns the retrieved store information from the db </returns>
-        List<StoreFront> DLSearchStores(string name);
+        List<StoreFront> SearchStoresDL(string name);
         /// <summary>
         /// This method verifies if the stock is in the specified store as well
         /// </summary>
         /// <param name="product"></param>
         /// <param name="chosen"></param>
         /// <returns>returns the line item from the db that matches</returns>
-        LineItems DLVerifyStock(int productnum, StoreFront chosen);
+        LineItems VerifyStockDL(int productnum, StoreFront chosen);
 
         /// <summary>
         /// Verifies in the database if the entered client user name is located in the database
@@ -67,14 +67,16 @@ namespace DataAccessLogic
         /// </summary>
         /// <param name="name"></param>
         /// <returns>returns true or false </returns>
-        bool VerifyCredentials(string name, string password);
+        bool VerifyCredentials(string username, string password);
+
         /// <summary>
         /// Verifies in the database if the entered information is located in the database
         /// and retrieves the found store or an exception
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="username"></param>
+        ///  <param name="password"></param>
         /// <returns>returns the retrieved Customer information from the db </returns>
-        Customer DLGetCustomer(string name, string password);
+        Customer GetCustomerDL(string username, string password);
 
         /// <summary>
         /// this method takes the Customer  , erases the previous information from the json file
@@ -84,7 +86,7 @@ namespace DataAccessLogic
         /// </summary>
         /// <param name="currentSelection"></param>
         /// <returns></returns>
-        Customer DLModifyCustomerRecord(Customer currentSelection);
+        Customer ModifyCustomerRecordDL(Customer currentSelection);
 
         /// <summary>
         /// Adds a Line Item essentially into the stock db table
@@ -160,7 +162,7 @@ namespace DataAccessLogic
         /// <param name="prod"></param>
         /// <param name="order"></param>
         /// <param name="customer"></param>
-        void InsertHistory(int store, int prod, int order, int customer,int quantity);
+        void InsertHistory(int store, int prod, int order, int customer, int quantity);
 
         /// <summary>
         /// Used after the insert into purchases table
@@ -179,7 +181,17 @@ namespace DataAccessLogic
         /// <param name="quantity"></param>
         void ModifyStockTable(int storenumber, int productnumber, int quantity);
 
+        /// <summary>
+        /// Receives the Id of the Customer/current user in order to search for that users order history in the db
+        /// </summary>
+        /// <param name="objId"></param>
+        /// <returns>a list of all orders related to the received id</returns>
         List<Orders> GetMyOrderHistory(int objId);
+        /// <summary>
+        /// Receives the Id of the store in order to search for that stores order history in the db
+        /// </summary>
+        /// <param name="objId"></param>
+        /// <returns>a list of all orders related to the received id</returns>
         List<Orders> GetStoreOrderHistory(int objId);
 
     }

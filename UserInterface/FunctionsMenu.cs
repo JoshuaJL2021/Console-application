@@ -13,23 +13,23 @@ namespace UserInterface
         public void Menu()
         {
             Console.WriteLine("\n##################################################################################\n");
-                    
+
             Console.WriteLine("\tThis is the function Menu");
             Console.WriteLine("\tWhat do you want to do?");
 
             Console.WriteLine("\t[1] - Go Browsing");
             Console.WriteLine("\t[0] - Exit the store");
-            Console.WriteLine("\t[a] - replenish inventory");
-            Console.WriteLine("\t[b] - MyProfile");
+            Console.WriteLine("\t[a] - MyProfile");
+            Console.WriteLine("\t[b] - Replenish inventory");
             Console.WriteLine("\t[c] - Add Products");
             Console.WriteLine("\t[d] - Add StoreFront");
-            Console.WriteLine("\t[e] - show me info");
-            Console.WriteLine("\t[f] -test");
-            Console.WriteLine("\t[g] -Add line item/stock table");
-            Console.WriteLine("\t[h] -Show Store Order History");
+            // Console.WriteLine("\t[e] - show me info");
+            // Console.WriteLine("\t[f] -test");
+            Console.WriteLine("\t[e] - Add line item/stock table");
+            Console.WriteLine("\t[f] - Show Store Order History");
 
             Console.WriteLine("\n##################################################################################\n");
-                    
+
 
         }
 
@@ -40,34 +40,35 @@ namespace UserInterface
             {
                 case "1":
                     return MenuType.LoginMenu;
-                    
+
                 case "0":
                     return MenuType.Exit;
-                    case "B":
+                case "B":
                 case "b":
-                    return MenuType.MyProfile;
+                    return MenuType.ReplenishMenu;
 
                 case "A":
                 case "a":
-                    return MenuType.ReplenishMenu;
-
-                    case "c":
+                    return MenuType.MyProfile;
+                case "C":
+                case "c":
                     return MenuType.AddProduct;
-    
-                    case "d":
+                case "D":
+                case "d":
                     return MenuType.AddStore;
-                    
-                    case "e":
-                    return MenuType.DisplayDB;
-                case "f":
-                    return MenuType.loginconfirm;
-                    case "g":
+                // case "E":
+                // case "e":
+                //     return MenuType.DisplayDB;
+                // case "F":                    
+                // case "f":
+                //     return MenuType.loginconfirm;
+                case "E":
+                case "e":
                     return MenuType.AddLineItem;
-                      case "i":
-                    return MenuType.ShowCustomers;
-                    case "h":
+                case "F":
+                case "f":
                     return MenuType.ShowStoreOrders;
-                
+
                 default:
                     Console.WriteLine("Please input a valid response!");
                     Console.WriteLine("Press Enter to continue");
