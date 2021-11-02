@@ -355,5 +355,25 @@ public StoreFront DLGetStore(string name,string address)
         {
             throw new NotImplementedException();
         }
+
+        public List<StoreFront> SearchStoresDL(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public LineItems VerifyStockDL(int productnum, StoreFront chosen)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Customer GetCustomerDL(string name, string password)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Customer ModifyCustomerRecordDL(Customer currentSelection)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

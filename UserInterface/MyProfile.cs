@@ -21,15 +21,22 @@ namespace UserInterface
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("\n##################################################################################\n");
             Console.WriteLine("\tEditing current user");
-            Console.WriteLine("\tName - " + SingletonUser.currentuser.CustomerName);
-            Console.WriteLine("\tAddress - " + SingletonUser.currentuser.Address);
-            Console.WriteLine("\tContact - " + SingletonUser.currentuser.Contact);
-            Console.WriteLine("\tusername - " + SingletonUser.currentuser.UserName);
-            Console.WriteLine("\tAge - " + SingletonUser.currentuser._age);
-            Console.WriteLine("\tPosition - " + SingletonUser.currentuser.Position);
-            Console.WriteLine("\tAccount number - " + SingletonUser.currentuser.Id);
-            Console.WriteLine("\tCurrent Balance: $" + SingletonUser.currentuser.Currency);
-            SingletonUser.currentuser.MyOrders = parameterInter.GetMyOrderHistory(SingletonUser.currentuser.Id);
+            Console.WriteLine("\tName - " + client.CustomerName);
+            Console.WriteLine("\tAddress - " + client.Address);
+            Console.WriteLine("\tContact - " + client.Contact);
+            Console.WriteLine("\tusername - " + client.UserName);
+            char[]test=client.Password.ToCharArray();
+            string pass="";
+            foreach (char item in test)
+            {
+                pass=pass+"*";
+            }
+            Console.WriteLine("\tPassword:"+pass);
+            Console.WriteLine("\tAge - " + client._age);
+            Console.WriteLine("\tPosition - " + client.Position);
+            Console.WriteLine("\tAccount number - " + client.Id);
+            Console.WriteLine("\tCurrent Balance: $" + client.Currency);
+            client.MyOrders = parameterInter.GetMyOrderHistory(client.Id);
 
             Console.WriteLine("\n##################################################################################\n");
 
@@ -41,10 +48,10 @@ namespace UserInterface
             Console.WriteLine("\t[2] - Change value for Address");
             Console.WriteLine("\t[3] - Change value for contact");
             Console.WriteLine("\t[4] - Change value for age");
-            Console.WriteLine("\t[5] - Change username");
-            Console.WriteLine("\t[6] - Change password");
-            Console.WriteLine("\t[7] - View my Order History");
-            Console.WriteLine("\t[8] - Add funds");
+            // Console.WriteLine("\t[5] - Change username");
+            // Console.WriteLine("\t[6] - Change password");
+            Console.WriteLine("\t[5] - View my Order History");
+            Console.WriteLine("\t[6] - Add funds");
             Console.WriteLine("\t[0] - Go Back");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("\n##################################################################################\n");
@@ -61,8 +68,27 @@ namespace UserInterface
             switch (userChoice)
             {
                 case "x":
+                    try
+                    {
+                        //sends the logged in customers info to be updated in the db, if an error occured it will go to the catch block
+                        parameterInter.ModifyCustomerRecord(client);
+                        Console.WriteLine("\tAccount Modified");
+                        Console.WriteLine("\tPress enter to continue");
+                        Console.ReadLine();
+                    }
+                    catch (System.Exception)
+                    {
 
-                    parameterInter.ModifyCustomerRecord(SingletonUser.currentuser);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("************************************************\n");
+                        Console.WriteLine("Information is missing please make sure all fields are filled in");
+                        Console.WriteLine("Press Enter to continue");
+                        Console.WriteLine("\n************************************************\n");
+                        Console.ReadLine();
+                        return MenuType.MyProfile;
+                    }
+
+
 
                     return MenuType.LoginMenu;
                 case "1":
@@ -104,21 +130,21 @@ namespace UserInterface
                     }
 
                     return MenuType.MyProfile;
+                // case "5":
+                //     Console.ForegroundColor = ConsoleColor.DarkYellow;
+                //     Console.WriteLine("\n##################################################################################\n");
+                //     Console.WriteLine("\tType in the value for the username");
+                //     client.UserName = Console.ReadLine();
+                //     return MenuType.MyProfile;
+                // case "6":
+                //     Console.ForegroundColor = ConsoleColor.DarkYellow;
+                //     Console.WriteLine("\n##################################################################################\n");
+                //     Console.WriteLine("\tType in the value for the password");
+
+                //     client.Password = Console.ReadLine();
+                //     return MenuType.MyProfile;
+
                 case "5":
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Console.WriteLine("\n##################################################################################\n");
-                    Console.WriteLine("\tType in the value for the username");
-                    client.UserName = Console.ReadLine();
-                    return MenuType.MyProfile;
-                case "6":
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Console.WriteLine("\n##################################################################################\n");
-                    Console.WriteLine("\tType in the value for the password");
-
-                    client.Password = Console.ReadLine();
-                    return MenuType.MyProfile;
-
-                case "7":
                     Console.ForegroundColor = ConsoleColor.White;
                     foreach (Orders history in SingletonUser.currentuser.MyOrders)
                     {
@@ -137,7 +163,7 @@ namespace UserInterface
                     Console.ReadLine();
                     return MenuType.MyProfile;
 
-                case "8":
+                case "6":
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value of funds to add");

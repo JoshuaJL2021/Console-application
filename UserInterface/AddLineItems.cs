@@ -46,13 +46,27 @@ namespace UserInterface
             switch (userChoice)
             {
                 case "4":
-                    //Add implementation to talk to the repository method to add a restaurant
-                    parameterInter.AddStock(store, items.ProductEstablish, items.Quantity);
-                    Console.WriteLine("\t Product Added to store");
-                    Console.WriteLine("\tPress enter to continue");
-                    Console.ReadLine();
-                    items = new LineItems();
-                    store = new StoreFront();
+                    try
+                    {
+                        parameterInter.AddStock(store, items.ProductEstablish, items.Quantity);
+                        Console.WriteLine("\t Product Added to store");
+                        Console.WriteLine("\tPress enter to continue");
+                        Console.ReadLine();
+                        items = new LineItems();
+                        store = new StoreFront();
+                    }
+                    catch (System.Exception)
+                    {
+
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("************************************************\n");
+                        Console.WriteLine("The store already has this item in its inventory or information is missing");
+                        Console.WriteLine("Press Enter to continue");
+                        Console.WriteLine("\n************************************************\n");
+                        Console.ReadLine();
+                        return MenuType.AddLineItem;
+                    }
+
 
 
                     return MenuType.MainMenu;
@@ -125,7 +139,7 @@ namespace UserInterface
                         Console.ReadLine(); ;
                     }
 
-                   
+
                     return MenuType.AddLineItem;
                 case "1":
 
@@ -173,7 +187,7 @@ namespace UserInterface
                     {
                         Console.ForegroundColor = ConsoleColor.White;
                         SingletonUser.currentstore = null;
-                        Console.WriteLine("\tStore was unfortunately not found please enter name as shown in list above");
+                        Console.WriteLine("\tStore was unfortunately not found please enter Id as shown in list above");
                         Console.WriteLine("\tYou will be sent to Store display again ");
                         Console.WriteLine("\tPress Enter to continue");
                         Console.ReadLine();

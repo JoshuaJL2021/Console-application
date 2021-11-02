@@ -10,6 +10,7 @@ namespace BusinessLogic
     {
 
         private InterfaceRepository _repo;
+        //dependancy
        
         public BL(InterfaceRepository p_repo)
         {
@@ -76,18 +77,18 @@ namespace BusinessLogic
 
         public List<StoreFront> SearchStores(string name)
         {
-            return _repo.DLSearchStores(name);
+            return _repo.SearchStoresDL(name);
         }
 
 
         public LineItems VerifyStock(int productnum, StoreFront chosen)
         {
-           return _repo.DLVerifyStock(productnum,chosen);
+           return _repo.VerifyStockDL(productnum,chosen);
         }
 
         public Customer ModifyCustomerRecord(Customer currentSelection)
         {
-            return _repo.DLModifyCustomerRecord(currentSelection);
+            return _repo.ModifyCustomerRecordDL(currentSelection);
         
         } 
         public void VerifyCredentials(String name,string password)
@@ -97,7 +98,7 @@ namespace BusinessLogic
         }
         public Customer GetCustomer(string name,string password)
         {
-            return _repo.DLGetCustomer(name,password);
+            return _repo.GetCustomerDL(name,password);
         }
 
          

@@ -14,8 +14,8 @@ namespace UserInterface
         public IMenu GetMenu(MenuType p_menu)
         {
             var configuration = new ConfigurationBuilder() //Configurationbuilder is the class that came from the Microsoft.extensions.configuration package
-                .SetBasePath(Directory.GetCurrentDirectory()) //Gets the current directory of the RRUI file path
-                .AddJsonFile("appsetting.json") //Adds the appsetting.json file in our RRUI
+                .SetBasePath(Directory.GetCurrentDirectory()) //Gets the current directory of the Userinterface file path
+                .AddJsonFile("appsetting.json") //Adds the appsetting.json file in our userinterface folder
                 .Build(); //Builds our configuration
 
             DbContextOptions<P0DatabaseContext> options = new DbContextOptionsBuilder<P0DatabaseContext>()
@@ -31,17 +31,19 @@ namespace UserInterface
                     return new MainMenu();
 
                 case MenuType.LoginMenu:
-                    //This will point the page reference variable to a new Restaurant Object
-                    //Since Restaurant Object has different implementation/function of the Menu Method
+                    //This will point the page reference variable to a new MenuType Object
+                    //Since Menu Type Object has different implementation/function of the Menu Method
                     //It will have different implementations/functions when the while loop goes back and
                     //repeat itself
                     return new LoginMenu(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
 
 
                 case MenuType.AddCustomers:
+                //add customer menu has a constructor with a BL type object
+                //That BL object has a constructor with a IRepository type object
+                //that datalogic type object has a constructor that needs a P0DatabaseContext object
+                //the PoDatabaseContext object needs a DbContextOptions<P0DatabaseContext> type object
                     return new AddCustomerMenu(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
-
-
 
                 case MenuType.StoreMenu:
 
@@ -63,22 +65,23 @@ namespace UserInterface
 
 
 
-
-                case MenuType.DisplayDB:
-                    return new DisplayDBinfo(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
+                // case MenuType.loginconfirm:
+                //     return new LoginConfirmationMenu(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
+                // case MenuType.DisplayDB:
+                //     return new DisplayDBinfo(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
+                // case MenuType.ShowCustomers:
+                //     return new ShowCustomers(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
                 case MenuType.AddStore:
                     return new AddStoreFront(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
-                case MenuType.loginconfirm:
-                    return new LoginConfirmationMenu(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
-                case MenuType.ShowCustomers:
-                    return new ShowCustomers(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
+
+
                 case MenuType.AddProduct:
                     return new AddProduct(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
                 case MenuType.FunctionMenu:
                     return new FunctionMenu();
                 case MenuType.AddLineItem:
                     return new AddLineItem(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
-                    case MenuType.ShowStoreOrders:
+                case MenuType.ShowStoreOrders:
                     return new ShowStoreOrders(new BL(new RespositoryCloud(new P0DatabaseContext(options))));
 
 

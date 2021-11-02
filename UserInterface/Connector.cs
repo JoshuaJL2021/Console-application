@@ -17,7 +17,6 @@
         ReplenishMenu,
         MyProfile,
 
-        ConfirmPurchaseMenu,
 
 
                 Exit,

@@ -157,7 +157,9 @@ namespace DataAccessLogic.Entities
                     .HasMaxLength(255)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Price).HasColumnType("decimal(16, 2)");
+                entity.Property(e => e.Price)
+                    .HasColumnType("decimal(16, 2)")
+                    .HasDefaultValueSql("((0.00))");
             });
 
             modelBuilder.Entity<Stock>(entity =>

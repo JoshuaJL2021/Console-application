@@ -39,7 +39,7 @@ namespace BusinessLogic
         /// </summary>
         /// <param name="p_rest">This is the product we are adding</param>
         /// <returns>It returns the product customer</returns>     
-        Orders AddOrdersBL(Orders parameterobj,StoreFront store,Customer client);
+        Orders AddOrdersBL(Orders parameterobj, StoreFront store, Customer client);
 
 
 
@@ -157,7 +157,7 @@ namespace BusinessLogic
         /// <param name="prod"></param>
         /// <param name="order"></param>
         /// <param name="customer"></param>
-        void InsertHistory(int store, int prod, int order, int customer,int quantity);
+        void InsertHistory(int store, int prod, int order, int customer, int quantity);
 
         /// <summary>
         /// Used after the insert into purchases table
@@ -178,8 +178,18 @@ namespace BusinessLogic
         /// <param name="quantity"></param>
         void ModifyStockTable(int storenumber, int productnumber, int quantity);
 
+        /// <summary>
+        /// Receives the Id of the Customer/current user in order to search for that users order history in the db
+        /// </summary>
+        /// <param name="objId"></param>
+        /// <returns>a list of all orders related to the received id</returns>
         List<Orders> GetMyOrderHistory(int objId);
+        /// <summary>
+        /// Receives the Id of the store in order to search for that stores order history in the db
+        /// </summary>
+        /// <param name="objId"></param>
+        /// <returns>a list of all orders related to the received id</returns>
         List<Orders> GetStoreOrderHistory(int objId);
-        
+
     }
 }
