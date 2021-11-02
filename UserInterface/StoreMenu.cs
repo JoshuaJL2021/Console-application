@@ -96,8 +96,24 @@ namespace UserInterface
                 case "2":
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine("\tEnter the id number of store you want to enter");
-                    int num = Convert.ToInt32(Console.ReadLine());
+                    int num = 0;
+                    try
+                    {
+                        num = Convert.ToInt32(Console.ReadLine());
+                    }
+                    catch (System.Exception)
+                    {
 
+                        Console.ForegroundColor = ConsoleColor.White;
+                        
+                        Console.WriteLine("************************************************\n");
+                        Console.WriteLine("you have entered something that was not a number please try again");
+                        Console.WriteLine("Press Enter to continue");
+                        Console.WriteLine("\n************************************************\n");
+                        Console.ReadLine();
+                        return MenuType.StoreMenu;
+
+                    }
                     try
                     {
 

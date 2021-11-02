@@ -40,7 +40,7 @@ namespace UserInterface
             Console.WriteLine("\t[4] - Input value for age");
             Console.WriteLine("\t[5] - Enter username");
             Console.WriteLine("\t[6] - Enter password");
-            Console.WriteLine("\t[7] - Enter Type");
+            Console.WriteLine("\t[7] - Enter Type of User");
             Console.WriteLine("\t[8] - Enter Currency");
             Console.WriteLine("\t[0] - Go Back");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -63,48 +63,78 @@ namespace UserInterface
                     Console.WriteLine("\tAccount created");
                     Console.WriteLine("\tPress enter to continue");
                     Console.ReadLine();
-                    client=new Customer();
+                    client = new Customer();
 
                     return MenuType.LoginMenu;
                 case "1":
+                    Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value for the Name");
                     client.CustomerName = Console.ReadLine();
-                    Console.WriteLine("\n##################################################################################\n");
+
                     return MenuType.AddCustomers;
                 case "2":
+                    Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value for the Address");
                     client.Address = Console.ReadLine();
-                    Console.WriteLine("\n##################################################################################\n");
                     return MenuType.AddCustomers;
                 case "3":
+                    Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value for the Contact");
                     client.Contact = Console.ReadLine();
-                    Console.WriteLine("\n##################################################################################\n");
                     return MenuType.AddCustomers;
                 case "4":
                     Console.WriteLine("\tType in the value for the age");
-                    client._age = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine("\n##################################################################################\n");
+                    try
+                    {
+                        client._age = Convert.ToInt32(Console.ReadLine());
+                    }
+                    catch (System.Exception)
+                    {
+
+                        Console.ForegroundColor = ConsoleColor.White;
+                        client._age = 0;
+                        Console.WriteLine("************************************************\n");
+                        Console.WriteLine("you have entered something that was not a number please try again");
+                        Console.WriteLine("Press Enter to continue");
+                        Console.WriteLine("\n************************************************\n");
+                        Console.ReadLine();
+                    }
                     return MenuType.AddCustomers;
                 case "5":
+                    Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value for the username");
                     client.UserName = Console.ReadLine();
-                    Console.WriteLine("\n##################################################################################\n");
+
                     return MenuType.AddCustomers;
                 case "6":
+                    Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value for the password");
                     client.Password = Console.ReadLine();
-                    Console.WriteLine("\n##################################################################################\n");
                     return MenuType.AddCustomers;
                 case "7":
+                    Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value for the Position");
                     client.Position = Console.ReadLine();
-                    Console.WriteLine("\n##################################################################################\n");
                     return MenuType.AddCustomers;
 
-                    case "8":
+                case "8":
+                    Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value for the Currency");
-                    client.Currency = Convert.ToDecimal(Console.ReadLine());
+                    try
+                    {
+                        client.Currency = Convert.ToDecimal(Console.ReadLine());
+                    }
+                    catch (System.Exception)
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                        client.Currency = 0;
+                        Console.WriteLine("************************************************\n");
+                        Console.WriteLine("you have entered something that was not a number please try again");
+                        Console.WriteLine("Press Enter to continue");
+                        Console.WriteLine("\n************************************************\n");
+                        Console.ReadLine();
+
+                    }
                     return MenuType.AddCustomers;
                 case "0":
                     return MenuType.MainMenu;

@@ -52,31 +52,39 @@ namespace UserInterface
                     Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value for the productName");
                     temp.Name = Console.ReadLine();
-                    Console.WriteLine("\n##################################################################################\n");
-
                     return MenuType.AddProduct;
                 case "3":
                     Console.WriteLine("\n##################################################################################\n");
 
                     Console.WriteLine("\tType in the value for the product");
-                    temp.Price = Convert.ToDecimal(Console.ReadLine());
-                    Console.WriteLine("\n##################################################################################\n");
+                    try
+                    {
 
+                        temp.Price = Convert.ToDecimal(Console.ReadLine());
+                    }
+                    catch (System.Exception)
+                    {
+
+                        Console.ForegroundColor = ConsoleColor.White;
+                        temp.Price = 0;
+                        Console.WriteLine("************************************************\n");
+                        Console.WriteLine("you have entered something that was not a number please try again");
+                        Console.WriteLine("Press Enter to continue");
+                        Console.WriteLine("\n************************************************\n");
+                        Console.ReadLine();
+                    }
                     return MenuType.AddProduct;
                 case "2":
                     Console.WriteLine("\n##################################################################################\n");
 
                     Console.WriteLine("\tType in the value for the Description");
                     temp.Description = Console.ReadLine();
-                    Console.WriteLine("\n##################################################################################\n");
-
                     return MenuType.AddProduct;
                 case "1":
                     Console.WriteLine("\n##################################################################################\n");
 
                     Console.WriteLine("\tType in the value for the Category");
                     temp.Category = Console.ReadLine();
-                    Console.WriteLine("\n##################################################################################\n");
 
                     return MenuType.AddProduct;
                 case "0":

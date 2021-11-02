@@ -21,11 +21,11 @@ namespace UserInterface
             Console.WriteLine("\t[0] - Exit the store");
             Console.WriteLine("\t[a] - replenish inventory");
             Console.WriteLine("\t[b] - MyProfile");
-            Console.WriteLine("\t[c] - add Products");
-            Console.WriteLine("\t[d] - add StoreFront");
+            Console.WriteLine("\t[c] - Add Products");
+            Console.WriteLine("\t[d] - Add StoreFront");
             Console.WriteLine("\t[e] - show me info");
             Console.WriteLine("\t[f] -test");
-            Console.WriteLine("\t[g] -add line item/stock table");
+            Console.WriteLine("\t[g] -Add line item/stock table");
             Console.WriteLine("\t[h] -Show Store Order History");
 
             Console.WriteLine("\n##################################################################################\n");
