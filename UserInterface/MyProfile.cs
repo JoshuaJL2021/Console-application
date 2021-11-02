@@ -46,6 +46,8 @@ namespace UserInterface
             Console.WriteLine("\t[7] - View my Order History");
             Console.WriteLine("\t[8] - Add funds");
             Console.WriteLine("\t[0] - Go Back");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("\n##################################################################################\n");
 
 
 
@@ -64,33 +66,53 @@ namespace UserInterface
 
                     return MenuType.LoginMenu;
                 case "1":
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value for the Name");
                     client.CustomerName = Console.ReadLine();
                     return MenuType.MyProfile;
                 case "2":
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value for the Address");
                     client.Address = Console.ReadLine();
 
                     return MenuType.MyProfile;
                 case "3":
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value for the Contact");
                     client.Contact = Console.ReadLine();
                     return MenuType.MyProfile;
                 case "4":
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value for the age");
-                    client._age = Convert.ToInt32(Console.ReadLine());
+                    try
+                    {
+                        client._age = Convert.ToInt32(Console.ReadLine());
+                    }
+                    catch (System.Exception)
+                    {
+
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("************************************************\n");
+                        Console.WriteLine("you have entered something that was not a number please try again");
+                        Console.WriteLine("Press Enter to continue");
+                        Console.WriteLine("\n************************************************\n");
+                        Console.ReadLine();
+                    }
+
                     return MenuType.MyProfile;
                 case "5":
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value for the username");
                     client.UserName = Console.ReadLine();
                     return MenuType.MyProfile;
                 case "6":
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value for the password");
 
                     client.Password = Console.ReadLine();
@@ -116,10 +138,26 @@ namespace UserInterface
                     return MenuType.MyProfile;
 
                 case "8":
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value of funds to add");
-                    decimal deposit=Convert.ToDecimal(Console.ReadLine());
-                    client.Currency =client.Currency+deposit;
+                    decimal deposit = 0;
+                    try
+                    {
+                        deposit = Convert.ToDecimal(Console.ReadLine());
+                        client.Currency = client.Currency + deposit;
+                    }
+                    catch (System.Exception)
+                    {
+
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("************************************************\n");
+                        Console.WriteLine("you have entered something that was not a number please try again");
+                        Console.WriteLine("Press Enter to continue");
+                        Console.WriteLine("\n************************************************\n");
+                        Console.ReadLine();
+                    }
+
                     return MenuType.MyProfile;
 
                 case "0":

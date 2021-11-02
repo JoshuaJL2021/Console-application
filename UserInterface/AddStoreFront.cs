@@ -50,11 +50,12 @@ namespace UserInterface
 
                     return MenuType.MainMenu;
                 case "3":
-
+                    Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value for the Name");
                     _rest.Name = Console.ReadLine();
                     return MenuType.AddStore;
                 case "2":
+                    Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value for the Address");
                     _rest.Address = Console.ReadLine();
                     return MenuType.AddStore;

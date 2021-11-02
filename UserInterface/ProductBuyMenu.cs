@@ -86,7 +86,23 @@ namespace UserInterface
 
                             Console.WriteLine("##################################################################################\n");
                             Console.WriteLine("\tEnter the Id of the product from the store to add to your cart");
-                            int productsname = Convert.ToInt32(Console.ReadLine());
+                            int productsname = 0;
+                            try
+                            {
+                                productsname = Convert.ToInt32(Console.ReadLine());
+
+                            }
+                            catch (System.Exception)
+                            {
+
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("************************************************\n");
+                                Console.WriteLine("you have entered something that was not a number please try again");
+                                Console.WriteLine("Press Enter to continue");
+                                Console.WriteLine("\n************************************************\n");
+                                Console.ReadLine();
+                                return MenuType.ProductBuyMenu;
+                            }
                             string cancel;
                             try
                             {
@@ -108,6 +124,8 @@ namespace UserInterface
                                     {
 
                                         tempdb.Add(_lines);
+                                        _details.TotalPrice = 0;
+                                        _details.ItemsList.Clear();
                                     }
                                 }
                                 else
@@ -126,7 +144,7 @@ namespace UserInterface
                             {
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Console.WriteLine("\n************************************************\n");
-                                Console.WriteLine("\tplease try again you have entered the information wrong");
+                                Console.WriteLine("\tPlease try again you have entered an item that is not listed in the store");
                                 loop = true;
                                 Console.WriteLine("\tWould you like to cancel the item? \n\ttype yes or no?\n");
                                 Console.WriteLine("\n************************************************\n");
@@ -173,8 +191,25 @@ namespace UserInterface
                             Console.ForegroundColor = ConsoleColor.DarkYellow;
 
                             Console.WriteLine("##################################################################################\n");
-                            Console.WriteLine("\tEnter the Id of the product from the store to add to your cart");
-                            int productsname = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine("\tEnter the Id of the product from the store to Remove from your cart");
+                            int productsname = 0;
+                            try
+                            {
+                                productsname = Convert.ToInt32(Console.ReadLine());
+
+                            }
+                            catch (System.Exception)
+                            {
+
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("************************************************\n");
+                                Console.WriteLine("you have entered something that was not a number please try again");
+                                Console.WriteLine("Press Enter to continue");
+                                Console.WriteLine("\n************************************************\n");
+                                Console.ReadLine();
+                                return MenuType.ProductBuyMenu;
+                            }
+
                             string cancel;
                             try
                             {
@@ -184,7 +219,8 @@ namespace UserInterface
                                 {
 
                                     tempdb.RemoveAll(x => x.ProductEstablish.Name == _lines.ProductEstablish.Name);
-                                    // _details.itemslist.RemoveAll(x => x._product._name == _lines._product._name);
+                                    _details.ItemsList.RemoveAll(x => x.ProductEstablish.Name == _lines.ProductEstablish.Name);
+                                    _details.TotalPrice = 0;
 
                                 }
                                 loop = false;
@@ -194,7 +230,7 @@ namespace UserInterface
                             {
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Console.WriteLine("\n************************************************\n");
-                                Console.WriteLine("\tplease try again you have entered the information wrong");
+                                Console.WriteLine("\tPlease try again you have entered an item that is not listed in the store");
                                 loop = true;
                                 Console.WriteLine("\tWould you like to cancel the item? \n\ttype yes or no?\n");
                                 Console.WriteLine("\n************************************************\n");
@@ -235,7 +271,6 @@ namespace UserInterface
                     Console.WriteLine("\n##################################################################################\n");
 
                     linecost = 0;
-                    List<LineItems> original = new List<LineItems>();
                     cartResult.Clear();
 
 
@@ -245,7 +280,7 @@ namespace UserInterface
 
                     foreach (LineItems obj in tempdb)
                     {
-                        original.Add(obj);
+
 
                         LineItems filler = new LineItems();
 
@@ -253,7 +288,26 @@ namespace UserInterface
 
                         Console.WriteLine(obj);
                         Console.WriteLine("\n\tType in the line item quantity you want to buy\n");
-                        selectedamount = Convert.ToInt32(Console.ReadLine());
+                        try
+                        {
+                            selectedamount = Convert.ToInt32(Console.ReadLine());
+                        }
+                        catch (System.Exception)
+                        {
+
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("************************************************\n");
+                            Console.WriteLine("\tYou have entered something that was not a number please try again");
+                            Console.WriteLine("\t The Cart will now be reset so you must add all items again");
+                            Console.WriteLine("\tPress Enter to continue");
+                            Console.WriteLine("\n************************************************\n");
+                            Console.ReadLine();
+                            _details.ItemsList.Clear();
+                            tempdb.Clear();
+                            _details.TotalPrice = 0;
+                            return MenuType.ProductBuyMenu;
+                        }
+                        // selectedamount = Convert.ToInt32(Console.ReadLine());
                         obj.Quantity = obj.Quantity - selectedamount;
                         filler.Quantity = selectedamount;
                         cost = obj.ProductEstablish.PriceGrab();
@@ -278,13 +332,14 @@ namespace UserInterface
                         tempdb[i].Quantity = tempdb[i].Quantity + values[i].Quantity;
 
                     }
+                    Console.WriteLine("\tPress enter to continue");
                     Console.ReadLine();
                     return MenuType.ProductBuyMenu;
 
 
                 case "2":
                     string confirmation;
-                    Console.WriteLine("\tConfirm Purchase enter yes or no\n\tif you enter no you must restart the order");
+                    Console.WriteLine("\tConfirm Purchase enter yes or no\n\tif you enter no or make a mistake, you must restart the order");
                     confirmation = Console.ReadLine();
                     if (confirmation == "yes" || confirmation == "Yes" || confirmation == "YES")
                     {
@@ -357,7 +412,7 @@ namespace UserInterface
                         _details.ItemsList.Clear();
                         tempdb.Clear();
                         _details.TotalPrice = 0;
-                        Console.WriteLine("Order has been canceled because you did not enter yes press enter to continue");
+                        Console.WriteLine("\tOrder has been canceled because you did not enter yes press enter to continue");
                         Console.ReadLine();
                         return MenuType.ProductBuyMenu;
                     }
@@ -366,13 +421,13 @@ namespace UserInterface
                 case "1":
                     tempdb.Clear();
                     _details.ItemsList.Clear();
-                    _details.TotalPrice=0;
+                    _details.TotalPrice = 0;
 
                     return MenuType.ProductDisplayMenu;
                 case "0":
                     tempdb.Clear();
                     _details.ItemsList.Clear();
-                    _details.TotalPrice=0;
+                    _details.TotalPrice = 0;
                     return MenuType.MainMenu;
                 default:
                     Console.WriteLine("Please input a valid response!");

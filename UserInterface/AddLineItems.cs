@@ -8,6 +8,7 @@ namespace UserInterface
     public class AddLineItem : IMenu
     {
         private static LineItems items = new LineItems();
+        private static StoreFront store = new StoreFront();
         private InterfaceBL parameterInter;
 
         public AddLineItem(InterfaceBL parameterobj)
@@ -23,7 +24,7 @@ namespace UserInterface
             Console.WriteLine("Adding a new LineItem");
             Console.WriteLine("---------------------------------------------------------------------\n");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine(SingletonUser.currentstore);
+            Console.WriteLine(store);
             Console.WriteLine(items.ProductEstablish);
             Console.WriteLine("\tAmmount of Item : " + items.Quantity);
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -34,7 +35,7 @@ namespace UserInterface
             Console.WriteLine("\t[2] - Input value for products quantity");
             Console.WriteLine("\t[1] - select store");
             Console.WriteLine("\t[0] - Go Back");
-             Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("\n##################################################################################\n");
 
         }
@@ -46,13 +47,13 @@ namespace UserInterface
             {
                 case "4":
                     //Add implementation to talk to the repository method to add a restaurant
-                    parameterInter.AddStock(SingletonUser.currentstore, items.ProductEstablish, items.Quantity);
+                    parameterInter.AddStock(store, items.ProductEstablish, items.Quantity);
                     Console.WriteLine("\t Product Added to store");
                     Console.WriteLine("\tPress enter to continue");
                     Console.ReadLine();
                     items = new LineItems();
-                    SingletonUser.currentstore = null;
-                    
+                    store = new StoreFront();
+
 
                     return MenuType.MainMenu;
                 case "3":
@@ -69,7 +70,25 @@ namespace UserInterface
                     }
                     Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the product Id u want");
-                    int num = Convert.ToInt32(Console.ReadLine());
+                    int num = 0;
+                    try
+                    {
+                        num = Convert.ToInt32(Console.ReadLine());
+                    }
+                    catch (System.Exception)
+                    {
+
+                        Console.ForegroundColor = ConsoleColor.White;
+
+                        Console.WriteLine("************************************************\n");
+                        Console.WriteLine("you have entered something that was not a number please try again");
+                        Console.WriteLine("Press Enter to continue");
+                        Console.WriteLine("\n************************************************\n");
+                        Console.ReadLine();
+                        return MenuType.AddLineItem;
+
+                    }
+
                     Console.WriteLine("\n##################################################################################\n");
                     try
                     {
@@ -78,16 +97,35 @@ namespace UserInterface
                     catch (System.Exception)
                     {
 
-                        throw;
+                        Console.ForegroundColor = ConsoleColor.White;
+                        items.ProductEstablish = null;
+                        Console.WriteLine("\n************************************************\n");
+                        Console.WriteLine("\tplease try again you have entered an Id that is not listed");
+                        Console.WriteLine("\tPress enter to continue");
+                        Console.ReadLine();
                     }
                     return MenuType.AddLineItem;
                 case "2":
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value for the quantity");
-                    items.Quantity = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine("\n##################################################################################\n");
+                    try
+                    {
+                        items.Quantity = Convert.ToInt32(Console.ReadLine());
+                    }
+                    catch (System.Exception)
+                    {
 
+                        Console.ForegroundColor = ConsoleColor.White;
+                        items.Quantity = 0;
+                        Console.WriteLine("************************************************\n");
+                        Console.WriteLine("you have entered something that was not a number please try again");
+                        Console.WriteLine("Press Enter to continue");
+                        Console.WriteLine("\n************************************************\n");
+                        Console.ReadLine(); ;
+                    }
+
+                   
                     return MenuType.AddLineItem;
                 case "1":
 
@@ -106,16 +144,30 @@ namespace UserInterface
 
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine("\n##################################################################################\n");
-                    Console.WriteLine("\tEnter store you want to enter");
-                    int number = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine("\n##################################################################################\n");
+                    Console.WriteLine("\tEnter store you want to enter by Id");
+                    int number = 0;
+                    try
+                    {
+                        number = Convert.ToInt32(Console.ReadLine());
+                    }
+                    catch (System.Exception)
+                    {
+
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("************************************************\n");
+                        Console.WriteLine("you have entered something that was not a number please try again");
+                        Console.WriteLine("Press Enter to continue");
+                        Console.WriteLine("\n************************************************\n");
+                        Console.ReadLine();
+                        return MenuType.AddLineItem;
+
+                    }
 
                     try
                     {
 
-                        SingletonUser.currentstore = parameterInter.GetStoreByID(number);
-                        Console.WriteLine("\tWelcome to " + SingletonUser.currentstore + "\t press enter to continue");
-                        Console.ReadLine();
+                        store = parameterInter.GetStoreByID(number);
+
                     }
                     catch (System.Exception)
                     {
