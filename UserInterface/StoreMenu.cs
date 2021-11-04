@@ -15,7 +15,7 @@ namespace UserInterface
         }
         public void Menu()
         {
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            
             Console.WriteLine("\n##################################################################################\n");
             Console.WriteLine("\tWelcome to the store select menu " + SingletonUser.currentuser.CustomerName.ToUpper());
             Console.WriteLine("\tPlease select the store");
@@ -23,7 +23,7 @@ namespace UserInterface
 
             Console.WriteLine("\tList of StoreFronts");
             List<StoreFront> listOfStoreFront = parameterInter.GetAllStoreFrontsBL();
-            Console.ForegroundColor = ConsoleColor.White;
+            
             if (searchresult != null)
             {
                 foreach (StoreFront rest in searchresult)
@@ -43,12 +43,12 @@ namespace UserInterface
                 }
             }
 
-            Console.ForegroundColor = ConsoleColor.Green;
+            
             Console.WriteLine("\t[3] - Search the store ");
             Console.WriteLine("\t[2] - Select the store (goes to products display");
             Console.WriteLine("\t[1] - goes to login");
             Console.WriteLine("\t[0] - exit to Main menu");
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            
 
             Console.WriteLine("\n##################################################################################\n");
 
@@ -68,7 +68,7 @@ namespace UserInterface
 
                     try
                     {
-                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        
                         foreach (StoreFront s in parameterInter.SearchStores(storen))
                         {
                             test.Add(s);
@@ -80,7 +80,7 @@ namespace UserInterface
                     }
                     catch (System.Exception)
                     {
-                        Console.ForegroundColor = ConsoleColor.White;
+                        
 
                         searchresult = null;
                         Console.WriteLine("\tStore was unfortunately not found please enter name as shown in list above");
@@ -94,7 +94,7 @@ namespace UserInterface
                     return MenuType.StoreMenu;
 
                 case "2":
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    
                     Console.WriteLine("\tEnter the id number of store you want to enter");
                     int num = 0;
                     try
@@ -104,7 +104,7 @@ namespace UserInterface
                     catch (System.Exception)
                     {
 
-                        Console.ForegroundColor = ConsoleColor.White;
+                        
                         
                         Console.WriteLine("************************************************\n");
                         Console.WriteLine("you have entered something that was not a number please try again");
@@ -124,7 +124,7 @@ namespace UserInterface
                     }
                     catch (System.Exception)
                     {
-                        Console.ForegroundColor = ConsoleColor.White;
+                        
                         SingletonUser.currentstore = null;
                         Console.WriteLine("\tStore was unfortunately not found please enter name as shown in list above");
                         Console.WriteLine("\tYou will be sent to Store display again ");

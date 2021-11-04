@@ -17,18 +17,18 @@ namespace UserInterface
 
         public void Menu()
         {
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            
             Console.WriteLine("\n##################################################################################\n");
             Console.WriteLine("\tAdding a new Store Front");
             Console.WriteLine("\tName of store- " + store.Name);
             Console.WriteLine("\tAddress of store - " + store.Address);
             Console.WriteLine("\n##################################################################################\n");
-            Console.ForegroundColor = ConsoleColor.Green;
+            
             Console.WriteLine("\t[4] - Add StoreFront");
             Console.WriteLine("\t[3] - Input value for Name");
             Console.WriteLine("\t[2] - Input value for Address");
             Console.WriteLine("\t[0] - Go Back");
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            
             Console.WriteLine("\n##################################################################################\n");
 
         }
@@ -51,7 +51,7 @@ namespace UserInterface
                     catch (System.Exception)
                     {
 
-                        Console.ForegroundColor = ConsoleColor.White;
+                        
                         Console.WriteLine("************************************************\n");
                         Console.WriteLine("Information is missing please make sure all fields are filled in");
                         Console.WriteLine("Press Enter to continue");

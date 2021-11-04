@@ -18,16 +18,16 @@ namespace UserInterface
 
         public void Menu()
         {
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            
             Console.WriteLine("##################################################################################\n");
 
             Console.WriteLine("Adding a new LineItem");
             Console.WriteLine("---------------------------------------------------------------------\n");
-            Console.ForegroundColor = ConsoleColor.White;
+            
             Console.WriteLine(store);
             Console.WriteLine(items.ProductEstablish);
             Console.WriteLine("\tAmmount of Item : " + items.Quantity);
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            
             Console.WriteLine("\n##################################################################################\n");
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("\t[4] - Add LineItem/Stock");
@@ -35,7 +35,7 @@ namespace UserInterface
             Console.WriteLine("\t[2] - Input value for products quantity");
             Console.WriteLine("\t[1] - select store");
             Console.WriteLine("\t[0] - Go Back");
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            
             Console.WriteLine("\n##################################################################################\n");
 
         }
@@ -58,7 +58,7 @@ namespace UserInterface
                     catch (System.Exception)
                     {
 
-                        Console.ForegroundColor = ConsoleColor.White;
+                        
                         Console.WriteLine("************************************************\n");
                         Console.WriteLine("The store already has this item in its inventory or information is missing");
                         Console.WriteLine("Press Enter to continue");
@@ -71,11 +71,11 @@ namespace UserInterface
 
                     return MenuType.MainMenu;
                 case "3":
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    
                     Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("---------------------------------------------------------------------\n");
                     List<Products> listOfRestaurants = parameterInter.GetAllProductsBL();
-                    Console.ForegroundColor = ConsoleColor.White;
+                    
                     foreach (Products rest in listOfRestaurants)
                     {
                         Console.WriteLine("====================");
@@ -92,7 +92,7 @@ namespace UserInterface
                     catch (System.Exception)
                     {
 
-                        Console.ForegroundColor = ConsoleColor.White;
+                        
 
                         Console.WriteLine("************************************************\n");
                         Console.WriteLine("you have entered something that was not a number please try again");
@@ -111,7 +111,7 @@ namespace UserInterface
                     catch (System.Exception)
                     {
 
-                        Console.ForegroundColor = ConsoleColor.White;
+                        
                         items.ProductEstablish = null;
                         Console.WriteLine("\n************************************************\n");
                         Console.WriteLine("\tplease try again you have entered an Id that is not listed");
@@ -120,7 +120,7 @@ namespace UserInterface
                     }
                     return MenuType.AddLineItem;
                 case "2":
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    
                     Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value for the quantity");
                     try
@@ -130,7 +130,7 @@ namespace UserInterface
                     catch (System.Exception)
                     {
 
-                        Console.ForegroundColor = ConsoleColor.White;
+                        
                         items.Quantity = 0;
                         Console.WriteLine("************************************************\n");
                         Console.WriteLine("you have entered something that was not a number please try again");
@@ -143,10 +143,10 @@ namespace UserInterface
                     return MenuType.AddLineItem;
                 case "1":
 
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    
                     Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("---------------------------------------------------------------------\n");
-                    Console.ForegroundColor = ConsoleColor.White;
+                    
                     List<StoreFront> listofstores = parameterInter.GetAllStoreFrontsBL();
 
                     foreach (StoreFront rest in listofstores)
@@ -156,7 +156,7 @@ namespace UserInterface
                         Console.WriteLine("====================");
                     }
 
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    
                     Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tEnter store you want to enter by Id");
                     int number = 0;
@@ -167,7 +167,7 @@ namespace UserInterface
                     catch (System.Exception)
                     {
 
-                        Console.ForegroundColor = ConsoleColor.White;
+                        
                         Console.WriteLine("************************************************\n");
                         Console.WriteLine("you have entered something that was not a number please try again");
                         Console.WriteLine("Press Enter to continue");
@@ -185,7 +185,7 @@ namespace UserInterface
                     }
                     catch (System.Exception)
                     {
-                        Console.ForegroundColor = ConsoleColor.White;
+                        
                         SingletonUser.currentstore = null;
                         Console.WriteLine("\tStore was unfortunately not found please enter Id as shown in list above");
                         Console.WriteLine("\tYou will be sent to Store display again ");

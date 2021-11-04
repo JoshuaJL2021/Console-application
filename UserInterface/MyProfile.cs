@@ -18,7 +18,7 @@ namespace UserInterface
         public void Menu()
         {
 
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            
             Console.WriteLine("\n##################################################################################\n");
             Console.WriteLine("\tEditing current user");
             Console.WriteLine("\tName - " + client.CustomerName);
@@ -42,7 +42,7 @@ namespace UserInterface
 
 
 
-            Console.ForegroundColor = ConsoleColor.Green;
+            
             Console.WriteLine("\t[x] - Save Changes");
             Console.WriteLine("\t[1] - Change value for Name");
             Console.WriteLine("\t[2] - Change value for Address");
@@ -53,7 +53,7 @@ namespace UserInterface
             Console.WriteLine("\t[5] - View my Order History");
             Console.WriteLine("\t[6] - Add funds");
             Console.WriteLine("\t[0] - Go Back");
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            
             Console.WriteLine("\n##################################################################################\n");
 
 
@@ -79,7 +79,7 @@ namespace UserInterface
                     catch (System.Exception)
                     {
 
-                        Console.ForegroundColor = ConsoleColor.White;
+                        
                         Console.WriteLine("************************************************\n");
                         Console.WriteLine("Information is missing please make sure all fields are filled in");
                         Console.WriteLine("Press Enter to continue");
@@ -92,26 +92,26 @@ namespace UserInterface
 
                     return MenuType.LoginMenu;
                 case "1":
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    
                     Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value for the Name");
                     client.CustomerName = Console.ReadLine();
                     return MenuType.MyProfile;
                 case "2":
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    
                     Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value for the Address");
                     client.Address = Console.ReadLine();
 
                     return MenuType.MyProfile;
                 case "3":
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    
                     Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value for the Contact");
                     client.Contact = Console.ReadLine();
                     return MenuType.MyProfile;
                 case "4":
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    
                     Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value for the age");
                     try
@@ -121,7 +121,7 @@ namespace UserInterface
                     catch (System.Exception)
                     {
 
-                        Console.ForegroundColor = ConsoleColor.White;
+                        
                         Console.WriteLine("************************************************\n");
                         Console.WriteLine("you have entered something that was not a number please try again");
                         Console.WriteLine("Press Enter to continue");
@@ -131,13 +131,13 @@ namespace UserInterface
 
                     return MenuType.MyProfile;
                 // case "5":
-                //     Console.ForegroundColor = ConsoleColor.DarkYellow;
+                //     
                 //     Console.WriteLine("\n##################################################################################\n");
                 //     Console.WriteLine("\tType in the value for the username");
                 //     client.UserName = Console.ReadLine();
                 //     return MenuType.MyProfile;
                 // case "6":
-                //     Console.ForegroundColor = ConsoleColor.DarkYellow;
+                //     
                 //     Console.WriteLine("\n##################################################################################\n");
                 //     Console.WriteLine("\tType in the value for the password");
 
@@ -145,7 +145,7 @@ namespace UserInterface
                 //     return MenuType.MyProfile;
 
                 case "5":
-                    Console.ForegroundColor = ConsoleColor.White;
+                    
                     foreach (Orders history in SingletonUser.currentuser.MyOrders)
                     {
                         Console.WriteLine("====================");
@@ -164,7 +164,7 @@ namespace UserInterface
                     return MenuType.MyProfile;
 
                 case "6":
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    
                     Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tType in the value of funds to add");
                     decimal deposit = 0;
@@ -176,7 +176,7 @@ namespace UserInterface
                     catch (System.Exception)
                     {
 
-                        Console.ForegroundColor = ConsoleColor.White;
+                        
                         Console.WriteLine("************************************************\n");
                         Console.WriteLine("you have entered something that was not a number please try again");
                         Console.WriteLine("Press Enter to continue");

@@ -16,7 +16,7 @@ namespace UserInterface
 
         public void Menu()
         {
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            
             Console.WriteLine("\n##################################################################################\n");
             Console.WriteLine("\tAdding a new Product");
             Console.WriteLine("\tName - " + temp.Name);
@@ -24,14 +24,14 @@ namespace UserInterface
             Console.WriteLine("\tDescription - " + temp.Description);
             Console.WriteLine("\tCategory - " + temp.Category);
             Console.WriteLine("\n##################################################################################\n");
-            Console.ForegroundColor = ConsoleColor.Green;
+            
             Console.WriteLine("\t[5] - Add Product");
             Console.WriteLine("\t[4] - Input value for Name");
             Console.WriteLine("\t[3] - Input value for Price");
             Console.WriteLine("\t[2] - Input value for Description");
             Console.WriteLine("\t[1] - Input value for Category");
             Console.WriteLine("\t[0] - Go Back");
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            
             Console.WriteLine("\n##################################################################################\n");
         }
 
@@ -52,7 +52,7 @@ namespace UserInterface
                     catch (System.Exception)
                     {
 
-                         Console.ForegroundColor = ConsoleColor.White;
+                         
                         Console.WriteLine("************************************************\n");
                         Console.WriteLine("Information is missing please make sure all fields are filled in");
                         Console.WriteLine("Press Enter to continue");
@@ -79,7 +79,7 @@ namespace UserInterface
                     catch (System.Exception)
                     {
 
-                        Console.ForegroundColor = ConsoleColor.White;
+                        
                         temp.Price = 0;
                         Console.WriteLine("************************************************\n");
                         Console.WriteLine("you have entered something that was not a number please try again");

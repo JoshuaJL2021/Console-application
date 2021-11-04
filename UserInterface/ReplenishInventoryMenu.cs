@@ -51,7 +51,7 @@ namespace UserInterface
             }
             catch (System.Exception)
             {
-                Console.ForegroundColor = ConsoleColor.White;
+                
                 Console.WriteLine("************************************************\n");
                 Console.WriteLine("you have entered something that was not a number please try again");
                 Console.WriteLine("Press Enter to continue");
@@ -92,7 +92,7 @@ namespace UserInterface
                 bool loop = true;
                 while (loop == true)
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    
                     Console.WriteLine("\n##################################################################################\n");
                     Console.WriteLine("\tEnter the Id of the product from the store to add stock");
                     int productsname = 0;
@@ -104,7 +104,7 @@ namespace UserInterface
                     catch (System.Exception)
                     {
 
-                        Console.ForegroundColor = ConsoleColor.White;
+                        
                         Console.WriteLine("************************************************\n");
                         Console.WriteLine("you have entered something that was not a number please try again");
                         Console.WriteLine("Press Enter to continue");
@@ -138,7 +138,7 @@ namespace UserInterface
                             catch (System.Exception)
                             {
 
-                                Console.ForegroundColor = ConsoleColor.White;
+                                
                                 Console.WriteLine("************************************************\n");
                                 Console.WriteLine("you have entered something that was not a number please try again");
                                 Console.WriteLine("Press Enter to continue");
@@ -151,7 +151,7 @@ namespace UserInterface
                     }
                     catch (System.Exception)
                     {
-                        Console.ForegroundColor = ConsoleColor.White;
+                        
                         Console.WriteLine("\n##################################################################################\n");
                         Console.WriteLine("\tplease try again you have entered the information wrong please enter from the products available");
                         loop = true;

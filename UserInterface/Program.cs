@@ -8,8 +8,8 @@ namespace UserInterface
     {
         static void Main(string[] args)
         {
-         Console.ForegroundColor = ConsoleColor.DarkYellow;
-         Console.BackgroundColor = ConsoleColor.DarkBlue;
+         
+
            //This is a boolean that has either a false or true value
             //I will use this to stop the while loop
             bool repeat = true;

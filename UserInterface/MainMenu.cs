@@ -12,8 +12,8 @@ namespace UserInterface
         */
         public void Menu()
         {
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            
+            
             Console.WriteLine("##################################################################################\n");
 
 

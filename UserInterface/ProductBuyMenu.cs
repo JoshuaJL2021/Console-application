@@ -21,7 +21,7 @@ namespace UserInterface
         }
         public void Menu()
         {
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            
             _details.Location = SingletonUser.currentstore;
             Console.WriteLine("##################################################################################\n");
             Console.WriteLine("\tWelcome to the " + SingletonUser.currentstore.Name + " products menu");
@@ -29,7 +29,7 @@ namespace UserInterface
             Console.WriteLine("---------------------------------------------------------------------\n");
             Console.WriteLine("\nList of Products in " + SingletonUser.currentstore.Name);
             StoreFront test = parameterInter.GetStoreByID(SingletonUser.currentstore.Id);
-            Console.ForegroundColor = ConsoleColor.White;
+            
             foreach (LineItems rest in parameterInter.GetInventory(SingletonUser.currentstore.Id))
             {
                 Console.WriteLine("====================");
@@ -52,17 +52,17 @@ namespace UserInterface
 
             }
             Console.WriteLine("\tTotal of cart is $" + _details.TotalPrice);
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            
             Console.WriteLine("\nCurrent Balance in wallet: $" + SingletonUser.currentuser.Currency);
             Console.WriteLine("\n##################################################################################\n");
-            Console.ForegroundColor = ConsoleColor.Green;
+            
             Console.WriteLine("\t[5] - Add Items to cart");
             Console.WriteLine("\t[4] - remove items from cart");
             Console.WriteLine("\t[3] - Modify/calculate total of order");
             Console.WriteLine("\t[2] - confirm");
             Console.WriteLine("\t[1] - back");
-            Console.WriteLine("\t[0] - goes to login");
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("\t[0] - go to Main Menu");
+            
 
             Console.WriteLine("\n##################################################################################\n");
 
@@ -96,7 +96,7 @@ namespace UserInterface
                         bool loop = true;
                         while (loop == true)
                         {
-                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            
 
                             Console.WriteLine("##################################################################################\n");
                             Console.WriteLine("\tEnter the Id of the product from the store to add to your cart");
@@ -109,7 +109,7 @@ namespace UserInterface
                             catch (System.Exception)
                             {
 
-                                Console.ForegroundColor = ConsoleColor.White;
+                                
                                 Console.WriteLine("************************************************\n");
                                 Console.WriteLine("you have entered something that was not a number please try again");
                                 Console.WriteLine("Press Enter to continue");
@@ -127,7 +127,7 @@ namespace UserInterface
                                 {
                                     if (tempdb.Exists(x => x.ProductEstablish.Name == _lines.ProductEstablish.Name))
                                     {
-                                        Console.ForegroundColor = ConsoleColor.White;
+                                        
                                         Console.WriteLine("\n************************************************\n");
                                         Console.WriteLine("\tThis item is already in the cart");
                                         Console.WriteLine("\n************************************************\n");
@@ -144,7 +144,7 @@ namespace UserInterface
                                 }
                                 else
                                 {
-                                    Console.ForegroundColor = ConsoleColor.White;
+                                    
 
                                     Console.WriteLine("\n************************************************\n");
                                     Console.WriteLine("\tItem cannot be added because it is out of stock");
@@ -156,7 +156,7 @@ namespace UserInterface
                             }
                             catch (System.Exception)
                             {
-                                Console.ForegroundColor = ConsoleColor.White;
+                                
                                 Console.WriteLine("\n************************************************\n");
                                 Console.WriteLine("\tPlease try again you have entered an item that is not listed in the store");
                                 loop = true;
@@ -177,7 +177,7 @@ namespace UserInterface
                                 }
                             }//end of catch
                         }//end of while
-                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        
                         Console.WriteLine("\n##################################################################################\n");
                         decision = false;
 
@@ -209,7 +209,7 @@ namespace UserInterface
                         bool loop = true;
                         while (loop == true)
                         {
-                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            
 
                             Console.WriteLine("##################################################################################\n");
                             Console.WriteLine("\tEnter the Id of the product from the store to Remove from your cart");
@@ -222,7 +222,7 @@ namespace UserInterface
                             catch (System.Exception)
                             {
 
-                                Console.ForegroundColor = ConsoleColor.White;
+                                
                                 Console.WriteLine("************************************************\n");
                                 Console.WriteLine("you have entered something that was not a number please try again");
                                 Console.WriteLine("Press Enter to continue");
@@ -249,7 +249,7 @@ namespace UserInterface
                             }
                             catch (System.Exception)
                             {
-                                Console.ForegroundColor = ConsoleColor.White;
+                                
                                 Console.WriteLine("\n************************************************\n");
                                 Console.WriteLine("\tPlease try again you have entered an item that is not listed in the store");
                                 loop = true;
@@ -270,7 +270,7 @@ namespace UserInterface
                                 }
                             }//end of catch
                         }//end of while
-                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        
                         Console.WriteLine("\n##################################################################################\n");
 
 
@@ -321,7 +321,7 @@ namespace UserInterface
                         catch (System.Exception)
                         {
 
-                            Console.ForegroundColor = ConsoleColor.White;
+                            
                             Console.WriteLine("************************************************\n");
                             Console.WriteLine("\tYou have entered something that was not a number please try again");
                             Console.WriteLine("\t The Cart will now be reset so you must add all items again");

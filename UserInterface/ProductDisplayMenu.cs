@@ -14,26 +14,26 @@ namespace UserInterface
         }
         public void Menu()
         {
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            
             Console.WriteLine("##################################################################################\n");
             Console.WriteLine("\tWelcome to the " + SingletonUser.currentstore.Name + " products menu");
             Console.WriteLine("\tBelow is a list of products");
             Console.WriteLine("---------------------------------------------------------------------\n");
             Console.WriteLine("\tList of Products in " + SingletonUser.currentstore.Name);
             StoreFront test = parameterInter.GetStoreByID(SingletonUser.currentstore.Id);
-            Console.ForegroundColor = ConsoleColor.White;
+            
             foreach (LineItems rest in parameterInter.GetInventory(SingletonUser.currentstore.Id))
             {
                 Console.WriteLine("====================");
                 Console.WriteLine("\t" + rest);
                 Console.WriteLine("====================");
             }
-            Console.ForegroundColor = ConsoleColor.Green;
+            
 
             Console.WriteLine("\t[2] - Begin to Place an Order");
             Console.WriteLine("\t[1] - Back to store select");
             Console.WriteLine("\t[0] - exit");
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            
 
             Console.WriteLine("\n##################################################################################\n");
 

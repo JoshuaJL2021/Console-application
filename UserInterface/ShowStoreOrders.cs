@@ -33,7 +33,7 @@ namespace UserInterface
             catch (System.Exception)
             {
 
-                Console.ForegroundColor = ConsoleColor.White;
+                
                 num = 0;
                 Console.WriteLine("************************************************\n");
                 Console.WriteLine("you have entered something that was not a number please try again");

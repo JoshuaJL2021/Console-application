@@ -14,14 +14,14 @@ namespace UserInterface
 
         public void Menu()
         {
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            
             Console.WriteLine("##################################################################################\n");
             if (SingletonUser.currentuser == null)
             {
                 Console.WriteLine("\tWelcome to the Shopping Menu!");
                 Console.WriteLine("\tPlease Log in or create account?");
                 Console.WriteLine("---------------------------------------------------------------------\n");
-                Console.ForegroundColor = ConsoleColor.Green;
+                
 
                 Console.WriteLine("\t[2] - create account");
                 Console.WriteLine("\t[1] - Login");
@@ -30,10 +30,10 @@ namespace UserInterface
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                
                 Console.WriteLine("\tWelcome to the Shopping Menu!");
                 Console.WriteLine("---------------------------------------------------------------------\n");
-                Console.ForegroundColor = ConsoleColor.Green;
+                
 
                 Console.WriteLine("\t[3] - View stores");
                 Console.WriteLine("\t[2] - create account");
@@ -41,7 +41,7 @@ namespace UserInterface
                 Console.WriteLine("\t[0] - Return to main menu");
 
             }
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            
             Console.WriteLine("\n##################################################################################\n");
 
 
@@ -62,7 +62,7 @@ namespace UserInterface
                         return MenuType.AddCustomers;
 
                     case "1":
-                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        
 
 
                         Console.WriteLine("\tEnter username");
@@ -73,7 +73,7 @@ namespace UserInterface
                         {
 
                             SingletonUser.currentuser = parameterInter.GetCustomer(name, pass);
-                            Console.ForegroundColor = ConsoleColor.White;
+                            
                             Console.WriteLine("************************************************\n");
                             Console.WriteLine("\tWelcome Back " + SingletonUser.currentuser.CustomerName + "\t press enter to continue\n");
                             Console.WriteLine("************************************************\n");
@@ -81,7 +81,7 @@ namespace UserInterface
                         }
                         catch (System.Exception)
                         {
-                            Console.ForegroundColor = ConsoleColor.White;
+                            
 
                             SingletonUser.currentuser = null;
                             Console.WriteLine("************************************************\n");
@@ -121,7 +121,7 @@ namespace UserInterface
 
                     case "1":
 
-                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        
                         Console.WriteLine("\tEnter username");
                         string name = Console.ReadLine();
                         Console.WriteLine("\tEnter Pass");
@@ -131,7 +131,7 @@ namespace UserInterface
                         {
 
                             SingletonUser.currentuser = parameterInter.GetCustomer(name, pass);
-                            Console.ForegroundColor = ConsoleColor.White;
+                            
                             Console.WriteLine("************************************************\n");
                             Console.WriteLine("\tWelcome Back " + SingletonUser.currentuser.CustomerName + "\t press enter to continue\n");
                             Console.WriteLine("************************************************\n");
@@ -139,7 +139,7 @@ namespace UserInterface
                         }
                         catch (System.Exception)
                         {
-                            Console.ForegroundColor = ConsoleColor.White;
+                            
                             SingletonUser.currentuser = null;
                             Console.WriteLine("************************************************\n");
                             Console.WriteLine("User was unfortunately not found");

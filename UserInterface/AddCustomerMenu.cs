@@ -18,11 +18,11 @@ namespace UserInterface
 
         public void Menu()
         {
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            
             Console.WriteLine("##################################################################################\n");
             Console.WriteLine("Adding a new Account");
             Console.WriteLine("---------------------------------------------------------------------\n");
-            Console.ForegroundColor = ConsoleColor.White;
+            
             Console.WriteLine("Name - " + client.CustomerName);
             Console.WriteLine("Address - " + client.Address);
             Console.WriteLine("Contact - " + client.Contact);
@@ -33,7 +33,7 @@ namespace UserInterface
             Console.WriteLine("Added Balance: - $" + client.Currency);
             Console.WriteLine("\n##################################################################################\n");
 
-            Console.ForegroundColor = ConsoleColor.Green;
+            
             Console.WriteLine("\t[x] - Add Customer");
             Console.WriteLine("\t[1] - Input value for Name");
             Console.WriteLine("\t[2] - Input value for Address");
@@ -44,7 +44,7 @@ namespace UserInterface
             Console.WriteLine("\t[7] - Enter Type of User");
             Console.WriteLine("\t[8] - Enter Currency");
             Console.WriteLine("\t[0] - Go Back");
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            
             Console.WriteLine("\n##################################################################################\n");
 
 
@@ -70,7 +70,7 @@ namespace UserInterface
                     catch (System.Exception)
                     {
 
-                        Console.ForegroundColor = ConsoleColor.White;
+                        
                         Console.WriteLine("************************************************\n");
                         Console.WriteLine("Information is missing or The username is already in use please change username");
                         Console.WriteLine("Press Enter to continue");
@@ -106,7 +106,7 @@ namespace UserInterface
                     catch (System.Exception)
                     {
 
-                        Console.ForegroundColor = ConsoleColor.White;
+                        
                         client._age = 0;
                         Console.WriteLine("************************************************\n");
                         Console.WriteLine("you have entered something that was not a number please try again");
@@ -141,7 +141,7 @@ namespace UserInterface
                     }
                     catch (System.Exception)
                     {
-                        Console.ForegroundColor = ConsoleColor.White;
+                        
                         client.Currency = 0;
                         Console.WriteLine("************************************************\n");
                         Console.WriteLine("you have entered something that was not a number please try again");
